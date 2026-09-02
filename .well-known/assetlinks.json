@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.flyatlast.app",
+      "sha256_cert_fingerprints": [
+        "A1:C2:C1:10:ED:1E:49:25:10:D0:55:80:CC:DA:C3:E1:8B:67:5D:B0:08:BB:4F:E1:B2:3D:3B:42:AA:43:94:23"
+      ]
+    }
+  }
+]
