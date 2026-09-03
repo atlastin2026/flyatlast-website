@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — FlyAtlast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E3A5F;
+    --yellow: #F4C11C;
+    --bg: #EEF1F3;
+    --white: #FFFFFF;
+    --text-muted: #5A6B78;
+    --text-body: #3d4a56;
+    --border: #DDE3E7;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Public Sans', sans-serif; background: var(--bg); color: var(--navy); }
+  a { color: var(--navy); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .nav { background: var(--navy); padding: 22px 24px; }
+  .nav-wrap { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  h1 { font-size: 30px; font-weight: 800; margin: 48px 0 6px; }
+  .updated { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); margin-bottom: 40px; }
+  h2 { font-size: 18px; font-weight: 700; margin: 36px 0 10px; }
+  p, li { font-size: 14.5px; line-height: 1.7; color: var(--text-body); }
+  ul { padding-left: 20px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13.5px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-weight: 700; color: var(--navy); }
+  td { color: var(--text-body); }
+  footer { text-align: center; padding: 40px 24px 60px; font-size: 12.5px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="/" aria-label="FlyAtlast home" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+      <svg width="70" height="35" viewBox="24 54 92 46" aria-hidden="true">
+        <path d="M28,58 L92,58 L110,72 L110,96 L28,96 Z" fill="#fff"/>
+        <circle cx="88" cy="77" r="16" fill="none" stroke="#F4C11C" stroke-width="3" transform="rotate(-15 88 77)"/>
+        <path d="M80,77 L86,83 L97,70" fill="none" stroke="#F4C11C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-15 88 77)"/>
+      </svg>
+      <span style="font-size: 20px; font-weight: 800; color: #fff;">FlyAtlast</span>
+    </a>
+    <a href="/" style="color: #fff; font-size: 13px; font-weight: 600;">← Back home</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: September 2, 2026</div>
+
+  <p>This Privacy Policy explains what information FlyAtlast collects, how we use it, and who we share it with.</p>
+
+  <h2>1. Information we collect</h2>
+  <table>
+    <tr><th>Type</th><th>What, and why</th></tr>
+    <tr><td>Account information</td><td>Your email address, used for login and to send deal alerts and account-related emails.</td></tr>
+    <tr><td>Trip tracking data</td><td>The routes, dates, budgets, and preferences you enter when pinning a trip — used to check prices on your behalf.</td></tr>
+    <tr><td>Payment information</td><td>Handled entirely by Stripe. FlyAtlast never receives or stores your full card number — only a card's brand and last 4 digits, for display purposes.</td></tr>
+    <tr><td>Location (approximate)</td><td>Your IP address is used, on a best-effort basis, to suggest a default currency when you sign up. This lookup can fail silently and never blocks account creation.</td></tr>
+    <tr><td>Device / push notification token</td><td>If you enable push notifications, a device token is stored (via Firebase Cloud Messaging) so we can send you deal alerts.</td></tr>
+    <tr><td>Usage data</td><td>Basic app usage (e.g., login streaks, referral activity) used to power in-app features like streak tracking and referral rewards.</td></tr>
+  </table>
+
+  <h2>2. How we use your information</h2>
+  <ul>
+    <li>To provide the core service: tracking prices and notifying you of deals.</li>
+    <li>To process Price Freeze and pin-bundle payments.</li>
+    <li>To send transactional emails (deal alerts, freeze confirmations and resolutions, welcome emails) and, where you haven't opted out, promotional emails.</li>
+    <li>To operate the referral and streak reward systems.</li>
+  </ul>
+
+  <h2>3. Third parties we share data with</h2>
+  <p>FlyAtlast uses the following third-party services to operate. Each processes only the data necessary for its function:</p>
+  <table>
+    <tr><th>Service</th><th>Purpose</th></tr>
+    <tr><td>Stripe</td><td>Payment processing for Price Freeze and pin-bundle purchases.</td></tr>
+    <tr><td>Duffel</td><td>Live flight price search and airport/city lookup data.</td></tr>
+    <tr><td>Firebase (Google)</td><td>Push notification delivery.</td></tr>
+    <tr><td>Resend</td><td>Transactional and marketing email delivery.</td></tr>
+    <tr><td>Supabase</td><td>Account authentication and application database hosting.</td></tr>
+  </table>
+  <p>We do not sell your personal information to third parties.</p>
+
+  <h2>4. Email preferences</h2>
+  <p>Deal-alert and welcome emails include an unsubscribe link. Transactional emails directly tied to an action you took — such as a Price Freeze confirmation or resolution — do not include an unsubscribe option, since these communicate a real account or payment event rather than promotional content.</p>
+
+  <h2>5. Data retention</h2>
+  <p>We retain your account and trip data for as long as your account remains active. You may request deletion of your account and associated data at any time by contacting us.</p>
+
+  <h2>6. Your rights</h2>
+  <p>Depending on your location, you may have the right to access, correct, or delete your personal information, or to object to certain uses of it. To exercise any of these rights, contact us at the email below.</p>
+
+  <h2>7. Children's privacy</h2>
+  <p>FlyAtlast is not directed at children under 18 and we do not knowingly collect personal information from anyone under that age.</p>
+
+  <h2>8. Security</h2>
+  <p>We use industry-standard measures to protect your data, including encrypted connections and access controls on our systems. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+
+  <h2>9. Changes to this policy</h2>
+  <p>We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date above.</p>
+
+  <h2>10. Contact</h2>
+  <p>Questions about this Privacy Policy, or requests to access or delete your data, can be sent to <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a>.</p>
+</div>
+
+<footer>
+  © FlyAtlast · contactus@flyatlast.com
+</footer>
+
+</body>
+</html>
