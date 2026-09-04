@@ -64,10 +64,11 @@
     background: var(--navy);
     padding: 16px 24px;
   }
-  .nav-wrap { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .nav-wrap { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; position: relative; }
   .nav-links { display: flex; gap: 26px; align-items: center; }
   .nav-links a { color: rgba(255,255,255,0.85); font-size: 13.5px; font-weight: 600; }
   .nav-links a:hover { color: #fff; }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; margin-left: 10px; }
 
   /* HERO */
   .hero { padding: 56px 0 60px; text-align: center; }
@@ -143,12 +144,31 @@
   }
 
   @media (max-width: 860px) {
-    .nav-links span.nav-link-text { display: none; }
     .hero h1 { font-size: 30px; }
     .steps3 { grid-template-columns: 1fr; }
     .flow-row { flex-direction: column; }
     .flow-arrow { transform: rotate(90deg); padding: 6px 0; align-self: center; }
     .earn-grid { grid-template-columns: 1fr; }
+
+    /* Mobile nav fix (Sep 3, per Ali's report) — real bug found live
+       via a mobile screenshot: the old rule below only hid the LINK
+       TEXT on mobile, leaving 3 completely empty, invisible <a> tags
+       in the nav bar with no icon or fallback ever added to replace
+       them. Visitors on mobile had no way to reach How it works /
+       Price Freeze / Pricing at all except manual scrolling. Replaced
+       with a real toggleable hamburger menu instead. */
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--navy);
+      flex-direction: column; align-items: stretch;
+      padding: 8px 24px 20px; gap: 2px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+    .nav-links.nav-open { display: flex; }
+    .nav-links a { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .nav-links a.btn { margin-top: 10px; text-align: center; border-bottom: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -171,12 +191,20 @@
       <span style="font-size: 24px; font-weight: 800; color: #fff;">FlyAtlast</span>
       <svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="#F4C11C"/></svg>
     </a>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="#how"><span class="nav-link-text">How it works</span></a>
       <a href="#freeze"><span class="nav-link-text">Price Freeze</span></a>
       <a href="#pricing"><span class="nav-link-text">Pricing</span></a>
       <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary" style="padding: 9px 18px; font-size: 13px;">Start tracking free</a>
     </div>
+    <button
+      class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
+      onclick="var p=document.getElementById('navLinks'); var open=p.classList.toggle('nav-open'); this.setAttribute('aria-expanded', open);"
+    >
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
   </div>
 </nav>
 
