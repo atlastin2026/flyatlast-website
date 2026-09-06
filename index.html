@@ -69,18 +69,20 @@
   .nav-links a { color: rgba(255,255,255,0.85); font-size: 13.5px; font-weight: 600; }
   .nav-links a:hover { color: #fff; }
   .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; margin-left: 10px; }
+  .nav-tagline { font-size: 11.5px; color: rgba(255,255,255,0.55); font-weight: 600; letter-spacing: 0.02em; }
 
   /* HERO */
   .hero { padding: 56px 0 60px; text-align: center; }
   .hero h1 { font-size: 38px; font-weight: 800; margin: 0 0 16px; max-width: 18ch; margin-left: auto; margin-right: auto; line-height: 1.25; }
   .hero-sub { font-size: 16px; color: var(--text-body); font-weight: 600; max-width: 46ch; margin: 0 auto 30px; line-height: 1.5; }
-  .deal-card {
-    background: var(--white);
+  .hero-video-frame {
+    background: #000;
     border: 2px solid var(--navy);
-    max-width: 460px;
+    max-width: 680px;
     margin: 0 auto 20px;
+    overflow: hidden;
   }
-  .deal-card img { width: 100%; }
+  .hero-video-frame video { width: 100%; display: block; }
   .reassurance { font-size: 12px; color: var(--text-muted); margin: 0; }
 
   /* HOW IT WORKS / step columns */
@@ -111,14 +113,17 @@
   }
 
   /* PRICE FREEZE */
-  .freeze-headline { font-size: 30px; font-weight: 800; margin: 8px 0 10px; }
-  .freeze-sub { font-size: 16px; color: var(--text-body); font-weight: 600; margin: 0 0 30px; }
+  .freeze-elevated { background: var(--navy); color: #fff; }
+  .freeze-headline { font-size: 30px; font-weight: 800; margin: 8px 0 10px; max-width: 22ch; }
+  .freeze-sub { font-size: 16px; color: rgba(255,255,255,0.72); font-weight: 600; margin: 0 0 30px; }
   .check-list { list-style: none; padding: 0; margin: 0 0 32px; }
   .check-list li {
     font-size: 14.5px; margin-bottom: 14px; padding-left: 26px;
-    position: relative; color: var(--text-body);
+    position: relative; color: rgba(255,255,255,0.88);
   }
-  .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+  .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--yellow); font-weight: 800; }
+  .freeze-elevated .proof-frame { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.35); }
+  .freeze-elevated .proof-label { color: rgba(255,255,255,0.55); }
 
   /* MERGED PRICING FLOW */
   .flow-wrap { text-align: center; }
@@ -149,6 +154,7 @@
     .flow-row { flex-direction: column; }
     .flow-arrow { transform: rotate(90deg); padding: 6px 0; align-self: center; }
     .earn-grid { grid-template-columns: 1fr; }
+    .nav-tagline { display: none; }
 
     /* Mobile nav fix (Sep 3, per Ali's report) — real bug found live
        via a mobile screenshot: the old rule below only hid the LINK
@@ -190,6 +196,7 @@
       </svg>
       <span style="font-size: 24px; font-weight: 800; color: #fff;">FlyAtlast</span>
       <svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="#F4C11C"/></svg>
+      <span class="nav-tagline">Find. Freeze. Fly.</span>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#how"><span class="nav-link-text">How it works</span></a>
@@ -212,12 +219,13 @@
 
   <!-- HERO -->
   <section class="hero wrap">
-    <p class="eyebrow">Watching your price, around the clock</p>
-    <h1>Stop searching for flights. We'll find one — for free.</h1>
-    <p class="hero-sub">Once you set your budget and travel dates, we'll search and find you a deal — completely free.</p>
+    <h1>Stop searching for flights. We'll find one.</h1>
+    <p class="hero-sub">Set your budget and dates. We watch, around the clock, until a real flight matches — completely free.</p>
 
-    <div class="deal-card">
-      <img src="assets/deal-edinburgh.png" alt="Real FlyAtlast deal example: At last, Edinburgh is a deal. LHR to EDI, Aug 25 to Sep 1, fare 136.86 GBP, about 413 GBP under budget.">
+    <div class="hero-video-frame">
+      <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-label="A demo of FlyAtlast: searching for a flight the usual way, pinning a trip to track instead, a real deal appearing, freezing the price, and the price-frozen confirmation.">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
     </div>
 
     <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary" style="margin-bottom: 12px;">Start tracking a trip — free</a>
@@ -227,7 +235,6 @@
   <!-- HOW IT WORKS -->
   <section class="section alt" id="how">
     <div class="wrap">
-      <p class="eyebrow">How it works</p>
       <h2>Set your trip. We'll do the checking.</h2>
       <p class="lede" style="margin-bottom: 36px;">Create a free account, tell us your route, dates, and budget — we start watching immediately.</p>
 
@@ -254,6 +261,11 @@
         <img src="assets/pintrip.png" alt="Real screenshot of the FlyAtlast Pin Your Trip form, showing destination, budget, travelers, dates, and flight preference fields.">
       </div>
 
+      <div class="proof-frame" style="margin-top: 18px;">
+        <p class="proof-label">What step 3 actually looks like when it happens</p>
+        <img src="assets/deal-edinburgh.png" alt="Real FlyAtlast deal example: At last, Edinburgh is a deal. LHR to EDI, Aug 25 to Sep 1, fare 136.86 GBP, about 413 GBP under budget.">
+      </div>
+
       <div style="text-align: center; margin-top: 32px;">
         <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Pin your first trip — free</a>
       </div>
@@ -261,18 +273,17 @@
   </section>
 
   <!-- PRICE FREEZE -->
-  <section class="section" id="freeze">
+  <section class="section freeze-elevated" id="freeze">
     <div class="wrap">
-      <p class="eyebrow">Price Freeze — the one nobody else offers</p>
-      <h2 class="freeze-headline">Freeze your price for $9.99, for 5 days.</h2>
-      <p class="freeze-sub">If the price rises, we'll refund your $9.99.</p>
+      <h2 class="freeze-headline">$9.99 freezes your price for 5 days. If it rises, you get it back.</h2>
+      <p class="freeze-sub">Nobody else does this. It's the one part of FlyAtlast worth paying for.</p>
 
       <ul class="check-list">
         <li>Price rises above what you froze → your $9.99 is refunded automatically.</li>
         <li>Price holds or drops → the fee covered 5 days of us watching it for you.</li>
       </ul>
 
-      <div class="proof-frame on-white">
+      <div class="proof-frame">
         <p class="proof-label">Real freeze, captured live from the app</p>
         <img src="assets/timeline.png" alt="Real screenshot of a FlyAtlast 5-day Price Freeze timeline, showing Day 0 price frozen in, Day 3 price moved, Day 4 24-hour nudge, and Day 5 resolution explaining both refund and charge outcomes.">
       </div>
@@ -282,7 +293,6 @@
   <!-- PRICING / MERGED CLOSING FLOW -->
   <section class="section alt" id="pricing">
     <div class="wrap flow-wrap">
-      <p class="eyebrow">One plan. Everyone's on it.</p>
       <h2>Tracking is always free. Freezing costs $9.99 — unless you've earned it.</h2>
 
       <div class="flow-row" style="margin-top: 32px;">
@@ -311,7 +321,6 @@
       </div>
 
       <div style="margin-top: 50px;" id="pin">
-        <p class="eyebrow">Find. Freeze.</p>
         <h2 style="font-size: 26px;">Pin your first trip. It's free to watch.</h2>
         <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Start tracking a trip</a>
       </div>
