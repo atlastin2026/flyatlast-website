@@ -110,6 +110,8 @@
   .check-list li { font-size: 15.5px; line-height: 1.55; margin-bottom: 16px; padding-left: 28px; position: relative; color: var(--text-on-navy); }
   .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--yellow); font-weight: 800; }
   .check-list strong { color: #fff; }
+  .watch-chart { margin: 32px 0 0; background: var(--white); border: 2px solid var(--navy-line); padding: 12px; }
+  .watch-chart figcaption { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin: 10px 2px 2px; }
   .tiers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 10px; }
   .tier { border: 2px solid var(--navy-line); padding: 18px; }
   .tier.featured { border-color: var(--yellow); }
@@ -306,19 +308,24 @@
       <h2>Found it, but not ready to book? We'll watch it for you.</h2>
       <!-- PHASE 3 (move alerts live): replace the line below with
            "Every 2 hours. If the price moves, you'll know fast, and the watching is free." -->
-      <p class="watch-sub">Every 2 hours, for up to 5 days. And if the price moves, the watching is free.</p>
+      <p class="watch-sub">Every 2 hours, for 48 hours or 5 days. And if the price moves, the watching is free.</p>
 
       <div class="watch-grid">
       <div>
       <ul class="check-list">
         <!-- PHASE 4 (daily digest live): append ", with a chart in your inbox every evening" -->
-        <li><strong>We check so you don't.</strong> About 60 checks over 5 days, overnight included.</li>
+        <li><strong>We check so you don't.</strong> About 24 checks over 48 hours, or 60 over 5 days, overnight included.</li>
         <!-- PHASE 3 (move alerts live): restore this item.
         <li><strong>Price moves? You hear within 2 hours.</strong> Book before it climbs further, or relax if it drops.</li>
         -->
         <li><strong>You only pay if the price held.</strong> Up US$5+ or down US$20+ by the end: the hold on your card is released and you pay $0.</li>
         <li><strong>Paid more when you booked?</strong> Send your confirmation within 48 hours of your result and we'll refund the fee.</li>
       </ul>
+
+      <figure class="watch-chart">
+        <img src="assets/watch-example-chart.png" alt="Example 48-hour Price Watch chart. The price stays steady inside the middle range, where the fee applies. Above the upper line or below the lower line at the end, you pay nothing.">
+        <figcaption>Example 48-hour watch: how your result is decided. If the price ends above the top line or below the bottom line, you pay $0.</figcaption>
+      </figure>
       </div>
 
       <div>
