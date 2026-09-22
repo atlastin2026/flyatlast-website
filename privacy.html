@@ -61,7 +61,7 @@
     <tr><th>Type</th><th>What, and why</th></tr>
     <tr><td>Account information</td><td>Your email address, used for login and to send deal alerts and account-related emails.</td></tr>
     <tr><td>Trip tracking data</td><td>The routes, dates, budgets, and preferences you enter when pinning a trip — used to check prices on your behalf.</td></tr>
-    <tr><td>Payment information</td><td>Handled entirely by Stripe. FlyAtlast never receives or stores your full card number — only a card's brand and last 4 digits, for display purposes.</td></tr>
+    <tr><td>Payment information</td><td>When a charge occurs, it's handled by Stripe. FlyAtlast does not collect or store your full card number.</td></tr>
     <tr><td>Location (approximate)</td><td>Your IP address is used, on a best-effort basis, to suggest a default currency when you sign up. This lookup can fail silently and never blocks account creation.</td></tr>
     <tr><td>Device / push notification token</td><td>If you enable push notifications, a device token is stored (via Firebase Cloud Messaging) so we can send you deal alerts.</td></tr>
     <tr><td>Usage data</td><td>Basic app usage (e.g., login streaks, referral activity) used to power in-app features like streak tracking and referral rewards.</td></tr>
