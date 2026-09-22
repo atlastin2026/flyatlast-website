@@ -3,27 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FlyAtlast: Find. Freeze. Fly.</title>
-<meta name="description" content="Set your budget and travel dates. We search for free until a real flight matches, then let you freeze the price for $9.99, refunded automatically if it rises.">
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>FlyAtlast: Find. Watch. Fly.</title>
+<meta name="description" content="Set your budget and dates. We check real, bookable fares daily and alert you with the exact flight, free for 3 trips. Not ready to book? Price Watch checks every 2 hours, and you pay $0 if the price moves.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #1E3A5F;
+    --navy-2: #243F63;
+    --navy-line: #5E7A96;
     --yellow: #F4C11C;
     --bg: #EEF1F3;
     --white: #FFFFFF;
     --text-muted: #5A6B78;
     --text-body: #3d4a56;
+    --text-on-navy: #EEF2F5;
+    --text-on-navy-muted: #C3CFDA;
     --border: #DDE3E7;
-    --green: #2D5F3E;
-    --green-bg: #D3EEDD;
-    --amber-bg: #FEF6DE;
-    --amber-text: #8a6c0f;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: 'Public Sans', sans-serif;
+    font-family: 'Public Sans', 'Helvetica Neue', Helvetica, sans-serif;
     background: var(--bg);
     color: var(--navy);
   }
@@ -33,136 +34,129 @@
   .mono { font-family: 'JetBrains Mono', monospace; }
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--text-muted);
+    margin: 0 0 10px;
   }
-  .section { padding: 64px 0; }
+  .section { padding: 72px 0; }
   .section.alt { background: var(--white); border-top: 2px solid var(--border); border-bottom: 2px solid var(--border); }
-  h2 { font-size: 28px; font-weight: 800; margin: 8px 0 14px; }
-  .lede { font-size: 15px; color: var(--text-muted); max-width: 56ch; line-height: 1.6; }
+  h2 { font-size: 32px; font-weight: 800; line-height: 1.2; margin: 0 0 14px; }
   .btn {
     display: inline-block;
-    padding: 14px 26px;
-    font-weight: 800;
-    font-size: 14.5px;
+    padding: 15px 28px;
+    font-weight: 800; font-size: 15.5px;
     cursor: pointer;
     border: 2px solid var(--navy);
     font-family: inherit;
   }
   .btn-primary { background: var(--yellow); color: #1a1a1a; }
-  .btn:focus-visible, a:focus-visible, [role="button"]:focus-visible {
+  .btn:focus-visible, a:focus-visible, button:focus-visible {
     outline: 3px solid var(--navy);
     outline-offset: 2px;
   }
 
   /* NAV */
-  .nav {
-    position: sticky; top: 0; z-index: 10;
-    background: var(--navy);
-    padding: 16px 24px;
-  }
+  .nav { position: sticky; top: 0; z-index: 10; background: var(--navy); padding: 20px 24px; }
   .nav-wrap { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
   .nav-links { display: flex; gap: 26px; align-items: center; }
-  .nav-links a { color: rgba(255,255,255,0.85); font-size: 13.5px; font-weight: 600; }
+  .nav-links a { color: rgba(255,255,255,0.88); font-size: 14px; font-weight: 600; }
   .nav-links a:hover { color: #fff; }
-  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; margin-left: 10px; }
-  .nav-tagline { font-size: 11.5px; color: rgba(255,255,255,0.55); font-weight: 600; letter-spacing: 0.02em; }
+  .nav-links a.btn { color: #1a1a1a; padding: 10px 18px; font-size: 14px; border-color: var(--yellow); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-tagline { font-size: 12px; color: var(--text-on-navy-muted); font-weight: 600; letter-spacing: 0.02em; }
 
   /* HERO */
-  .hero { padding: 56px 0 60px; text-align: center; }
-  .hero h1 { font-size: 38px; font-weight: 800; margin: 0 0 16px; max-width: 18ch; margin-left: auto; margin-right: auto; line-height: 1.25; }
-  .hero-sub { font-size: 16px; color: var(--text-body); font-weight: 600; max-width: 46ch; margin: 0 auto 30px; line-height: 1.5; }
-  .hero-video-frame {
-    background: var(--navy);
-    border: 2px solid var(--navy);
-    max-width: 680px;
-    margin: 0 auto 20px;
-    overflow: hidden;
-  }
+  .hero { padding: 72px 0 64px; text-align: center; }
+  .hero h1 { font-size: 46px; font-weight: 800; margin: 0 auto 18px; max-width: 17ch; line-height: 1.15; }
+  .hero-sub { font-size: 18px; color: var(--text-body); font-weight: 500; max-width: 48ch; margin: 0 auto 30px; line-height: 1.55; }
+  .hero-video-frame { background: var(--navy); border: 2px solid var(--navy); max-width: 720px; margin: 0 auto 28px; overflow: hidden; }
   .hero-video-frame video { width: 100%; display: block; }
-  .reassurance { font-size: 12px; color: var(--text-muted); margin: 0; }
+  .reassurance { font-size: 13px; color: var(--text-muted); margin: 12px 0 0; }
 
-  /* HOW IT WORKS / step columns */
-  .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 32px; }
+  /* WHY STRIP */
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .why h3 { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 8px; }
+  .why p { font-size: 15px; line-height: 1.55; color: var(--text-body); margin: 0; }
+
+  /* HOW IT WORKS */
+  .how { display: grid; grid-template-columns: 1fr 480px; gap: 56px; align-items: start; }
+  .step { display: flex; gap: 16px; margin-bottom: 24px; }
   .step-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; font-weight: 800;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 800;
     color: var(--yellow); background: var(--navy);
-    display: inline-block; padding: 3px 9px; margin-bottom: 10px;
+    padding: 4px 9px; height: fit-content;
   }
-  .step-card h4 { font-size: 15px; margin: 0 0 6px; }
-  .step-card p { font-size: 12.5px; color: var(--text-muted); margin: 0; line-height: 1.5; }
-
-  /* PROOF SCREENSHOT FRAME (real screenshots, full width) */
-  .proof-frame {
-    border: 2px solid var(--navy);
-    padding: 6px;
-    background: var(--bg);
-  }
-  .proof-frame.on-white { background: var(--white); }
+  .step h3 { font-size: 18px; margin: 0 0 4px; }
+  .step p { font-size: 15px; color: var(--text-body); margin: 0; line-height: 1.55; }
+  .note { background: var(--white); border: 2px solid var(--border); padding: 16px 18px; margin: 8px 0 28px; }
+  .note p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--text-body); }
+  .proof-frame { border: 2px solid var(--navy); padding: 6px; background: var(--white); }
+  .proof-frame + .proof-frame { margin-top: 18px; }
   .proof-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px; font-weight: 700;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
     letter-spacing: 0.05em; text-transform: uppercase;
-    color: var(--text-muted);
-    margin: 6px 0 10px;
-    text-align: center;
+    color: var(--text-muted); margin: 4px 0 8px; text-align: center;
   }
 
-  /* PRICE FREEZE */
-  .freeze-elevated { background: var(--navy); color: #fff; }
-  .freeze-headline { font-size: 30px; font-weight: 800; margin: 8px 0 10px; max-width: 22ch; }
-  .freeze-sub { font-size: 16px; color: rgba(255,255,255,0.72); font-weight: 600; margin: 0 0 30px; }
-  .check-list { list-style: none; padding: 0; margin: 0 0 32px; }
-  .check-list li {
-    font-size: 14.5px; margin-bottom: 14px; padding-left: 26px;
-    position: relative; color: rgba(255,255,255,0.88);
-  }
+  /* PRICE WATCH */
+  .watch { background: var(--navy); color: #fff; }
+  .watch .eyebrow { color: var(--yellow); }
+  .watch h2 { font-size: 36px; max-width: 21ch; }
+  .watch-grid { display: grid; grid-template-columns: 1fr 400px; gap: 56px; align-items: start; }
+  .watch-sub { font-size: 17px; color: #D5DEE6; font-weight: 500; line-height: 1.55; margin: 0 0 28px; max-width: 52ch; }
+  .check-list { list-style: none; padding: 0; margin: 0; }
+  .check-list li { font-size: 15.5px; line-height: 1.55; margin-bottom: 16px; padding-left: 28px; position: relative; color: var(--text-on-navy); }
   .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--yellow); font-weight: 800; }
-  .freeze-elevated .proof-frame { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.35); }
-  .freeze-elevated .proof-label { color: rgba(255,255,255,0.55); }
+  .check-list strong { color: #fff; }
+  .tiers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 10px; }
+  .tier { border: 2px solid var(--navy-line); padding: 18px; }
+  .tier.featured { border-color: var(--yellow); }
+  .tier-len { font-size: 14px; font-weight: 700; color: #D5DEE6; margin: 0 0 4px; }
+  .tier-price { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 800; margin: 0 0 4px; }
+  .tier-cancel { font-size: 13px; color: var(--text-on-navy-muted); margin: 0; }
+  .fine-on-navy { font-size: 13px; color: var(--text-on-navy-muted); margin: 0 0 22px; }
+  .isnt { border: 1px solid var(--navy-line); background: var(--navy-2); padding: 14px 16px; }
+  .isnt p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text-on-navy); }
+  .isnt strong { color: var(--yellow); }
 
-  /* MERGED PRICING FLOW */
-  .flow-wrap { text-align: center; }
-  .flow-row { display: flex; align-items: stretch; gap: 0; text-align: left; margin-bottom: 6px; }
-  .flow-box { flex: 1; background: var(--white); border: 2px solid var(--navy); padding: 22px; }
-  .flow-arrow { display: flex; align-items: center; padding: 0 14px; background: var(--bg); font-size: 22px; color: var(--text-muted); }
-  .flow-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin: 0 0 8px; }
-  .flow-title { font-size: 16px; font-weight: 800; margin: 0 0 8px; }
-  .flow-desc { font-size: 12.5px; color: var(--text-muted); margin: 0; line-height: 1.5; }
-  .or-divider { text-align: center; padding: 16px 0 10px; color: var(--text-muted); font-size: 13px; font-weight: 700; }
-  .earn-block { border: 2px solid var(--navy); background: var(--navy); padding: 26px; text-align: left; }
-  .earn-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; color: var(--yellow); text-transform: uppercase; margin: 0 0 10px; }
-  .earn-title { font-size: 17px; font-weight: 800; color: #fff; margin: 0 0 20px; }
-  .earn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .earn-grid img { border: 2px solid var(--navy); }
+  /* PRICING */
+  .pricing-head { text-align: center; margin-bottom: 32px; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; }
+  .plan { border: 2px solid var(--navy); padding: 26px; background: var(--white); }
+  .plan.dark { background: var(--navy); color: #fff; }
+  .plan-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 10px; }
+  .plan.dark .plan-label { color: var(--yellow); }
+  .plan-title { font-size: 22px; font-weight: 800; margin: 0 0 10px; }
+  .plan p.desc { font-size: 14.5px; line-height: 1.55; color: var(--text-body); margin: 0; }
+  .plan.dark p.desc { color: var(--text-on-navy); }
+  .earn { background: var(--bg); border: 2px solid var(--border); padding: 26px; }
+  .earn h3 { font-size: 18px; margin: 0 0 14px; }
+  .earn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .earn p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text-body); }
+  .earn strong { color: var(--navy); }
 
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.6);
-    padding: 30px 0;
-    font-size: 12px;
-    text-align: center;
-  }
+  .closing { text-align: center; }
+  .closing h2 { margin-bottom: 20px; }
+
+  footer { background: var(--navy); color: var(--text-on-navy-muted); padding: 30px 24px; line-height: 1.8; font-size: 13px; text-align: center; }
+  footer a { text-decoration: underline; }
 
   @media (max-width: 860px) {
-    .hero h1 { font-size: 30px; }
-    .steps3 { grid-template-columns: 1fr; }
-    .flow-row { flex-direction: column; }
-    .flow-arrow { transform: rotate(90deg); padding: 6px 0; align-self: center; }
-    .earn-grid { grid-template-columns: 1fr; }
+    .hero { padding: 44px 0 44px; }
+    .hero h1 { font-size: 31px; }
+    .hero-sub { font-size: 16px; }
+    h2, .watch h2 { font-size: 26px; }
+    .hero .btn, .closing .btn { display: block; }
+    .why, .plans, .earn-grid { grid-template-columns: 1fr; gap: 22px; }
+    .how, .watch-grid { grid-template-columns: 1fr; gap: 28px; }
+    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .tier-price { font-size: 21px; }
+    .section { padding: 48px 0; }
     .nav-tagline { display: none; }
 
-    /* Mobile nav fix (Sep 3, per Ali's report) — real bug found live
-       via a mobile screenshot: the old rule below only hid the LINK
-       TEXT on mobile, leaving 3 completely empty, invisible <a> tags
-       in the nav bar with no icon or fallback ever added to replace
-       them. Visitors on mobile had no way to reach How it works /
-       Price Freeze / Pricing at all except manual scrolling. Replaced
-       with a real toggleable hamburger menu instead. */
+    /* Mobile nav: toggleable menu (Sep 3 fix, kept) */
     .nav-toggle { display: block; }
     .nav-links {
       display: none;
@@ -171,6 +165,7 @@
       flex-direction: column; align-items: stretch;
       padding: 8px 24px 20px; gap: 2px;
       border-top: 1px solid rgba(255,255,255,0.14);
+      margin-top: 20px;
     }
     .nav-links.nav-open { display: flex; }
     .nav-links a { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -178,7 +173,6 @@
   }
 
   html { scroll-behavior: smooth; }
-
   @media (prefers-reduced-motion: reduce) {
     * { scroll-behavior: auto !important; }
   }
@@ -188,28 +182,25 @@
 </head>
 <body>
 
-<nav class="nav" style="padding: 22px 24px;">
+<nav class="nav">
   <div class="nav-wrap">
-    <a href="#" aria-label="FlyAtlast home" style="display: flex; align-items: center; gap: 12px;">
-      <svg width="80" height="40" viewBox="24 54 92 46" aria-hidden="true">
+    <a href="#" class="nav-brand" aria-label="FlyAtlast home">
+      <svg width="72" height="36" viewBox="24 54 92 46" aria-hidden="true">
         <path d="M28,58 L92,58 L110,72 L110,96 L28,96 Z" fill="#fff"/>
         <circle cx="88" cy="77" r="16" fill="none" stroke="#F4C11C" stroke-width="3" transform="rotate(-15 88 77)"/>
         <path d="M80,77 L86,83 L97,70" fill="none" stroke="#F4C11C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-15 88 77)"/>
       </svg>
       <span style="font-size: 24px; font-weight: 800; color: #fff;">FlyAtlast</span>
-      <svg width="11" height="11" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="#F4C11C"/></svg>
-      <span class="nav-tagline">Find. Freeze. Fly.</span>
+      <span class="nav-tagline">Find. Watch. Fly.</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="#how"><span class="nav-link-text">How it works</span></a>
-      <a href="#freeze"><span class="nav-link-text">Price Freeze</span></a>
-      <a href="#pricing"><span class="nav-link-text">Pricing</span></a>
-      <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary" style="padding: 9px 18px; font-size: 13px;">Start tracking free</a>
+      <a href="#how">How it works</a>
+      <a href="#watch">Price Watch</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Pin a trip free</a>
     </div>
-    <button
-      class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
-      onclick="var p=document.getElementById('navLinks'); var open=p.classList.toggle('nav-open'); this.setAttribute('aria-expanded', open);"
-    >
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
+      onclick="var p=document.getElementById('navLinks'); var open=p.classList.toggle('nav-open'); this.setAttribute('aria-expanded', open);">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
@@ -221,131 +212,194 @@
 
   <!-- HERO -->
   <section class="hero wrap">
-    <h1>Stop searching for flights. We'll find one.</h1>
-    <p class="hero-sub">Set your budget and dates. We watch around the clock until a real flight matches, completely free.</p>
+    <h1>Name your price. We'll tell you when a real flight hits it.</h1>
+    <p class="hero-sub">Pin a trip with your budget. We check real, bookable fares every day and alert you with the exact flight. Free for 3 trips.</p>
 
+    <!-- HERO VIDEO: hidden until re-recorded. The current hero.mp4 walks
+         through "freezing" a price, and its poster frame is a screenshot of
+         another company's site with a personal browser bookmarks bar
+         visible. Re-record showing: pin a trip -> a real deal arrives ->
+         start a Price Watch -> the watch screen. Then restore this block.
     <div class="hero-video-frame">
-      <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-label="A demo of FlyAtlast: searching for a flight the usual way, pinning a trip to track instead, a real deal appearing, freezing the price, and the price-frozen confirmation.">
+      <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-label="A demo of FlyAtlast: pinning a trip, a real deal arriving with the exact flight, and starting a Price Watch.">
         <source src="assets/hero.mp4" type="video/mp4">
       </video>
     </div>
+    -->
 
-    <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary" style="margin-bottom: 12px;">Start tracking a trip: free</a>
-    <p class="reassurance">Free to start · No credit card needed</p>
+    <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Pin a trip free</a>
+    <p class="reassurance">No card needed · Free trips include 10 daily checks</p>
+  </section>
+
+  <!-- WHY FLYATLAST -->
+  <section class="section alt" style="padding: 56px 0;">
+    <div class="wrap why">
+      <div>
+        <h3>Your number, not ours</h3>
+        <p>You set the total that makes the trip a yes. We alert you when a real fare hits it, not on every small wiggle.</p>
+      </div>
+      <div>
+        <h3>The exact flight</h3>
+        <p>Flight numbers, times, stops and fare type, so you know precisely what the price is for.</p>
+      </div>
+      <div>
+        <h3>No predictions</h3>
+        <p>No algorithm guessing where fares go. You see real checks, and nothing else.</p>
+      </div>
+    </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="section alt" id="how">
-    <div class="wrap">
-      <h2>Set your trip. We'll do the checking.</h2>
-      <p class="lede" style="margin-bottom: 36px;">Create a free account, tell us your route, dates, and budget, and we start watching immediately.</p>
+  <section class="section" id="how">
+    <div class="wrap how">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2 style="margin-bottom: 30px;">Set your trip. We do the checking.</h2>
 
-      <div class="steps3">
-        <div class="step-card">
+        <div class="step">
           <div class="step-num">01</div>
-          <h4>Where and when</h4>
-          <p>Your route and dates, flexible by a few days if you're not locked in.</p>
+          <div>
+            <h3>Where and when</h3>
+            <p>Your route and dates, flexible by a few days if you're not locked in.</p>
+          </div>
         </div>
-        <div class="step-card">
+        <div class="step">
           <div class="step-num">02</div>
-          <h4>Your budget</h4>
-          <p>The price that makes this a yes for you, for all passengers, total.</p>
+          <div>
+            <h3>Your budget</h3>
+            <p>The total that makes this trip a yes, for all passengers.</p>
+          </div>
         </div>
-        <div class="step-card">
+        <div class="step">
           <div class="step-num">03</div>
-          <h4>We watch, you wait</h4>
-          <p>Checked around the clock. You hear from us only when it's worth booking.</p>
+          <div>
+            <h3>We check it daily</h3>
+            <p>One check a day for 10 days. When a real fare hits your number, you get the exact flight and a link to book.</p>
+          </div>
         </div>
+
+        <div class="note">
+          <p><strong style="color: var(--navy);">Good to know:</strong> our prices come from our airline data partner and can differ from other sites. Every deal has a one-tap Google Flights link, so you can compare before you book.</p>
+        </div>
+
+        <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Pin your first trip</a>
       </div>
 
-      <div class="proof-frame">
-        <p class="proof-label">The actual form: a real screenshot, not a mockup</p>
-        <img src="assets/pintrip.png" alt="Real screenshot of the FlyAtlast Pin Your Trip form, showing destination, budget, travelers, dates, and flight preference fields.">
-      </div>
-
-      <div class="proof-frame" style="margin-top: 18px;">
-        <p class="proof-label">What step 3 actually looks like when it happens</p>
-        <img src="assets/deal-edinburgh.png" alt="Real FlyAtlast deal example: At last, Edinburgh is a deal. LHR to EDI, Aug 25 to Sep 1, fare 136.86 GBP, about 413 GBP under budget.">
-      </div>
-
-      <div style="text-align: center; margin-top: 32px;">
-        <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Pin your first trip: free</a>
+      <div>
+        <div class="proof-frame">
+          <p class="proof-label">The actual form · real screenshot</p>
+          <img src="assets/pintrip.png" alt="Real screenshot of the FlyAtlast Pin Your Trip form, showing destination, budget, travelers, dates, and flight preference fields.">
+        </div>
+        <!-- Swap for a Toronto deal card in CAD once recaptured (Canada/US launch). -->
+        <div class="proof-frame">
+          <p class="proof-label">What a real deal alert looks like</p>
+          <img src="assets/deal-edinburgh.png" alt="Real FlyAtlast deal example: At last, Edinburgh is a deal. LHR to EDI, fare 136.86 GBP, about 413 GBP under budget.">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICE FREEZE -->
-  <section class="section freeze-elevated" id="freeze">
+  <!-- PRICE WATCH -->
+  <section class="section watch" id="watch">
     <div class="wrap">
-      <h2 class="freeze-headline">$9.99 freezes your price for 5 days. If it rises, you get it back.</h2>
-      <p class="freeze-sub">Nobody else does this. It's the one part of FlyAtlast worth paying for.</p>
+      <p class="eyebrow">Price Watch</p>
+      <h2>Found it, but not ready to book? We'll watch it for you.</h2>
+      <!-- PHASE 3 (move alerts live): replace the line below with
+           "Every 2 hours. If the price moves, you'll know fast, and the watching is free." -->
+      <p class="watch-sub">Every 2 hours, for up to 5 days. And if the price moves, the watching is free.</p>
 
+      <div class="watch-grid">
+      <div>
       <ul class="check-list">
-        <li>Price rises above what you froze → your $9.99 is refunded automatically.</li>
-        <li>Price holds or drops → the fee covered 5 days of us watching it for you.</li>
+        <!-- PHASE 4 (daily digest live): append ", with a chart in your inbox every evening" -->
+        <li><strong>We check so you don't.</strong> About 60 checks over 5 days, overnight included.</li>
+        <!-- PHASE 3 (move alerts live): restore this item.
+        <li><strong>Price moves? You hear within 2 hours.</strong> Book before it climbs further, or relax if it drops.</li>
+        -->
+        <li><strong>You only pay if the price held.</strong> Up US$5+ or down US$20+ by the end: the hold on your card is released and you pay $0.</li>
+        <li><strong>Paid more when you booked?</strong> Send your confirmation within 48 hours of your result and we'll refund the fee.</li>
       </ul>
+      </div>
 
-      <div class="proof-frame">
-        <p class="proof-label">Real freeze, captured live from the app</p>
-        <img src="assets/timeline.png" alt="Real screenshot of a FlyAtlast 5-day Price Freeze timeline, showing Day 0 price frozen in, Day 3 price moved, Day 4 24-hour nudge, and Day 5 resolution explaining both refund and charge outcomes.">
+      <div>
+      <div class="tiers">
+        <div class="tier featured">
+          <p class="tier-len">5 days</p>
+          <p class="tier-price">US$9.99</p>
+          <p class="tier-cancel">Cancel free within 24 hours</p>
+        </div>
+        <div class="tier">
+          <p class="tier-len">48 hours</p>
+          <p class="tier-price">US$5.99</p>
+          <p class="tier-cancel">Cancel free within 12 hours</p>
+        </div>
+      </div>
+      <p class="fine-on-navy">Held in your own currency at that day's rate. We stop checking 12 hours before departure.</p>
+
+      <div class="isnt">
+        <p><strong>What it isn't:</strong> we don't hold seats or the fare. Airlines can still change the price, and you'd pay the new price when you book.</p>
+      </div>
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING / MERGED CLOSING FLOW -->
+  <!-- PRICING -->
   <section class="section alt" id="pricing">
-    <div class="wrap flow-wrap">
-      <h2>Tracking is always free. Freezing costs $9.99, unless you've earned it.</h2>
+    <div class="wrap">
+      <div class="pricing-head">
+        <p class="eyebrow">Pricing</p>
+        <h2>Tracking is free. Pay only for what you use.</h2>
+      </div>
 
-      <div class="flow-row" style="margin-top: 32px;">
-        <div class="flow-box">
-          <p class="flow-label mono">Every account</p>
-          <p class="flow-title">Track for free</p>
-          <p class="flow-desc">3 trips, checked continuously, real deal alerts. No plan to pick.</p>
+      <div class="plans">
+        <div class="plan">
+          <p class="plan-label">Every account</p>
+          <p class="plan-title">Free</p>
+          <p class="desc">3 trips, 10 daily checks each, deal alerts with the exact flight. No subscription, no card.</p>
         </div>
-        <div class="flow-arrow" aria-hidden="true">→</div>
-        <div class="flow-box">
-          <p class="flow-label mono">Found a deal?</p>
-          <p class="flow-title">Freeze it: $9.99</p>
-          <p class="flow-desc">5 days locked in. Price rises, you're refunded automatically.</p>
+        <div class="plan">
+          <p class="plan-label">Need more trips?</p>
+          <p class="plan-title">US$3 for 3 more</p>
+          <p class="desc">A one-time purchase. Same daily checks as free trips. Buy again whenever you need.</p>
+        </div>
+        <div class="plan dark">
+          <p class="plan-label">Found a good price?</p>
+          <p class="plan-title">Price Watch</p>
+          <p class="desc">US$5.99 for 48 hours or US$9.99 for 5 days. You pay $0 if the price moves.</p>
         </div>
       </div>
 
-      <div class="or-divider">or</div>
-
-      <div class="earn-block">
-        <p class="earn-label mono">Don't pay at all</p>
-        <p class="earn-title">Earn extra tracking slots, two ways</p>
+      <div class="earn">
+        <h3>Or earn free trips</h3>
+        <!-- Add recaptured referral + streak screenshots here once taken
+             from the live app (the old ones showed retired Freeze rewards). -->
         <div class="earn-grid">
-          <img src="assets/streak.png" alt="Real screenshot: 3-day streak, keep it going. 4 more days for a free Freeze Credit, with a 7-day progress row.">
-          <img src="assets/referral.png" alt="Real screenshot: Refer 3 friends, get a free Price Freeze. A 9.99 dollar value, on us. They get a bonus pin slot too, with a Share invite button.">
+          <p><strong>Refer a friend.</strong> When they join, you each get an extra trip slot. Every referral counts.</p>
+          <p><strong>Keep a 7-day streak.</strong> Check in 7 days in a row and earn an extra trip slot.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div style="margin-top: 50px;" id="pin">
-        <h2 style="font-size: 26px;">Pin your first trip. It's free to watch.</h2>
-        <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Start tracking a trip</a>
-      </div>
+  <!-- CLOSING -->
+  <section class="section closing" id="pin">
+    <div class="wrap">
+      <h2>What's the trip, and what's your number?</h2>
+      <a href="https://app.flyatlast.com/login?signup=true" class="btn btn-primary">Pin a trip free</a>
+      <p class="reassurance">No card needed</p>
     </div>
   </section>
 
 </main>
 
 <footer>
-  © FlyAtlast · contactus@flyatlast.com · <a href="terms.html" style="text-decoration: underline;">Terms of Service</a> · <a href="privacy.html" style="text-decoration: underline;">Privacy Policy</a>
+  © FlyAtlast · contactus@flyatlast.com · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a>
 </footer>
 
 <script>
-  // Smooth-scroll nav links without leaving #how / #freeze / #pricing
-  // sitting in the URL bar (Sep 7, per external review feedback — real,
-  // reasonable complaint: a raw anchor-link click both jumped instantly
-  // (no scroll-behavior was ever set for the normal case) and left a
-  // visible hash in the address bar after every click, which reads as
-  // unpolished. This intercepts just the in-page nav links (excluding
-  // the bare "#" logo link, which has nothing to scroll to), scrolls
-  // smoothly to the real target, and uses replaceState so the URL
-  // stays clean — bookmarking or refreshing this page always lands on
-  // the plain URL, never partway down the page from a stale hash.
+  // Smooth-scroll in-page nav links without leaving the hash in the URL
+  // (Sep 7 fix, kept). Also closes the mobile menu after a tap.
   document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var id = this.getAttribute('href').slice(1);
@@ -354,6 +408,11 @@
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       history.replaceState(null, '', window.location.pathname);
+      var links = document.getElementById('navLinks');
+      if (links.classList.contains('nav-open')) {
+        links.classList.remove('nav-open');
+        document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
+      }
     });
   });
 </script>
