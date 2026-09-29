@@ -146,9 +146,9 @@
   footer a { text-decoration: underline; }
 
   @media (max-width: 860px) {
-    .hero { padding: 44px 0 44px; }
+    .hero { padding: 44px 24px; }
     .hero h1 { font-size: 31px; }
-    .hero-sub { font-size: 16px; }
+    .hero-sub { font-size: 16px; text-wrap: balance; }
     h2, .watch h2 { font-size: 26px; }
     .hero .btn, .closing .btn { display: block; }
     .why, .plans, .earn-grid { grid-template-columns: 1fr; gap: 22px; }
@@ -189,6 +189,7 @@
    Keyframe percentages are seconds / 20. Base (no animation) state = final state. */
 .fa-anim{--fa-t:20s;max-width:720px;margin:0 auto 28px;font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--navy,#1E3A5F)}
 .fa-anim *{box-sizing:border-box}
+.fa-anim .fa-stage,.fa-anim .fa-scene{box-sizing:content-box}
 .fa-stage{position:relative;aspect-ratio:16/9;border:2px solid var(--navy,#1E3A5F);background:var(--white,#fff);overflow:hidden}
 .fa-scene{position:absolute;inset:0;background:var(--white,#fff)}
 .fa-scene svg{display:block;width:100%;height:100%}
@@ -236,6 +237,7 @@
 .fa-note{margin:10px 0 0;font-size:12px;line-height:1.4;color:var(--text-muted,#5A6B78);text-align:right}
 .fa-anim.fa-is-paused *{animation-play-state:paused!important}
 @media (max-width:600px){.fa-ch{font-size:17px}.fa-cs{font-size:14px}}
+@media (max-width:768px){.fa-stage{margin-left:-24px;margin-right:-24px;border-left-width:0;border-right-width:0}}
 @media (prefers-reduced-motion:reduce){
 .fa-anim *{animation:none!important}
 .fa-stage{aspect-ratio:auto;border:0;overflow:visible;background:none;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
@@ -302,6 +304,83 @@
 .fa-k1{animation-name:fa-k1}.fa-k2{animation-name:fa-k2}.fa-k3{animation-name:fa-k3}.fa-k4{animation-name:fa-k4}.fa-k5{animation-name:fa-k5}.fa-k6{animation-name:fa-k6}.fa-k7{animation-name:fa-k7}.fa-k8{animation-name:fa-k8}.fa-k9{animation-name:fa-k9}.fa-k10{animation-name:fa-k10}.fa-k11{animation-name:fa-k11}.fa-k12{animation-name:fa-k12}.fa-k13{animation-name:fa-k13}.fa-k14{animation-name:fa-k14}.fa-k15{animation-name:fa-k15}.fa-k16{animation-name:fa-k16}.fa-k17{animation-name:fa-k17}.fa-k18{animation-name:fa-k18}.fa-k19{animation-name:fa-k19}.fa-k20{animation-name:fa-k20}.fa-k21{animation-name:fa-k21}.fa-k22{animation-name:fa-k22}.fa-k23{animation-name:fa-k23}.fa-k24{animation-name:fa-k24}.fa-k25{animation-name:fa-k25}.fa-k26{animation-name:fa-k26}.fa-k27{animation-name:fa-k27}.fa-k28{animation-name:fa-k28}.fa-k29{animation-name:fa-k29}.fa-k30{animation-name:fa-k30}.fa-k31{animation-name:fa-k31}.fa-k32{animation-name:fa-k32}.fa-k33{animation-name:fa-k33}.fa-k34{animation-name:fa-k34}.fa-k35{animation-name:fa-k35}.fa-k36{animation-name:fa-k36}.fa-k37{animation-name:fa-k37}.fa-k38{animation-name:fa-k38}.fa-k39{animation-name:fa-k39}.fa-k40{animation-name:fa-k40}.fa-k41{animation-name:fa-k41}.fa-k42{animation-name:fa-k42}.fa-k43{animation-name:fa-k43}.fa-k44{animation-name:fa-k44}.fa-k45{animation-name:fa-k45}.fa-k46{animation-name:fa-k46}.fa-k47{animation-name:fa-k47}.fa-k48{animation-name:fa-k48}.fa-k49{animation-name:fa-k49}.fa-k50{animation-name:fa-k50}.fa-k51{animation-name:fa-k51}.fa-k52{animation-name:fa-k52}.fa-k53{animation-name:fa-k53}.fa-k54{animation-name:fa-k54}
 </style>
 <!-- FA-ANIM CSS END -->
+<!-- FW-ANIM CSS START -->
+<style id="fw-anim-css">
+/* FlyAtlast Price Watch explainer. Loop 18s = three 6s outcomes: above 0-6, inside 6-12, below 12-18.
+   Keyframe percentages are seconds / 18. Base (no animation) state = final state. */
+.fw-w{--fw-t:18s;font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:#1E3A5F}
+.fw-w *{box-sizing:border-box}
+.fw-stg{position:relative;aspect-ratio:4/3;background:#fff}
+.fw-cyc{position:absolute;inset:0}
+.fw-cyc svg{display:block;width:100%;height:100%;overflow:visible}
+.fw-w svg *{transform-box:fill-box;transform-origin:50% 50%}
+.fw-tx{font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
+.fw-mo{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.fw-w500{font-weight:500}.fw-w600{font-weight:600}.fw-w700{font-weight:700}.fw-w800{font-weight:800}
+.fw-c-none{fill:none}
+.fw-dr{stroke-dasharray:1 1;stroke-dashoffset:0}
+.fw-c-navy{fill:var(--navy,#1E3A5F)}.fw-k-navy{stroke:var(--navy,#1E3A5F)}.fw-c-navy2{fill:var(--navy-2,#243F63)}.fw-k-navy2{stroke:var(--navy-2,#243F63)}.fw-c-nline{fill:var(--navy-line,#5E7A96)}.fw-k-nline{stroke:var(--navy-line,#5E7A96)}.fw-c-white{fill:var(--white,#FFFFFF)}.fw-k-white{stroke:var(--white,#FFFFFF)}.fw-c-yellow{fill:var(--yellow,#F4C11C)}.fw-k-yellow{stroke:var(--yellow,#F4C11C)}.fw-c-gbg{fill:#D4EDDC}.fw-k-gbg{stroke:#D4EDDC}.fw-c-gtx{fill:#2C6640}.fw-k-gtx{stroke:#2C6640}.fw-c-abg{fill:#FDF4DE}.fw-k-abg{stroke:#FDF4DE}.fw-c-atx{fill:#7A5B10}.fw-k-atx{stroke:#7A5B10}.fw-c-red{fill:#B94A2E}.fw-k-red{stroke:#B94A2E}.fw-c-muted{fill:var(--text-muted,#5A6B78)}.fw-k-muted{stroke:var(--text-muted,#5A6B78)}.fw-c-border{fill:var(--border,#DDE3E7)}.fw-k-border{stroke:var(--border,#DDE3E7)}.fw-c-bg{fill:var(--bg,#EEF1F3)}.fw-k-bg{stroke:var(--bg,#EEF1F3)}.fw-c-dark{fill:#1a1a1a}.fw-k-dark{stroke:#1a1a1a}.fw-c-pale{fill:#C3CFDA}.fw-k-pale{stroke:#C3CFDA}.fw-c-body{fill:var(--text-body,#3d4a56)}.fw-k-body{stroke:var(--text-body,#3d4a56)}
+.fw-a{animation-duration:var(--fw-t);animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both}
+.fw-ctl{display:grid;grid-template-columns:1fr 1fr 1fr 44px;gap:8px;margin-top:10px}
+.fw-tab,.fw-tg{min-height:44px;border:2px solid #1E3A5F;background:#fff;color:#1E3A5F;font:700 14px/1 "Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;cursor:pointer;padding:0 6px}
+.fw-tg{display:inline-flex;align-items:center;justify-content:center;padding:0}
+.fw-tg svg{width:16px;height:16px;fill:currentColor}
+.fw-tab:focus-visible,.fw-tg:focus-visible{outline:3px solid #1E3A5F;outline-offset:2px}
+.fw-w.fw-is-paused *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){
+.fw-w *{animation:none!important}
+.fw-stg{aspect-ratio:auto;display:grid;gap:12px}
+.fw-cyc{position:relative;inset:auto;aspect-ratio:4/3;border:2px solid var(--border,#DDE3E7)}
+.fw-ctl{display:none}
+}
+@keyframes fw-k1{0%,20%{opacity:1}20.833%{opacity:.6}21.667%{opacity:1}22.5%,100%{opacity:.85}}
+@keyframes fw-k2{0%,2.778%,2.789%{stroke-dashoffset:1}4.568%{stroke-dashoffset:0.891}6.358%{stroke-dashoffset:0.781}8.148%{stroke-dashoffset:0.669}9.938%{stroke-dashoffset:0.559}11.728%{stroke-dashoffset:0.447}13.519%{stroke-dashoffset:0.338}15.309%{stroke-dashoffset:0.223}17.099%{stroke-dashoffset:0.115}18.889%,100%{stroke-dashoffset:0}}
+@keyframes fw-k3{0%,2.778%{opacity:0;transform:scale(.3)}3.333%,100%{opacity:1;transform:none}}
+@keyframes fw-k4{0%,4.568%{opacity:0;transform:scale(.3)}5.123%,100%{opacity:1;transform:none}}
+@keyframes fw-k5{0%,6.358%{opacity:0;transform:scale(.3)}6.914%,100%{opacity:1;transform:none}}
+@keyframes fw-k6{0%,8.148%{opacity:0;transform:scale(.3)}8.704%,100%{opacity:1;transform:none}}
+@keyframes fw-k7{0%,9.938%{opacity:0;transform:scale(.3)}10.494%,100%{opacity:1;transform:none}}
+@keyframes fw-k8{0%,11.728%{opacity:0;transform:scale(.3)}12.284%,100%{opacity:1;transform:none}}
+@keyframes fw-k9{0%,13.519%{opacity:0;transform:scale(.3)}14.074%,100%{opacity:1;transform:none}}
+@keyframes fw-k10{0%,15.309%{opacity:0;transform:scale(.3)}15.864%,100%{opacity:1;transform:none}}
+@keyframes fw-k11{0%,17.099%{opacity:0;transform:scale(.3)}17.654%,100%{opacity:1;transform:none}}
+@keyframes fw-k12{0%{opacity:0;transform:scale(1)}18.889%{opacity:0;transform:scale(.3)}19.444%,20%{opacity:1;transform:scale(1)}21.111%{opacity:1;transform:scale(1.7)}22.222%,100%{opacity:1;transform:scale(1)}}
+@keyframes fw-k13{0%{opacity:0;transform:translateY(14px)}21.667%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}23.333%,100%{opacity:1;transform:none}}
+@keyframes fw-k14{0%,0.011%{opacity:0}1.667%,31.667%{opacity:1}33.333%,100%{opacity:0}}
+@keyframes fw-k15{0%,53.333%{opacity:1}54.167%{opacity:.6}55%{opacity:1}55.833%,100%{opacity:.85}}
+@keyframes fw-k16{0%,36.111%,36.122%{stroke-dashoffset:1}37.901%{stroke-dashoffset:0.894}39.691%{stroke-dashoffset:0.785}41.481%{stroke-dashoffset:0.671}43.272%{stroke-dashoffset:0.563}45.062%{stroke-dashoffset:0.452}46.852%{stroke-dashoffset:0.344}48.642%{stroke-dashoffset:0.235}50.432%{stroke-dashoffset:0.121}52.222%,100%{stroke-dashoffset:0}}
+@keyframes fw-k17{0%,36.111%{opacity:0;transform:scale(.3)}36.667%,100%{opacity:1;transform:none}}
+@keyframes fw-k18{0%,37.901%{opacity:0;transform:scale(.3)}38.457%,100%{opacity:1;transform:none}}
+@keyframes fw-k19{0%,39.691%{opacity:0;transform:scale(.3)}40.247%,100%{opacity:1;transform:none}}
+@keyframes fw-k20{0%,41.481%{opacity:0;transform:scale(.3)}42.037%,100%{opacity:1;transform:none}}
+@keyframes fw-k21{0%,43.272%{opacity:0;transform:scale(.3)}43.827%,100%{opacity:1;transform:none}}
+@keyframes fw-k22{0%,45.062%{opacity:0;transform:scale(.3)}45.617%,100%{opacity:1;transform:none}}
+@keyframes fw-k23{0%,46.852%{opacity:0;transform:scale(.3)}47.407%,100%{opacity:1;transform:none}}
+@keyframes fw-k24{0%,48.642%{opacity:0;transform:scale(.3)}49.198%,100%{opacity:1;transform:none}}
+@keyframes fw-k25{0%,50.432%{opacity:0;transform:scale(.3)}50.988%,100%{opacity:1;transform:none}}
+@keyframes fw-k26{0%{opacity:0;transform:scale(1)}52.222%{opacity:0;transform:scale(.3)}52.778%,53.333%{opacity:1;transform:scale(1)}54.444%{opacity:1;transform:scale(1.7)}55.556%,100%{opacity:1;transform:scale(1)}}
+@keyframes fw-k27{0%{opacity:0;transform:translateY(14px)}55%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}56.667%,100%{opacity:1;transform:none}}
+@keyframes fw-k28{0%,33.333%{opacity:0}35%,65%{opacity:1}66.667%,100%{opacity:0}}
+@keyframes fw-k29{0%,86.667%{opacity:1}87.5%{opacity:.6}88.333%{opacity:1}89.167%,100%{opacity:.85}}
+@keyframes fw-k30{0%,69.444%,69.456%{stroke-dashoffset:1}71.235%{stroke-dashoffset:0.89}73.025%{stroke-dashoffset:0.786}74.815%{stroke-dashoffset:0.665}76.605%{stroke-dashoffset:0.555}78.395%{stroke-dashoffset:0.451}80.185%{stroke-dashoffset:0.334}81.975%{stroke-dashoffset:0.226}83.765%{stroke-dashoffset:0.113}85.556%,100%{stroke-dashoffset:0}}
+@keyframes fw-k31{0%,69.444%{opacity:0;transform:scale(.3)}70%,100%{opacity:1;transform:none}}
+@keyframes fw-k32{0%,71.235%{opacity:0;transform:scale(.3)}71.79%,100%{opacity:1;transform:none}}
+@keyframes fw-k33{0%,73.025%{opacity:0;transform:scale(.3)}73.58%,100%{opacity:1;transform:none}}
+@keyframes fw-k34{0%,74.815%{opacity:0;transform:scale(.3)}75.37%,100%{opacity:1;transform:none}}
+@keyframes fw-k35{0%,76.605%{opacity:0;transform:scale(.3)}77.16%,100%{opacity:1;transform:none}}
+@keyframes fw-k36{0%,78.395%{opacity:0;transform:scale(.3)}78.951%,100%{opacity:1;transform:none}}
+@keyframes fw-k37{0%,80.185%{opacity:0;transform:scale(.3)}80.741%,100%{opacity:1;transform:none}}
+@keyframes fw-k38{0%,81.975%{opacity:0;transform:scale(.3)}82.531%,100%{opacity:1;transform:none}}
+@keyframes fw-k39{0%,83.765%{opacity:0;transform:scale(.3)}84.321%,100%{opacity:1;transform:none}}
+@keyframes fw-k40{0%{opacity:0;transform:scale(1)}85.556%{opacity:0;transform:scale(.3)}86.111%,86.667%{opacity:1;transform:scale(1)}87.778%{opacity:1;transform:scale(1.7)}88.889%,100%{opacity:1;transform:scale(1)}}
+@keyframes fw-k41{0%{opacity:0;transform:translateY(14px)}88.333%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}90%,100%{opacity:1;transform:none}}
+@keyframes fw-k42{0%,66.667%{opacity:0}68.333%,98.333%{opacity:1}100%{opacity:0}}
+@keyframes fw-k43{0%,0.011%{background-color:#fff;color:#1E3A5F}0.022%,33.333%{background-color:#1E3A5F;color:#fff}33.344%,100%{background-color:#fff;color:#1E3A5F}}
+@keyframes fw-k44{0%,33.333%{background-color:#fff;color:#1E3A5F}33.344%,66.667%{background-color:#1E3A5F;color:#fff}66.678%,100%{background-color:#fff;color:#1E3A5F}}
+@keyframes fw-k45{0%,66.667%{background-color:#fff;color:#1E3A5F}66.678%,100%{background-color:#1E3A5F;color:#fff}}
+.fw-k1{animation-name:fw-k1}.fw-k2{animation-name:fw-k2}.fw-k3{animation-name:fw-k3}.fw-k4{animation-name:fw-k4}.fw-k5{animation-name:fw-k5}.fw-k6{animation-name:fw-k6}.fw-k7{animation-name:fw-k7}.fw-k8{animation-name:fw-k8}.fw-k9{animation-name:fw-k9}.fw-k10{animation-name:fw-k10}.fw-k11{animation-name:fw-k11}.fw-k12{animation-name:fw-k12}.fw-k13{animation-name:fw-k13}.fw-k14{animation-name:fw-k14}.fw-k15{animation-name:fw-k15}.fw-k16{animation-name:fw-k16}.fw-k17{animation-name:fw-k17}.fw-k18{animation-name:fw-k18}.fw-k19{animation-name:fw-k19}.fw-k20{animation-name:fw-k20}.fw-k21{animation-name:fw-k21}.fw-k22{animation-name:fw-k22}.fw-k23{animation-name:fw-k23}.fw-k24{animation-name:fw-k24}.fw-k25{animation-name:fw-k25}.fw-k26{animation-name:fw-k26}.fw-k27{animation-name:fw-k27}.fw-k28{animation-name:fw-k28}.fw-k29{animation-name:fw-k29}.fw-k30{animation-name:fw-k30}.fw-k31{animation-name:fw-k31}.fw-k32{animation-name:fw-k32}.fw-k33{animation-name:fw-k33}.fw-k34{animation-name:fw-k34}.fw-k35{animation-name:fw-k35}.fw-k36{animation-name:fw-k36}.fw-k37{animation-name:fw-k37}.fw-k38{animation-name:fw-k38}.fw-k39{animation-name:fw-k39}.fw-k40{animation-name:fw-k40}.fw-k41{animation-name:fw-k41}.fw-k42{animation-name:fw-k42}.fw-k43{animation-name:fw-k43}.fw-k44{animation-name:fw-k44}.fw-k45{animation-name:fw-k45}
+</style>
+<!-- FW-ANIM CSS END -->
 </head>
 <body>
 
@@ -444,8 +523,10 @@
       </ul>
 
       <figure class="watch-chart">
-        <img src="assets/watch-example-chart.png" alt="Example 48-hour Price Watch chart in CAD. The price stays steady inside the middle range, where the fee applies. If it ends above 890.08 or below 854.97 CAD, you don't pay.">
-        <figcaption>Example 48-hour watch: how your result is decided. If the price ends above the top line or below the bottom line, you don't pay.</figcaption>
+        <!-- FW-ANIM HTML START -->
+        <div class="fw-w" data-fw-w><div class="fw-stg" role="img" aria-label="Animated example of a 48-hour Price Watch. Three outcomes: the price ends above the top line, inside the range, or below the bottom line. You pay nothing above or below, and the fee applies only inside the range."><div class="fw-cyc fw-a fw-k14" data-o="above"><svg viewBox="0 0 400 300" focusable="false"><g class="fw-a fw-k1"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/></g><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="169.7" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-mo fw-w700">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path d="M40 101.7 L77.3 96 L114.7 87.4 L152 98.9 L189.3 90.3 L226.7 78.9 L264 84.6 L301.3 70.3 L338.7 76 L376 61.7" pathLength="1" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy fw-dr fw-a fw-k2"/><g class="fw-a fw-k3"><circle cx="40" cy="101.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k4"><circle cx="77.3" cy="96" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k5"><circle cx="114.7" cy="87.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k6"><circle cx="152" cy="98.9" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k7"><circle cx="189.3" cy="90.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k8"><circle cx="226.7" cy="78.9" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k9"><circle cx="264" cy="84.6" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k10"><circle cx="301.3" cy="70.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k11"><circle cx="338.7" cy="76" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k12"><circle cx="376" cy="61.7" r="7" class="fw-c-red"/></g><g class="fw-a fw-k13"><rect x="55" y="250" width="290" height="46" stroke-width="2" class="fw-c-gbg fw-k-gtx"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w700">Ended above the line:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w800">you pay nothing</text></g></svg></div><div class="fw-cyc fw-a fw-k28" data-o="inside"><svg viewBox="0 0 400 300" focusable="false"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/><g class="fw-a fw-k15"><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/></g><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="169.7" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-mo fw-w700">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path d="M40 101.7 L77.3 93.1 L114.7 104.6 L152 87.4 L189.3 98.9 L226.7 84.6 L264 96 L301.3 107.4 L338.7 90.3 L376 113.1" pathLength="1" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy fw-dr fw-a fw-k16"/><g class="fw-a fw-k17"><circle cx="40" cy="101.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k18"><circle cx="77.3" cy="93.1" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k19"><circle cx="114.7" cy="104.6" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k20"><circle cx="152" cy="87.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k21"><circle cx="189.3" cy="98.9" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k22"><circle cx="226.7" cy="84.6" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k23"><circle cx="264" cy="96" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k24"><circle cx="301.3" cy="107.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k25"><circle cx="338.7" cy="90.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k26"><circle cx="376" cy="113.1" r="7" class="fw-c-red"/></g><g class="fw-a fw-k27"><rect x="55" y="250" width="290" height="46" stroke-width="2" class="fw-c-abg fw-k-atx"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-c-atx fw-tx fw-w700">Ended inside the range:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-c-atx fw-tx fw-w800">the fee applies</text></g></svg></div><div class="fw-cyc fw-a fw-k42" data-o="below"><svg viewBox="0 0 400 300" focusable="false"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/><g class="fw-a fw-k29"><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/></g><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="169.7" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-mo fw-w700">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path d="M40 101.7 L77.3 116 L114.7 110.3 L152 133.1 L189.3 147.4 L226.7 141.7 L264 161.7 L301.3 173.1 L338.7 190.3 L376 207.4" pathLength="1" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy fw-dr fw-a fw-k30"/><g class="fw-a fw-k31"><circle cx="40" cy="101.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k32"><circle cx="77.3" cy="116" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k33"><circle cx="114.7" cy="110.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k34"><circle cx="152" cy="133.1" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k35"><circle cx="189.3" cy="147.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k36"><circle cx="226.7" cy="141.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k37"><circle cx="264" cy="161.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k38"><circle cx="301.3" cy="173.1" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k39"><circle cx="338.7" cy="190.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k40"><circle cx="376" cy="207.4" r="7" class="fw-c-red"/></g><g class="fw-a fw-k41"><rect x="55" y="250" width="290" height="46" stroke-width="2" class="fw-c-gbg fw-k-gtx"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w700">Ended below the line:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w800">you pay nothing</text></g></svg></div></div><div class="fw-ctl"><button type="button" class="fw-tab fw-a fw-k43" data-i="0" aria-label="Show the example where the price ends above the top line">Above</button><button type="button" class="fw-tab fw-a fw-k44" data-i="1" aria-label="Show the example where the price ends inside the range">Inside</button><button type="button" class="fw-tab fw-a fw-k45" data-i="2" aria-label="Show the example where the price ends below the bottom line">Below</button><button type="button" class="fw-tg" aria-pressed="false" aria-label="Pause animation"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4h3v16H7V4zm7 0h3v16h-3V4z"/></svg></button></div></div>
+        <!-- FW-ANIM HTML END -->
+        <figcaption>Example 48-hour watch: how your result is decided. If the price ends above the top line or below the bottom line, you don't pay. Only the final check counts. Prices are illustrative.</figcaption>
       </figure>
       </div>
 
@@ -592,5 +673,46 @@
 })();
 </script>
 <!-- FA-ANIM JS END -->
+<!-- FW-ANIM JS START -->
+<script id="fw-anim-js">
+(function () {
+  var root = document.querySelector('[data-fw-w]');
+  if (!root) return;
+  var tg = root.querySelector('.fw-tg');
+  var PAUSE = '<path d="M7 4h3v16H7V4zm7 0h3v16h-3V4z"/>', PLAY = '<path d="M8 5v14l11-7z"/>';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce && reduce.matches) return;
+  var userPaused = false, started = false;
+  function setPaused(p) { root.classList.toggle('fw-is-paused', p); }
+  function setBtn(p) {
+    tg.setAttribute('aria-pressed', p ? 'true' : 'false');
+    tg.setAttribute('aria-label', p ? 'Play animation' : 'Pause animation');
+    tg.querySelector('svg').innerHTML = p ? PLAY : PAUSE;
+  }
+  function seek(ms) {
+    if (!root.getAnimations) return;
+    root.getAnimations({ subtree: true }).forEach(function (a) { a.currentTime = ms; });
+  }
+  tg.addEventListener('click', function () {
+    userPaused = !userPaused; setBtn(userPaused); setPaused(userPaused);
+  });
+  Array.prototype.forEach.call(root.querySelectorAll('.fw-tab'), function (b) {
+    b.addEventListener('click', function () {
+      seek(Number(b.getAttribute('data-i')) * 6000 + 60);
+      userPaused = false; setBtn(false); setPaused(false);
+    });
+  });
+  if (!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var vis = e.intersectionRatio >= 0.35;
+      if (vis && !started) { started = true; seek(0); }
+      if (userPaused) return;
+      setPaused(!vis);
+    });
+  }, { threshold: [0, 0.35, 1] }).observe(root);
+})();
+</script>
+<!-- FW-ANIM JS END -->
 </body>
 </html>
