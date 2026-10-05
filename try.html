@@ -125,6 +125,12 @@ main{padding:36px 20px 64px}
   var $ = function (id) { return document.getElementById(id); };
   var ev = function (n) { try { if (window.plausible) window.plausible(n); } catch (e) {} };
 
+  var R2C = { CA:'CAD',US:'USD',GB:'GBP',AU:'AUD',NZ:'NZD',PK:'PKR',IN:'INR',DE:'EUR',FR:'EUR',ES:'EUR',IT:'EUR',NL:'EUR',IE:'EUR',PT:'EUR',AT:'EUR',BE:'EUR',FI:'EUR',JP:'JPY',CN:'CNY',CH:'CHF',SE:'SEK',NO:'NOK',DK:'DKK',MX:'MXN',BR:'BRL',AE:'AED',SA:'SAR',SG:'SGD',HK:'HKD',ZA:'ZAR',PH:'PHP',ID:'IDR',MY:'MYR',TH:'THB',KR:'KRW',NG:'NGN',BD:'BDT',VN:'VND',EG:'EGP',KE:'KES',QA:'QAR',RU:'RUB',TR:'TRY',PL:'PLN',IL:'ILS',CO:'COP',AR:'ARS',CL:'CLP',PE:'PEN',UA:'UAH',CZ:'CZK',HU:'HUF',RO:'RON',MA:'MAD',KW:'KWD',BH:'BHD',OM:'OMR',JO:'JOD',LK:'LKR',NP:'NPR',TW:'TWD',IS:'ISK' };
+  var curTouched = false, wantCur = 'CAD';
+  try { var reg = ((navigator.language || '').split('-')[1] || '').toUpperCase(); wantCur = R2C[reg] || 'CAD'; } catch (e) {}
+  function setCur(c) { var sel = $('d-cur'); for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === c) { sel.value = c; return true; } } return false; }
+  function applyCur(c) { wantCur = c; if (!curTouched) setCur(c); }
+
   function rand() {
     var a = new Uint8Array(24); (window.crypto || window.msCrypto).getRandomValues(a);
     return btoa(String.fromCharCode.apply(null, a)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -169,9 +175,17 @@ main{padding:36px 20px 64px}
     v = (v || '').trim(); var m = /\(([A-Za-z]{3})\)\s*$/.exec(v); if (m) return m[1].toUpperCase();
     return /^[A-Za-z]{3}$/.test(v) ? v.toUpperCase() : null;
   }
+  var meta = {};
+  function shortName(p, code) {
+    var n = (p.name || p.city_name || code).replace(/\b(International|Intl\.?|Airport|Airfield)\b/gi, '').replace(/\s{2,}/g, ' ').trim();
+    if (p.city_name && n.toLowerCase().indexOf(String(p.city_name).toLowerCase()) < 0) n = p.city_name + ' ' + n;
+    return n || code;
+  }
   function wirePlaces(inputId, listId) {
     var inp = $(inputId), list = $(listId), t = null;
     inp.addEventListener('input', function () {
+      var picked = meta[inp.value];
+      if (picked && inputId === 'd-from' && picked.country) { var cc = R2C[String(picked.country).toUpperCase()]; if (cc) applyCur(cc); }
       clearTimeout(t); var q = inp.value.trim();
       if (q.length < 2 || /\([A-Za-z]{3}\)\s*$/.test(q)) return;
       t = setTimeout(function () {
@@ -180,8 +194,8 @@ main{padding:36px 20px 64px}
           list.textContent = '';
           arr.slice(0, 8).forEach(function (p) {
             var code = p.iata_code || p.code; if (!code) return;
-            var label = (p.name || p.city_name || code) + (p.city_name && p.name && p.city_name !== p.name ? ', ' + p.city_name : '');
-            var o = document.createElement('option'); o.value = label + ' (' + code + ')'; list.appendChild(o);
+            var o = document.createElement('option'); o.value = shortName(p, code) + ' (' + code + ')';
+            meta[o.value] = { code: code, country: p.iata_country_code || null }; list.appendChild(o);
           });
         }).catch(function () {});
       }, 250);
@@ -194,9 +208,11 @@ main{padding:36px 20px 64px}
     var sel = $('d-cur'), top = ['CAD', 'USD', 'EUR', 'GBP', 'AUD'];
     function fill(codes) {
       var rest = codes.filter(function (c) { return top.indexOf(c) < 0; }).sort();
-      sel.textContent = ''; top.concat(rest).forEach(function (c) { var o = document.createElement('option'); o.textContent = c; o.value = c; sel.appendChild(o); });
+      var keep = sel.value; sel.textContent = ''; top.concat(rest).forEach(function (c) { var o = document.createElement('option'); o.textContent = c; o.value = c; sel.appendChild(o); });
+      if (!setCur(curTouched ? keep : wantCur)) sel.value = 'CAD';
     }
     fill([]);
+    $('d-cur').addEventListener('change', function () { curTouched = true; });
     api('/geo/supported-currencies').then(function (r) {
       var j = r.j, a = Array.isArray(j) ? j : (j && (j.currencies || j.codes || j.supported)) || [];
       var codes = a.map(function (x) { return typeof x === 'string' ? x : (x && (x.code || x.currency)); }).filter(function (c) { return /^[A-Z]{3}$/.test(c || ''); });
@@ -239,7 +255,7 @@ main{padding:36px 20px 64px}
     var parts = [r.airline, r.stops, r.fare_brand].filter(Boolean);
     if (parts.length) top.appendChild(el('p', 'meta', parts.join(' · ')));
     if (r.converted_from) top.appendChild(el('p', 'fine', 'Priced at ' + money(r.converted_from.amount, r.converted_from.currency, true) + ', converted to ' + r.currency + ' at today\'s rate. Confirm the exact amount when you book.'));
-    var when = ''; try { when = new Date(r.checked_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }); } catch (e) {}
+    var when = ''; try { when = new Date(r.checked_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }).replace(/\.$/, ''); } catch (e) {}
     top.appendChild(el('p', 'fine', 'One live check, not a booking. Fares change.' + (when ? ' Checked ' + when + '.' : '')));
     resultBox.appendChild(top);
     var pitch = el('div', 'pitch');
@@ -281,8 +297,9 @@ main{padding:36px 20px 64px}
       if (r.ok && j.status === 'ok') { ev('Demo Result'); renderResult(j, trip); return; }
       if (r.ok && j.status === 'no_flights') { say(j.message || 'We couldn\'t find flights for those dates. Try different dates.'); updateLeft(j.remaining); return; }
       if (code === 'email_needed') { ev('Demo Limit Reached'); show(gate, true); $('g-signup').href = tripLink(trip); $('g-email').focus(); return; }
-      if (code === 'limit_browser') { ev('Demo Limit Reached'); limitView('You\'ve used your free checks', d.message, trip); return; }
-      if (code === 'limit_ip' || code === 'cap_reached') { limitView('Lots of people are checking right now', d.message, trip); return; }
+      if (code === 'limit_browser') { ev('Demo Limit Reached'); limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trip: 3 trips, 25 checks each, no card.', trip); return; }
+      if (code === 'limit_ip') { limitView('Busy right now', d.message, trip); return; }
+      if (code === 'cap_reached') { limitView('Today\'s free checks are used up', d.message, trip); return; }
       if (code === 'demo_off') { show(form, false); show($('demo-off'), true); return; }
       if (r.status === 422 && Array.isArray(j.detail) && j.detail[0]) { say(String(j.detail[0].msg || 'Please check the form.').replace(/^Value error, /, '')); return; }
       say(d.message || 'Something went wrong. Please try again.');
