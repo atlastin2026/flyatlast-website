@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Try a live fare check | FlyAtlast</title>
+<meta name="description" content="Check one trip against your budget. One live check, no sign-up.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script defer data-domain="flyatlast.com" src="https://plausible.io/js/script.tagged-events.js"></script>
+<style>
+:root{--navy:#1E3A5F;--yellow:#F4C11C;--bg:#EEF1F3;--white:#fff;--text-body:#3d4a56;--text-muted:#5A6B78;--border:#DDE3E7;--green:#2C6640;--green-bg:#D4EDDC;--amber:#7A5B10;--amber-bg:#FDF4DE;--red:#B94A2E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
+header.top{background:var(--navy);padding:16px 24px;display:flex;align-items:center}
+header.top a{color:#fff;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-size:20px}
+main{padding:36px 20px 64px}
+.demo{max-width:640px;margin:0 auto}
+/* ===== FA-DEMO COMPONENT: everything below is scoped to .demo ===== */
+.demo .eyebrow{font:700 12px/1.3 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:0 0 8px}
+.demo h1{font-size:32px;line-height:1.15;font-weight:800;margin:0 0 10px}
+.demo .sub{font-size:17px;color:var(--text-body);margin:0 0 22px}
+.demo form{background:var(--white);border:2px solid var(--navy);padding:22px;display:grid;gap:16px}
+.demo .row{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+.demo label{display:block;font-weight:700;font-size:14px;margin:0 0 6px}
+.demo .hint{font-weight:500;color:var(--text-muted)}
+.demo input,.demo select{width:100%;height:48px;padding:0 12px;border:2px solid var(--navy);border-radius:0;background:#fff;color:var(--navy);font:500 16px 'Public Sans',sans-serif}
+.demo input:focus-visible,.demo select:focus-visible,.demo button:focus-visible,.demo a:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.demo .money{display:grid;grid-template-columns:1fr 110px;gap:8px}
+.demo .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:2px solid var(--navy);background:var(--yellow);color:#1a1a1a;font:800 16px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none}
+.demo .btn[disabled]{opacity:.6;cursor:wait}
+.demo .btn.alt{background:#fff;color:var(--navy)}
+.demo .btn.block{display:flex;width:100%}
+.demo .left{font-size:14px;color:var(--text-muted);margin:0;text-align:center}
+.demo .msg{border:2px solid var(--red);background:#fff;color:var(--red);padding:12px 14px;font-weight:600;margin:16px 0 0}
+.demo .msg.info{border-color:var(--navy);color:var(--navy)}
+.demo .loading{background:#fff;border:2px solid var(--navy);padding:22px;font-weight:700;margin-top:16px}
+.demo .loading i{display:inline-block;width:14px;height:14px;border:3px solid var(--border);border-top-color:var(--navy);border-radius:50%;margin-right:10px;vertical-align:-2px;animation:fa-spin .9s linear infinite}
+@keyframes fa-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.demo .loading i{animation:none}}
+.demo .result{background:#fff;border:2px solid var(--navy);margin-top:16px}
+.demo .result .top{padding:20px 22px;border-bottom:2px dashed var(--border)}
+.demo .result .lbl{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px}
+.demo .result .amt{font:800 44px/1.05 'JetBrains Mono',monospace;margin:0}
+.demo .result .delta{display:inline-block;margin-top:10px;padding:6px 10px;font-weight:800}
+.demo .result .amt .cur{font:700 16px 'Public Sans',sans-serif;color:var(--text-muted)}
+.demo .delta.under{background:var(--green-bg);color:var(--green)}
+.demo .delta.over{background:var(--amber-bg);color:var(--amber)}
+.demo .meta{margin:12px 0 0;font-weight:600}
+.demo .fine{font-size:13px;color:var(--text-muted);margin:10px 0 0}
+.demo .result .pitch{padding:18px 22px;display:grid;gap:12px}
+.demo .result .pitch p{margin:0;font-size:16px;color:var(--text-body)}
+.demo .gate,.demo .limit{background:#fff;border:2px solid var(--navy);padding:22px;margin-top:16px;display:grid;gap:14px}
+.demo .gate h2,.demo .limit h2{margin:0;font-size:20px}
+.demo .gate p,.demo .limit p{margin:0;color:var(--text-body)}
+.demo .check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px}
+.demo .check input{width:22px;height:22px;flex:none;margin-top:2px}
+.demo .privacy{font-size:13px;color:var(--text-muted);margin:16px 0 0}
+.demo [hidden]{display:none!important}
+@media(max-width:560px){.demo h1{font-size:27px}.demo .row{grid-template-columns:1fr}.demo form{padding:18px}.demo .result .amt{font-size:38px}}
+</style>
+</head>
+<body>
+<header class="top"><a href="/"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>FlyAtlast</a></header>
+<main>
+<!-- FA-DEMO START -->
+<section class="demo" id="try" aria-labelledby="demo-title">
+  <p class="eyebrow">Try it now</p>
+  <h1 id="demo-title">Check a trip against your budget.</h1>
+  <p class="sub">One live check, no sign-up. We'll show the lowest fare we find today.</p>
+
+  <p class="msg info" id="demo-off" hidden>The demo isn't available right now. You can still pin a trip free, and we'll check it for you.</p>
+
+  <form id="demo-form" novalidate>
+    <div class="row">
+      <div><label for="d-from">From</label><input id="d-from" list="dl-from" autocomplete="off" placeholder="Toronto or YYZ" required><datalist id="dl-from"></datalist></div>
+      <div><label for="d-to">To</label><input id="d-to" list="dl-to" autocomplete="off" placeholder="London or LHR" required><datalist id="dl-to"></datalist></div>
+    </div>
+    <div class="row">
+      <div><label for="d-dep">Depart</label><input id="d-dep" type="date" required></div>
+      <div><label for="d-ret">Return <span class="hint">(optional)</span></label><input id="d-ret" type="date"></div>
+    </div>
+    <div>
+      <label for="d-budget">Your total budget <span class="hint">(1 adult)</span></label>
+      <div class="money"><input id="d-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="1300" required><select id="d-cur" aria-label="Currency"><option>CAD</option></select></div>
+    </div>
+    <div id="ts" aria-label="Security check"></div>
+    <button class="btn block" id="d-go" type="submit">Check this trip</button>
+    <p class="left" id="d-left">1 free check. No sign-up.</p>
+  </form>
+
+  <p class="msg" id="demo-msg" role="alert" hidden></p>
+  <div class="loading" id="demo-loading" role="status" hidden><i></i>Checking live fares… this can take up to 10 seconds.</div>
+  <div class="result" id="demo-result" aria-live="polite" hidden></div>
+
+  <div class="gate" id="demo-gate" hidden>
+    <h2>Want to check another trip?</h2>
+    <p>Enter your email for 2 more free checks, or create a free account (3 trips, 25 checks each, no card).</p>
+    <div><label for="g-email">Email</label><input id="g-email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+    <label class="check"><input type="checkbox" id="g-opt"><span>Send me occasional FlyAtlast tips and deals. You can unsubscribe any time.</span></label>
+    <button class="btn block" id="g-go" type="button">Unlock 2 more checks</button>
+    <a class="btn alt block" id="g-signup" href="https://app.flyatlast.com/login?signup=true">Create a free account instead</a>
+  </div>
+
+  <div class="limit" id="demo-limit" hidden>
+    <h2 id="l-title">You've used your free checks</h2>
+    <p id="l-text">Create a free account and we'll keep checking your trip: 3 trips, 25 checks each, no card.</p>
+    <a class="btn block" id="l-signup" href="https://app.flyatlast.com/login?signup=true">Create a free account</a>
+  </div>
+
+  <p class="privacy">We check your IP address to prevent misuse and delete it within 48 hours. This is one live check, not a booking, and fares change.</p>
+</section>
+<!-- FA-DEMO END -->
+</main>
+<script>
+/* FA-DEMO SCRIPT */
+(function () {
+  'use strict';
+  var API = 'https://atlast-backend-production.up.railway.app';   // backend address
+  var APP = 'https://app.flyatlast.com';
+  var SITEKEY = '';   // Cloudflare Turnstile PUBLIC site key. Leave empty while the backend has DEMO_REQUIRE_TURNSTILE=false
+  var $ = function (id) { return document.getElementById(id); };
+  var ev = function (n) { try { if (window.plausible) window.plausible(n); } catch (e) {} };
+
+  function rand() {
+    var a = new Uint8Array(24); (window.crypto || window.msCrypto).getRandomValues(a);
+    return btoa(String.fromCharCode.apply(null, a)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  var bid;
+  try { bid = localStorage.getItem('fa_demo_id'); if (!bid) { bid = rand(); localStorage.setItem('fa_demo_id', bid); } } catch (e) { bid = rand(); }
+
+  var form = $('demo-form'), msg = $('demo-msg'), loading = $('demo-loading'), resultBox = $('demo-result'), gate = $('demo-gate'), limit = $('demo-limit'), go = $('d-go');
+  var pending = null, started = false;
+
+  function show(el, on) { el.hidden = !on; }
+  function say(text, info) { msg.textContent = text; msg.className = 'msg' + (info ? ' info' : ''); show(msg, !!text); }
+  function clearAll() { say(''); show(resultBox, false); show(gate, false); show(limit, false); }
+  function setBusy(b) { go.disabled = b; show(loading, b); if (b) { clearAll(); } }
+  function money(n, c, code) { try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: c, currencyDisplay: code ? 'code' : 'symbol' }).format(n).replace(/\u00a0/g, ' '); } catch (e) { return c + ' ' + Number(n).toFixed(2); } }
+  function b64u(s) { return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+  function tripLink(t) { return APP + '/login?signup=true&demo=1&trip=' + b64u(JSON.stringify({ o: t.origin, d: t.destination, dep: t.depart_date, ret: t.return_date || '', b: t.budget, c: t.currency })); }
+
+  function api(path, opts) {
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 16000);
+    opts = opts || {}; if (ctl) opts.signal = ctl.signal;
+    return fetch(API + path, opts).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) { clearTimeout(timer); return { ok: r.ok, status: r.status, j: j }; });
+    });
+  }
+  function post(path, body) { return api(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); }
+
+  /* ---------- Turnstile (loaded only when the visitor first touches the form) ---------- */
+  var tsId = null, tsToken = null, tsLoading = false;
+  function initTs() {
+    if (!SITEKEY || tsLoading) return; tsLoading = true;
+    var s = document.createElement('script'); s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async = true;
+    s.onload = function () { tsId = window.turnstile.render('#ts', { sitekey: SITEKEY, callback: function (t) { tsToken = t; }, 'expired-callback': function () { tsToken = null; } }); };
+    document.head.appendChild(s);
+  }
+  function tsReset() { tsToken = null; if (tsId !== null && window.turnstile) window.turnstile.reset(tsId); }
+  form.addEventListener('focusin', function () { if (!started) { started = true; ev('Demo Start'); } initTs(); });
+
+  /* ---------- airports (datalist) ---------- */
+  function codeOf(v) {
+    v = (v || '').trim(); var m = /\(([A-Za-z]{3})\)\s*$/.exec(v); if (m) return m[1].toUpperCase();
+    return /^[A-Za-z]{3}$/.test(v) ? v.toUpperCase() : null;
+  }
+  function wirePlaces(inputId, listId) {
+    var inp = $(inputId), list = $(listId), t = null;
+    inp.addEventListener('input', function () {
+      clearTimeout(t); var q = inp.value.trim();
+      if (q.length < 2 || /\([A-Za-z]{3}\)\s*$/.test(q)) return;
+      t = setTimeout(function () {
+        api('/demo/places?query=' + encodeURIComponent(q)).then(function (r) {
+          var arr = Array.isArray(r.j) ? r.j : (r.j && (r.j.suggestions || r.j.results)) || [];
+          list.textContent = '';
+          arr.slice(0, 8).forEach(function (p) {
+            var code = p.iata_code || p.code; if (!code) return;
+            var label = (p.name || p.city_name || code) + (p.city_name && p.name && p.city_name !== p.name ? ', ' + p.city_name : '');
+            var o = document.createElement('option'); o.value = label + ' (' + code + ')'; list.appendChild(o);
+          });
+        }).catch(function () {});
+      }, 250);
+    });
+  }
+  wirePlaces('d-from', 'dl-from'); wirePlaces('d-to', 'dl-to');
+
+  /* ---------- currencies ---------- */
+  (function currencies() {
+    var sel = $('d-cur'), top = ['CAD', 'USD', 'EUR', 'GBP', 'AUD'];
+    function fill(codes) {
+      var rest = codes.filter(function (c) { return top.indexOf(c) < 0; }).sort();
+      sel.textContent = ''; top.concat(rest).forEach(function (c) { var o = document.createElement('option'); o.textContent = c; o.value = c; sel.appendChild(o); });
+    }
+    fill([]);
+    api('/geo/supported-currencies').then(function (r) {
+      var j = r.j, a = Array.isArray(j) ? j : (j && (j.currencies || j.codes || j.supported)) || [];
+      var codes = a.map(function (x) { return typeof x === 'string' ? x : (x && (x.code || x.currency)); }).filter(function (c) { return /^[A-Z]{3}$/.test(c || ''); });
+      if (codes.length > 5) fill(codes);
+    }).catch(function () {});
+  })();
+
+  /* ---------- dates ---------- */
+  (function dates() {
+    var t = new Date(), iso = function (d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+    var max = new Date(t.getTime() + 330 * 86400000);
+    ['d-dep', 'd-ret'].forEach(function (id) { $(id).min = iso(t); $(id).max = iso(max); });
+    $('d-dep').addEventListener('change', function () { if ($('d-dep').value) $('d-ret').min = $('d-dep').value; });
+  })();
+
+  /* ---------- status ---------- */
+  function updateLeft(rem) {
+    var el = $('d-left'); if (!rem) return;
+    el.textContent = rem.free_left > 0 ? (rem.free_left === 1 ? '1 free check left. No sign-up.' : rem.free_left + ' free checks left. No sign-up.') : 'No free checks left on this device.';
+  }
+  api('/demo/status?browser_id=' + encodeURIComponent(bid)).then(function (r) {
+    if (r.j && r.j.enabled === false) { show(form, false); show(msg, false); show($('demo-off'), true); return; }
+    if (r.ok) updateLeft(r.j);
+  }).catch(function () {});
+
+  /* ---------- result ---------- */
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function renderResult(j, trip) {
+    var r = j.result, rem = j.remaining || {};
+    resultBox.textContent = '';
+    var top = el('div', 'top');
+    top.appendChild(el('p', 'lbl', 'Lowest live fare today'));
+    var amt = el('p', 'amt', money(r.amount, r.currency)); amt.appendChild(el('span', 'cur', ' ' + r.currency)); top.appendChild(amt);
+    if (r.comparable && r.delta != null) {
+      var under = r.under_budget;
+      top.appendChild(el('span', 'delta ' + (under ? 'under' : 'over'), money(Math.abs(r.delta), r.currency) + (under ? ' under' : ' over') + ' your budget'));
+    } else {
+      top.appendChild(el('p', 'fine', 'Shown in ' + r.currency + '. We can\'t compare it with your budget right now.'));
+    }
+    var parts = [r.airline, r.stops, r.fare_brand].filter(Boolean);
+    if (parts.length) top.appendChild(el('p', 'meta', parts.join(' · ')));
+    if (r.converted_from) top.appendChild(el('p', 'fine', 'Priced at ' + money(r.converted_from.amount, r.converted_from.currency, true) + ', converted to ' + r.currency + ' at today\'s rate. Confirm the exact amount when you book.'));
+    var when = ''; try { when = new Date(r.checked_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }); } catch (e) {}
+    top.appendChild(el('p', 'fine', 'One live check, not a booking. Fares change.' + (when ? ' Checked ' + when + '.' : '')));
+    resultBox.appendChild(top);
+    var pitch = el('div', 'pitch');
+    pitch.appendChild(el('p', null, r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll tell you when a fare fits: 25 checks, free, no card.' : 'Fares move. Pin this trip and we\'ll tell you when one fits your budget: 25 checks, free, no card.'));
+    var pin = el('a', 'btn block', 'Pin this trip'); pin.href = tripLink(trip); pin.addEventListener('click', function () { ev('Demo Pin Click'); });
+    pitch.appendChild(pin);
+    var cmp = el('a', 'btn alt block', 'Compare on Google Flights'); cmp.href = r.compare_url; cmp.target = '_blank'; cmp.rel = 'noopener';
+    pitch.appendChild(cmp);
+    if (rem.free_left > 0) { var again = el('button', 'btn alt block', 'Check another trip'); again.type = 'button'; again.addEventListener('click', function () { show(resultBox, false); $('d-from').focus(); }); pitch.appendChild(again); }
+    else if (rem.email_unlock_available) { var more = el('button', 'btn alt block', 'Check another trip'); more.type = 'button'; more.addEventListener('click', function () { show(gate, true); $('g-email').focus(); }); pitch.appendChild(more); }
+    resultBox.appendChild(pitch); show(resultBox, true); updateLeft(rem);
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function limitView(title, text, trip) {
+    $('l-title').textContent = title; $('l-text').textContent = text;
+    $('l-signup').href = trip ? tripLink(trip) : APP + '/login?signup=true'; show(limit, true);
+  }
+
+  /* ---------- submit ---------- */
+  function readForm() {
+    var o = codeOf($('d-from').value), d = codeOf($('d-to').value);
+    if (!o) return { err: 'Pick the "From" place from the list, or type its 3-letter code (for example YYZ).' };
+    if (!d) return { err: 'Pick the "To" place from the list, or type its 3-letter code (for example LHR).' };
+    if (o === d) return { err: 'Pick two different places.' };
+    var dep = $('d-dep').value, ret = $('d-ret').value || null, b = parseFloat($('d-budget').value);
+    if (!dep) return { err: 'Choose a departure date.' };
+    if (ret && ret < dep) return { err: 'The return date can\'t be before the departure date.' };
+    if (!(b > 0)) return { err: 'Enter your total budget.' };
+    return { trip: { origin: o, destination: d, depart_date: dep, return_date: ret, budget: b, currency: $('d-cur').value || 'CAD' } };
+  }
+  function run(trip) {
+    if (SITEKEY && !tsToken) { say('Please complete the security check, then try again.'); initTs(); return; }
+    pending = trip; setBusy(true);
+    var body = { origin: trip.origin, destination: trip.destination, depart_date: trip.depart_date, return_date: trip.return_date, adults: 1, budget: trip.budget, currency: trip.currency, browser_id: bid, turnstile_token: tsToken };
+    post('/demo/check', body).then(function (r) {
+      setBusy(false); tsReset();
+      var j = r.j || {}, d = j.detail || {}, code = d.code;
+      if (r.ok && j.status === 'ok') { ev('Demo Result'); renderResult(j, trip); return; }
+      if (r.ok && j.status === 'no_flights') { say(j.message || 'We couldn\'t find flights for those dates. Try different dates.'); updateLeft(j.remaining); return; }
+      if (code === 'email_needed') { ev('Demo Limit Reached'); show(gate, true); $('g-signup').href = tripLink(trip); $('g-email').focus(); return; }
+      if (code === 'limit_browser') { ev('Demo Limit Reached'); limitView('You\'ve used your free checks', d.message, trip); return; }
+      if (code === 'limit_ip' || code === 'cap_reached') { limitView('Lots of people are checking right now', d.message, trip); return; }
+      if (code === 'demo_off') { show(form, false); show($('demo-off'), true); return; }
+      if (r.status === 422 && Array.isArray(j.detail) && j.detail[0]) { say(String(j.detail[0].msg || 'Please check the form.').replace(/^Value error, /, '')); return; }
+      say(d.message || 'Something went wrong. Please try again.');
+    }).catch(function () { setBusy(false); tsReset(); say('We couldn\'t reach the server. Please try again, or pin the trip and we\'ll check it for you.'); });
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); var f = readForm();
+    if (f.err) { say(f.err); return; }
+    run(f.trip);
+  });
+
+  /* ---------- email unlock ---------- */
+  $('g-go').addEventListener('click', function () {
+    var email = $('g-email').value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { say('Enter a valid email address.'); return; }
+    if (SITEKEY && !tsToken) { say('Please complete the security check, then try again.'); initTs(); return; }
+    $('g-go').disabled = true;
+    post('/demo/unlock', { browser_id: bid, email: email, marketing_opt_in: $('g-opt').checked, turnstile_token: tsToken }).then(function (r) {
+      $('g-go').disabled = false; tsReset();
+      if (r.ok) { ev('Demo Email Unlock'); show(gate, false); say('2 more checks unlocked. Choose your trip and press "Check this trip".', true); updateLeft(r.j.remaining); $('d-from').focus(); return; }
+      var d = (r.j && r.j.detail) || {}; say(Array.isArray(r.j.detail) ? 'Enter a valid email address.' : (d.message || 'We couldn\'t unlock the extra checks. Please try again.'));
+    }).catch(function () { $('g-go').disabled = false; tsReset(); say('We couldn\'t reach the server. Please try again.'); });
+  });
+})();
+</script>
+</body>
+</html>
