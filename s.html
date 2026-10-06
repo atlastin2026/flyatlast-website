@@ -31,6 +31,7 @@ h1{font-size:30px;line-height:1.15;font-weight:800;margin:0 0 6px}
 .card .top{padding:20px 22px;border-bottom:2px dashed var(--border)}
 .lbl{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px}
 .amt{font:800 44px/1.05 'JetBrains Mono',monospace;margin:0}
+.amt .dot{margin:0 -.14em}
 .amt .cur{font:700 16px 'Public Sans',sans-serif;color:var(--text-muted)}
 .delta{display:inline-block;margin-top:10px;padding:6px 10px;font-weight:800}
 .delta.under{background:var(--green-bg);color:var(--green)}
@@ -61,7 +62,8 @@ footer.foot a{color:inherit}
   body{background:#fff}
   header.top{background:#fff;border-bottom:3px solid var(--navy)}
   header.top a{color:var(--navy)}
-  .actions,.cta,.note,footer.foot,.textlink{display:none!important}
+  .actions,.cta,.note,footer.foot{display:none!important}
+  .textlink{display:inline-block;margin-top:10px}
   .printnote{display:block;font-size:12px;color:var(--text-muted);margin:14px 0 0}
   .card{border-width:1px}
   main{padding:20px 0}
@@ -127,18 +129,18 @@ footer.foot a{color:inherit}
     document.title = (sn.origin_code || '') + ' to ' + (sn.destination_code || '') + ' | A saved fare | FlyAtlast';
     root.appendChild(el('p', 'eyebrow', 'Saved fare'));
     var dest = sn.destination_name && sn.destination_code ? sn.destination_name + ' (' + sn.destination_code + ')' : (sn.destination_name || sn.destination_code || '');
-    root.appendChild(el('h1', null, (sn.origin_code || '') + ' to ' + dest));
+    var orig = sn.origin_name && sn.origin_code ? sn.origin_name + ' (' + sn.origin_code + ')' : (sn.origin_code || '');
+    root.appendChild(el('h1', null, orig + ' to ' + dest));
     var dr = ymd(sn.departure_date), rr = ymd(sn.return_date);
-    root.appendChild(el('p', 'dates', rr ? dr + ' to ' + rr : dr));
+    var np = +sn.adults || 1;
+    root.appendChild(el('p', 'dates', (rr ? dr + ' to ' + rr : dr) + ' \u00b7 ' + (rr ? 'Round trip' : 'One way') + ' \u00b7 ' + np + ' adult' + (np === 1 ? '' : 's')));
 
     var card = el('div', 'card');
     var top = el('div', 'top');
     top.appendChild(el('p', 'lbl', 'Lowest fare we found'));
-    var amt = el('p', 'amt', money(sn.amount, sn.currency)); amt.appendChild(el('span', 'cur', ' ' + sn.currency)); top.appendChild(amt);
-    if (sn.comparable && sn.delta != null) {
-      var under = !!sn.under_budget;
-      top.appendChild(el('span', 'delta ' + (under ? 'under' : 'over'), money(Math.abs(sn.delta), sn.currency) + (under ? ' under' : ' over') + ' a budget of ' + money(sn.budget, sn.currency)));
-    }
+    var amt = el('p', 'amt'), mt = money(sn.amount, sn.currency), di = mt.lastIndexOf('.');
+    if (di > -1) { amt.appendChild(document.createTextNode(mt.slice(0, di))); amt.appendChild(el('span', 'dot', '.')); amt.appendChild(document.createTextNode(mt.slice(di + 1))); } else { amt.appendChild(document.createTextNode(mt)); }
+    amt.appendChild(el('span', 'cur', ' ' + sn.currency)); top.appendChild(amt);
     var parts = [sn.airline, sn.stops, sn.fare_brand].filter(Boolean);
     if (parts.length) top.appendChild(el('p', 'meta', parts.join(' · ')));
     if (sn.converted_from) top.appendChild(el('p', 'fine', 'Shown in ' + sn.currency + ' at the exchange rate on the day. The final price is confirmed when you book.'));
@@ -168,7 +170,7 @@ footer.foot a{color:inherit}
     actions.appendChild(pdf); actions.appendChild(cp);
     card.appendChild(actions);
     root.appendChild(card);
-    root.appendChild(el('p', 'printnote', 'Saved from flyatlast.com. This is a snapshot, not a live price, and fares change. Prices come from our airline data partner and can differ from other sites.'));
+    root.appendChild(el('p', 'printnote', 'Checked on flyatlast.com, where you can check any trip against your budget, free. This is a snapshot, not a live price, and fares change. Prices come from our airline data partner and can differ from other sites.'));
 
     var cta = el('div', 'cta');
     cta.appendChild(el('h2', null, 'Want us to keep checking this trip?'));

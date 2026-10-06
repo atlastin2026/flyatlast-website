@@ -40,6 +40,7 @@ main{padding:36px 20px 64px}
 .demo .ac-list li{padding:10px 12px;cursor:pointer;display:flex;gap:8px;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);font-size:15px}
 .demo .ac-list li:last-child{border-bottom:0}
 .demo .ac-list li:hover,.demo .ac-list li.on{background:#EEF1F3}
+.demo .ac-list li.none{color:#5B6B7A;font-size:14px;cursor:default;background:#fff}
 .demo .ac-list .nm{font-weight:700}
 .demo .ac-list .ct{color:var(--text-muted);font-weight:500}
 .demo .ac-list .cd{font:700 13px 'JetBrains Mono',monospace;color:var(--navy);flex:none}
@@ -209,6 +210,8 @@ main{padding:36px 20px 64px}
     if (p.city_name && n.toLowerCase().indexOf(String(p.city_name).toLowerCase()) < 0) n = p.city_name + ' ' + n;
     return n || code;
   }
+  // Places travellers search by that airlines list under another name (Duffel only knows the airport/city name)
+  var ALIAS = { bali:'Denpasar', saigon:'Ho Chi Minh', bombay:'Mumbai', calcutta:'Kolkata', madras:'Chennai', peking:'Beijing', 'phuket island':'Phuket', 'koh samui':'Samui', langkawi:'Langkawi', maldives:'Male', santorini:'Thira', mykonos:'Mykonos', tahiti:'Papeete', zanzibar:'Zanzibar', 'new york city':'New York', nyc:'New York', 'washington dc':'Washington', 'los angeles':'Los Angeles', 'bangkok':'Bangkok' };
   var regionNames = null;
   try { regionNames = new Intl.DisplayNames(['en'], { type: 'region' }); } catch (e) {}
   function countryName(c) {
@@ -228,7 +231,11 @@ main{padding:36px 20px 64px}
     }
     function render(arr) {
       list.textContent = ''; items = arr; active = -1;
-      if (!arr.length) { close(); return; }
+      if (!arr.length) {
+        var none = document.createElement('li'); none.className = 'none'; none.setAttribute('role', 'option'); none.setAttribute('aria-disabled', 'true');
+        none.textContent = 'No airport found. Try the nearest big city or the 3-letter code (Bali is Denpasar, DPS).';
+        list.appendChild(none); list.hidden = false; return;
+      }
       arr.forEach(function (p) {
         var li = document.createElement('li'); li.setAttribute('role', 'option');
         var left = document.createElement('span'), nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = p.name || p.city_name || p.iata_code; left.appendChild(nm);
@@ -245,7 +252,8 @@ main{padding:36px 20px 64px}
       clearTimeout(t); var q = inp.value.trim(), my = ++seq;
       if (q.length < 2 || /\([A-Za-z]{3}\)\s*$/.test(q)) { close(); return; }
       t = setTimeout(function () {
-        api('/demo/places?query=' + encodeURIComponent(q)).then(function (r) {
+        var qq = ALIAS[q.toLowerCase()] || q;
+        api('/demo/places?query=' + encodeURIComponent(qq)).then(function (r) {
           if (my !== seq) return;
           var arr = Array.isArray(r.j) ? r.j : (r.j && (r.j.suggestions || r.j.results)) || [];
           render(arr.filter(function (p) { return p.iata_code || p.code; }).slice(0, 15));
@@ -394,6 +402,7 @@ main{padding:36px 20px 64px}
   }
 
   /* ---------- submit ---------- */
+  function nameOf(v) { var m = /^(.*?)\s*\([A-Za-z]{3}\)\s*$/.exec((v || '').trim()); return m ? m[1].trim().slice(0, 60) : null; }
   function readForm() {
     var o = codeOf($('d-from').value), d = codeOf($('d-to').value);
     if (!o) return { err: 'Pick the "From" place from the list, or type its 3-letter code (for example YYZ).' };
@@ -403,12 +412,12 @@ main{padding:36px 20px 64px}
     if (!dep) return { err: 'Choose a departure date.' };
     if (ret && ret < dep) return { err: 'The return date can\'t be before the departure date.' };
     if (!(b > 0)) return { err: 'Enter your total budget.' };
-    return { trip: { origin: o, destination: d, depart_date: dep, return_date: ret, budget: b, currency: $('d-cur').value || 'CAD' } };
+    return { trip: { origin: o, destination: d, origin_name: nameOf($('d-from').value), destination_name: nameOf($('d-to').value), depart_date: dep, return_date: ret, budget: b, currency: $('d-cur').value || 'CAD' } };
   }
   function run(trip) {
     if (SITEKEY && !tsToken) { say('Please complete the security check, then try again.'); initTs(); return; }
     pending = trip; setBusy(true);
-    var body = { origin: trip.origin, destination: trip.destination, depart_date: trip.depart_date, return_date: trip.return_date, adults: 1, budget: trip.budget, currency: trip.currency, browser_id: bid, turnstile_token: tsToken };
+    var body = { origin: trip.origin, destination: trip.destination, depart_date: trip.depart_date, return_date: trip.return_date, adults: 1, origin_name: trip.origin_name || null, destination_name: trip.destination_name || null, budget: trip.budget, currency: trip.currency, browser_id: bid, turnstile_token: tsToken };
     post('/demo/check', body).then(function (r) {
       setBusy(false); tsReset();
       var j = r.j || {}, d = j.detail || {}, code = d.code;
