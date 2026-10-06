@@ -66,6 +66,12 @@ main{padding:36px 20px 64px}
 .demo .delta.over{background:var(--amber-bg);color:var(--amber)}
 .demo .meta{margin:12px 0 0;font-weight:600}
 .demo .textlink{display:inline-block;margin-top:12px;font-weight:700;font-size:15px;color:var(--navy);text-decoration:underline}
+.demo .sharebar{display:flex;flex-wrap:wrap;gap:4px 18px;padding:10px 22px;border-bottom:2px dashed var(--border);align-items:center}
+.demo .sharebtn{background:none;border:0;padding:8px 0;font:700 15px 'Public Sans',sans-serif;color:var(--navy);text-decoration:underline;cursor:pointer;min-height:40px}
+.demo .sharemail{display:flex;gap:8px;padding:12px 22px 4px;flex-wrap:wrap}
+.demo .sharemail input{flex:1 1 200px;height:44px}
+.demo .sharemail .btn{min-height:44px;flex:0 0 auto}
+.demo .sharest{padding:6px 22px 12px;margin:0;font-size:14px;color:var(--text-muted)}
 .demo .trust{margin:14px 0 0;text-align:center}
 .demo .gate .fine{margin:0}
 .demo .gate .fine a,.foot a{color:inherit}
@@ -296,6 +302,62 @@ main{padding:36px 20px 64px}
 
   /* ---------- result ---------- */
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  /* ---------- share: link / email / PDF (built from a signed token the check returned) ---------- */
+  function ensureLink(token) {
+    return post('/share/demo', { share_token: token }).then(function (res) {
+      if (res.ok && res.j && res.j.url) return res.j.url;
+      var d = (res.j && res.j.detail) || {};
+      throw new Error((d && d.message) || 'We couldn\'t make a link just now. Please try again.');
+    });
+  }
+  function shareBar(token) {
+    var wrap = el('div');
+    var bar = el('div', 'sharebar');
+    var st = el('p', 'sharest'); st.hidden = true; st.setAttribute('role', 'status');
+    function note(t) { st.textContent = t; st.hidden = !t; }
+    var b1 = el('button', 'sharebtn', navigator.share ? 'Share link' : 'Copy link'); b1.type = 'button';
+    var b2 = el('button', 'sharebtn', 'Email me this'); b2.type = 'button';
+    var b3 = el('button', 'sharebtn', 'Save as PDF'); b3.type = 'button';
+    bar.appendChild(b1); bar.appendChild(b2); bar.appendChild(b3);
+    var mail = el('div', 'sharemail'); mail.hidden = true;
+    var inp = el('input'); inp.type = 'email'; inp.placeholder = 'you@example.com'; inp.setAttribute('aria-label', 'Your email address'); inp.autocomplete = 'email';
+    var send = el('button', 'btn', 'Send'); send.type = 'button';
+    mail.appendChild(inp); mail.appendChild(send);
+    b1.addEventListener('click', function () {
+      ev('Demo Share Link'); note('');
+      ensureLink(token).then(function (url) {
+        if (navigator.share) { return navigator.share({ title: 'A saved fare on FlyAtlast', url: url }).catch(function () {}); }
+        if (navigator.clipboard && navigator.clipboard.writeText) { return navigator.clipboard.writeText(url).then(function () { note('Link copied. It works for 30 days.'); }, function () { window.prompt('Copy this link:', url); }); }
+        window.prompt('Copy this link:', url);
+      }).catch(function (e) { note(e.message); });
+    });
+    b3.addEventListener('click', function () {
+      ev('Demo Share PDF'); note('');
+      var w = window.open('', '_blank');
+      ensureLink(token).then(function (url) { var u = url + '&pdf=1'; if (w) w.location = u; else window.location.href = u; })
+        .catch(function (e) { if (w) w.close(); note(e.message); });
+    });
+    b2.addEventListener('click', function () {
+      ev('Demo Share Email'); note('');
+      mail.hidden = !mail.hidden;
+      if (!mail.hidden) { if (!inp.value && $('g-email') && $('g-email').value) inp.value = $('g-email').value; inp.focus(); initTs(); }
+    });
+    send.addEventListener('click', function () {
+      var email = inp.value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { note('Enter a valid email address.'); return; }
+      if (SITEKEY && !tsToken) { note('Please complete the security check above, then press Send again.'); initTs(); return; }
+      send.disabled = true; note('Sending…');
+      post('/share/email/demo', { share_token: token, email: email, turnstile_token: tsToken }).then(function (res) {
+        send.disabled = false; tsReset();
+        if (res.ok) { note('Sent. Check your inbox (and spam) for your saved fare.'); mail.hidden = true; return; }
+        var d = (res.j && res.j.detail) || {};
+        note(Array.isArray(res.j && res.j.detail) ? 'Enter a valid email address.' : ((d && d.message) || 'We couldn\'t send that just now. Please try again.'));
+      }).catch(function () { send.disabled = false; tsReset(); note('We couldn\'t reach the server. Please try again.'); });
+    });
+    wrap.appendChild(bar); wrap.appendChild(mail); wrap.appendChild(st);
+    return wrap;
+  }
+
   function renderResult(j, trip) {
     var r = j.result, rem = j.remaining || {};
     resultBox.textContent = '';
@@ -315,6 +377,7 @@ main{padding:36px 20px 64px}
     top.appendChild(el('p', 'fine', 'One live check, not a booking. Fares change.' + (when ? ' Checked ' + when + '.' : '')));
     var gl = el('a', 'textlink', 'Double-check on Google Flights'); gl.href = r.compare_url; gl.target = '_blank'; gl.rel = 'noopener'; top.appendChild(gl);
     resultBox.appendChild(top);
+    if (r.share_token) resultBox.appendChild(shareBar(r.share_token));
     var pitch = el('div', 'pitch');
     pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip for you. Free for 3 trips, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll email you when a fare fits. Free for 3 trips, no card.' : 'Fares move. Pin this trip and we\'ll email you the exact flight when one fits your budget. Free for 3 trips, no card.'));
     var pin = el('a', 'btn block', 'Pin this trip'); pin.href = tripLink(trip); pin.addEventListener('click', function () { ev('Demo Pin Click'); });

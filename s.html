@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A saved fare | FlyAtlast</title>
+<meta name="description" content="A fare someone saved with FlyAtlast. Check your own trip against your budget, free.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A saved fare | FlyAtlast">
+<meta property="og:description" content="See the fare, then check your own trip against your budget. Free, no sign-up.">
+<meta property="og:image" content="https://flyatlast.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script defer data-domain="flyatlast.com" src="https://plausible.io/js/script.tagged-events.js"></script>
+<style>
+:root{--navy:#1E3A5F;--yellow:#F4C11C;--bg:#EEF1F3;--white:#fff;--text-body:#3d4a56;--text-muted:#5A6B78;--border:#DDE3E7;--green:#2C6640;--green-bg:#D4EDDC;--amber:#7A5B10;--amber-bg:#FDF4DE}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
+header.top{background:var(--navy);padding:16px 24px;display:flex;align-items:center}
+header.top a{color:#fff;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-size:20px}
+main{padding:36px 20px 40px}
+.wrap{max-width:640px;margin:0 auto}
+.eyebrow{font:700 12px/1.3 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:0 0 8px}
+h1{font-size:30px;line-height:1.15;font-weight:800;margin:0 0 6px}
+.dates{font-size:17px;color:var(--text-body);margin:0 0 20px}
+.card{background:#fff;border:2px solid var(--navy)}
+.card .top{padding:20px 22px;border-bottom:2px dashed var(--border)}
+.lbl{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px}
+.amt{font:800 44px/1.05 'JetBrains Mono',monospace;margin:0}
+.amt .cur{font:700 16px 'Public Sans',sans-serif;color:var(--text-muted)}
+.delta{display:inline-block;margin-top:10px;padding:6px 10px;font-weight:800}
+.delta.under{background:var(--green-bg);color:var(--green)}
+.delta.over{background:var(--amber-bg);color:var(--amber)}
+.meta{margin:12px 0 0;font-weight:600}
+.fine{font-size:13px;color:var(--text-muted);margin:10px 0 0}
+.textlink{display:inline-block;margin-top:12px;font-weight:700;font-size:15px;color:var(--navy);text-decoration:underline}
+.legs{padding:6px 22px 14px;border-bottom:2px dashed var(--border)}
+.leg h2{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:16px 0 6px}
+.seg{font-size:15px;color:var(--text-body);margin:0 0 6px}
+.seg b{color:var(--navy)}
+.actions{display:flex;gap:12px;padding:18px 22px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:2px solid var(--navy);background:var(--yellow);color:#1a1a1a;font:800 16px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none}
+.btn.alt{background:#fff;color:var(--navy)}
+.actions .btn{flex:1 1 180px}
+.cta{margin-top:18px;background:#fff;border:2px solid var(--navy);padding:22px;display:grid;gap:12px}
+.cta h2{margin:0;font-size:20px}
+.cta p{margin:0;color:var(--text-body)}
+.note{font-size:13px;color:var(--text-muted);text-align:center;margin:16px 0 0}
+.msg{background:#fff;border:2px solid var(--navy);padding:22px}
+.msg h1{font-size:24px}
+.printnote{display:none}
+footer.foot{max-width:640px;margin:0 auto;padding:0 20px 40px;text-align:center;font-size:13px;color:var(--text-muted)}
+footer.foot a{color:inherit}
+[hidden]{display:none!important}
+@media(max-width:560px){h1{font-size:26px}.amt{font-size:38px}}
+@media print{
+  body{background:#fff}
+  header.top{background:#fff;border-bottom:3px solid var(--navy)}
+  header.top a{color:var(--navy)}
+  .actions,.cta,.note,footer.foot,.textlink{display:none!important}
+  .printnote{display:block;font-size:12px;color:var(--text-muted);margin:14px 0 0}
+  .card{border-width:1px}
+  main{padding:20px 0}
+}
+</style>
+</head>
+<body>
+<header class="top"><a href="/"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>FlyAtlast</a></header>
+<main>
+<div class="wrap" id="root" aria-live="polite">
+  <p class="eyebrow">Saved fare</p>
+  <p id="loading">Loading the saved fare…</p>
+</div>
+</main>
+<footer class="foot">© FlyAtlast · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></footer>
+<script>
+(function () {
+  'use strict';
+  var API = 'https://atlast-backend-production.up.railway.app';
+  var APP = 'https://app.flyatlast.com';
+  var root = document.getElementById('root');
+  var params = new URLSearchParams(location.search);
+  var id = params.get('i') || '';
+  var wantPdf = params.get('pdf') === '1';
+  var ev = function (n) { try { if (window.plausible) window.plausible(n); } catch (e) {} };
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function money(n, c) { try { return new Intl.NumberFormat('en', { style: 'currency', currency: c, minimumFractionDigits: (n % 1 === 0 ? 0 : 2) }).format(n).replace(/ /g, ' '); } catch (e) { return String(n) + ' ' + c; } }
+  function ymd(s) { var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || ''); return m ? MON[+m[2] - 1] + ' ' + (+m[3]) + ', ' + m[1] : ''; }
+  function hm(s) { var m = /T(\d{2}):(\d{2})/.exec(s || ''); if (!m) return ''; var h = +m[1]; return (h % 12 || 12) + ':' + m[2] + ' ' + (h < 12 ? 'a.m.' : 'p.m.'); }
+  function stamp(s) { var d = ymd(s), t = hm(s); return d && t ? d.replace(/, \d{4}$/, '') + ', ' + t : d; }
+  function checkedAt(s) {
+    try { var d = new Date(s); if (isNaN(d)) return ''; return d.toLocaleString('en', { dateStyle: 'medium', timeStyle: 'short' }).replace(/ /g, ' ').replace(/ AM$/, ' a.m.').replace(/ PM$/, ' p.m.'); } catch (e) { return ''; }
+  }
+  function b64u(s) { return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+  function pinLink(sn) {
+    var t = { o: sn.origin_code, d: sn.destination_code, dep: String(sn.departure_date || '').slice(0, 10), ret: sn.return_date ? String(sn.return_date).slice(0, 10) : '', b: sn.budget || 0, c: sn.currency };
+    return APP + '/login?signup=true&demo=1&trip=' + b64u(JSON.stringify(t));
+  }
+
+  function problem(title, text) {
+    root.textContent = '';
+    var box = el('div', 'msg');
+    box.appendChild(el('h1', null, title));
+    box.appendChild(el('p', null, text));
+    var a = el('a', 'btn', 'Check a trip of your own'); a.href = '/try.html'; a.style.marginTop = '16px';
+    box.appendChild(a);
+    root.appendChild(box);
+  }
+
+  function copyLink(btn) {
+    var url = location.origin + location.pathname + '?i=' + encodeURIComponent(id);
+    var done = function () { var old = btn.textContent; btn.textContent = 'Link copied'; setTimeout(function () { btn.textContent = old; }, 2200); };
+    ev('Share Link Copy');
+    if (navigator.share) { navigator.share({ title: 'A saved fare on FlyAtlast', url: url }).catch(function () {}); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(done, function () { window.prompt('Copy this link:', url); }); }
+    else { window.prompt('Copy this link:', url); }
+  }
+
+  function render(sn, expires) {
+    root.textContent = '';
+    document.title = (sn.origin_code || '') + ' to ' + (sn.destination_code || '') + ' | A saved fare | FlyAtlast';
+    root.appendChild(el('p', 'eyebrow', 'Saved fare'));
+    var dest = sn.destination_name && sn.destination_code ? sn.destination_name + ' (' + sn.destination_code + ')' : (sn.destination_name || sn.destination_code || '');
+    root.appendChild(el('h1', null, (sn.origin_code || '') + ' to ' + dest));
+    var dr = ymd(sn.departure_date), rr = ymd(sn.return_date);
+    root.appendChild(el('p', 'dates', rr ? dr + ' to ' + rr : dr));
+
+    var card = el('div', 'card');
+    var top = el('div', 'top');
+    top.appendChild(el('p', 'lbl', 'Lowest fare we found'));
+    var amt = el('p', 'amt', money(sn.amount, sn.currency)); amt.appendChild(el('span', 'cur', ' ' + sn.currency)); top.appendChild(amt);
+    if (sn.comparable && sn.delta != null) {
+      var under = !!sn.under_budget;
+      top.appendChild(el('span', 'delta ' + (under ? 'under' : 'over'), money(Math.abs(sn.delta), sn.currency) + (under ? ' under' : ' over') + ' a budget of ' + money(sn.budget, sn.currency)));
+    }
+    var parts = [sn.airline, sn.stops, sn.fare_brand].filter(Boolean);
+    if (parts.length) top.appendChild(el('p', 'meta', parts.join(' · ')));
+    if (sn.converted_from) top.appendChild(el('p', 'fine', 'Shown in ' + sn.currency + ' at the exchange rate on the day. The final price is confirmed when you book.'));
+    var when = checkedAt(sn.checked_at);
+    top.appendChild(el('p', 'fine', 'A snapshot, not a live price. Fares change.' + (when ? ' Checked ' + when.replace(/\.$/, '') + '.' : '')));
+    if (sn.compare_url) { var gl = el('a', 'textlink', 'Double-check on Google Flights'); gl.href = sn.compare_url; gl.target = '_blank'; gl.rel = 'noopener'; top.appendChild(gl); }
+    card.appendChild(top);
+
+    if (sn.legs && sn.legs.length) {
+      var legs = el('div', 'legs');
+      sn.legs.forEach(function (leg) {
+        var l = el('div', 'leg'); l.appendChild(el('h2', null, leg.label + (leg.fare_brand ? ' · ' + leg.fare_brand : '')));
+        (leg.segments || []).forEach(function (s) {
+          var p = el('p', 'seg');
+          p.appendChild(el('b', null, [s.airline, s.flight_number].filter(Boolean).join(' ')));
+          p.appendChild(document.createTextNode(': ' + (s.departure_airport || '') + ' ' + stamp(s.departure_time) + ' → ' + (s.arrival_airport || '') + ' ' + stamp(s.arrival_time)));
+          l.appendChild(p);
+        });
+        legs.appendChild(l);
+      });
+      card.appendChild(legs);
+    }
+
+    var actions = el('div', 'actions');
+    var pdf = el('button', 'btn alt', 'Save as PDF'); pdf.type = 'button'; pdf.addEventListener('click', function () { ev('Share PDF'); window.print(); });
+    var cp = el('button', 'btn alt', navigator.share ? 'Share link' : 'Copy link'); cp.type = 'button'; cp.addEventListener('click', function () { copyLink(cp); });
+    actions.appendChild(pdf); actions.appendChild(cp);
+    card.appendChild(actions);
+    root.appendChild(card);
+    root.appendChild(el('p', 'printnote', 'Saved from flyatlast.com. This is a snapshot, not a live price, and fares change. Prices come from our airline data partner and can differ from other sites.'));
+
+    var cta = el('div', 'cta');
+    cta.appendChild(el('h2', null, 'Want us to keep checking this trip?'));
+    cta.appendChild(el('p', null, 'Pin it with your own budget and we\'ll email you the exact flight when a fare fits. Free for 3 trips, no card.'));
+    var pin = el('a', 'btn', 'Pin this trip free'); pin.href = pinLink(sn); pin.addEventListener('click', function () { ev('Share Pin Click'); });
+    cta.appendChild(pin);
+    var own = el('a', 'textlink', 'Or check a trip of your own'); own.href = '/try.html'; own.style.marginTop = '0'; cta.appendChild(own);
+    root.appendChild(cta);
+    var exp = ymd(expires);
+    root.appendChild(el('p', 'note', 'Fares come from our airline data partner and can differ from other sites. We don\'t hold fares or seats.' + (exp ? ' This link works until ' + exp + '.' : '')));
+    ev('Share View');
+    if (wantPdf) setTimeout(function () { window.print(); }, 400);
+  }
+
+  if (!/^[A-Za-z0-9_-]{6,24}$/.test(id)) { problem('This link isn\'t valid', 'It may have been cut off when it was copied. Ask for it again, or check a trip of your own.'); return; }
+  fetch(API + '/share/' + encodeURIComponent(id)).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); }).then(function (r) {
+    if (r.ok && r.j && r.j.snapshot) { render(r.j.snapshot, r.j.expires_at); return; }
+    if (r.status === 404) { problem('This saved fare has expired', 'Saved fares are kept for 30 days. Fares change often, so the best move is a fresh check.'); return; }
+    problem('We couldn\'t load this fare', 'Please try again in a moment, or check a trip of your own.');
+  }).catch(function () { problem('We couldn\'t load this fare', 'Please check your connection and try again.'); });
+})();
+</script>
+</body>
+</html>
