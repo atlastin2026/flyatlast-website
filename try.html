@@ -58,7 +58,6 @@ main{padding:36px 20px 64px}
 .demo .gate p,.demo .limit p{margin:0;color:var(--text-body)}
 .demo .check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px}
 .demo .check input{width:22px;height:22px;flex:none;margin-top:2px}
-.demo .privacy{font-size:13px;color:var(--text-muted);margin:16px 0 0}
 .demo [hidden]{display:none!important}
 @media(max-width:560px){.demo h1{font-size:27px}.demo .row{grid-template-columns:1fr}.demo form{padding:18px}.demo .result .amt{font-size:38px}}
 </style>
@@ -111,7 +110,6 @@ main{padding:36px 20px 64px}
     <a class="btn block" id="l-signup" href="https://app.flyatlast.com/login?signup=true">Create a free account</a>
   </div>
 
-  <p class="privacy">We check your IP address to prevent misuse and delete it within 48 hours. This is one live check, not a booking, and fares change.</p>
 </section>
 <!-- FA-DEMO END -->
 </main>
@@ -229,13 +227,15 @@ main{padding:36px 20px 64px}
   })();
 
   /* ---------- status ---------- */
+  function allUsed(rem) { return !!rem && rem.free_left <= 0 && !rem.email_unlock_available; }
   function updateLeft(rem) {
     var el = $('d-left'); if (!rem) return;
-    el.textContent = rem.free_left > 0 ? (rem.free_left === 1 ? '1 free check left. No sign-up.' : rem.free_left + ' free checks left. No sign-up.') : 'No free checks left on this device.';
+    if (allUsed(rem)) { show(form, false); return; }
+    el.textContent = rem.free_left > 0 ? (rem.free_left === 1 ? '1 free check left. No sign-up.' : rem.free_left + ' free checks left. No sign-up.') : 'Free check used. To check another trip, add your email for 2 more, or create a free account.';
   }
   api('/demo/status?browser_id=' + encodeURIComponent(bid)).then(function (r) {
     if (r.j && r.j.enabled === false) { show(form, false); show(msg, false); show($('demo-off'), true); return; }
-    if (r.ok) updateLeft(r.j);
+    if (r.ok) { updateLeft(r.j); if (allUsed(r.j)) limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trips: 3 trips, 25 checks each, no card.', null); }
   }).catch(function () {});
 
   /* ---------- result ---------- */
@@ -259,7 +259,7 @@ main{padding:36px 20px 64px}
     top.appendChild(el('p', 'fine', 'One live check, not a booking. Fares change.' + (when ? ' Checked ' + when + '.' : '')));
     resultBox.appendChild(top);
     var pitch = el('div', 'pitch');
-    pitch.appendChild(el('p', null, r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll tell you when a fare fits: 25 checks, free, no card.' : 'Fares move. Pin this trip and we\'ll tell you when one fits your budget: 25 checks, free, no card.'));
+    pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip: 25 checks, free, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll tell you when a fare fits: 25 checks, free, no card.' : 'Fares move. Pin this trip and we\'ll tell you when one fits your budget: 25 checks, free, no card.'));
     var pin = el('a', 'btn block', 'Pin this trip'); pin.href = tripLink(trip); pin.addEventListener('click', function () { ev('Demo Pin Click'); });
     pitch.appendChild(pin);
     var cmp = el('a', 'btn alt block', 'Compare on Google Flights'); cmp.href = r.compare_url; cmp.target = '_blank'; cmp.rel = 'noopener';
@@ -297,7 +297,7 @@ main{padding:36px 20px 64px}
       if (r.ok && j.status === 'ok') { ev('Demo Result'); renderResult(j, trip); return; }
       if (r.ok && j.status === 'no_flights') { say(j.message || 'We couldn\'t find flights for those dates. Try different dates.'); updateLeft(j.remaining); return; }
       if (code === 'email_needed') { ev('Demo Limit Reached'); show(gate, true); $('g-signup').href = tripLink(trip); $('g-email').focus(); return; }
-      if (code === 'limit_browser') { ev('Demo Limit Reached'); limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trip: 3 trips, 25 checks each, no card.', trip); return; }
+      if (code === 'limit_browser') { ev('Demo Limit Reached'); show(form, false); limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trip: 3 trips, 25 checks each, no card.', trip); return; }
       if (code === 'limit_ip') { limitView('Busy right now', d.message, trip); return; }
       if (code === 'cap_reached') { limitView('Today\'s free checks are used up', d.message, trip); return; }
       if (code === 'demo_off') { show(form, false); show($('demo-off'), true); return; }
