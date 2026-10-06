@@ -28,6 +28,15 @@ main{padding:36px 20px 64px}
 .demo label{display:block;font-weight:700;font-size:14px;margin:0 0 6px}
 .demo .hint{font-weight:500;color:var(--text-muted)}
 .demo input,.demo select{width:100%;height:48px;padding:0 12px;border:2px solid var(--navy);border-radius:0;background:#fff;color:var(--navy);font:500 16px 'Public Sans',sans-serif}
+.demo ::placeholder{color:#8795A3;font-style:italic;opacity:1}
+.demo .ac{position:relative}
+.demo .ac-list{position:absolute;z-index:20;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:#fff;border:2px solid var(--navy);max-height:320px;overflow-y:auto;box-shadow:0 6px 16px rgba(30,58,95,.18)}
+.demo .ac-list li{padding:10px 12px;cursor:pointer;display:flex;gap:8px;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);font-size:15px}
+.demo .ac-list li:last-child{border-bottom:0}
+.demo .ac-list li:hover,.demo .ac-list li.on{background:#EEF1F3}
+.demo .ac-list .nm{font-weight:700}
+.demo .ac-list .ct{color:var(--text-muted);font-weight:500}
+.demo .ac-list .cd{font:700 13px 'JetBrains Mono',monospace;color:var(--navy);flex:none}
 .demo input:focus-visible,.demo select:focus-visible,.demo button:focus-visible,.demo a:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
 .demo .money{display:grid;grid-template-columns:1fr 110px;gap:8px}
 .demo .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:2px solid var(--navy);background:var(--yellow);color:#1a1a1a;font:800 16px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none}
@@ -76,8 +85,8 @@ main{padding:36px 20px 64px}
 
   <form id="demo-form" novalidate>
     <div class="row">
-      <div><label for="d-from">From</label><input id="d-from" list="dl-from" autocomplete="off" placeholder="Toronto or YYZ" required><datalist id="dl-from"></datalist></div>
-      <div><label for="d-to">To</label><input id="d-to" list="dl-to" autocomplete="off" placeholder="London or LHR" required><datalist id="dl-to"></datalist></div>
+      <div class="ac"><label for="d-from">From</label><input id="d-from" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="dl-from" autocomplete="off" placeholder="e.g. Toronto or YYZ" required><ul class="ac-list" id="dl-from" role="listbox" hidden></ul></div>
+      <div class="ac"><label for="d-to">To</label><input id="d-to" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="dl-to" autocomplete="off" placeholder="e.g. London or LHR" required><ul class="ac-list" id="dl-to" role="listbox" hidden></ul></div>
     </div>
     <div class="row">
       <div><label for="d-dep">Depart</label><input id="d-dep" type="date" required></div>
@@ -85,7 +94,7 @@ main{padding:36px 20px 64px}
     </div>
     <div>
       <label for="d-budget">Your total budget <span class="hint">(1 adult)</span></label>
-      <div class="money"><input id="d-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="1300" required><select id="d-cur" aria-label="Currency"><option>CAD</option></select></div>
+      <div class="money"><input id="d-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 1300" required><select id="d-cur" aria-label="Currency"><option>CAD</option></select></div>
     </div>
     <div id="ts" aria-label="Security check"></div>
     <button class="btn block" id="d-go" type="submit">Check this trip</button>
@@ -181,24 +190,48 @@ main{padding:36px 20px 64px}
     return n || code;
   }
   function wirePlaces(inputId, listId) {
-    var inp = $(inputId), list = $(listId), t = null;
+    var inp = $(inputId), list = $(listId), t = null, seq = 0, active = -1, items = [];
+    function close() { list.hidden = true; active = -1; inp.setAttribute('aria-expanded', 'false'); }
+    function mark() { Array.prototype.forEach.call(list.children, function (li, i) { li.classList.toggle('on', i === active); }); }
+    function pick(p) {
+      var code = p.iata_code || p.code, label = shortName(p, code) + ' (' + code + ')';
+      inp.value = label; meta[label] = { code: code, country: p.iata_country_code || null };
+      if (inputId === 'd-from' && p.iata_country_code) { var cc = R2C[String(p.iata_country_code).toUpperCase()]; if (cc) applyCur(cc); }
+      close();
+    }
+    function render(arr) {
+      list.textContent = ''; items = arr; active = -1;
+      if (!arr.length) { close(); return; }
+      arr.forEach(function (p) {
+        var li = document.createElement('li'); li.setAttribute('role', 'option');
+        var left = document.createElement('span'), nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = p.name || p.city_name || p.iata_code; left.appendChild(nm);
+        if (p.city_name && p.city_name !== p.name) { var ct = document.createElement('span'); ct.className = 'ct'; ct.textContent = ' \u2014 ' + p.city_name; left.appendChild(ct); }
+        var cd = document.createElement('span'); cd.className = 'cd'; cd.textContent = p.iata_code;
+        li.appendChild(left); li.appendChild(cd);
+        li.addEventListener('mousedown', function (e) { e.preventDefault(); pick(p); });
+        list.appendChild(li);
+      });
+      list.hidden = false; inp.setAttribute('aria-expanded', 'true');
+    }
     inp.addEventListener('input', function () {
-      var picked = meta[inp.value];
-      if (picked && inputId === 'd-from' && picked.country) { var cc = R2C[String(picked.country).toUpperCase()]; if (cc) applyCur(cc); }
-      clearTimeout(t); var q = inp.value.trim();
-      if (q.length < 2 || /\([A-Za-z]{3}\)\s*$/.test(q)) return;
+      clearTimeout(t); var q = inp.value.trim(), my = ++seq;
+      if (q.length < 2 || /\([A-Za-z]{3}\)\s*$/.test(q)) { close(); return; }
       t = setTimeout(function () {
         api('/demo/places?query=' + encodeURIComponent(q)).then(function (r) {
+          if (my !== seq) return;
           var arr = Array.isArray(r.j) ? r.j : (r.j && (r.j.suggestions || r.j.results)) || [];
-          list.textContent = '';
-          arr.slice(0, 8).forEach(function (p) {
-            var code = p.iata_code || p.code; if (!code) return;
-            var o = document.createElement('option'); o.value = shortName(p, code) + ' (' + code + ')';
-            meta[o.value] = { code: code, country: p.iata_country_code || null }; list.appendChild(o);
-          });
+          render(arr.filter(function (p) { return p.iata_code || p.code; }).slice(0, 15));
         }).catch(function () {});
       }, 250);
     });
+    inp.addEventListener('keydown', function (e) {
+      if (list.hidden) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, items.length - 1); mark(); list.children[active].scrollIntoView({ block: 'nearest' }); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); mark(); list.children[active].scrollIntoView({ block: 'nearest' }); }
+      else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); pick(items[active]); }
+      else if (e.key === 'Escape') { close(); }
+    });
+    inp.addEventListener('blur', close);
   }
   wirePlaces('d-from', 'dl-from'); wirePlaces('d-to', 'dl-to');
 
