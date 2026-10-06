@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Try a live fare check | FlyAtlast</title>
-<meta name="description" content="Check one trip against your budget. One live check, no sign-up.">
+<title>Check a trip against your budget | FlyAtlast</title>
+<meta name="description" content="Pick a trip, set your budget, and see the lowest fare FlyAtlast finds for it today. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Check a trip against your budget | FlyAtlast">
+<meta property="og:description" content="Pick a trip, set your budget, and see the lowest fare we find for it today. Free, no sign-up.">
+<meta property="og:url" content="https://flyatlast.com/try.html">
+<meta property="og:image" content="https://flyatlast.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -60,6 +66,10 @@ main{padding:36px 20px 64px}
 .demo .delta.over{background:var(--amber-bg);color:var(--amber)}
 .demo .meta{margin:12px 0 0;font-weight:600}
 .demo .textlink{display:inline-block;margin-top:12px;font-weight:700;font-size:15px;color:var(--navy);text-decoration:underline}
+.demo .trust{margin:14px 0 0;text-align:center}
+.demo .gate .fine{margin:0}
+.demo .gate .fine a,.foot a{color:inherit}
+.foot{max-width:640px;margin:0 auto;padding:0 20px 40px;text-align:center;font-size:13px;color:var(--text-muted)}
 .demo .fine{font-size:13px;color:var(--text-muted);margin:10px 0 0}
 .demo .result .pitch{padding:18px 22px;display:grid;gap:12px}
 .demo .result .pitch p{margin:0;font-size:16px;color:var(--text-body)}
@@ -79,9 +89,9 @@ main{padding:36px 20px 64px}
 <section class="demo" id="try" aria-labelledby="demo-title">
   <p class="eyebrow">Try it now</p>
   <h1 id="demo-title">Check a trip against your budget.</h1>
-  <p class="sub">One live check, no sign-up. We'll show the lowest fare we find today.</p>
+  <p class="sub">Pick a trip, set your budget, and we'll show the lowest fare we find for it today. No sign-up.</p>
 
-  <p class="msg info" id="demo-off" hidden>The demo isn't available right now. You can still pin a trip free, and we'll check it for you.</p>
+  <p class="msg info" id="demo-off" hidden>Free checks are paused for a moment. You can still pin a trip free, and we'll check it for you.</p>
 
   <form id="demo-form" novalidate>
     <div class="row">
@@ -90,7 +100,7 @@ main{padding:36px 20px 64px}
     </div>
     <div class="row">
       <div><label for="d-dep">Depart</label><input id="d-dep" type="date" required></div>
-      <div><label for="d-ret">Return <span class="hint">(optional)</span></label><input id="d-ret" type="date"></div>
+      <div><label for="d-ret">Return <span class="hint">(optional, blank for one-way)</span></label><input id="d-ret" type="date"></div>
     </div>
     <div>
       <label for="d-budget">Your total budget <span class="hint">(1 adult)</span></label>
@@ -98,31 +108,35 @@ main{padding:36px 20px 64px}
     </div>
     <div id="ts" aria-label="Security check"></div>
     <button class="btn block" id="d-go" type="submit">Check this trip</button>
-    <p class="left" id="d-left">1 free check. No sign-up.</p>
+    <p class="left" id="d-left">Your first check is free. No sign-up.</p>
   </form>
 
+  <p class="fine trust">Fares come from our airline data partner and can differ from other sites, so we link to Google Flights so you can compare. We don't hold fares or seats.</p>
+
   <p class="msg" id="demo-msg" role="alert" hidden></p>
-  <div class="loading" id="demo-loading" role="status" hidden><i></i>Checking live fares… this can take up to 10 seconds.</div>
+  <div class="loading" id="demo-loading" role="status" hidden><i></i>Checking fares for your trip… this can take up to 10 seconds.</div>
   <div class="result" id="demo-result" aria-live="polite" hidden></div>
 
   <div class="gate" id="demo-gate" hidden>
     <h2>Want to check another trip?</h2>
-    <p>Enter your email for 2 more free checks, or create a free account (3 trips, 25 checks each, no card).</p>
+    <p>Add your email for 2 more free checks, or create a free account. It's free for 3 trips, no card.</p>
     <div><label for="g-email">Email</label><input id="g-email" type="email" autocomplete="email" placeholder="you@example.com"></div>
     <label class="check"><input type="checkbox" id="g-opt"><span>Send me occasional FlyAtlast tips and deals. You can unsubscribe any time.</span></label>
-    <button class="btn block" id="g-go" type="button">Unlock 2 more checks</button>
+    <p class="fine">We'll email you a short confirmation, and tips only if you tick the box. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+    <button class="btn block" id="g-go" type="button">Get 2 more checks</button>
     <a class="btn alt block" id="g-signup" href="https://app.flyatlast.com/login?signup=true">Create a free account instead</a>
   </div>
 
   <div class="limit" id="demo-limit" hidden>
     <h2 id="l-title">You've used your free checks</h2>
-    <p id="l-text">Create a free account and we'll keep checking your trip: 3 trips, 25 checks each, no card.</p>
+    <p id="l-text">Create a free account and we'll keep checking your trip for you. Free for 3 trips, no card.</p>
     <a class="btn block" id="l-signup" href="https://app.flyatlast.com/login?signup=true">Create a free account</a>
   </div>
 
 </section>
 <!-- FA-DEMO END -->
 </main>
+<footer class="foot">© FlyAtlast · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></footer>
 <script>
 /* FA-DEMO SCRIPT */
 (function () {
@@ -273,11 +287,11 @@ main{padding:36px 20px 64px}
   function updateLeft(rem) {
     var el = $('d-left'); if (!rem) return;
     if (allUsed(rem)) { show(form, false); return; }
-    el.textContent = rem.free_left > 0 ? (rem.free_left === 1 ? '1 free check left. No sign-up.' : rem.free_left + ' free checks left. No sign-up.') : 'Free check used. To check another trip, add your email for 2 more, or create a free account.';
+    el.textContent = rem.free_left > 0 ? (rem.free_left === 1 ? '1 free check left. No sign-up.' : rem.free_left + ' free checks left. No sign-up.') : 'You\'ve used your free check. Add your email for 2 more, or create a free account.';
   }
   api('/demo/status?browser_id=' + encodeURIComponent(bid)).then(function (r) {
     if (r.j && r.j.enabled === false) { show(form, false); show(msg, false); show($('demo-off'), true); return; }
-    if (r.ok) { updateLeft(r.j); if (allUsed(r.j)) limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trips: 3 trips, 25 checks each, no card.', null); }
+    if (r.ok) { updateLeft(r.j); if (allUsed(r.j)) limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trips for you. Free for 3 trips, no card.', null); }
   }).catch(function () {});
 
   /* ---------- result ---------- */
@@ -286,7 +300,7 @@ main{padding:36px 20px 64px}
     var r = j.result, rem = j.remaining || {};
     resultBox.textContent = '';
     var top = el('div', 'top');
-    top.appendChild(el('p', 'lbl', 'Lowest live fare today'));
+    top.appendChild(el('p', 'lbl', 'Lowest fare we found today'));
     var amt = el('p', 'amt', money(r.amount, r.currency)); amt.appendChild(el('span', 'cur', ' ' + r.currency)); top.appendChild(amt);
     if (r.comparable && r.delta != null) {
       var under = r.under_budget;
@@ -302,7 +316,7 @@ main{padding:36px 20px 64px}
     var gl = el('a', 'textlink', 'Double-check on Google Flights'); gl.href = r.compare_url; gl.target = '_blank'; gl.rel = 'noopener'; top.appendChild(gl);
     resultBox.appendChild(top);
     var pitch = el('div', 'pitch');
-    pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip: 25 checks, free, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll tell you when a fare fits: 25 checks, free, no card.' : 'Fares move. Pin this trip and we\'ll tell you when one fits your budget: 25 checks, free, no card.'));
+    pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip for you. Free for 3 trips, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll email you when a fare fits. Free for 3 trips, no card.' : 'Fares move. Pin this trip and we\'ll email you the exact flight when one fits your budget. Free for 3 trips, no card.'));
     var pin = el('a', 'btn block', 'Pin this trip'); pin.href = tripLink(trip); pin.addEventListener('click', function () { ev('Demo Pin Click'); });
     pitch.appendChild(pin);
     if (rem.free_left > 0) { var again = el('button', 'btn alt block', 'Check another trip'); again.type = 'button'; again.addEventListener('click', function () { show(resultBox, false); $('d-from').focus(); }); pitch.appendChild(again); }
@@ -338,7 +352,7 @@ main{padding:36px 20px 64px}
       if (r.ok && j.status === 'ok') { ev('Demo Result'); renderResult(j, trip); return; }
       if (r.ok && j.status === 'no_flights') { say(j.message || 'We couldn\'t find flights for those dates. Try different dates.'); updateLeft(j.remaining); return; }
       if (code === 'email_needed') { ev('Demo Limit Reached'); show(gate, true); $('g-signup').href = tripLink(trip); $('g-email').focus(); return; }
-      if (code === 'limit_browser') { ev('Demo Limit Reached'); show(form, false); limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trip: 3 trips, 25 checks each, no card.', trip); return; }
+      if (code === 'limit_browser') { ev('Demo Limit Reached'); show(form, false); limitView('You\'ve used your free checks', 'Create a free account and we\'ll keep checking your trip for you. Free for 3 trips, no card.', trip); return; }
       if (code === 'limit_ip') { limitView('Busy right now', d.message, trip); return; }
       if (code === 'cap_reached') { limitView('Today\'s free checks are used up', d.message, trip); return; }
       if (code === 'demo_off') { show(form, false); show($('demo-off'), true); return; }
