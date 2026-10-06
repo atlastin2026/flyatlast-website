@@ -189,6 +189,13 @@ main{padding:36px 20px 64px}
     if (p.city_name && n.toLowerCase().indexOf(String(p.city_name).toLowerCase()) < 0) n = p.city_name + ' ' + n;
     return n || code;
   }
+  var regionNames = null;
+  try { regionNames = new Intl.DisplayNames(['en'], { type: 'region' }); } catch (e) {}
+  function countryName(c) {
+    if (!c) return '';
+    c = String(c).toUpperCase();
+    try { return (regionNames && regionNames.of(c)) || c; } catch (e) { return c; }
+  }
   function wirePlaces(inputId, listId) {
     var inp = $(inputId), list = $(listId), t = null, seq = 0, active = -1, items = [];
     function close() { list.hidden = true; active = -1; inp.setAttribute('aria-expanded', 'false'); }
@@ -205,7 +212,8 @@ main{padding:36px 20px 64px}
       arr.forEach(function (p) {
         var li = document.createElement('li'); li.setAttribute('role', 'option');
         var left = document.createElement('span'), nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = p.name || p.city_name || p.iata_code; left.appendChild(nm);
-        if (p.city_name && p.city_name !== p.name) { var ct = document.createElement('span'); ct.className = 'ct'; ct.textContent = ' \u2014 ' + p.city_name; left.appendChild(ct); }
+        var cn = countryName(p.iata_country_code), cty = (p.city_name && p.city_name !== p.name && p.city_name !== cn) ? p.city_name : '', place = [cty, cn].filter(Boolean).join(', ');
+        if (place) { var ct = document.createElement('span'); ct.className = 'ct'; ct.textContent = ' \u2014 ' + place; left.appendChild(ct); }
         var cd = document.createElement('span'); cd.className = 'cd'; cd.textContent = p.iata_code;
         li.appendChild(left); li.appendChild(cd);
         li.addEventListener('mousedown', function (e) { e.preventDefault(); pick(p); });
