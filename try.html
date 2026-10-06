@@ -50,6 +50,7 @@ main{padding:36px 20px 64px}
 .demo .delta.under{background:var(--green-bg);color:var(--green)}
 .demo .delta.over{background:var(--amber-bg);color:var(--amber)}
 .demo .meta{margin:12px 0 0;font-weight:600}
+.demo .textlink{display:inline-block;margin-top:12px;font-weight:700;font-size:15px;color:var(--navy);text-decoration:underline}
 .demo .fine{font-size:13px;color:var(--text-muted);margin:10px 0 0}
 .demo .result .pitch{padding:18px 22px;display:grid;gap:12px}
 .demo .result .pitch p{margin:0;font-size:16px;color:var(--text-body)}
@@ -254,16 +255,15 @@ main{padding:36px 20px 64px}
     }
     var parts = [r.airline, r.stops, r.fare_brand].filter(Boolean);
     if (parts.length) top.appendChild(el('p', 'meta', parts.join(' · ')));
-    if (r.converted_from) top.appendChild(el('p', 'fine', 'Priced at ' + money(r.converted_from.amount, r.converted_from.currency, true) + ', converted to ' + r.currency + ' at today\'s rate. Confirm the exact amount when you book.'));
+    if (r.converted_from) top.appendChild(el('p', 'fine', 'Shown in ' + r.currency + ' at today\'s exchange rate. The final price is confirmed when you book.'));
     var when = ''; try { when = new Date(r.checked_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }).replace(/\.$/, ''); } catch (e) {}
     top.appendChild(el('p', 'fine', 'One live check, not a booking. Fares change.' + (when ? ' Checked ' + when + '.' : '')));
+    var gl = el('a', 'textlink', 'Double-check on Google Flights'); gl.href = r.compare_url; gl.target = '_blank'; gl.rel = 'noopener'; top.appendChild(gl);
     resultBox.appendChild(top);
     var pitch = el('div', 'pitch');
     pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip: 25 checks, free, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll tell you when a fare fits: 25 checks, free, no card.' : 'Fares move. Pin this trip and we\'ll tell you when one fits your budget: 25 checks, free, no card.'));
     var pin = el('a', 'btn block', 'Pin this trip'); pin.href = tripLink(trip); pin.addEventListener('click', function () { ev('Demo Pin Click'); });
     pitch.appendChild(pin);
-    var cmp = el('a', 'btn alt block', 'Compare on Google Flights'); cmp.href = r.compare_url; cmp.target = '_blank'; cmp.rel = 'noopener';
-    pitch.appendChild(cmp);
     if (rem.free_left > 0) { var again = el('button', 'btn alt block', 'Check another trip'); again.type = 'button'; again.addEventListener('click', function () { show(resultBox, false); $('d-from').focus(); }); pitch.appendChild(again); }
     else if (rem.email_unlock_available) { var more = el('button', 'btn alt block', 'Check another trip'); more.type = 'button'; more.addEventListener('click', function () { show(gate, true); $('g-email').focus(); }); pitch.appendChild(more); }
     resultBox.appendChild(pitch); show(resultBox, true); updateLeft(rem);
