@@ -130,6 +130,12 @@ footer.foot a{color:var(--text-muted)}
     </fieldset>
 
     <fieldset>
+      <legend><span class="num">6</span>How is this different from what you use today?</legend>
+      <p class="help">For example Google Flights, Skyscanner or price alerts. Better, worse or the same, any answer helps.</p>
+      <textarea id="f-different" name="how_different" maxlength="1500" aria-label="How this differs from what you use today" placeholder="What do you use now, and how does this compare?"></textarea>
+    </fieldset>
+
+    <fieldset>
       <legend>Can we email you one follow-up question? <span class="hint">(optional)</span></legend>
       <label class="lbl" for="f-email" style="margin-top:6px">Your email</label>
       <input id="f-email" name="follow_up_email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" maxlength="254">
@@ -193,12 +199,12 @@ footer.foot a{color:var(--text-muted)}
       device: radio('device'), browser: val('browser'),
       clarity: radio('clarity'), clarity_note: val('clarity_note'),
       result_looks: radio('result_looks'), result_note: val('result_note'),
-      problems: val('problems'),
+      problems: val('problems'), how_different: val('how_different'),
       would_use: radio('would_use'), would_use_note: val('would_use_note'),
       follow_up_email: val('follow_up_email'), website: val('website'),
       turnstile_token: tsToken
     };
-    if (!(body.clarity || body.result_looks || body.would_use || body.problems || body.clarity_note || body.result_note || body.would_use_note)) { say('Answer at least one question, then send.'); return; }
+    if (!(body.clarity || body.result_looks || body.would_use || body.problems || body.how_different || body.clarity_note || body.result_note || body.would_use_note)) { say('Answer at least one question, then send.'); return; }
     if (SITEKEY && !tsToken) { say('Please complete the security check, then send again.'); initTs(); return; }
     go.disabled = true; go.textContent = 'Sending…';
     var ctl = ('AbortController' in window) ? new AbortController() : null, timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
