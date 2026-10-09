@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlyAtlast: You set the budget, we track the flights.</title>
+<meta name="description" content="Set your budget and dates. We check real, bookable fares, more often as your trip gets closer, and alert you with the exact flight. Free for 3 trips. Not ready to book? Price Watch checks every 2 hours, and you don't pay if the price ends US$5+ higher or US$20+ lower.">
+<link rel="canonical" href="https://flyatlast.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FlyAtlast">
+  <meta property="og:title" content="FlyAtlast: You set the budget, we track the flights.">
+  <meta property="og:description" content="Tell us your budget. We check real, bookable fares and alert you with the exact flight. Free for 3 trips.">
+  <meta property="og:url" content="https://flyatlast.com/">
+  <meta property="og:image" content="https://flyatlast.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FlyAtlast: You set the budget, we track the flights.">
+  <meta name="twitter:image" content="https://flyatlast.com/assets/og-image.png">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://flyatlast.com/#org", "name": "FlyAtlast", "url": "https://flyatlast.com/", "logo": "https://flyatlast.com/assets/logo192.png", "email": "contactus@flyatlast.com"}, {"@type": "WebSite", "@id": "https://flyatlast.com/#site", "url": "https://flyatlast.com/", "name": "FlyAtlast", "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "WebApplication", "name": "FlyAtlast", "url": "https://flyatlast.com/", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "description": "Set a budget for a trip. FlyAtlast checks real, bookable fares and alerts you with the exact flight when one comes in under it.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free for 3 trips"}, "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does FlyAtlast work?", "acceptedAnswer": {"@type": "Answer", "text": "Pin a trip with your route, dates and budget. We check real, bookable fares from the day you pin until you fly (25 checks per trip, closer together as departure nears). When one comes in under your budget, we send you the exact flight and a link to book. Deal alerts arrive between 8:00 and 21:00 your time."}}, {"@type": "Question", "name": "What's free, and what costs money?", "acceptedAnswer": {"@type": "Answer", "text": "Your first 3 trips are free: 25 checks each, deal alerts, no card. More trips are US$3 for 3, and you can earn extras through referrals and a 7-day streak. Price Watch is optional, and your first one is a free 24-hour trial (one per account, no card, and we tell you what would have happened)."}}, {"@type": "Question", "name": "What's Price Watch?", "acceptedAnswer": {"@type": "Answer", "text": "It's for when you've found a fare but can't book yet. We check it every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99) and email you if it moves US$5 up or US$20 down. If it ends that far up or down, you pay nothing. If it ends inside that range, the fee applies. You can start one on a pinned trip once its price is at or under your budget and departure is at least 24 hours away."}}, {"@type": "Question", "name": "What if I pay for Price Watch and still end up paying more for my ticket?", "acceptedAnswer": {"@type": "Answer", "text": "Two things have your back. Most outcomes cost you nothing: the fee is only charged if the price ends inside our range. If it ends US$5+ higher or US$20+ lower than where you started, the card hold is released. And if you were charged and still paid more, send your booking confirmation within 48 hours of your result. If it shows you paid more than your starting price, we'll refund the fee after a quick review. What Price Watch can't do is hold the fare or seats, or stop an airline changing its price. What you get is 48 hours or 5 days of checks every 2 hours, plus a heads-up if the price moved a lot."}}, {"@type": "Question", "name": "Do you hold seats or predict prices?", "acceptedAnswer": {"@type": "Answer", "text": "No to both. Airlines can change a price any time, and you'd pay the new price when you book. We don't guess where fares are heading. You see real checks, and we tell you when one meets your budget."}}, {"@type": "Question", "name": "Why can prices differ from other sites?", "acceptedAnswer": {"@type": "Answer", "text": "Airline prices move around, and ours come from our airline data partner, so they can differ from what you see elsewhere. That's why every deal has a one-tap Google Flights link: check it before you book."}}]}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E3A5F;
+    --navy-2: #243F63;
+    --navy-line: #5E7A96;
+    --yellow: #F4C11C;
+    --bg: #EEF1F3;
+    --white: #FFFFFF;
+    --text-muted: #5A6B78;
+    --text-body: #3d4a56;
+    --text-on-navy: #EEF2F5;
+    --text-on-navy-muted: #C3CFDA;
+    --border: #DDE3E7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Public Sans', 'Helvetica Neue', Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 10px;
+  }
+  .section { padding: 72px 0; }
+  .section.alt { background: var(--white); border-top: 2px solid var(--border); border-bottom: 2px solid var(--border); }
+  h2 { font-size: 32px; font-weight: 800; line-height: 1.2; margin: 0 0 14px; }
+  .btn {
+    display: inline-block;
+    padding: 15px 28px;
+    font-weight: 800; font-size: 15.5px;
+    cursor: pointer;
+    border: 2px solid var(--navy);
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--yellow); color: #1a1a1a; }
+  .btn:focus-visible, a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 2px;
+  }
+
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 10; background: var(--navy); padding: 20px 24px; }
+  .nav-wrap { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.88); font-size: 14px; font-weight: 600; }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a.btn { color: #1a1a1a; padding: 10px 18px; font-size: 14px; border-color: var(--yellow); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-tagline { font-size: 12px; color: var(--text-on-navy-muted); font-weight: 600; letter-spacing: 0.02em; }
+
+  /* HERO */
+  .hero { padding: 72px 0 64px; text-align: center; }
+  .hero h1 { font-size: 46px; font-weight: 800; margin: 0 auto 18px; max-width: 17ch; line-height: 1.15; }
+  .hero-sub { font-size: 18px; color: var(--text-body); font-weight: 500; max-width: 48ch; margin: 0 auto 30px; line-height: 1.55; }
+  .hero-video-frame { background: var(--navy); border: 2px solid var(--navy); max-width: 720px; margin: 0 auto 28px; overflow: hidden; }
+  .hero-video-frame video { width: 100%; display: block; }
+  .reassurance { font-size: 13px; color: var(--text-muted); margin: 12px 0 0; }
+
+  /* WHY STRIP */
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .why h3 { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 8px; }
+  .why p { font-size: 15px; line-height: 1.55; color: var(--text-body); margin: 0; }
+
+  /* HOW IT WORKS */
+  .how { display: grid; grid-template-columns: 1fr 480px; gap: 56px; align-items: start; }
+  .step { display: flex; gap: 16px; margin-bottom: 24px; }
+  .step-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 800;
+    color: var(--yellow); background: var(--navy);
+    padding: 4px 9px; height: fit-content;
+  }
+  .step h3 { font-size: 18px; margin: 0 0 4px; }
+  .step p { font-size: 15px; color: var(--text-body); margin: 0; line-height: 1.55; }
+  .note { background: var(--white); border: 2px solid var(--border); padding: 16px 18px; margin: 8px 0 28px; }
+  .note p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--text-body); }
+  .proof-frame { border: 2px solid var(--navy); padding: 6px; background: var(--white); }
+  .proof-frame + .proof-frame { margin-top: 18px; }
+  .proof-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--text-muted); margin: 4px 0 8px; text-align: center;
+  }
+
+  /* PRICE WATCH */
+  .watch { background: var(--navy); color: #fff; }
+  .watch .eyebrow { color: var(--yellow); }
+  .watch h2 { font-size: 36px; max-width: 21ch; }
+  .watch-grid { display: grid; grid-template-columns: 1fr 400px; gap: 56px; align-items: start; }
+  .watch-sub { font-size: 17px; color: #D5DEE6; font-weight: 500; line-height: 1.55; margin: 0 0 28px; max-width: 52ch; }
+  .check-list { list-style: none; padding: 0; margin: 0; }
+  .check-list li { font-size: 15.5px; line-height: 1.55; margin-bottom: 16px; padding-left: 28px; position: relative; color: var(--text-on-navy); }
+  .check-list li::before { content: "✓"; position: absolute; left: 0; color: var(--yellow); font-weight: 800; }
+  .check-list strong { color: #fff; }
+  .watch-chart { margin: 32px 0 0; background: var(--white); border: 2px solid var(--navy-line); padding: 12px; }
+  .watch-chart figcaption { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin: 10px 2px 2px; }
+  .tiers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 10px; }
+  .tier { border: 2px solid var(--navy-line); padding: 18px; }
+  .tier.featured { border-color: var(--yellow); }
+  .tier-len { font-size: 14px; font-weight: 700; color: #D5DEE6; margin: 0 0 4px; }
+  .tier-price { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 800; margin: 0 0 4px; }
+  .tier-cancel { font-size: 13px; color: var(--text-on-navy-muted); margin: 0; }
+  .fine-on-navy { font-size: 13px; color: var(--text-on-navy-muted); margin: 0 0 22px; }
+  .isnt { border: 1px solid var(--navy-line); background: var(--navy-2); padding: 14px 16px; }
+  .isnt p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text-on-navy); }
+  .isnt strong { color: var(--yellow); }
+
+  /* PRICING */
+  .pricing-head { text-align: center; margin-bottom: 32px; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; }
+  .plan { border: 2px solid var(--navy); padding: 26px; background: var(--white); }
+  .plan.dark { background: var(--navy); color: #fff; }
+  .plan-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 10px; }
+  .plan.dark .plan-label { color: var(--yellow); }
+  .plan-title { font-size: 22px; font-weight: 800; margin: 0 0 10px; }
+  .plan p.desc { font-size: 14.5px; line-height: 1.55; color: var(--text-body); margin: 0; }
+  .plan.dark p.desc { color: var(--text-on-navy); }
+  .earn { background: var(--bg); border: 2px solid var(--border); padding: 26px; }
+  .earn h3 { font-size: 18px; margin: 0 0 14px; }
+  .earn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .earn p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--text-body); }
+  .earn strong { color: var(--navy); }
+
+  .closing { text-align: center; }
+  .closing h2 { margin-bottom: 20px; }
+
+  footer { background: var(--navy); color: var(--text-on-navy-muted); padding: 30px 24px; line-height: 1.8; font-size: 13px; text-align: center; }
+  footer a { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .hero { padding: 44px 24px; }
+    .hero h1 { font-size: 31px; }
+    .hero-sub { font-size: 16px; text-wrap: balance; }
+    h2, .watch h2 { font-size: 26px; }
+    .hero .btn, .closing .btn { display: block; }
+    .why, .plans, .earn-grid { grid-template-columns: 1fr; gap: 22px; }
+    .how, .watch-grid { grid-template-columns: 1fr; gap: 28px; }
+    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .tier-price { font-size: 21px; }
+    .section { padding: 48px 0; }
+    .nav-tagline { display: none; }
+
+    /* Mobile nav: toggleable menu (Sep 3 fix, kept) */
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--navy);
+      flex-direction: column; align-items: stretch;
+      padding: 8px 24px 20px; gap: 2px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      margin-top: 20px;
+    }
+    .nav-links.nav-open { display: flex; }
+    .nav-links a { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .nav-links a.btn { margin-top: 10px; text-align: center; border-bottom: none; }
+  }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="assets/logo192.png">
+<!-- FA-ANIM CSS START -->
+<style id="fa-anim-css">
+/* FlyAtlast hero animation, Option B. Master loop 20s. Scene windows (seconds):
+   S1 0-5 night: fare came and went | S2 5-8.8 pin the trip | S3 8.8-12.8 alert: you slept in
+   S4 12.8-17 Price Watch | S5 17-20 tagline
+   Keyframe percentages are seconds / 20. Base (no animation) state = final state. */
+.fa-anim{--fa-t:20s;max-width:720px;margin:0 auto 28px;font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--navy,#1E3A5F)}
+.fa-anim *{box-sizing:border-box}
+.fa-anim .fa-stage,.fa-anim .fa-scene{box-sizing:content-box}
+.fa-stage{position:relative;aspect-ratio:16/9;border:2px solid var(--navy,#1E3A5F);background:var(--white,#fff);overflow:hidden}
+.fa-scene{position:absolute;inset:0;background:var(--white,#fff)}
+.fa-scene svg{display:block;width:100%;height:100%}
+.fa-anim svg *{transform-box:fill-box;transform-origin:50% 50%}
+.fa-tx{font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
+.fa-mo{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.fa-w500{font-weight:500}.fa-w600{font-weight:600}.fa-w700{font-weight:700}.fa-w800{font-weight:800}
+.fa-c-none{fill:none}
+.fa-h{opacity:0}.fa-dim{opacity:.4}
+.fa-anim svg .fa-ol{transform-origin:0 50%}
+.fa-wipe{transform:translateX(760px)}
+.fa-dr{stroke-dasharray:1 1;stroke-dashoffset:0}
+
+.fa-c-navy{fill:var(--navy,#1E3A5F)}.fa-k-navy{stroke:var(--navy,#1E3A5F)}
+.fa-c-navy2{fill:var(--navy-2,#243F63)}.fa-k-navy2{stroke:var(--navy-2,#243F63)}
+.fa-c-nline{fill:var(--navy-line,#5E7A96)}.fa-k-nline{stroke:var(--navy-line,#5E7A96)}
+.fa-c-white{fill:var(--white,#FFFFFF)}.fa-k-white{stroke:var(--white,#FFFFFF)}
+.fa-c-yellow{fill:var(--yellow,#F4C11C)}.fa-k-yellow{stroke:var(--yellow,#F4C11C)}
+.fa-c-gbg{fill:#D4EDDC}.fa-k-gbg{stroke:#D4EDDC}
+.fa-c-gtx{fill:#2C6640}.fa-k-gtx{stroke:#2C6640}
+.fa-c-abg{fill:#FDF4DE}.fa-k-abg{stroke:#FDF4DE}
+.fa-c-atx{fill:#7A5B10}.fa-k-atx{stroke:#7A5B10}
+.fa-c-red{fill:#B94A2E}.fa-k-red{stroke:#B94A2E}
+.fa-c-muted{fill:var(--text-muted,#5A6B78)}.fa-k-muted{stroke:var(--text-muted,#5A6B78)}
+.fa-c-border{fill:var(--border,#DDE3E7)}.fa-k-border{stroke:var(--border,#DDE3E7)}
+.fa-c-bg{fill:var(--bg,#EEF1F3)}.fa-k-bg{stroke:var(--bg,#EEF1F3)}
+.fa-c-dark{fill:#1a1a1a}.fa-k-dark{stroke:#1a1a1a}
+.fa-c-pale{fill:#C3CFDA}.fa-k-pale{stroke:#C3CFDA}
+.fa-c-body{fill:var(--text-body,#3d4a56)}.fa-k-body{stroke:var(--text-body,#3d4a56)}
+.fa-c-lgreen{fill:#8FE0AE}.fa-k-lgreen{stroke:#8FE0AE}
+.fa-c-lred{fill:#FF9F80}.fa-k-lred{stroke:#FF9F80}
+
+.fa-a{animation-duration:var(--fa-t);animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both}
+.fa-bar{display:flex;align-items:center;gap:12px;margin:12px 0 10px}
+.fa-prog{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.fa-seg{display:block;height:10px;border:2px solid var(--navy,#1E3A5F);background:var(--border,#DDE3E7);overflow:hidden}
+.fa-fill{display:block;width:100%;height:100%;background:var(--navy,#1E3A5F);transform-origin:0 50%}
+.fa-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:0 14px;border:2px solid var(--navy,#1E3A5F);background:var(--white,#fff);color:var(--navy,#1E3A5F);font:700 14px/1 "Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;cursor:pointer}
+.fa-toggle svg{width:16px;height:16px;fill:currentColor}
+.fa-toggle:focus-visible{outline:3px solid var(--navy,#1E3A5F);outline-offset:2px}
+.fa-caps{list-style:none;margin:0;padding:0;display:grid;text-align:center}
+.fa-caps li{grid-area:1/1;display:block}
+.fa-ch{display:block;font-size:20px;font-weight:800;line-height:1.25;color:var(--navy,#1E3A5F);margin-bottom:4px}
+.fa-cs{display:block;font-size:15px;font-weight:500;line-height:1.45;color:var(--text-body,#3d4a56)}
+.fa-note{margin:10px 0 0;font-size:12px;line-height:1.4;color:var(--text-muted,#5A6B78);text-align:right}
+.fa-anim.fa-is-paused *{animation-play-state:paused!important}
+@media (max-width:600px){.fa-ch{font-size:17px}.fa-cs{font-size:14px}}
+@media (max-width:768px){.fa-stage{margin-left:-24px;margin-right:-24px;border-left-width:0;border-right-width:0}}
+@media (prefers-reduced-motion:reduce){
+.fa-anim *{animation:none!important}
+.fa-stage{aspect-ratio:auto;border:0;overflow:visible;background:none;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.fa-scene{position:relative;inset:auto;aspect-ratio:16/9;border:2px solid var(--navy,#1E3A5F);overflow:hidden}
+.fa-bar{display:none}
+.fa-caps{display:block;margin-top:16px}
+.fa-caps li{margin-bottom:14px}
+}
+
+@keyframes fa-k1{0%,1%{opacity:0}2.5%,100%{opacity:1}}
+@keyframes fa-k2{0%{opacity:0;transform:scale(.92)}2%{opacity:0;transform:scale(.92);animation-timing-function:cubic-bezier(.2,.7,.2,1)}4%,100%{opacity:1;transform:none}}
+@keyframes fa-k3{0%{opacity:0;transform:translateY(12px)}6.5%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}8.25%,100%{opacity:1;transform:none}}
+@keyframes fa-k4{0%,11.5%{opacity:1}13%,100%{opacity:0}}
+@keyframes fa-k5{0%{opacity:0;transform:translateY(12px)}14%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}15.75%,100%{opacity:1;transform:none}}
+@keyframes fa-k6{0%,16.5%{opacity:0}18.5%,100%{opacity:1}}
+@keyframes fa-k7{0%,13%{opacity:0}14.5%,100%{opacity:1}}
+@keyframes fa-k8{0%,0.01%{opacity:0}1.5%,22.5%{opacity:1}25%,100%{opacity:0}}
+@keyframes fa-k9{0%{clip-path:inset(0 100% 0 0)}27.5%{clip-path:inset(0 100% 0 0);animation-timing-function:steps(16,end)}31%,100%{clip-path:inset(0 0 0 0)}}
+@keyframes fa-k10{0%,31%{opacity:0}32.5%,100%{opacity:1}}
+@keyframes fa-k11{0%{clip-path:inset(0 100% 0 0)}32%{clip-path:inset(0 100% 0 0);animation-timing-function:steps(8,end)}35%,100%{clip-path:inset(0 0 0 0)}}
+@keyframes fa-k12{0%{transform:scaleX(0)}35%{transform:scaleX(0);animation-timing-function:cubic-bezier(.2,.7,.2,1)}37.5%,100%{transform:none}}
+@keyframes fa-k13{0%,33%{opacity:0;transform:scale(1)}34%,37.5%{opacity:1;transform:scale(1)}38%{opacity:1;transform:scale(.96)}38.6%{opacity:1;transform:scale(1)}39%,100%{opacity:0;transform:scale(1)}}
+@keyframes fa-k14{0%,39%{opacity:0}40.25%,100%{opacity:1}}
+@keyframes fa-k15{0%,25%{opacity:0}27.5%,42.25%{opacity:1}44%,100%{opacity:0}}
+@keyframes fa-k16{0%{opacity:0;transform:translateY(50px)}45%{opacity:0;transform:translateY(50px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}47.5%,100%{opacity:1;transform:none}}
+@keyframes fa-k17{0%{opacity:0;transform:translateY(-24px)}49%{opacity:0;transform:translateY(-24px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}51%,100%{opacity:1;transform:none}}
+@keyframes fa-k18{0%{opacity:0;transform:translateY(12px)}53%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}54.75%,100%{opacity:1;transform:none}}
+@keyframes fa-k19{0%{opacity:0;transform:translateY(12px)}55%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}56.75%,100%{opacity:1;transform:none}}
+@keyframes fa-k20{0%{transform:scaleX(0)}56.5%{transform:scaleX(0);animation-timing-function:cubic-bezier(.2,.7,.2,1)}59%,100%{transform:none}}
+@keyframes fa-k21{0%,59%{opacity:0}61%,100%{opacity:1}}
+@keyframes fa-k22{0%,44%{opacity:0}46%,62%{opacity:1}64%,100%{opacity:0}}
+@keyframes fa-k23{0%,77%{opacity:1}77.75%{opacity:.6}78.5%{opacity:1}79.25%,100%{opacity:.8}}
+@keyframes fa-k24{0%,67%,67.01%{stroke-dashoffset:1}67.944%{stroke-dashoffset:0.89}68.889%{stroke-dashoffset:0.78}69.833%{stroke-dashoffset:0.668}70.778%{stroke-dashoffset:0.558}71.722%{stroke-dashoffset:0.446}72.667%{stroke-dashoffset:0.336}73.611%{stroke-dashoffset:0.223}74.556%{stroke-dashoffset:0.113}75.5%,100%{stroke-dashoffset:0}}
+@keyframes fa-k25{0%,67%{opacity:0;transform:scale(.3)}67.5%,100%{opacity:1;transform:none}}
+@keyframes fa-k26{0%,67.944%{opacity:0;transform:scale(.3)}68.444%,100%{opacity:1;transform:none}}
+@keyframes fa-k27{0%,68.889%{opacity:0;transform:scale(.3)}69.389%,100%{opacity:1;transform:none}}
+@keyframes fa-k28{0%,69.833%{opacity:0;transform:scale(.3)}70.333%,100%{opacity:1;transform:none}}
+@keyframes fa-k29{0%,70.778%{opacity:0;transform:scale(.3)}71.278%,100%{opacity:1;transform:none}}
+@keyframes fa-k30{0%,71.722%{opacity:0;transform:scale(.3)}72.222%,100%{opacity:1;transform:none}}
+@keyframes fa-k31{0%,72.667%{opacity:0;transform:scale(.3)}73.167%,100%{opacity:1;transform:none}}
+@keyframes fa-k32{0%,73.611%{opacity:0;transform:scale(.3)}74.111%,100%{opacity:1;transform:none}}
+@keyframes fa-k33{0%,74.556%{opacity:0;transform:scale(.3)}75.056%,100%{opacity:1;transform:none}}
+@keyframes fa-k34{0%{opacity:0;transform:scale(1)}75.5%{opacity:0;transform:scale(.3)}76%,77%{opacity:1;transform:scale(1)}78%{opacity:1;transform:scale(1.6)}79%,100%{opacity:1;transform:scale(1)}}
+@keyframes fa-k35{0%,71.722%{opacity:0;transform:scale(.6)}72.722%,100%{opacity:1;transform:none}}
+@keyframes fa-k36{0%,64%{opacity:0}65.5%,100%{opacity:1}}
+@keyframes fa-k37{0%,65.5%{opacity:0}67%,100%{opacity:1}}
+@keyframes fa-k38{0%{opacity:0;transform:translateY(16px)}77%{opacity:0;transform:translateY(16px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}78.5%,100%{opacity:1;transform:none}}
+@keyframes fa-k39{0%,79.5%{opacity:0}81%,100%{opacity:1}}
+@keyframes fa-k40{0%,64%{opacity:0}66%,83%{opacity:1}85%,100%{opacity:0}}
+@keyframes fa-k41{0%{opacity:0;transform:translateY(14px)}87%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}89%,100%{opacity:1;transform:none}}
+@keyframes fa-k42{0%{transform:scaleX(0)}89.5%{transform:scaleX(0);animation-timing-function:cubic-bezier(.2,.7,.2,1)}92%,100%{transform:none}}
+@keyframes fa-k43{0%,91.5%{opacity:0}93.5%,100%{opacity:1}}
+@keyframes fa-k44{0%,85%{opacity:0}87%,98%{opacity:1}100%{opacity:0}}
+@keyframes fa-k45{0%,0.01%{opacity:0}1.25%,23.75%{opacity:1}25%,100%{opacity:0}}
+@keyframes fa-k46{0%,0.01%{transform:scaleX(0)}25%,100%{transform:scaleX(1)}}
+@keyframes fa-k47{0%,25%{opacity:0}26.25%,42.75%{opacity:1}44%,100%{opacity:0}}
+@keyframes fa-k48{0%,25%{transform:scaleX(0)}44%,100%{transform:scaleX(1)}}
+@keyframes fa-k49{0%,44%{opacity:0}45.25%,62.75%{opacity:1}64%,100%{opacity:0}}
+@keyframes fa-k50{0%,44%{transform:scaleX(0)}64%,100%{transform:scaleX(1)}}
+@keyframes fa-k51{0%,64%{opacity:0}65.25%,83.75%{opacity:1}85%,100%{opacity:0}}
+@keyframes fa-k52{0%,64%{transform:scaleX(0)}85%,100%{transform:scaleX(1)}}
+@keyframes fa-k53{0%,85%{opacity:0}86.25%,98.75%{opacity:1}100%{opacity:0}}
+@keyframes fa-k54{0%,85%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+.fa-k1{animation-name:fa-k1}.fa-k2{animation-name:fa-k2}.fa-k3{animation-name:fa-k3}.fa-k4{animation-name:fa-k4}.fa-k5{animation-name:fa-k5}.fa-k6{animation-name:fa-k6}.fa-k7{animation-name:fa-k7}.fa-k8{animation-name:fa-k8}.fa-k9{animation-name:fa-k9}.fa-k10{animation-name:fa-k10}.fa-k11{animation-name:fa-k11}.fa-k12{animation-name:fa-k12}.fa-k13{animation-name:fa-k13}.fa-k14{animation-name:fa-k14}.fa-k15{animation-name:fa-k15}.fa-k16{animation-name:fa-k16}.fa-k17{animation-name:fa-k17}.fa-k18{animation-name:fa-k18}.fa-k19{animation-name:fa-k19}.fa-k20{animation-name:fa-k20}.fa-k21{animation-name:fa-k21}.fa-k22{animation-name:fa-k22}.fa-k23{animation-name:fa-k23}.fa-k24{animation-name:fa-k24}.fa-k25{animation-name:fa-k25}.fa-k26{animation-name:fa-k26}.fa-k27{animation-name:fa-k27}.fa-k28{animation-name:fa-k28}.fa-k29{animation-name:fa-k29}.fa-k30{animation-name:fa-k30}.fa-k31{animation-name:fa-k31}.fa-k32{animation-name:fa-k32}.fa-k33{animation-name:fa-k33}.fa-k34{animation-name:fa-k34}.fa-k35{animation-name:fa-k35}.fa-k36{animation-name:fa-k36}.fa-k37{animation-name:fa-k37}.fa-k38{animation-name:fa-k38}.fa-k39{animation-name:fa-k39}.fa-k40{animation-name:fa-k40}.fa-k41{animation-name:fa-k41}.fa-k42{animation-name:fa-k42}.fa-k43{animation-name:fa-k43}.fa-k44{animation-name:fa-k44}.fa-k45{animation-name:fa-k45}.fa-k46{animation-name:fa-k46}.fa-k47{animation-name:fa-k47}.fa-k48{animation-name:fa-k48}.fa-k49{animation-name:fa-k49}.fa-k50{animation-name:fa-k50}.fa-k51{animation-name:fa-k51}.fa-k52{animation-name:fa-k52}.fa-k53{animation-name:fa-k53}.fa-k54{animation-name:fa-k54}
+</style>
+<!-- FA-ANIM CSS END -->
+<!-- FW-ANIM CSS START -->
+<style id="fw-anim-css">
+/* FlyAtlast Price Watch explainer. Loop 18s = three 6s outcomes: above 0-6, inside 6-12, below 12-18.
+   Keyframe percentages are seconds / 18. Base (no animation) state = final state. */
+.fw-w{--fw-t:18s;font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:#1E3A5F}
+.fw-w *{box-sizing:border-box}
+.fw-stg{position:relative;aspect-ratio:4/3;background:#fff}
+.fw-cyc{position:absolute;inset:0}
+.fw-cyc svg{display:block;width:100%;height:100%;overflow:visible}
+.fw-w svg *{transform-box:fill-box;transform-origin:50% 50%}
+.fw-tx{font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
+.fw-mo{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.fw-w500{font-weight:500}.fw-w600{font-weight:600}.fw-w700{font-weight:700}.fw-w800{font-weight:800}
+.fw-c-none{fill:none}
+.fw-dr{stroke-dasharray:1 1;stroke-dashoffset:0}
+.fw-c-navy{fill:var(--navy,#1E3A5F)}.fw-k-navy{stroke:var(--navy,#1E3A5F)}.fw-c-navy2{fill:var(--navy-2,#243F63)}.fw-k-navy2{stroke:var(--navy-2,#243F63)}.fw-c-nline{fill:var(--navy-line,#5E7A96)}.fw-k-nline{stroke:var(--navy-line,#5E7A96)}.fw-c-white{fill:var(--white,#FFFFFF)}.fw-k-white{stroke:var(--white,#FFFFFF)}.fw-c-yellow{fill:var(--yellow,#F4C11C)}.fw-k-yellow{stroke:var(--yellow,#F4C11C)}.fw-c-gbg{fill:#D4EDDC}.fw-k-gbg{stroke:#D4EDDC}.fw-c-gtx{fill:#2C6640}.fw-k-gtx{stroke:#2C6640}.fw-c-abg{fill:#FDF4DE}.fw-k-abg{stroke:#FDF4DE}.fw-c-atx{fill:#7A5B10}.fw-k-atx{stroke:#7A5B10}.fw-c-red{fill:#B94A2E}.fw-k-red{stroke:#B94A2E}.fw-c-muted{fill:var(--text-muted,#5A6B78)}.fw-k-muted{stroke:var(--text-muted,#5A6B78)}.fw-c-border{fill:var(--border,#DDE3E7)}.fw-k-border{stroke:var(--border,#DDE3E7)}.fw-c-bg{fill:var(--bg,#EEF1F3)}.fw-k-bg{stroke:var(--bg,#EEF1F3)}.fw-c-dark{fill:#1a1a1a}.fw-k-dark{stroke:#1a1a1a}.fw-c-pale{fill:#C3CFDA}.fw-k-pale{stroke:#C3CFDA}.fw-c-body{fill:var(--text-body,#3d4a56)}.fw-k-body{stroke:var(--text-body,#3d4a56)}
+.fw-a{animation-duration:var(--fw-t);animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both}
+.fw-ctl{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px}
+.fw-tab+.fw-tab{margin-left:-2px}
+.fw-tab:focus-visible{position:relative;z-index:1}
+.fw-tab,.fw-tg{min-height:44px;border:2px solid #1E3A5F;background:#fff;color:#1E3A5F;font:700 14px/1 "Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;cursor:pointer;padding:0 6px}
+.fw-tg{display:inline-flex;align-items:center;justify-content:center;padding:0}
+.fw-tg svg{width:16px;height:16px;fill:currentColor}
+.fw-tab:focus-visible,.fw-tg:focus-visible{outline:3px solid #1E3A5F;outline-offset:2px}
+.fw-w.fw-is-paused *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){
+.fw-w *{animation:none!important}
+.fw-stg{aspect-ratio:auto;display:grid;gap:12px}
+.fw-cyc{position:relative;inset:auto;aspect-ratio:4/3;border:2px solid var(--border,#DDE3E7)}
+.fw-ctl{display:none}
+}
+@keyframes fw-k1{0%,20%{opacity:1}20.833%{opacity:.6}21.667%{opacity:1}22.5%,100%{opacity:.85}}
+@keyframes fw-k2{0%,2.778%,2.789%{stroke-dashoffset:1}4.568%{stroke-dashoffset:0.891}6.358%{stroke-dashoffset:0.781}8.148%{stroke-dashoffset:0.669}9.938%{stroke-dashoffset:0.559}11.728%{stroke-dashoffset:0.447}13.519%{stroke-dashoffset:0.338}15.309%{stroke-dashoffset:0.223}17.099%{stroke-dashoffset:0.115}18.889%,100%{stroke-dashoffset:0}}
+@keyframes fw-k3{0%,2.778%{opacity:0;transform:scale(.3)}3.333%,100%{opacity:1;transform:none}}
+@keyframes fw-k4{0%,4.568%{opacity:0;transform:scale(.3)}5.123%,100%{opacity:1;transform:none}}
+@keyframes fw-k5{0%,6.358%{opacity:0;transform:scale(.3)}6.914%,100%{opacity:1;transform:none}}
+@keyframes fw-k6{0%,8.148%{opacity:0;transform:scale(.3)}8.704%,100%{opacity:1;transform:none}}
+@keyframes fw-k7{0%,9.938%{opacity:0;transform:scale(.3)}10.494%,100%{opacity:1;transform:none}}
+@keyframes fw-k8{0%,11.728%{opacity:0;transform:scale(.3)}12.284%,100%{opacity:1;transform:none}}
+@keyframes fw-k9{0%,13.519%{opacity:0;transform:scale(.3)}14.074%,100%{opacity:1;transform:none}}
+@keyframes fw-k10{0%,15.309%{opacity:0;transform:scale(.3)}15.864%,100%{opacity:1;transform:none}}
+@keyframes fw-k11{0%,17.099%{opacity:0;transform:scale(.3)}17.654%,100%{opacity:1;transform:none}}
+@keyframes fw-k12{0%{opacity:0;transform:scale(1)}18.889%{opacity:0;transform:scale(.3)}19.444%,20%{opacity:1;transform:scale(1)}21.111%{opacity:1;transform:scale(1.7)}22.222%,100%{opacity:1;transform:scale(1)}}
+@keyframes fw-k13{0%{opacity:0;transform:translateY(14px)}21.667%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}23.333%,100%{opacity:1;transform:none}}
+@keyframes fw-k14{0%,0.011%{opacity:0}1.667%,31.667%{opacity:1}33.333%,100%{opacity:0}}
+@keyframes fw-k15{0%,53.333%{opacity:1}54.167%{opacity:.6}55%{opacity:1}55.833%,100%{opacity:.85}}
+@keyframes fw-k16{0%,36.111%,36.122%{stroke-dashoffset:1}37.901%{stroke-dashoffset:0.894}39.691%{stroke-dashoffset:0.785}41.481%{stroke-dashoffset:0.671}43.272%{stroke-dashoffset:0.563}45.062%{stroke-dashoffset:0.452}46.852%{stroke-dashoffset:0.344}48.642%{stroke-dashoffset:0.235}50.432%{stroke-dashoffset:0.121}52.222%,100%{stroke-dashoffset:0}}
+@keyframes fw-k17{0%,36.111%{opacity:0;transform:scale(.3)}36.667%,100%{opacity:1;transform:none}}
+@keyframes fw-k18{0%,37.901%{opacity:0;transform:scale(.3)}38.457%,100%{opacity:1;transform:none}}
+@keyframes fw-k19{0%,39.691%{opacity:0;transform:scale(.3)}40.247%,100%{opacity:1;transform:none}}
+@keyframes fw-k20{0%,41.481%{opacity:0;transform:scale(.3)}42.037%,100%{opacity:1;transform:none}}
+@keyframes fw-k21{0%,43.272%{opacity:0;transform:scale(.3)}43.827%,100%{opacity:1;transform:none}}
+@keyframes fw-k22{0%,45.062%{opacity:0;transform:scale(.3)}45.617%,100%{opacity:1;transform:none}}
+@keyframes fw-k23{0%,46.852%{opacity:0;transform:scale(.3)}47.407%,100%{opacity:1;transform:none}}
+@keyframes fw-k24{0%,48.642%{opacity:0;transform:scale(.3)}49.198%,100%{opacity:1;transform:none}}
+@keyframes fw-k25{0%,50.432%{opacity:0;transform:scale(.3)}50.988%,100%{opacity:1;transform:none}}
+@keyframes fw-k26{0%{opacity:0;transform:scale(1)}52.222%{opacity:0;transform:scale(.3)}52.778%,53.333%{opacity:1;transform:scale(1)}54.444%{opacity:1;transform:scale(1.7)}55.556%,100%{opacity:1;transform:scale(1)}}
+@keyframes fw-k27{0%{opacity:0;transform:translateY(14px)}55%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}56.667%,100%{opacity:1;transform:none}}
+@keyframes fw-k28{0%,33.333%{opacity:0}35%,65%{opacity:1}66.667%,100%{opacity:0}}
+@keyframes fw-k29{0%,86.667%{opacity:1}87.5%{opacity:.6}88.333%{opacity:1}89.167%,100%{opacity:.85}}
+@keyframes fw-k30{0%,69.444%,69.456%{stroke-dashoffset:1}71.235%{stroke-dashoffset:0.89}73.025%{stroke-dashoffset:0.786}74.815%{stroke-dashoffset:0.665}76.605%{stroke-dashoffset:0.555}78.395%{stroke-dashoffset:0.451}80.185%{stroke-dashoffset:0.334}81.975%{stroke-dashoffset:0.226}83.765%{stroke-dashoffset:0.113}85.556%,100%{stroke-dashoffset:0}}
+@keyframes fw-k31{0%,69.444%{opacity:0;transform:scale(.3)}70%,100%{opacity:1;transform:none}}
+@keyframes fw-k32{0%,71.235%{opacity:0;transform:scale(.3)}71.79%,100%{opacity:1;transform:none}}
+@keyframes fw-k33{0%,73.025%{opacity:0;transform:scale(.3)}73.58%,100%{opacity:1;transform:none}}
+@keyframes fw-k34{0%,74.815%{opacity:0;transform:scale(.3)}75.37%,100%{opacity:1;transform:none}}
+@keyframes fw-k35{0%,76.605%{opacity:0;transform:scale(.3)}77.16%,100%{opacity:1;transform:none}}
+@keyframes fw-k36{0%,78.395%{opacity:0;transform:scale(.3)}78.951%,100%{opacity:1;transform:none}}
+@keyframes fw-k37{0%,80.185%{opacity:0;transform:scale(.3)}80.741%,100%{opacity:1;transform:none}}
+@keyframes fw-k38{0%,81.975%{opacity:0;transform:scale(.3)}82.531%,100%{opacity:1;transform:none}}
+@keyframes fw-k39{0%,83.765%{opacity:0;transform:scale(.3)}84.321%,100%{opacity:1;transform:none}}
+@keyframes fw-k40{0%{opacity:0;transform:scale(1)}85.556%{opacity:0;transform:scale(.3)}86.111%,86.667%{opacity:1;transform:scale(1)}87.778%{opacity:1;transform:scale(1.7)}88.889%,100%{opacity:1;transform:scale(1)}}
+@keyframes fw-k41{0%{opacity:0;transform:translateY(14px)}88.333%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}90%,100%{opacity:1;transform:none}}
+@keyframes fw-k42{0%,66.667%{opacity:0}68.333%,98.333%{opacity:1}100%{opacity:0}}
+@keyframes fw-k43{0%,0.011%{background-color:#fff;color:#1E3A5F}0.022%,33.333%{background-color:#1E3A5F;color:#fff}33.344%,100%{background-color:#fff;color:#1E3A5F}}
+@keyframes fw-k44{0%,33.333%{background-color:#fff;color:#1E3A5F}33.344%,66.667%{background-color:#1E3A5F;color:#fff}66.678%,100%{background-color:#fff;color:#1E3A5F}}
+@keyframes fw-k45{0%,66.667%{background-color:#fff;color:#1E3A5F}66.678%,100%{background-color:#1E3A5F;color:#fff}}
+.fw-k1{animation-name:fw-k1}.fw-k2{animation-name:fw-k2}.fw-k3{animation-name:fw-k3}.fw-k4{animation-name:fw-k4}.fw-k5{animation-name:fw-k5}.fw-k6{animation-name:fw-k6}.fw-k7{animation-name:fw-k7}.fw-k8{animation-name:fw-k8}.fw-k9{animation-name:fw-k9}.fw-k10{animation-name:fw-k10}.fw-k11{animation-name:fw-k11}.fw-k12{animation-name:fw-k12}.fw-k13{animation-name:fw-k13}.fw-k14{animation-name:fw-k14}.fw-k15{animation-name:fw-k15}.fw-k16{animation-name:fw-k16}.fw-k17{animation-name:fw-k17}.fw-k18{animation-name:fw-k18}.fw-k19{animation-name:fw-k19}.fw-k20{animation-name:fw-k20}.fw-k21{animation-name:fw-k21}.fw-k22{animation-name:fw-k22}.fw-k23{animation-name:fw-k23}.fw-k24{animation-name:fw-k24}.fw-k25{animation-name:fw-k25}.fw-k26{animation-name:fw-k26}.fw-k27{animation-name:fw-k27}.fw-k28{animation-name:fw-k28}.fw-k29{animation-name:fw-k29}.fw-k30{animation-name:fw-k30}.fw-k31{animation-name:fw-k31}.fw-k32{animation-name:fw-k32}.fw-k33{animation-name:fw-k33}.fw-k34{animation-name:fw-k34}.fw-k35{animation-name:fw-k35}.fw-k36{animation-name:fw-k36}.fw-k37{animation-name:fw-k37}.fw-k38{animation-name:fw-k38}.fw-k39{animation-name:fw-k39}.fw-k40{animation-name:fw-k40}.fw-k41{animation-name:fw-k41}.fw-k42{animation-name:fw-k42}.fw-k43{animation-name:fw-k43}.fw-k44{animation-name:fw-k44}.fw-k45{animation-name:fw-k45}
+</style>
+<!-- FW-ANIM CSS END -->
+<!-- SITE-UPDATE CSS START -->
+<style id="site-update-css">
+main img{max-width:100%;height:auto}
+.how>*,.watch-grid>*,.step{min-width:0}
+.nav-free{display:inline-block;margin-left:6px;padding:2px 6px;background:var(--yellow);color:#1a1a1a;font:800 10px/1.4 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.04em;vertical-align:middle}
+.trial{border:2px solid var(--yellow);padding:18px;margin:0 0 14px;text-align:left}
+.trial-tag{font:700 12px/1.3 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);margin:0 0 8px}
+.trial-title{font-size:22px;font-weight:800;line-height:1.2;margin:0 0 8px;color:#fff}
+.trial-desc{font-size:15px;line-height:1.55;margin:0 0 14px;color:var(--text-on-navy)}
+.trial .btn{display:block;text-align:center}
+.faq{max-width:760px}
+.faq details{border:2px solid var(--navy);background:var(--white);margin:0 0 10px}
+.faq summary{padding:16px 46px 16px 18px;font-weight:800;font-size:16px;line-height:1.35;cursor:pointer;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:18px;top:14px;font:700 20px/1 'JetBrains Mono',monospace}
+.faq details[open] summary::after{content:"\2212"}
+.faq summary:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.faq p{margin:0;padding:0 18px 18px;font-size:15.5px;line-height:1.65;color:var(--text-body)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.blog-card{display:flex;flex-direction:column;gap:10px;border:2px solid var(--navy);background:var(--white);padding:22px;text-decoration:none;color:var(--navy)}
+.blog-card strong{font-size:18px;line-height:1.3}.blog-card span{font-size:15px;line-height:1.55;color:var(--text-body)}
+.blog-card em{font-style:normal;font-weight:800;font-size:14px;margin-top:auto}
+.blog-card:hover,.blog-card:focus-visible{border-color:var(--yellow);outline:none;box-shadow:0 0 0 2px var(--yellow)}
+.blog-all{margin:18px 0 0;font-weight:800}.blog-all a{color:var(--navy)}
+@media(max-width:860px){.blog-grid{grid-template-columns:1fr}}
+@media(max-width:1149px){.nav-tagline{display:none}}
+</style>
+<!-- SITE-UPDATE CSS END -->
+<script defer data-domain="flyatlast.com" src="https://plausible.io/js/script.tagged-events.js"></script>
+<style id="v2-css">
+.hero2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:center;padding:64px 24px;text-align:left}
+.hero2 h1{font-size:44px;font-weight:800;line-height:1.1;margin:0 0 16px;max-width:14ch}
+.hero2 .eyebrow{margin-bottom:12px}
+.hero2 .hero-sub{margin:0 0 26px;max-width:46ch;font-size:18px}
+.hero2 .reassurance{margin:12px 0 0;text-align:left}
+.try-link{margin:14px 0 0;font-size:15px;color:var(--text-body)}
+.try-link a{color:var(--navy);font-weight:800;border-bottom:2px solid var(--navy);text-decoration:none}
+.hero2-anim{min-width:0}
+.hero2-anim .fa-anim{margin:0}
+.trust{background:var(--navy);color:#fff;padding:16px 0}
+.trust-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 28px;font-size:14px;font-weight:600}
+.cmp-lead{margin:12px 0 28px;font-size:17px;color:var(--text-body);max-width:62ch}
+.cmp-scroll{overflow-x:auto;border:2px solid var(--navy);background:var(--white)}
+.cmp{border-collapse:collapse;width:100%;min-width:680px}
+.cmp th,.cmp td{padding:13px 16px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;font-size:15px;line-height:1.45}
+.cmp thead th{font-size:13px;font-weight:800;background:var(--bg)}
+.cmp tbody th{font-weight:800;width:22%}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+.cmp .us{background:var(--amber-bg);font-weight:700}
+.cmp thead th.us{background:var(--yellow);color:#1a1a1a}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.cmp-note{margin:12px 0 0;font-size:13px;color:var(--text-muted)}
+.demo-strip{margin-top:44px;background:var(--navy);color:#fff;padding:22px 26px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.demo-strip div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.demo-strip strong{font-size:20px}
+.demo-strip span{font-size:14px;color:#dbe4ee}
+@media (max-width:860px){
+ .hero2{grid-template-columns:1fr;gap:28px;padding:40px 24px}
+ .hero2 h1{font-size:31px;max-width:none}
+ .hero2 .hero-sub{font-size:16px}
+ .hero2 .btn{display:block;text-align:center}
+ .trust-in{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="#" class="nav-brand" aria-label="FlyAtlast home">
+      <svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size: 24px; font-weight: 800; color: #fff;">FlyAtlast</span>
+      <span class="nav-tagline">Pin. Track. Fly.</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#how">How it works</a>
+      <a href="#compare">Search vs. Watch</a>
+      <a href="#watch">Price Watch <span class="nav-free">Free trial</span></a>
+      
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#blog">Blog</a>
+      <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free btn btn-primary">Pin a trip free</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
+      onclick="var p=document.getElementById('navLinks'); var open=p.classList.toggle('nav-open'); this.setAttribute('aria-expanded', open);">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO (v2): text left, existing animation right -->
+  <section class="hero2 wrap">
+    <div class="hero2-text">
+      <p class="eyebrow">Search shows today. FlyAtlast watches.</p>
+      <h1>Tell us your budget. We'll tell you when a real flight fits it.</h1>
+      <p class="hero-sub">Flight sites show you today's price. You already know the price that makes it a yes. Pin the trip with that number and we keep checking, then send the exact flight when one fits.</p>
+      <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free btn btn-primary">Pin a trip free</a>
+      <p class="reassurance">First 3 trips free, 25 checks each. No card.</p>
+      <p class="try-link">Just curious? <a href="try.html" class="plausible-event-name=Hero+one-time+check">Try a one-time check, no account &rarr;</a></p>
+    </div>
+    <div class="hero2-anim">
+    <!-- FA-ANIM HTML START -->
+    <section class="fa-anim" aria-label="How FlyAtlast works: an animated example"><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="fa-i-plane" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></symbol><symbol id="fa-i-refresh" viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></symbol><symbol id="fa-i-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></symbol><symbol id="fa-i-bell" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></symbol><symbol id="fa-i-clock" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></symbol><symbol id="fa-i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol></defs></svg><div class="fa-stage" aria-hidden="true"><div class="fa-scene fa-a fa-k8" data-s="1"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="0" y="0" width="720" height="405" class="fa-c-navy"/><circle cx="560" cy="74" r="3" class="fa-c-pale" opacity=".7"/><circle cx="612" cy="122" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="498" cy="44" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="668" cy="96" r="2" class="fa-c-pale" opacity=".7"/><circle cx="100" cy="112" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="44" cy="196" r="2" class="fa-c-pale" opacity=".7"/><circle cx="250" cy="40" r="2" class="fa-c-pale" opacity=".7"/><use href="#fa-i-moon" x="636" y="22" width="46" height="46" class="fa-c-yellow"/><g class="fa-h fa-a fa-k4"><text x="40" y="56" font-size="26" text-anchor="start" class="fa-c-pale fa-mo fa-w700">Tue 2:14 am</text><g class="fa-a fa-k1"><text x="360" y="142" font-size="28" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">The fare you wanted</text></g><g class="fa-a fa-k2"><text x="360" y="238" font-size="88" text-anchor="middle" class="fa-c-lgreen fa-mo fa-w800">CA$1,187</text></g><g class="fa-a fa-k3"><text x="360" y="306" font-size="36" text-anchor="middle" class="fa-c-white fa-tx fa-w800">You were asleep.</text></g></g><g class="fa-a fa-k7"><text x="40" y="56" font-size="26" text-anchor="start" class="fa-c-pale fa-mo fa-w700">Thu 7:30 am</text><text x="360" y="142" font-size="28" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Now</text><text x="360" y="238" font-size="88" text-anchor="middle" class="fa-c-lred fa-mo fa-w800">CA$1,384</text><path d="M596 228 L648 228 L622 182 Z" class="fa-c-lred"/><g class="fa-a fa-k5"><text x="360" y="306" font-size="36" text-anchor="middle" class="fa-c-white fa-tx fa-w800">Gone.</text></g><g class="fa-a fa-k6"><text x="360" y="366" font-size="24" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">You checked 19 times. Not at 2:14 am.</text></g></g></svg></div><div class="fa-scene fa-a fa-k15" data-s="2"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="110" y="24" width="500" height="360" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="140" y="74" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">Your trip</text><text x="140" y="124" font-size="36" text-anchor="start" class="fa-c-navy fa-mo fa-w700 fa-clip fa-a fa-k9">Toronto → London</text><g class="fa-a fa-k10"><text x="140" y="190" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">Your budget</text></g><text x="140" y="262" font-size="72" text-anchor="start" class="fa-c-navy fa-mo fa-w800 fa-clip fa-a fa-k11">CA$1,300</text><rect x="140" y="276" width="346" height="8" class="fa-c-yellow fa-ol fa-a fa-k12"/><g class="fa-h fa-a fa-k13"><rect x="140" y="306" width="420" height="58" stroke-width="2" class="fa-c-yellow fa-k-navy"/><text x="350" y="344" font-size="28" text-anchor="middle" class="fa-c-dark fa-tx fa-w800">Pin trip</text></g><g class="fa-a fa-k14"><circle cx="158" cy="335" r="10" class="fa-c-gtx"/><text x="182" y="346" font-size="34" text-anchor="start" class="fa-c-gtx fa-tx fa-w800">Watching</text></g></svg></div><div class="fa-scene fa-a fa-k22" data-s="3"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><g class="fa-a fa-k16"><rect x="40" y="20" width="300" height="365" class="fa-c-navy" rx="30"/><text x="190" y="104" font-size="46" text-anchor="middle" class="fa-c-white fa-tx fa-w800">8:04 am</text><text x="190" y="136" font-size="22" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Tuesday</text><rect x="150" y="366" width="80" height="6" class="fa-c-pale" rx="3" opacity=".7"/></g><g class="fa-a fa-k17"><rect x="56" y="168" width="268" height="152" class="fa-c-white" rx="14"/><text x="74" y="200" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w700">FlyAtlast</text><text x="74" y="234" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w800">London is a deal</text><text x="74" y="274" font-size="32" text-anchor="start" class="fa-c-navy fa-mo fa-w800">CA$1,187</text><text x="74" y="304" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">CA$113 under budget</text></g><g class="fa-a fa-k18"><text x="372" y="160" font-size="34" text-anchor="start" class="fa-c-navy fa-tx fa-w800">You slept in.</text></g><g class="fa-a fa-k19"><text x="372" y="208" font-size="34" text-anchor="start" class="fa-c-navy fa-tx fa-w800">We kept checking.</text></g><rect x="372" y="220" width="292" height="7" class="fa-c-yellow fa-ol fa-a fa-k20"/><g class="fa-a fa-k21"><text x="372" y="266" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">The exact flight,</text><text x="372" y="294" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">with a link to book.</text></g></svg></div><div class="fa-scene fa-a fa-k40" data-s="4"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><g class="fa-a fa-k23"><rect x="50" y="104" width="620" height="55.4" class="fa-c-gbg"/></g><rect x="50" y="159.4" width="620" height="121.1" class="fa-c-abg"/><rect x="50" y="280.5" width="620" height="41.5" class="fa-c-gbg"/><line x1="50" x2="670" y1="159.4" y2="159.4" stroke-width="2.5" stroke-dasharray="8 6" class="fa-k-gtx"/><line x1="50" x2="670" y1="280.5" y2="280.5" stroke-width="2.5" stroke-dasharray="8 6" class="fa-k-gtx"/><text x="112" y="147.4" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">Pay nothing above 1,194</text><text x="112" y="308" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">Pay nothing below 1,159</text><text x="112" y="260.5" font-size="22" text-anchor="start" class="fa-c-atx fa-tx fa-w700">Fee applies in here</text><line x1="100" x2="100" y1="104" y2="322" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fa-k-navy"/><text x="112" y="227.6" font-size="22" text-anchor="start" class="fa-c-navy fa-mo fa-w700">Day 0: 1,187</text><path d="M100 183.6 L160 176.7 L220 166.3 L280 180.1 L340 169.7 L400 155.9 L460 162.8 L520 145.5 L580 152.4 L640 135.1" pathLength="1" fill="none" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" class="fa-k-navy fa-dr fa-a fa-k24"/><g class="fa-a fa-k25"><circle cx="100" cy="183.6" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k26"><circle cx="160" cy="176.7" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k27"><circle cx="220" cy="166.3" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k28"><circle cx="280" cy="180.1" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k29"><circle cx="340" cy="169.7" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k30"><circle cx="400" cy="155.9" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k31"><circle cx="460" cy="162.8" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k32"><circle cx="520" cy="145.5" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k33"><circle cx="580" cy="152.4" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k34"><circle cx="640" cy="135.1" r="8" class="fa-c-red"/></g><g class="fa-a fa-k35"><use href="#fa-i-bell" x="408" y="101.4" width="26" height="26" class="fa-c-navy"/><text x="438" y="123.4" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w700">Alert sent</text></g><g class="fa-a fa-k36"><rect x="50" y="16" width="244" height="36" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="172" y="41" font-size="22" text-anchor="middle" class="fa-c-navy fa-tx fa-w700">48 hours · US$5.99</text><rect x="304" y="16" width="220" height="36" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="414" y="41" font-size="22" text-anchor="middle" class="fa-c-navy fa-tx fa-w700">5 days · US$9.99</text></g><g class="fa-a fa-k37"><use href="#fa-i-clock" x="50" y="58" width="30" height="30" class="fa-c-navy"/><text x="86" y="82" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w700">Every 2 hours</text></g><g class="fa-a fa-k38"><rect x="111" y="334" width="498" height="34" stroke-width="2" class="fa-c-gbg fa-k-gtx"/><text x="360" y="358" font-size="22" text-anchor="middle" class="fa-c-gtx fa-tx fa-w700">Ended above the line: you pay nothing</text></g><g class="fa-a fa-k39"><text x="360" y="393" font-size="22" text-anchor="middle" class="fa-c-muted fa-tx fa-w600">We don't hold the fare or seats.</text></g></svg></div><div class="fa-scene fa-a fa-k44" data-s="5"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="0" y="0" width="720" height="405" class="fa-c-navy"/><g class="fa-a fa-k41"><text x="360" y="168" font-size="44" text-anchor="middle" class="fa-c-white fa-tx fa-w800">You set the budget,</text><text x="360" y="222" font-size="44" text-anchor="middle" class="fa-c-white fa-tx fa-w800">we track the flights.</text></g><rect x="300" y="250" width="120" height="6" class="fa-c-yellow fa-ol fa-a fa-k42"/><g class="fa-a fa-k43"><text x="360" y="304" font-size="26" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Free for 3 trips and one free Price Watch.</text></g></svg></div></div><div class="fa-bar"><div class="fa-prog"><span class="fa-seg"><span class="fa-fill fa-a fa-k46"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k48"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k50"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k52"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k54"></span></span></div></div><ol class="fa-caps" role="list"><li class="fa-a fa-k45"><span class="fa-ch">The price you wanted came and went.</span><span class="fa-cs">It came in under your budget at 2:14 am. You were asleep.</span></li><li class="fa-a fa-k47"><span class="fa-ch">Pin the trip. Set your budget.</span><span class="fa-cs">Where, when, and the budget that makes it a yes.</span></li><li class="fa-a fa-k49"><span class="fa-ch">You slept in. We kept checking.</span><span class="fa-cs">When a real fare comes in under your budget, we confirm it and send you the exact flight, with a link to book.</span></li><li class="fa-a fa-k51"><span class="fa-ch">Not ready to book? Watch it.</span><span class="fa-cs">Price Watch checks every 2 hours. If it ends US$5+ higher or US$20+ lower, you pay nothing.</span></li><li class="fa-a fa-k53"><span class="fa-ch">You set the budget, we track the flights.</span><span class="fa-cs">Free for 3 trips and one free Price Watch. No card needed.</span></li></ol><p class="fa-note">Example route and prices, for illustration.</p></section>
+    <!-- FA-ANIM HTML END -->
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust" role="list">
+    <div class="wrap trust-in">
+      <span role="listitem">Real, bookable fares from an airline data partner</span>
+      <span role="listitem">Alert only when a fare fits your budget</span>
+      <span role="listitem">No price predictions, no seat holds</span>
+      <span role="listitem">No card to start</span>
+    </div>
+  </div>
+
+  <!-- SEARCH VS WATCH -->
+  <section class="section alt" id="compare">
+    <div class="wrap">
+      <p class="eyebrow">Why it's different</p>
+      <h2>Search shows today's price. FlyAtlast waits for yours.</h2>
+      <p class="cmp-lead">Flight search and general price alerts are good for browsing. FlyAtlast starts from the number you already decided.</p>
+      <div class="cmp-scroll">
+      <table class="cmp">
+        <thead><tr><th scope="col"><span class="sr">Feature</span></th><th scope="col">Flight search sites</th><th scope="col">Typical price-change alerts</th><th scope="col" class="us">FlyAtlast</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">You set a target budget</th><td>No. You compare what's listed.</td><td>Usually not. You track a route and dates.</td><td class="us">Yes. Your budget is the trigger.</td></tr>
+          <tr><th scope="row">When you hear from them</th><td>When you search again.</td><td>When the price changes.</td><td class="us">When a fare fits your budget.</td></tr>
+          <tr><th scope="row">Confirmed before alerting</th><td>Not applicable.</td><td>Varies.</td><td class="us">Under budget on 2 checks in a row.</td></tr>
+          <tr><th scope="row">What you receive</th><td>A results page.</td><td>A price movement.</td><td class="us">The exact flight: times, stops, fare type and a link to book.</td></tr>
+          <tr><th scope="row">Price predictions</th><td>Some show them.</td><td>Some include them.</td><td class="us">None. Real checks only.</td></tr>
+          <tr><th scope="row">Coverage</th><td>Very wide. Good for comparing everything.</td><td>Wide.</td><td class="us">Fares from our airline data partner. They can differ from other sites, so every deal links to Google Flights to compare.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="cmp-note">General description of how these tools typically work. Features vary by site and change over time.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap how">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2 style="margin-bottom: 30px;">Set your trip. We do the checking.</h2>
+
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Where and when</h3>
+            <p>Your route and dates, flexible by a few days if you're not locked in.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>Your budget</h3>
+            <p>The total that makes this trip a yes, for all passengers.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>We do the checking</h3>
+            <p>Each trip gets 25 checks, spread from the day you pin until you fly and packed closer together as departure nears. When a real fare comes in under your budget, you get the exact flight and a link to book.</p>
+          </div>
+        </div>
+
+        <div class="note">
+          <p><strong style="color: var(--navy);">Heads up:</strong> airline prices move around, and ours come from our airline data partner, so they can differ from other sites. That's why every deal has a one-tap Google Flights link: check it before you book.</p>
+        </div>
+
+        <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+your+first+trip btn btn-primary">Pin your first trip</a>
+      </div>
+
+      <div>
+        <div class="proof-frame">
+          <p class="proof-label">The actual form · real screenshot</p>
+          <img src="assets/pintrip.png" width="1280" height="1390" loading="lazy" decoding="async" alt="Real screenshot of the FlyAtlast Pin Your Trip form, showing destination, budget, travelers, dates, and flight preference fields.">
+        </div>
+        <!-- Swap for a Toronto deal card in CAD once recaptured (Canada/US launch). -->
+        <div class="proof-frame">
+          <p class="proof-label">What a real deal alert looks like</p>
+          <img src="assets/deal-edinburgh.png" width="1600" height="262" loading="lazy" decoding="async" alt="Real FlyAtlast deal example: At last, Edinburgh is a deal. LHR to EDI, fare 136.86 GBP, about 413 GBP under budget.">
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="demo-strip">
+        <div>
+          <strong>Want to see it first? Try a free check.</strong>
+          <span>No account. A one-time look at today's fares for your trip and budget.</span>
+        </div>
+        <a href="try.html" class="plausible-event-name=How+one-time+check btn btn-primary">Check a trip</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE WATCH -->
+  <section class="section watch" id="watch">
+    <div class="wrap">
+      <p class="eyebrow">Price Watch</p>
+      <h2>Found it, but not ready to book? You only pay if the price held.</h2>
+      <p class="watch-sub">Every 2 hours, for 48 hours or 5 days. If the price moves a lot, you'll know fast, and you won't pay for the watching.</p>
+
+      <div class="watch-grid">
+      <div>
+      <ul class="check-list">
+        <!-- PHASE 4 (daily digest live): append ", with a chart in your inbox every evening" -->
+        <li><strong>We check so you don't.</strong> About 24 checks over 48 hours, or 60 over 5 days, overnight included.</li>
+        <li><strong>Big move? You hear within 2 hours.</strong> If the price rises US$5+ or falls US$20+ from where you started, we email you right after the check that caught it, so you can compare and book, or relax.</li>
+        <li><strong>You only pay if the price held.</strong> If it ends US$5+ higher or US$20+ lower than where you started, you don't pay anything.</li>
+        <li><strong>Paid more when you booked?</strong> Send your confirmation within 48 hours of your result. If it shows you paid more than your starting price, we'll refund the fee.</li>
+      </ul>
+
+      <figure class="watch-chart">
+        <!-- FW-ANIM HTML START -->
+        <div class="fw-w" data-fw-w><div class="fw-stg" role="img" aria-label="Animated example of a 48-hour Price Watch. Three outcomes: the price ends above the top line, inside the range, or below the bottom line. You pay nothing above or below, and the fee applies only inside the range."><div class="fw-cyc fw-a fw-k14" data-o="above"><svg viewBox="0 0 400 300" focusable="false"><g class="fw-a fw-k1"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/></g><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="169.7" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-mo fw-w700">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path d="M40 101.7 L77.3 96 L114.7 87.4 L152 98.9 L189.3 90.3 L226.7 78.9 L264 84.6 L301.3 70.3 L338.7 76 L376 61.7" pathLength="1" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy fw-dr fw-a fw-k2"/><g class="fw-a fw-k3"><circle cx="40" cy="101.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k4"><circle cx="77.3" cy="96" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k5"><circle cx="114.7" cy="87.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k6"><circle cx="152" cy="98.9" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k7"><circle cx="189.3" cy="90.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k8"><circle cx="226.7" cy="78.9" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k9"><circle cx="264" cy="84.6" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k10"><circle cx="301.3" cy="70.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k11"><circle cx="338.7" cy="76" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k12"><circle cx="376" cy="61.7" r="7" class="fw-c-red"/></g><g class="fw-a fw-k13"><rect x="55" y="250" width="290" height="46" stroke-width="2" class="fw-c-gbg fw-k-gtx"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w700">Ended above the line:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w800">you pay nothing</text></g></svg></div><div class="fw-cyc fw-a fw-k28" data-o="inside"><svg viewBox="0 0 400 300" focusable="false"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/><g class="fw-a fw-k15"><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/></g><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="169.7" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-mo fw-w700">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path d="M40 101.7 L77.3 93.1 L114.7 104.6 L152 87.4 L189.3 98.9 L226.7 84.6 L264 96 L301.3 107.4 L338.7 90.3 L376 113.1" pathLength="1" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy fw-dr fw-a fw-k16"/><g class="fw-a fw-k17"><circle cx="40" cy="101.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k18"><circle cx="77.3" cy="93.1" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k19"><circle cx="114.7" cy="104.6" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k20"><circle cx="152" cy="87.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k21"><circle cx="189.3" cy="98.9" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k22"><circle cx="226.7" cy="84.6" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k23"><circle cx="264" cy="96" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k24"><circle cx="301.3" cy="107.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k25"><circle cx="338.7" cy="90.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k26"><circle cx="376" cy="113.1" r="7" class="fw-c-red"/></g><g class="fw-a fw-k27"><rect x="55" y="250" width="290" height="46" stroke-width="2" class="fw-c-abg fw-k-atx"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-c-atx fw-tx fw-w700">Ended inside the range:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-c-atx fw-tx fw-w800">the fee applies</text></g></svg></div><div class="fw-cyc fw-a fw-k42" data-o="below"><svg viewBox="0 0 400 300" focusable="false"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/><g class="fw-a fw-k29"><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/></g><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="169.7" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-mo fw-w700">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path d="M40 101.7 L77.3 116 L114.7 110.3 L152 133.1 L189.3 147.4 L226.7 141.7 L264 161.7 L301.3 173.1 L338.7 190.3 L376 207.4" pathLength="1" fill="none" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy fw-dr fw-a fw-k30"/><g class="fw-a fw-k31"><circle cx="40" cy="101.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k32"><circle cx="77.3" cy="116" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k33"><circle cx="114.7" cy="110.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k34"><circle cx="152" cy="133.1" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k35"><circle cx="189.3" cy="147.4" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k36"><circle cx="226.7" cy="141.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k37"><circle cx="264" cy="161.7" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k38"><circle cx="301.3" cy="173.1" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k39"><circle cx="338.7" cy="190.3" r="4" class="fw-c-navy"/></g><g class="fw-a fw-k40"><circle cx="376" cy="207.4" r="7" class="fw-c-red"/></g><g class="fw-a fw-k41"><rect x="55" y="250" width="290" height="46" stroke-width="2" class="fw-c-gbg fw-k-gtx"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w700">Ended below the line:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-c-gtx fw-tx fw-w800">you pay nothing</text></g></svg></div></div><div class="fw-ctl"><button type="button" class="fw-tab fw-a fw-k43" data-i="0" aria-label="Show the example where the price ends above the top line">Above</button><button type="button" class="fw-tab fw-a fw-k44" data-i="1" aria-label="Show the example where the price ends inside the range">Inside</button><button type="button" class="fw-tab fw-a fw-k45" data-i="2" aria-label="Show the example where the price ends below the bottom line">Below</button></div></div>
+        <!-- FW-ANIM HTML END -->
+        <figcaption>Example 48-hour watch: how your result is decided. If the price ends above the top line or below the bottom line, you don't pay. Only the final check counts. Prices are illustrative.</figcaption>
+      </figure>
+      </div>
+
+      <div>
+      <div class="trial">
+        <p class="trial-tag">Free · one per account</p>
+        <p class="trial-title">Your first Price Watch is free.</p>
+        <p class="trial-desc">24 hours, no card. Same range and same big-move alerts as a paid watch, and we'll show you what would have happened.</p>
+        <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Try+Price+Watch+free btn btn-primary">Try Price Watch free</a>
+      </div>
+      <div class="tiers">
+        <div class="tier featured">
+          <p class="tier-len">5 days</p>
+          <p class="tier-price">US$9.99</p>
+          <p class="tier-cancel">Cancel free within 24 hours</p>
+        </div>
+        <div class="tier">
+          <p class="tier-len">48 hours</p>
+          <p class="tier-price">US$5.99</p>
+          <p class="tier-cancel">Cancel free within 12 hours</p>
+        </div>
+      </div>
+      <p class="fine-on-navy">Held in your own currency at that day's rate. We stop checking 12 hours before departure.</p>
+
+      <div class="isnt">
+        <p><strong>What it isn't:</strong> we don't hold seats or the fare. Airlines can still change the price, and you'd pay the new price when you book.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section alt" id="pricing">
+    <div class="wrap">
+      <div class="pricing-head">
+        <p class="eyebrow">Pricing</p>
+        <h2>Tracking is free. Pay only for what you use.</h2>
+      </div>
+
+      <div class="plans">
+        <div class="plan">
+          <p class="plan-label">Every account</p>
+          <p class="plan-title">Free</p>
+          <p class="desc">3 trips, 25 checks each, deal alerts with the exact flight. Plus one free 24-hour Price Watch trial. No subscription, no card.</p>
+        </div>
+        <div class="plan">
+          <p class="plan-label">Need more trips?</p>
+          <p class="plan-title">US$3 for 3 more</p>
+          <p class="desc">A one-time purchase. Same 25 checks per trip as free trips. Buy again whenever you need.</p>
+        </div>
+        <div class="plan dark">
+          <p class="plan-label">Found a good price?</p>
+          <p class="plan-title">Price Watch</p>
+          <p class="desc">US$5.99 for 48 hours or US$9.99 for 5 days. You don't pay if the price ends US$5+ higher or US$20+ lower.</p>
+        </div>
+      </div>
+
+      <div class="earn">
+        <h3>Or earn free trips</h3>
+        <!-- Add recaptured referral + streak screenshots here once taken
+             from the live app (the old ones showed retired Freeze rewards). -->
+        <div class="earn-grid">
+          <p><strong>Refer a friend.</strong> When they join, you each get an extra trip slot. Every referral counts.</p>
+          <p><strong>Keep a 7-day streak.</strong> Check in 7 days in a row and earn an extra trip slot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <p class="eyebrow">FAQ</p>
+      <h2 style="margin-bottom: 24px;">Questions, answered plainly.</h2>
+      <div class="faq">
+        <details><summary>How is this different from price alerts on other sites?</summary><p>Search sites and general price alerts are built around a route and dates. They show you today's price, or tell you when it changes. FlyAtlast starts from your budget. You pin a trip with the total that makes it a yes, and we email you when a real fare fits it, confirmed on two checks in a row, with the exact flight. We don't cover every site or fare, and our prices can differ from other sites, so every deal links to Google Flights for a quick compare.</p></details>
+        <details><summary>How does FlyAtlast work?</summary><p>Pin a trip with your route, dates and budget. We check real, bookable fares from the day you pin until you fly (25 checks per trip, closer together as departure nears). When one comes in under your budget, we send you the exact flight and a link to book. Deal alerts arrive between 8:00 and 21:00 your time.</p></details>
+        <details><summary>What's free, and what costs money?</summary><p>Your first 3 trips are free: 25 checks each, deal alerts, no card. More trips are US$3 for 3, and you can earn extras through referrals and a 7-day streak. Price Watch is optional, and your first one is a free 24-hour trial (one per account, no card, and we tell you what would have happened).</p></details>
+        <details><summary>What's Price Watch?</summary><p>It's for when you've found a fare but can't book yet. We check it every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99) and email you if it moves US$5 up or US$20 down. If it ends that far up or down, you pay nothing. If it ends inside that range, the fee applies. You can start one on a pinned trip once its price is at or under your budget and departure is at least 24 hours away.</p></details>
+        <details><summary>What if I pay for Price Watch and still end up paying more for my ticket?</summary><p>Two things have your back. Most outcomes cost you nothing: the fee is only charged if the price ends inside our range. If it ends US$5+ higher or US$20+ lower than where you started, the card hold is released.<br><br>And if you were charged and still paid more, send your booking confirmation within 48 hours of your result. If it shows you paid more than your starting price, we'll refund the fee after a quick review.<br><br>What Price Watch can't do is hold the fare or seats, or stop an airline changing its price. What you get is 48 hours or 5 days of checks every 2 hours, plus a heads-up if the price moved a lot.</p></details>
+        <details><summary>Do you hold seats or predict prices?</summary><p>No to both. Airlines can change a price any time, and you'd pay the new price when you book. We don't guess where fares are heading. You see real checks, and we tell you when one meets your budget.</p></details>
+        <details><summary>Why can prices differ from other sites?</summary><p>Airline prices move around, and ours come from our airline data partner, so they can differ from what you see elsewhere. That's why every deal has a one-tap Google Flights link: check it before you book.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="blog">
+    <div class="wrap">
+      <p class="eyebrow">From the blog</p>
+      <h2 style="margin-bottom: 24px;">Plain-language guides to flight prices.</h2>
+      <div class="blog-grid"><a class="blog-card" href="blog/track-flight-prices-automatically.html"><strong>How to track flight prices automatically</strong><span>Set a budget, let a tracker do the checking, and act when a real fare fits.</span><em>Read the guide →</em></a><a class="blog-card" href="blog/why-flight-prices-change.html"><strong>Why do flight prices change so often?</strong><span>What actually moves fares, in plain language.</span><em>Read the guide →</em></a><a class="blog-card" href="blog/best-time-to-book-flights.html"><strong>Best time to book flights</strong><span>What anyone can and cannot tell you, and why we do not predict fares.</span><em>Read the guide →</em></a></div>
+      <p class="blog-all"><a href="blog/">See all articles →</a></p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="section closing" id="pin">
+    <div class="wrap">
+      <h2>Where to, and what's your budget?</h2>
+      <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free btn btn-primary">Pin a trip free</a>
+      <p class="reassurance">No card needed · Free Price Watch trial</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © FlyAtlast · contactus@flyatlast.com · <a href="why.html">Why FlyAtlast</a> · <a href="blog/">Blog</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a>
+</footer>
+
+<script>
+  // Smooth-scroll in-page nav links without leaving the hash in the URL
+  // (Sep 7 fix, kept). Also closes the mobile menu after a tap.
+  document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', window.location.pathname);
+      var links = document.getElementById('navLinks');
+      if (links.classList.contains('nav-open')) {
+        links.classList.remove('nav-open');
+        document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>
+<!-- FA-ANIM JS START -->
+<script id="fa-anim-js">
+(function () {
+  var root = document.querySelector('.fa-anim');
+  if (!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce && reduce.matches) return;
+  var user = false, started = false, stage = root.querySelector('.fa-stage');
+  function setPaused(p) { root.classList.toggle('fa-is-paused', p); }
+  function restart() {
+    if (!root.getAnimations) return;
+    root.getAnimations({ subtree: true }).forEach(function (a) { a.currentTime = 0; });
+  }
+  if (stage) { stage.style.cursor = 'pointer'; stage.addEventListener('click', function () { user = !user; setPaused(user); }); }
+  if (!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var visible = e.intersectionRatio >= 0.35;
+      if (visible && !started) { started = true; restart(); }
+      if (user) return;
+      setPaused(!visible);
+    });
+  }, { threshold: [0, 0.35, 1] }).observe(root);
+})();
+</script>
+<!-- FA-ANIM JS END -->
+<!-- FW-ANIM JS START -->
+<script id="fw-anim-js">
+(function () {
+  var root = document.querySelector('[data-fw-w]');
+  if (!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce && reduce.matches) return;
+  var user = false, started = false, stg = root.querySelector('.fw-stg');
+  function setPaused(p) { root.classList.toggle('fw-is-paused', p); }
+  function seek(ms) {
+    if (!root.getAnimations) return;
+    root.getAnimations({ subtree: true }).forEach(function (a) { a.currentTime = ms; });
+  }
+  if (stg) { stg.style.cursor = 'pointer'; stg.addEventListener('click', function () { user = !user; setPaused(user); }); }
+  Array.prototype.forEach.call(root.querySelectorAll('.fw-tab'), function (b) {
+    b.addEventListener('click', function () {
+      seek(Number(b.getAttribute('data-i')) * 6000 + 60);
+      user = false; setPaused(false);
+    });
+  });
+  if (!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var vis = e.intersectionRatio >= 0.35;
+      if (vis && !started) { started = true; seek(0); }
+      if (user) return;
+      setPaused(!vis);
+    });
+  }, { threshold: [0, 0.35, 1] }).observe(root);
+})();
+</script>
+<!-- FW-ANIM JS END -->
+</body>
+</html>
