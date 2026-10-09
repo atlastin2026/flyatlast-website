@@ -19,7 +19,7 @@
   <meta name="twitter:image" content="https://flyatlast.com/assets/og-image.png">
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://flyatlast.com/#org", "name": "FlyAtlast", "url": "https://flyatlast.com/", "logo": "https://flyatlast.com/assets/logo192.png", "email": "contactus@flyatlast.com"}, {"@type": "WebSite", "@id": "https://flyatlast.com/#site", "url": "https://flyatlast.com/", "name": "FlyAtlast", "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "WebApplication", "name": "FlyAtlast", "url": "https://flyatlast.com/", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "description": "Set a budget for a trip. FlyAtlast checks real, bookable fares and alerts you with the exact flight when one comes in under it.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free for 3 trips"}, "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does FlyAtlast work?", "acceptedAnswer": {"@type": "Answer", "text": "Pin a trip with your route, dates and budget. We check real, bookable fares from the day you pin until you fly (25 checks per trip, closer together as departure nears). When one comes in under your budget, we send you the exact flight and a link to book. Deal alerts arrive between 8:00 and 21:00 your time."}}, {"@type": "Question", "name": "What's free, and what costs money?", "acceptedAnswer": {"@type": "Answer", "text": "Your first 3 trips are free: 25 checks each, deal alerts, no card. More trips are US$3 for 3, and you can earn extras through referrals and a 7-day streak. Price Watch is optional, and your first one is a free 24-hour trial (one per account, no card, and we tell you what would have happened)."}}, {"@type": "Question", "name": "What's Price Watch?", "acceptedAnswer": {"@type": "Answer", "text": "It's for when you've found a fare but can't book yet. We check it every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99) and email you if it moves US$5 up or US$20 down. If it ends that far up or down, you pay nothing. If it ends inside that range, the fee applies. You can start one on a pinned trip once its price is at or under your budget and departure is at least 24 hours away."}}, {"@type": "Question", "name": "What if I pay for Price Watch and still end up paying more for my ticket?", "acceptedAnswer": {"@type": "Answer", "text": "Two things have your back. Most outcomes cost you nothing: the fee is only charged if the price ends inside our range. If it ends US$5+ higher or US$20+ lower than where you started, the card hold is released. And if you were charged and still paid more, send your booking confirmation within 48 hours of your result. If it shows you paid more than your starting price, we'll refund the fee after a quick review. What Price Watch can't do is hold the fare or seats, or stop an airline changing its price. What you get is 48 hours or 5 days of checks every 2 hours, plus a heads-up if the price moved a lot."}}, {"@type": "Question", "name": "Do you hold seats or predict prices?", "acceptedAnswer": {"@type": "Answer", "text": "No to both. Airlines can change a price any time, and you'd pay the new price when you book. We don't guess where fares are heading. You see real checks, and we tell you when one meets your budget."}}, {"@type": "Question", "name": "Why can prices differ from other sites?", "acceptedAnswer": {"@type": "Answer", "text": "Airline prices move around, and ours come from our airline data partner, so they can differ from what you see elsewhere. That's why every deal has a one-tap Google Flights link: check it before you book."}}]}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #1E3A5F;
@@ -428,38 +428,54 @@ main img{max-width:100%;height:auto}
 <!-- SITE-UPDATE CSS END -->
 <script defer data-domain="flyatlast.com" src="https://plausible.io/js/script.tagged-events.js"></script>
 <style id="v2-css">
-.hero2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:center;padding:64px 24px;text-align:left}
-.hero2 h1{font-size:44px;font-weight:800;line-height:1.1;margin:0 0 16px;max-width:14ch}
-.hero2 .eyebrow{margin-bottom:12px}
-.hero2 .hero-sub{margin:0 0 26px;max-width:46ch;font-size:18px}
-.hero2 .reassurance{margin:12px 0 0;text-align:left}
-.try-link{margin:14px 0 0;font-size:15px;color:var(--text-body)}
-.try-link a{color:var(--navy);font-weight:800;border-bottom:2px solid var(--navy);text-decoration:none}
-.hero2-anim{min-width:0}
-.hero2-anim .fa-anim{margin:0}
-.trust{background:var(--navy);color:#fff;padding:16px 0}
-.trust-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 28px;font-size:14px;font-weight:600}
+body{font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+.nav-tagline{display:none!important}
+.btn{border-radius:10px}
+.hx-hero{background:#fff;border-bottom:2px solid var(--border);padding:60px 0 56px}
+.hx-in{text-align:center}
+.hx-h1{margin:0;font-size:clamp(46px,9vw,92px);line-height:.98;font-weight:800;letter-spacing:-.04em;max-width:none}
+.hx-h1 span{color:#B88A00}
+.hx-sub{margin:20px auto 30px;font-size:20px;line-height:1.5;color:var(--text-body);max-width:34ch}
+.hx-form{max-width:880px;margin:0 auto;background:#fff;border:2px solid var(--navy);border-radius:16px;padding:10px;display:grid;grid-template-columns:1.1fr 1.1fr .9fr auto;gap:10px;box-shadow:0 14px 34px rgba(30,58,95,.14);text-align:left}
+.hx-fld{display:flex;flex-direction:column;padding:8px 14px;background:#EAF1F8;border-radius:10px;cursor:text;min-width:0}
+.hx-fld span{font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase}
+.hx-fld input{border:0;background:transparent;font:700 18px 'Sora',sans-serif;color:var(--navy);padding:2px 0;width:100%;min-width:0;outline:none}
+.hx-fld input::placeholder{color:#8795A3;font-weight:600}
+.hx-fld:focus-within{outline:3px solid var(--navy);outline-offset:1px}
+.hx-go{min-height:56px;padding:0 26px;font-size:17px;cursor:pointer;border-radius:10px}
+.hx-micro{margin:14px auto 0;font-size:14px;color:var(--text-muted);max-width:64ch;line-height:1.55}
+.hx-micro a{color:var(--navy);font-weight:700;border-bottom:2px solid var(--yellow);text-decoration:none;white-space:nowrap}
+.hx-tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:2px solid var(--navy);border-radius:20px;overflow:hidden;margin-top:40px;text-align:left}
+.hx-pn{padding:28px;display:flex;flex-direction:column;gap:14px;min-height:290px}
+.hx-vb{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.hx-d{font-size:15px;line-height:1.5;opacity:.88}
+.hx-p1{background:var(--navy);color:#fff}.hx-p2{background:#EAF1F8;color:var(--navy)}.hx-p3{background:var(--yellow);color:#14213A}
+.hx-mini{background:#fff;color:var(--navy);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:600;margin-top:auto}
+.hx-row{display:flex;justify-content:space-between;gap:10px}.hx-row b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.hx-chk{display:flex;flex-wrap:wrap;gap:5px}.hx-chk i{width:18px;height:18px;background:var(--navy);border-radius:4px}.hx-chk i.o{background:none;border:2px solid var(--navy)}
+.hx-ex{font-size:12px;color:var(--text-muted);font-weight:500}
+.hx-center{text-align:center}
+.hx-center .fa-anim{margin:0 auto}
+.hx-shots{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:26px}
+@media (min-width:861px){.fa-stage{border-radius:16px;overflow:hidden}}
+.proof-frame,.plan,.faq details,.tier,.trial,.isnt,.blog-card,.watch-chart{border-radius:14px}
 .cmp-lead{margin:12px 0 28px;font-size:17px;color:var(--text-body);max-width:62ch}
-.cmp-scroll{overflow-x:auto;border:2px solid var(--navy);background:var(--white)}
+.cmp-scroll{overflow-x:auto;border:2px solid var(--navy);border-radius:16px;background:var(--white)}
 .cmp{border-collapse:collapse;width:100%;min-width:680px}
-.cmp th,.cmp td{padding:13px 16px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;font-size:15px;line-height:1.45}
-.cmp thead th{font-size:13px;font-weight:800;background:var(--bg)}
-.cmp tbody th{font-weight:800;width:22%}
+.cmp th,.cmp td{padding:14px 16px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;font-size:15px;line-height:1.45}
+.cmp thead th{font-size:13px;font-weight:800;background:#EAF1F8}
+.cmp tbody th{font-weight:700;width:22%}
 .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
-.cmp .us{background:var(--amber-bg);font-weight:700}
+.cmp .us{background:var(--amber-bg);font-weight:600}
 .cmp thead th.us{background:var(--yellow);color:#1a1a1a}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .cmp-note{margin:12px 0 0;font-size:13px;color:var(--text-muted)}
-.demo-strip{margin-top:44px;background:var(--navy);color:#fff;padding:22px 26px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
-.demo-strip div{display:flex;flex-direction:column;gap:4px;min-width:0}
-.demo-strip strong{font-size:20px}
-.demo-strip span{font-size:14px;color:#dbe4ee}
 @media (max-width:860px){
- .hero2{grid-template-columns:1fr;gap:28px;padding:40px 24px}
- .hero2 h1{font-size:31px;max-width:none}
- .hero2 .hero-sub{font-size:16px}
- .hero2 .btn{display:block;text-align:center}
- .trust-in{flex-direction:column;gap:6px}
+ .hx-hero{padding:40px 0 44px}
+ .hx-sub{font-size:17px}
+ .hx-form{grid-template-columns:1fr}
+ .hx-go{width:100%}
+ .hx-tri{grid-template-columns:1fr}.hx-pn{min-height:0}
 }
 </style>
 </head>
@@ -470,7 +486,7 @@ main img{max-width:100%;height:auto}
     <a href="#" class="nav-brand" aria-label="FlyAtlast home">
       <svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span style="font-size: 24px; font-weight: 800; color: #fff;">FlyAtlast</span>
-      <span class="nav-tagline">Pin. Track. Fly.</span>
+      <span class="nav-tagline">You set the budget, we track the flights.</span>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#how">How it works</a>
@@ -493,32 +509,39 @@ main img{max-width:100%;height:auto}
 
 <main>
 
-  <!-- HERO (v2): text left, existing animation right -->
-  <section class="hero2 wrap">
-    <div class="hero2-text">
-      <p class="eyebrow">Search shows today. FlyAtlast watches.</p>
-      <h1>Tell us your budget. We'll tell you when a real flight fits it.</h1>
-      <p class="hero-sub">Flight sites show you today's price. You already know the price that makes it a yes. Pin the trip with that number and we keep checking, then send the exact flight when one fits.</p>
-      <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free btn btn-primary">Pin a trip free</a>
-      <p class="reassurance">First 3 trips free, 25 checks each. No card.</p>
-      <p class="try-link">Just curious? <a href="try.html" class="plausible-event-name=Hero+one-time+check">Try a one-time check, no account &rarr;</a></p>
+  <!-- HERO (v2): Pin. Track. Fly. + form that opens a pre-filled free check -->
+  <section class="hx-hero">
+   <div class="wrap hx-in">
+    <h1 class="hx-h1">Pin. Track. <span>Fly.</span></h1>
+    <p class="hx-sub">Tell us your budget. We'll tell you when a real flight fits it.</p>
+    <form class="hx-form plausible-event-name=Hero+form" action="try.html" method="get" aria-label="Check a trip against your budget">
+      <label class="hx-fld"><span>From</span><input name="from" type="text" autocomplete="off" placeholder="Toronto" required maxlength="60"></label>
+      <label class="hx-fld"><span>To</span><input name="to" type="text" autocomplete="off" placeholder="London" required maxlength="60"></label>
+      <label class="hx-fld"><span>Budget</span><input name="budget" type="number" inputmode="decimal" min="1" step="any" placeholder="1300" required></label>
+      <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
+    </form>
+    <p class="hx-micro">Free check, no sign-up. Then pin it and we keep checking. First 3 trips free, 25 checks each, no card. <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free">Or pin a trip now &rarr;</a></p>
+    <div class="hx-tri" id="how">
+      <div class="hx-pn hx-p1"><span class="hx-vb">Pin</span><span class="hx-d">Your route, dates and the budget that makes it a yes.</span>
+        <div class="hx-mini"><div class="hx-row"><span>Toronto &rarr; London</span><b>Nov 14&ndash;21</b></div><div class="hx-row"><span>Budget</span><b>C$1,300</b></div></div></div>
+      <div class="hx-pn hx-p2"><span class="hx-vb">Track</span><span class="hx-d">We check real fares, closer together as departure nears.</span>
+        <div class="hx-mini"><div class="hx-chk" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div><div class="hx-row"><span>Checks done</span><b>6 of 25</b></div></div></div>
+      <div class="hx-pn hx-p3"><span class="hx-vb">Fly</span><span class="hx-d">The exact flight lands in your inbox, with a link to book.</span>
+        <div class="hx-mini"><div class="hx-row"><span>Deal ready</span><b>C$1,187</b></div><div class="hx-row"><span>Under budget</span><b>C$113</b></div><span class="hx-ex">Example, invented numbers</span></div></div>
     </div>
-    <div class="hero2-anim">
-    <!-- FA-ANIM HTML START -->
+   </div>
+  </section>
+
+  <!-- STORY: existing animation -->
+  <section class="section" id="story">
+    <div class="wrap hx-center">
+      <p class="eyebrow">See it in action</p>
+      <h2 style="margin-bottom:26px">The fare you wanted came and went.</h2>
+      <!-- FA-ANIM HTML START -->
     <section class="fa-anim" aria-label="How FlyAtlast works: an animated example"><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="fa-i-plane" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></symbol><symbol id="fa-i-refresh" viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></symbol><symbol id="fa-i-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></symbol><symbol id="fa-i-bell" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></symbol><symbol id="fa-i-clock" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></symbol><symbol id="fa-i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol></defs></svg><div class="fa-stage" aria-hidden="true"><div class="fa-scene fa-a fa-k8" data-s="1"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="0" y="0" width="720" height="405" class="fa-c-navy"/><circle cx="560" cy="74" r="3" class="fa-c-pale" opacity=".7"/><circle cx="612" cy="122" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="498" cy="44" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="668" cy="96" r="2" class="fa-c-pale" opacity=".7"/><circle cx="100" cy="112" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="44" cy="196" r="2" class="fa-c-pale" opacity=".7"/><circle cx="250" cy="40" r="2" class="fa-c-pale" opacity=".7"/><use href="#fa-i-moon" x="636" y="22" width="46" height="46" class="fa-c-yellow"/><g class="fa-h fa-a fa-k4"><text x="40" y="56" font-size="26" text-anchor="start" class="fa-c-pale fa-mo fa-w700">Tue 2:14 am</text><g class="fa-a fa-k1"><text x="360" y="142" font-size="28" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">The fare you wanted</text></g><g class="fa-a fa-k2"><text x="360" y="238" font-size="88" text-anchor="middle" class="fa-c-lgreen fa-mo fa-w800">CA$1,187</text></g><g class="fa-a fa-k3"><text x="360" y="306" font-size="36" text-anchor="middle" class="fa-c-white fa-tx fa-w800">You were asleep.</text></g></g><g class="fa-a fa-k7"><text x="40" y="56" font-size="26" text-anchor="start" class="fa-c-pale fa-mo fa-w700">Thu 7:30 am</text><text x="360" y="142" font-size="28" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Now</text><text x="360" y="238" font-size="88" text-anchor="middle" class="fa-c-lred fa-mo fa-w800">CA$1,384</text><path d="M596 228 L648 228 L622 182 Z" class="fa-c-lred"/><g class="fa-a fa-k5"><text x="360" y="306" font-size="36" text-anchor="middle" class="fa-c-white fa-tx fa-w800">Gone.</text></g><g class="fa-a fa-k6"><text x="360" y="366" font-size="24" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">You checked 19 times. Not at 2:14 am.</text></g></g></svg></div><div class="fa-scene fa-a fa-k15" data-s="2"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="110" y="24" width="500" height="360" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="140" y="74" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">Your trip</text><text x="140" y="124" font-size="36" text-anchor="start" class="fa-c-navy fa-mo fa-w700 fa-clip fa-a fa-k9">Toronto → London</text><g class="fa-a fa-k10"><text x="140" y="190" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">Your budget</text></g><text x="140" y="262" font-size="72" text-anchor="start" class="fa-c-navy fa-mo fa-w800 fa-clip fa-a fa-k11">CA$1,300</text><rect x="140" y="276" width="346" height="8" class="fa-c-yellow fa-ol fa-a fa-k12"/><g class="fa-h fa-a fa-k13"><rect x="140" y="306" width="420" height="58" stroke-width="2" class="fa-c-yellow fa-k-navy"/><text x="350" y="344" font-size="28" text-anchor="middle" class="fa-c-dark fa-tx fa-w800">Pin trip</text></g><g class="fa-a fa-k14"><circle cx="158" cy="335" r="10" class="fa-c-gtx"/><text x="182" y="346" font-size="34" text-anchor="start" class="fa-c-gtx fa-tx fa-w800">Watching</text></g></svg></div><div class="fa-scene fa-a fa-k22" data-s="3"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><g class="fa-a fa-k16"><rect x="40" y="20" width="300" height="365" class="fa-c-navy" rx="30"/><text x="190" y="104" font-size="46" text-anchor="middle" class="fa-c-white fa-tx fa-w800">8:04 am</text><text x="190" y="136" font-size="22" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Tuesday</text><rect x="150" y="366" width="80" height="6" class="fa-c-pale" rx="3" opacity=".7"/></g><g class="fa-a fa-k17"><rect x="56" y="168" width="268" height="152" class="fa-c-white" rx="14"/><text x="74" y="200" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w700">FlyAtlast</text><text x="74" y="234" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w800">London is a deal</text><text x="74" y="274" font-size="32" text-anchor="start" class="fa-c-navy fa-mo fa-w800">CA$1,187</text><text x="74" y="304" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">CA$113 under budget</text></g><g class="fa-a fa-k18"><text x="372" y="160" font-size="34" text-anchor="start" class="fa-c-navy fa-tx fa-w800">You slept in.</text></g><g class="fa-a fa-k19"><text x="372" y="208" font-size="34" text-anchor="start" class="fa-c-navy fa-tx fa-w800">We kept checking.</text></g><rect x="372" y="220" width="292" height="7" class="fa-c-yellow fa-ol fa-a fa-k20"/><g class="fa-a fa-k21"><text x="372" y="266" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">The exact flight,</text><text x="372" y="294" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">with a link to book.</text></g></svg></div><div class="fa-scene fa-a fa-k40" data-s="4"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><g class="fa-a fa-k23"><rect x="50" y="104" width="620" height="55.4" class="fa-c-gbg"/></g><rect x="50" y="159.4" width="620" height="121.1" class="fa-c-abg"/><rect x="50" y="280.5" width="620" height="41.5" class="fa-c-gbg"/><line x1="50" x2="670" y1="159.4" y2="159.4" stroke-width="2.5" stroke-dasharray="8 6" class="fa-k-gtx"/><line x1="50" x2="670" y1="280.5" y2="280.5" stroke-width="2.5" stroke-dasharray="8 6" class="fa-k-gtx"/><text x="112" y="147.4" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">Pay nothing above 1,194</text><text x="112" y="308" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">Pay nothing below 1,159</text><text x="112" y="260.5" font-size="22" text-anchor="start" class="fa-c-atx fa-tx fa-w700">Fee applies in here</text><line x1="100" x2="100" y1="104" y2="322" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fa-k-navy"/><text x="112" y="227.6" font-size="22" text-anchor="start" class="fa-c-navy fa-mo fa-w700">Day 0: 1,187</text><path d="M100 183.6 L160 176.7 L220 166.3 L280 180.1 L340 169.7 L400 155.9 L460 162.8 L520 145.5 L580 152.4 L640 135.1" pathLength="1" fill="none" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" class="fa-k-navy fa-dr fa-a fa-k24"/><g class="fa-a fa-k25"><circle cx="100" cy="183.6" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k26"><circle cx="160" cy="176.7" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k27"><circle cx="220" cy="166.3" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k28"><circle cx="280" cy="180.1" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k29"><circle cx="340" cy="169.7" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k30"><circle cx="400" cy="155.9" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k31"><circle cx="460" cy="162.8" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k32"><circle cx="520" cy="145.5" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k33"><circle cx="580" cy="152.4" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k34"><circle cx="640" cy="135.1" r="8" class="fa-c-red"/></g><g class="fa-a fa-k35"><use href="#fa-i-bell" x="408" y="101.4" width="26" height="26" class="fa-c-navy"/><text x="438" y="123.4" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w700">Alert sent</text></g><g class="fa-a fa-k36"><rect x="50" y="16" width="244" height="36" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="172" y="41" font-size="22" text-anchor="middle" class="fa-c-navy fa-tx fa-w700">48 hours · US$5.99</text><rect x="304" y="16" width="220" height="36" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="414" y="41" font-size="22" text-anchor="middle" class="fa-c-navy fa-tx fa-w700">5 days · US$9.99</text></g><g class="fa-a fa-k37"><use href="#fa-i-clock" x="50" y="58" width="30" height="30" class="fa-c-navy"/><text x="86" y="82" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w700">Every 2 hours</text></g><g class="fa-a fa-k38"><rect x="111" y="334" width="498" height="34" stroke-width="2" class="fa-c-gbg fa-k-gtx"/><text x="360" y="358" font-size="22" text-anchor="middle" class="fa-c-gtx fa-tx fa-w700">Ended above the line: you pay nothing</text></g><g class="fa-a fa-k39"><text x="360" y="393" font-size="22" text-anchor="middle" class="fa-c-muted fa-tx fa-w600">We don't hold the fare or seats.</text></g></svg></div><div class="fa-scene fa-a fa-k44" data-s="5"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="0" y="0" width="720" height="405" class="fa-c-navy"/><g class="fa-a fa-k41"><text x="360" y="168" font-size="44" text-anchor="middle" class="fa-c-white fa-tx fa-w800">You set the budget,</text><text x="360" y="222" font-size="44" text-anchor="middle" class="fa-c-white fa-tx fa-w800">we track the flights.</text></g><rect x="300" y="250" width="120" height="6" class="fa-c-yellow fa-ol fa-a fa-k42"/><g class="fa-a fa-k43"><text x="360" y="304" font-size="26" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Free for 3 trips and one free Price Watch.</text></g></svg></div></div><div class="fa-bar"><div class="fa-prog"><span class="fa-seg"><span class="fa-fill fa-a fa-k46"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k48"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k50"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k52"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k54"></span></span></div></div><ol class="fa-caps" role="list"><li class="fa-a fa-k45"><span class="fa-ch">The price you wanted came and went.</span><span class="fa-cs">It came in under your budget at 2:14 am. You were asleep.</span></li><li class="fa-a fa-k47"><span class="fa-ch">Pin the trip. Set your budget.</span><span class="fa-cs">Where, when, and the budget that makes it a yes.</span></li><li class="fa-a fa-k49"><span class="fa-ch">You slept in. We kept checking.</span><span class="fa-cs">When a real fare comes in under your budget, we confirm it and send you the exact flight, with a link to book.</span></li><li class="fa-a fa-k51"><span class="fa-ch">Not ready to book? Watch it.</span><span class="fa-cs">Price Watch checks every 2 hours. If it ends US$5+ higher or US$20+ lower, you pay nothing.</span></li><li class="fa-a fa-k53"><span class="fa-ch">You set the budget, we track the flights.</span><span class="fa-cs">Free for 3 trips and one free Price Watch. No card needed.</span></li></ol><p class="fa-note">Example route and prices, for illustration.</p></section>
     <!-- FA-ANIM HTML END -->
     </div>
   </section>
-
-  <!-- TRUST STRIP -->
-  <div class="trust" role="list">
-    <div class="wrap trust-in">
-      <span role="listitem">Real, bookable fares from an airline data partner</span>
-      <span role="listitem">Alert only when a fare fits your budget</span>
-      <span role="listitem">No price predictions, no seat holds</span>
-      <span role="listitem">No card to start</span>
-    </div>
-  </div>
 
   <!-- SEARCH VS WATCH -->
   <section class="section alt" id="compare">
@@ -526,8 +549,7 @@ main img{max-width:100%;height:auto}
       <p class="eyebrow">Why it's different</p>
       <h2>Search shows today's price. FlyAtlast waits for yours.</h2>
       <p class="cmp-lead">Flight search and general price alerts are good for browsing. FlyAtlast starts from the number you already decided.</p>
-      <div class="cmp-scroll">
-      <table class="cmp">
+      <div class="cmp-scroll"><table class="cmp">
         <thead><tr><th scope="col"><span class="sr">Feature</span></th><th scope="col">Flight search sites</th><th scope="col">Typical price-change alerts</th><th scope="col" class="us">FlyAtlast</th></tr></thead>
         <tbody>
           <tr><th scope="row">You set a target budget</th><td>No. You compare what's listed.</td><td>Usually not. You track a route and dates.</td><td class="us">Yes. Your budget is the trigger.</td></tr>
@@ -536,69 +558,27 @@ main img{max-width:100%;height:auto}
           <tr><th scope="row">What you receive</th><td>A results page.</td><td>A price movement.</td><td class="us">The exact flight: times, stops, fare type and a link to book.</td></tr>
           <tr><th scope="row">Price predictions</th><td>Some show them.</td><td>Some include them.</td><td class="us">None. Real checks only.</td></tr>
           <tr><th scope="row">Coverage</th><td>Very wide. Good for comparing everything.</td><td>Wide.</td><td class="us">Fares from our airline data partner. They can differ from other sites, so every deal links to Google Flights to compare.</td></tr>
-        </tbody>
-      </table>
-      </div>
+        </tbody></table></div>
       <p class="cmp-note">General description of how these tools typically work. Features vary by site and change over time.</p>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how">
-    <div class="wrap how">
-      <div>
-        <p class="eyebrow">How it works</p>
-        <h2 style="margin-bottom: 30px;">Set your trip. We do the checking.</h2>
-
-        <div class="step">
-          <div class="step-num">01</div>
-          <div>
-            <h3>Where and when</h3>
-            <p>Your route and dates, flexible by a few days if you're not locked in.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div>
-            <h3>Your budget</h3>
-            <p>The total that makes this trip a yes, for all passengers.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div>
-            <h3>We do the checking</h3>
-            <p>Each trip gets 25 checks, spread from the day you pin until you fly and packed closer together as departure nears. When a real fare comes in under your budget, you get the exact flight and a link to book.</p>
-          </div>
-        </div>
-
-        <div class="note">
-          <p><strong style="color: var(--navy);">Heads up:</strong> airline prices move around, and ours come from our airline data partner, so they can differ from other sites. That's why every deal has a one-tap Google Flights link: check it before you book.</p>
-        </div>
-
-        <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+your+first+trip btn btn-primary">Pin your first trip</a>
-      </div>
-
-      <div>
+  <!-- REAL SCREENS -->
+  <section class="section" id="app">
+    <div class="wrap">
+      <p class="eyebrow">The real app</p>
+      <h2 style="margin-bottom:26px">This is what you'll see.</h2>
+      <div class="hx-shots">
         <div class="proof-frame">
-          <p class="proof-label">The actual form · real screenshot</p>
+          <p class="proof-label">The actual form &middot; real screenshot</p>
           <img src="assets/pintrip.png" width="1280" height="1390" loading="lazy" decoding="async" alt="Real screenshot of the FlyAtlast Pin Your Trip form, showing destination, budget, travelers, dates, and flight preference fields.">
         </div>
-        <!-- Swap for a Toronto deal card in CAD once recaptured (Canada/US launch). -->
         <div class="proof-frame">
           <p class="proof-label">What a real deal alert looks like</p>
           <img src="assets/deal-edinburgh.png" width="1600" height="262" loading="lazy" decoding="async" alt="Real FlyAtlast deal example: At last, Edinburgh is a deal. LHR to EDI, fare 136.86 GBP, about 413 GBP under budget.">
         </div>
       </div>
-    </div>
-    <div class="wrap">
-      <div class="demo-strip">
-        <div>
-          <strong>Want to see it first? Try a free check.</strong>
-          <span>No account. A one-time look at today's fares for your trip and budget.</span>
-        </div>
-        <a href="try.html" class="plausible-event-name=How+one-time+check btn btn-primary">Check a trip</a>
-      </div>
+      <div class="note"><p><strong style="color: var(--navy);">Heads up:</strong> airline prices move around, and ours come from our airline data partner, so they can differ from other sites. That's why every deal has a one-tap Google Flights link: check it before you book.</p></div>
     </div>
   </section>
 
