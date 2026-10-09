@@ -288,6 +288,27 @@ main{padding:36px 20px 64px}
     }).catch(function () {});
   })();
 
+  /* ---------- prefill from the homepage form (?from=&to=&budget=) ---------- */
+  (function prefill() {
+    var q; try { q = new URLSearchParams(location.search); } catch (e) { return; }
+    var b = parseFloat(q.get('budget'));
+    if (b > 0 && b < 1e7) $('d-budget').value = String(b);
+    function place(id, text) {
+      text = (text || '').trim().slice(0, 60); if (!text) return;
+      var code = codeOf(text);
+      if (code) { $(id).value = text.toUpperCase(); return; }
+      $(id).value = text;
+      api('/demo/places?query=' + encodeURIComponent(ALIAS[text.toLowerCase()] || text)).then(function (r) {
+        var arr = Array.isArray(r.j) ? r.j : (r.j && (r.j.suggestions || r.j.results)) || [];
+        var p = arr.filter(function (x) { return x.iata_code || x.code; })[0]; if (!p) return;
+        var c = p.iata_code || p.code, label = shortName(p, c) + ' (' + c + ')';
+        $(id).value = label; meta[label] = { code: c, country: p.iata_country_code || null };
+        if (id === 'd-from' && p.iata_country_code) { var cc = R2C[String(p.iata_country_code).toUpperCase()]; if (cc) applyCur(cc); }
+      }).catch(function () {});
+    }
+    place('d-from', q.get('from')); place('d-to', q.get('to'));
+  })();
+
   /* ---------- dates ---------- */
   (function dates() {
     var t = new Date(), iso = function (d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
