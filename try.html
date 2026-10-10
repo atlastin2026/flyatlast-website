@@ -296,6 +296,9 @@ main{padding:36px 20px 64px}
     var q; try { q = new URLSearchParams(location.search); } catch (e) { return; }
     var b = parseFloat(q.get('budget'));
     if (b > 0 && b < 1e7) $('d-budget').value = String(b);
+    var iso = /^\d{4}-\d{2}-\d{2}$/, td = new Date(), tod = td.getFullYear() + '-' + String(td.getMonth() + 1).padStart(2, '0') + '-' + String(td.getDate()).padStart(2, '0');
+    var qd = q.get('dep') || '', qr = q.get('ret') || '';
+    if (iso.test(qd) && qd >= tod) { $('d-dep').value = qd; if (iso.test(qr) && qr >= qd) $('d-ret').value = qr; }
     var pc = (q.get('cur') || '').toUpperCase();
     if (/^[A-Z]{3}$/.test(pc)) { prefCur = pc; wantCur = pc; curTouched = true; if (!setCur(pc)) { var po = document.createElement('option'); po.value = po.textContent = pc; $('d-cur').appendChild(po); $('d-cur').value = pc; } }
     function place(id, text) {
