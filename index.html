@@ -358,7 +358,7 @@ body{font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-se
 .hx-fld input{text-overflow:ellipsis;border:0;background:transparent;font:700 18px 'Sora',sans-serif;color:var(--navy);padding:2px 0;width:100%;min-width:0;outline:none}
 .hx-fld input::placeholder{color:#8795A3;font-weight:600}
 .hx-fld:focus-within{outline:3px solid var(--navy);outline-offset:1px}
-.hx-bud{grid-column:1 / 4}.hx-fld input[type=date]{font-size:16px;min-height:28px}.hx-fld span em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:600}
+.hx-tvf{grid-column:1}.hx-bud{grid-column:2 / 4}.hx-fld input[type=date]{font-size:16px;min-height:28px}.hx-fld span em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:600}
 .hx-go{grid-column:4;min-height:56px;padding:0 26px;font-size:17px;cursor:pointer;border-radius:10px}
 .hx-cue{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto 14px;font-size:15px;font-weight:700;color:var(--navy);flex-wrap:wrap;text-align:center}
 .hx-cue b{font:800 12px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;background:var(--yellow,#F4C11C);color:var(--navy);border-radius:999px;padding:5px 12px}
@@ -367,6 +367,27 @@ body{font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-se
 .hx-form.nudge{animation:hxnudge 1.6s ease-in-out 3}
 @keyframes hxnudge{0%,100%{box-shadow:0 0 0 0 rgba(244,193,28,0)}50%{box-shadow:0 0 0 8px rgba(244,193,28,.55)}}
 @media (prefers-reduced-motion:reduce){.hx-form.nudge{animation:none}}
+
+.tv{position:relative}
+.hx-tvf .tv-btn{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;cursor:pointer;font:700 16px 'Sora',sans-serif;color:var(--navy);padding:2px 0;min-height:28px}
+.hx-tvf .tv-btn:focus-visible{outline:3px solid var(--navy);outline-offset:3px;border-radius:6px}
+.hx-tvf .tv-sum{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tv-pop{position:absolute;left:0;top:calc(100% + 8px);z-index:40;width:290px;max-width:calc(100vw - 40px);background:#fff;border:2px solid var(--navy);border-radius:14px;box-shadow:0 14px 32px rgba(30,58,95,.22);padding:14px 16px;text-align:left;cursor:default}
+.tv-pop[hidden]{display:none}
+.tv-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0}
+.tv-row b{font:700 15px 'Public Sans',sans-serif;color:var(--navy)}.tv-row b em{font-style:normal;font-weight:600;color:#5A6B78;font-size:13px}
+.tv-step{display:flex;align-items:center;gap:12px}
+.tv-step i{font:800 17px 'JetBrains Mono',monospace;font-style:normal;min-width:18px;text-align:center;color:var(--navy)}
+.tv-step button{width:36px;height:36px;border-radius:50%;border:2px solid var(--navy);background:#fff;color:var(--navy);font:800 20px/1 'Public Sans',sans-serif;cursor:pointer;padding:0}
+.tv-step button:disabled{opacity:.35;cursor:not-allowed}
+.tv-ages{display:grid;gap:8px;margin-top:4px}
+.tv-age{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tv-age span{font:600 14px 'Public Sans',sans-serif;color:#4A5F78}
+.tv-age select{border:2px solid #C3CFDA;border-radius:8px;background:#fff;font:700 14px 'Public Sans',sans-serif;color:var(--navy);padding:6px 8px;min-width:96px}
+.tv-age select.bad{border-color:#B3261E;background:#FDECEA}
+.tv-done{margin-top:10px;width:100%;border:0;border-radius:10px;background:var(--navy);color:#fff;font:800 15px 'Public Sans',sans-serif;padding:11px;cursor:pointer}
+.hx-tvf .tv-pop span,.hx-tvf .tv-pop b,.hx-tvf .tv-pop em{text-transform:none;letter-spacing:0}
+.hx-form.demoing .tv-sum{color:#7A8CA3}
 .hx-ticks{display:flex;gap:10px 26px;justify-content:center;flex-wrap:wrap;margin:16px auto 0;font-size:15px;font-weight:700;color:var(--navy)}
 .hx-ticks i{font-style:normal;color:#17663A;margin-right:7px;font-weight:800}
 .hx-ac{position:relative}
@@ -443,7 +464,7 @@ body{font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-se
  .hxa,.a1 .hx-mini,.a3 .hx-mini{animation:none!important;opacity:1!important;transform:none!important}
  .hx-chk i.t{animation:none!important;background:#1E3A5F;box-shadow:none}
  .hx-form{grid-template-columns:1fr 1fr;padding:8px;gap:8px}
- .hx-bud{grid-column:1}.hx-go{grid-column:2;min-height:0;padding:12px 8px;font-size:15px}
+ .hx-tvf{grid-column:1 / -1}.hx-bud{grid-column:1}.hx-go{grid-column:2;min-height:0;padding:12px 8px;font-size:15px}
  .hx-fld.hx-ac{grid-column:1 / -1}
  .hx-list{min-width:0}
  .hx-hero{padding:32px 0 36px}
@@ -661,7 +682,9 @@ section[id]{scroll-margin-top:72px}
       <label class="hx-fld hx-ac"><span>To</span><input name="to" id="hx-to" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-to" autocomplete="off" placeholder="City or airport" required maxlength="60"><ul class="hx-list" id="hx-dl-to" role="listbox" hidden></ul></label>
       <label class="hx-fld"><span>Depart</span><input name="dep" id="hx-dep" type="date" required></label>
       <label class="hx-fld"><span>Return <em>(optional)</em></span><input name="ret" id="hx-ret" type="date"></label>
-      <label class="hx-fld hx-bud"><span>Budget &middot; 1 adult</span><div class="hx-money"><input name="budget" id="hx-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 1300" required><select name="cur" id="hx-cur" aria-label="Currency"><option>CAD</option><option>USD</option><option>EUR</option><option>GBP</option><option>AUD</option></select></div></label>
+      <div class="hx-fld hx-tvf tv" id="hx-tv"><span>Travellers</span><button type="button" class="tv-btn" aria-haspopup="dialog" aria-expanded="false"><strong class="tv-sum">1 adult</strong><svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="tv-pop" hidden role="dialog" aria-label="Travellers"><div class="tv-row"><b>Adults</b><div class="tv-step"><button type="button" data-k="am" aria-label="Fewer adults">&minus;</button><i class="tv-a">1</i><button type="button" data-k="ap" aria-label="More adults">+</button></div></div><div class="tv-row"><b>Children <em>0&ndash;17</em></b><div class="tv-step"><button type="button" data-k="cm" aria-label="Fewer children">&minus;</button><i class="tv-c">0</i><button type="button" data-k="cp" aria-label="More children">+</button></div></div><div class="tv-ages"></div><button type="button" class="tv-done" data-k="done">Done</button></div></div>
+      <input type="hidden" name="ad" id="hx-ad" value="1"><input type="hidden" name="ch" id="hx-ch" disabled>
+      <label class="hx-fld hx-bud"><span>Total budget</span><div class="hx-money"><input name="budget" id="hx-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 1300" required><select name="cur" id="hx-cur" aria-label="Currency"><option>CAD</option><option>USD</option><option>EUR</option><option>GBP</option><option>AUD</option></select></div></label>
       <input type="hidden" name="go" value="1" id="hx-gof" disabled>
       <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
     </form>
@@ -834,6 +857,58 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList
 })();
 </script>
 <script id="hx-ac-js">
+/* Travellers control: adults + children (with ages). Shared by the home form and the check page. */
+function faTravellers(root, onChange) {
+  var btn = root.querySelector('.tv-btn'), sum = root.querySelector('.tv-sum'), pop = root.querySelector('.tv-pop');
+  var aEl = root.querySelector('.tv-a'), cEl = root.querySelector('.tv-c'), agesEl = root.querySelector('.tv-ages');
+  var st = { adults: 1, ages: [] }, MAX = 9, MAXKIDS = 8;
+  function q(k) { return root.querySelector('[data-k="' + k + '"]'); }
+  function label() {
+    var n = st.adults, c = st.ages.length, t = n + ' adult' + (n === 1 ? '' : 's');
+    if (c) t += ', ' + c + ' child' + (c === 1 ? '' : 'ren');
+    return t;
+  }
+  function render() {
+    aEl.textContent = st.adults; cEl.textContent = st.ages.length; sum.textContent = label();
+    var tot = st.adults + st.ages.length;
+    q('am').disabled = st.adults <= 1; q('ap').disabled = tot >= MAX;
+    q('cm').disabled = st.ages.length <= 0; q('cp').disabled = tot >= MAX || st.ages.length >= MAXKIDS;
+    agesEl.textContent = '';
+    st.ages.forEach(function (v, i) {
+      var w = document.createElement('div'); w.className = 'tv-age';
+      var s = document.createElement('span'); s.textContent = 'Child ' + (i + 1) + ' age';
+      var sel = document.createElement('select'); sel.setAttribute('aria-label', 'Age of child ' + (i + 1));
+      var o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'Choose'; sel.appendChild(o0);
+      for (var a = 0; a <= 17; a++) { var o = document.createElement('option'); o.value = String(a); o.textContent = a === 0 ? 'Under 1' : String(a); sel.appendChild(o); }
+      sel.value = v === null ? '' : String(v);
+      sel.addEventListener('change', function () { st.ages[i] = sel.value === '' ? null : +sel.value; sel.classList.remove('bad'); sum.textContent = label(); if (onChange) onChange(); });
+      w.appendChild(s); w.appendChild(sel); agesEl.appendChild(w);
+    });
+  }
+  function open() { pop.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+  function close() { pop.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function () { if (pop.hidden) open(); else close(); });
+  pop.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('[data-k]') : null; if (!b || b.disabled) return;
+    var k = b.getAttribute('data-k'), tot = st.adults + st.ages.length;
+    if (k === 'am' && st.adults > 1) st.adults--;
+    else if (k === 'ap' && tot < MAX) st.adults++;
+    else if (k === 'cm' && st.ages.length) st.ages.pop();
+    else if (k === 'cp' && tot < MAX && st.ages.length < MAXKIDS) st.ages.push(null);
+    else if (k === 'done') { close(); return; }
+    render(); if (onChange) onChange();
+  });
+  document.addEventListener('mousedown', function (e) { if (!pop.hidden && !root.contains(e.target)) close(); });
+  root.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) { close(); btn.focus(); } });
+  render();
+  return {
+    get: function () { return { adults: st.adults, ages: st.ages.slice(), complete: st.ages.every(function (a) { return a !== null; }) }; },
+    set: function (a, ages) { st.adults = Math.max(1, Math.min(MAX, a || 1)); st.ages = (ages || []).slice(0, MAXKIDS).map(function (x) { return x === null || x === '' ? null : +x; }); render(); },
+    open: open, close: close,
+    flagIncomplete: function () { open(); Array.prototype.forEach.call(agesEl.querySelectorAll('select'), function (s) { if (s.value === '') s.classList.add('bad'); }); }
+  };
+}
+
 (function(){
 var API='https://atlast-backend-production.up.railway.app';
 var form=document.querySelector('.hx-form'); if(!form)return;
@@ -919,7 +994,12 @@ function wire(inputId,listId,isFrom){
 }
 wire('hx-from','hx-dl-from',true);wire('hx-to','hx-dl-to',false);
 /* only send the currency when the visitor chose it or it came from the picked airport; otherwise the check page works it out from the From city */
-form.addEventListener('submit',function(){
+var tv=faTravellers($('hx-tv'));window.__hxTv=tv;
+form.addEventListener('submit',function(e){
+  var t=tv.get();
+  if(!t.complete){e.preventDefault();e.stopImmediatePropagation();tv.flagIncomplete();return;}
+  $('hx-ad').value=String(t.adults);
+  var chh=$('hx-ch');chh.value=t.ages.join(',');chh.disabled=!t.ages.length;
   if(!touched&&!derived)sel.disabled=true;
   var ok=/\([A-Za-z]{3}\)\s*$/,gf=$('hx-gof');
   if(gf)gf.disabled=!(ok.test($('hx-from').value.trim())&&ok.test($('hx-to').value.trim()));
@@ -931,7 +1011,7 @@ form.addEventListener('submit',function(){
   [d,r].forEach(function(e){e.min=iso(t);e.max=iso(max);});
   d.addEventListener('change',function(){if(d.value){r.min=d.value;if(r.value&&r.value<d.value)r.value='';}});
 })();
-window.addEventListener('pageshow',function(){sel.disabled=false;var gf=$('hx-gof');if(gf)gf.disabled=true;});
+window.addEventListener('pageshow',function(){sel.disabled=false;$('hx-ch').disabled=true;var gf=$('hx-gof');if(gf)gf.disabled=true;});
 })();
 </script>
 <script>
@@ -952,7 +1032,7 @@ function mock(list,rows,on){
 }
 function dIso(n){var x=new Date(Date.now()+n*86400000);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');}
 function hideLists(){[lf,lt].forEach(function(l){if(l){l.hidden=true;l.textContent='';}});}
-function clear(){['from','to','dep','ret','budget'].forEach(function(n){f[n].value='';});go.classList.remove('press');tri.classList.remove('on1','on2','on3');hideLists();if(sel){sel.classList.remove('hl');sel.value=origCur;}}
+function clear(){['from','to','dep','ret','budget'].forEach(function(n){f[n].value='';});go.classList.remove('press');tri.classList.remove('on1','on2','on3');hideLists();if(sel){sel.classList.remove('hl');sel.value=origCur;}if(window.__hxTv){window.__hxTv.set(1,[]);window.__hxTv.close();}}
 var cueEl=document.getElementById('hx-cue');
 function cue(ex){
   form.classList.toggle('demoing',ex);
@@ -972,16 +1052,21 @@ function run(){
   at(4600,function(){f.to.value='London (LHR)';hideLists();},g);
   at(5100,function(){f.dep.value=dIso(30);},g);
   at(5700,function(){f.ret.value=dIso(37);},g);
-  at(6800,function(){if(sel){sel.classList.add('hl');}},g);
-  at(7400,function(){if(sel){sel.value='CAD';}},g);
-  at(8200,function(){if(sel){sel.classList.remove('hl');}},g);
-  typeIn(g,'budget','1300',8300,150);
-  at(9300,function(){go.classList.add('press');},g);
-  at(9550,function(){go.classList.remove('press');},g);
-  at(9800,function(){tri.classList.add('on1');},g);
-  at(11500,function(){tri.classList.add('on2');},g);
-  at(14100,function(){tri.classList.add('on3');},g);
-  at(18100,function(){clear();cue(false);form.classList.add('nudge');},g);
+  at(6300,function(){var T=window.__hxTv;if(T)T.open();},g);
+  at(6900,function(){var T=window.__hxTv;if(T)T.set(2,[]);},g);
+  at(7500,function(){var T=window.__hxTv;if(T)T.set(2,[null]);},g);
+  at(8100,function(){var T=window.__hxTv;if(T)T.set(2,[9]);},g);
+  at(8900,function(){var T=window.__hxTv;if(T)T.close();},g);
+  at(9400,function(){if(sel){sel.classList.add('hl');}},g);
+  at(10000,function(){if(sel){sel.value='CAD';}},g);
+  at(10800,function(){if(sel){sel.classList.remove('hl');}},g);
+  typeIn(g,'budget','1300',10900,150);
+  at(11900,function(){go.classList.add('press');},g);
+  at(12150,function(){go.classList.remove('press');},g);
+  at(12400,function(){tri.classList.add('on1');},g);
+  at(14100,function(){tri.classList.add('on2');},g);
+  at(16700,function(){tri.classList.add('on3');},g);
+  at(20700,function(){clear();cue(false);form.classList.add('nudge');},g);
 }
 function stop(){if(stopped)return;stopped=true;timers.forEach(clearTimeout);clear();tri.classList.remove('demo');cue(false);form.classList.remove('nudge');}
 ['focusin','keydown'].forEach(function(e){form.addEventListener(e,stop,{once:false});});

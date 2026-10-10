@@ -18,75 +18,118 @@
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <script defer data-domain="flyatlast.com" src="https://plausible.io/js/script.tagged-events.js"></script>
 <style>
-:root{--navy:#1E3A5F;--yellow:#F4C11C;--bg:#EEF1F3;--white:#fff;--text-body:#3d4a56;--text-muted:#5A6B78;--border:#DDE3E7;--green:#2C6640;--green-bg:#D4EDDC;--amber:#7A5B10;--amber-bg:#FDF4DE;--red:#B94A2E}
+:root{--navy:#1E3A5F;--yellow:#F4C11C;--lb:#EAF1F8;--bg:#EEF1F3;--white:#fff;--text-body:#3d4a56;--text-muted:#4A5F78;--border:#C3CFDA;--green:#17663A;--green-bg:#D4EDDC;--amber:#7A5B10;--amber-bg:#FDF4DE;--red:#B3261E}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--navy);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
-header.top{background:var(--navy);padding:16px 24px;display:flex;align-items:center}
-header.top a{color:#fff;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-size:20px}
-main{padding:36px 20px 64px}
-.demo{max-width:640px;margin:0 auto}
+main{padding:40px 20px 56px}
+.demo{max-width:760px;margin:0 auto}
 /* ===== FA-DEMO COMPONENT: everything below is scoped to .demo ===== */
-.demo .eyebrow{font:700 12px/1.3 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:0 0 8px}
-.demo h1{font-size:32px;line-height:1.15;font-weight:800;margin:0 0 10px}
-.demo .sub{font-size:17px;color:var(--text-body);margin:0 0 22px}
-.demo form{background:var(--white);border:2px solid var(--navy);padding:22px;display:grid;gap:16px}
+.demo .eyebrow{font:800 12px/1.3 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin:0 0 10px}
+.demo h1{font-size:36px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 8px}
+.demo h1 .gr{color:var(--green)}.demo h1 .am{color:#B88A00}
+.demo .sub{font-size:17px;color:var(--text-muted);margin:0 0 22px}
+.demo .intro{max-width:640px;margin:0 auto}
+.demo form{background:var(--white);border-radius:20px;box-shadow:0 10px 30px rgba(30,58,95,.10);padding:24px;display:grid;gap:16px;max-width:640px;margin:0 auto}
 .demo .row{display:grid;gap:16px;grid-template-columns:1fr 1fr}
-.demo label{display:block;font-weight:700;font-size:14px;margin:0 0 6px}
+.demo label,.demo .lab{display:block;font-weight:700;font-size:14px;margin:0 0 6px}
 .demo .hint{font-weight:500;color:var(--text-muted)}
-.demo input,.demo select{width:100%;height:48px;padding:0 12px;border:2px solid var(--navy);border-radius:0;background:#fff;color:var(--navy);font:500 16px 'Public Sans',sans-serif}
-.demo ::placeholder{color:#8795A3;font-style:italic;opacity:1}
+.demo input,.demo select{width:100%;height:48px;padding:0 12px;border:2px solid var(--border);border-radius:10px;background:#fff;color:var(--navy);font:500 16px 'Public Sans',sans-serif}
+.demo ::placeholder{color:#8795A3;opacity:1}
 .demo .ac{position:relative}
-.demo .ac-list{position:absolute;z-index:20;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:#fff;border:2px solid var(--navy);max-height:320px;overflow-y:auto;box-shadow:0 6px 16px rgba(30,58,95,.18)}
-.demo .ac-list li{padding:10px 12px;cursor:pointer;display:flex;gap:8px;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--border);font-size:15px}
-.demo .ac-list li:last-child{border-bottom:0}
-.demo .ac-list li:hover,.demo .ac-list li.on{background:#EEF1F3}
+.demo .ac-list{position:absolute;z-index:20;left:0;right:0;top:100%;margin:4px 0 0;padding:6px;list-style:none;background:#fff;border:2px solid var(--navy);border-radius:12px;max-height:320px;overflow-y:auto;box-shadow:0 12px 28px rgba(30,58,95,.2)}
+.demo .ac-list li{padding:10px 10px;cursor:pointer;display:flex;gap:8px;justify-content:space-between;align-items:baseline;border-radius:8px;font-size:15px}
+.demo .ac-list li:hover,.demo .ac-list li.on{background:var(--lb)}
 .demo .ac-list li.none{color:#5B6B7A;font-size:14px;cursor:default;background:#fff}
-.demo .ac-list .nm{font-weight:700}
-.demo .ac-list .ct{color:var(--text-muted);font-weight:500}
+.demo .ac-list .nm{font-weight:700}.demo .ac-list .ct{color:var(--text-muted);font-weight:500}
 .demo .ac-list .cd{font:700 13px 'JetBrains Mono',monospace;color:var(--navy);flex:none}
 .demo input:focus-visible,.demo select:focus-visible,.demo button:focus-visible,.demo a:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
-.demo .money{display:grid;grid-template-columns:1fr 110px;gap:8px}
-.demo .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:2px solid var(--navy);background:var(--yellow);color:#1a1a1a;font:800 16px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none}
+.demo input:focus,.demo select:focus{border-color:var(--navy)}
+.demo .money{display:grid;grid-template-columns:1fr 104px;gap:8px}
+/* travellers */
+.demo .tv{position:relative}
+.demo .tv-btn{width:100%;height:48px;border:2px solid var(--border);border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;font:500 16px 'Public Sans',sans-serif;color:var(--navy);cursor:pointer;text-align:left}
+.demo .tv-sum{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.demo .tv-pop{position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:300px;max-width:calc(100vw - 40px);background:#fff;border:2px solid var(--navy);border-radius:14px;box-shadow:0 14px 32px rgba(30,58,95,.22);padding:14px 16px}
+.demo .tv-pop[hidden]{display:none}
+.demo .tv-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0}
+.demo .tv-row b{font:700 15px 'Public Sans',sans-serif}.demo .tv-row b em{font-style:normal;font-weight:600;color:var(--text-muted);font-size:13px}
+.demo .tv-step{display:flex;align-items:center;gap:12px}
+.demo .tv-step i{font:800 17px 'JetBrains Mono',monospace;font-style:normal;min-width:18px;text-align:center}
+.demo .tv-step button{width:36px;height:36px;border-radius:50%;border:2px solid var(--navy);background:#fff;color:var(--navy);font:800 20px/1 'Public Sans',sans-serif;cursor:pointer;padding:0}
+.demo .tv-step button:disabled{opacity:.35;cursor:not-allowed}
+.demo .tv-ages{display:grid;gap:8px;margin-top:4px}
+.demo .tv-age{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.demo .tv-age span{font:600 14px 'Public Sans',sans-serif;color:var(--text-muted)}
+.demo .tv-age select{width:auto;height:auto;min-width:100px;padding:6px 8px;font:700 14px 'Public Sans',sans-serif;border-radius:8px}
+.demo .tv-age select.bad{border-color:var(--red);background:#FDECEA}
+.demo .tv-done{margin-top:10px;width:100%;border:0;border-radius:10px;background:var(--navy);color:#fff;font:800 15px 'Public Sans',sans-serif;padding:11px;cursor:pointer}
+/* buttons */
+.demo .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border:2px solid var(--navy);border-radius:12px;background:var(--yellow);color:#14213A;font:800 17px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none}
 .demo .btn[disabled]{opacity:.6;cursor:wait}
 .demo .btn.alt{background:#fff;color:var(--navy)}
 .demo .btn.block{display:flex;width:100%}
 .demo .left{font-size:14px;color:var(--text-muted);margin:0;text-align:center}
-.demo .msg{border:2px solid var(--red);background:#fff;color:var(--red);padding:12px 14px;font-weight:600;margin:16px 0 0}
+.demo .msg{border:2px solid var(--red);border-radius:12px;background:#fff;color:var(--red);padding:12px 14px;font-weight:600;margin:16px auto 0;max-width:640px}
 .demo .msg.info{border-color:var(--navy);color:var(--navy)}
-.demo .loading{background:#fff;border:2px solid var(--navy);padding:22px;font-weight:700;margin-top:16px}
+.demo .loading{background:#fff;border-radius:16px;box-shadow:0 8px 22px rgba(30,58,95,.08);padding:22px;font-weight:700;margin:16px auto 0;max-width:640px}
 .demo .loading i{display:inline-block;width:14px;height:14px;border:3px solid var(--border);border-top-color:var(--navy);border-radius:50%;margin-right:10px;vertical-align:-2px;animation:fa-spin .9s linear infinite}
 @keyframes fa-spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.demo .loading i{animation:none}}
-.demo .result{background:#fff;border:2px solid var(--navy);margin-top:16px}
-.demo .result .top{padding:20px 22px;border-bottom:2px dashed var(--border)}
-.demo .result .lbl{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px}
-.demo .result .amt{font:800 44px/1.05 'JetBrains Mono',monospace;margin:0}
-.demo .result .delta{display:inline-block;margin-top:10px;padding:6px 10px;font-weight:800}
-.demo .result .amt .cur{font:700 16px 'Public Sans',sans-serif;color:var(--text-muted)}
-.demo .delta.under{background:var(--green-bg);color:var(--green)}
-.demo .delta.over{background:var(--amber-bg);color:var(--amber)}
-.demo .meta{margin:12px 0 0;font-weight:600}
-.demo .textlink{display:inline-block;margin-top:12px;font-weight:700;font-size:15px;color:var(--navy);text-decoration:underline}
-.demo .sharebar{display:flex;flex-wrap:wrap;gap:4px 18px;padding:10px 22px;border-bottom:2px dashed var(--border);align-items:center}
-.demo .sharebtn{background:none;border:0;padding:8px 0;font:700 15px 'Public Sans',sans-serif;color:var(--navy);text-decoration:underline;cursor:pointer;min-height:40px}
-.demo .sharemail{display:flex;gap:8px;padding:12px 22px 4px;flex-wrap:wrap}
+.demo .fine{font-size:13px;color:var(--text-muted);margin:10px 0 0;line-height:1.5}
+.demo .trust{margin:22px auto 0;text-align:center;max-width:560px}
+.demo [hidden]{display:none!important}
+/* viewing a result: the intro and the form step aside */
+.demo.viewing .intro,.demo.viewing #demo-form{display:none}
+/* result */
+.demo .rc-head{margin-bottom:6px}
+.demo .rc-card{background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(30,58,95,.10);overflow:hidden;margin-top:20px}
+.demo .rc-rh{background:var(--lb);border-bottom:3px solid var(--yellow);padding:16px 26px;display:flex;justify-content:space-between;align-items:center;gap:6px 16px;flex-wrap:wrap}
+.demo .rc-rh b{font-size:19px}.demo .rc-rh b i{font:700 12px 'JetBrains Mono',monospace;font-style:normal;color:var(--text-muted);margin:0 4px 0 6px}.demo .rc-rh b em{font-style:normal;color:var(--text-muted);margin:0 6px}
+.demo .rc-rh span{font-size:14px;color:var(--text-muted);font-weight:600}
+.demo .rc-rb{padding:24px 26px 20px}
+.demo .lbl{font:800 11.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px}
+.demo .amt{font:800 46px/1.05 'JetBrains Mono',monospace;letter-spacing:-.02em;margin:0;overflow-wrap:anywhere}
+.demo .amt .cur{font:700 16px 'Public Sans',sans-serif;color:var(--text-muted);letter-spacing:0}
+.demo .delta{display:inline-block;margin-top:12px;padding:7px 13px;border-radius:999px;font-weight:800;font-size:14.5px}
+.demo .delta.under{background:var(--green-bg);color:var(--green)}.demo .delta.over{background:var(--amber-bg);color:var(--amber)}
+.demo .bar{margin:20px 0 6px;position:relative;height:12px;border-radius:99px;background:#E3EAF2;overflow:visible}
+.demo .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--navy)}
+.demo .bar i.ov{background:#E0A82A;border-radius:0 99px 99px 0}.demo .bar i.un{background:var(--green)}
+.demo .bar u{position:absolute;top:-6px;bottom:-6px;width:3px;background:var(--yellow);border-radius:2px;box-shadow:0 0 0 2px #fff}
+.demo .bl{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--text-muted);font-weight:600}
+.demo .meta{margin:16px 0 0;font-weight:700;font-size:16px}
+.demo .textlink{display:inline-block;margin-top:12px;font-weight:800;font-size:15px;color:var(--navy);border-bottom:2px solid var(--yellow);text-decoration:none}
+.demo .sharebar{display:flex;flex-wrap:wrap;gap:10px;padding:14px 26px;border-top:1px dashed var(--border);align-items:center}
+.demo .sharelab{font-size:13px;color:var(--text-muted);font-weight:700;margin-right:4px}
+.demo .sharebtn{border:2px solid var(--navy);border-radius:10px;background:#fff;padding:8px 14px;font:800 14px 'Public Sans',sans-serif;color:var(--navy);cursor:pointer;min-height:40px}
+.demo .sharemail{display:flex;gap:8px;padding:0 26px 8px;flex-wrap:wrap}
 .demo .sharemail input{flex:1 1 200px;height:44px}
-.demo .sharemail .btn{min-height:44px;flex:0 0 auto}
-.demo .sharest{padding:6px 22px 12px;margin:0;font-size:14px;color:var(--text-muted)}
-.demo .trust{margin:14px 0 0;text-align:center}
-.demo .gate .fine{margin:0}
-.demo .gate .fine a,.foot a{color:inherit}
-.foot{max-width:640px;margin:0 auto;padding:0 20px 40px;text-align:center;font-size:13px;color:var(--text-muted)}
-.demo .fine{font-size:13px;color:var(--text-muted);margin:10px 0 0}
-.demo .result .pitch{padding:18px 22px;display:grid;gap:12px}
-.demo .result .pitch p{margin:0;font-size:16px;color:var(--text-body)}
-.demo .gate,.demo .limit{background:#fff;border:2px solid var(--navy);padding:22px;margin-top:16px;display:grid;gap:14px}
+.demo .sharemail .btn{min-height:44px;flex:0 0 auto;font-size:15px}
+.demo .sharest{padding:0 26px 14px;margin:0;font-size:14px;color:var(--text-muted)}
+.demo .sec{display:flex;align-items:center;gap:14px;margin:34px 0 16px}.demo .sec p{margin:0}.demo .sec:before,.demo .sec:after{content:'';height:1px;background:var(--border);flex:1}
+.demo .sec .eyebrow{margin:0}
+.demo .rc-pin{background:var(--navy);color:#fff;border-radius:20px;padding:26px 28px;display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center;box-shadow:0 10px 30px rgba(30,58,95,.18)}
+.demo .rc-pin h2{font-size:25px;letter-spacing:-.03em;line-height:1.15;margin:0 0 12px}.demo .rc-pin h2 span{color:var(--yellow)}
+.demo .rc-pin ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px;color:#DCE6F1}.demo .rc-pin li:before{content:'\2713';color:var(--yellow);font-weight:800;margin-right:9px}
+.demo .rc-pin .btn{width:100%;border-color:#fff}
+.demo .rc-pin .fn{font-size:12.5px;color:#C9D6E6;text-align:center;margin:10px 0 0}
+.demo .rc-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.demo .rc-mini{background:#fff;border-radius:18px;box-shadow:0 8px 22px rgba(30,58,95,.08);padding:20px 22px}
+.demo .rc-mini h3{margin:0 0 6px;font-size:18px;letter-spacing:-.02em}.demo .rc-mini p{margin:0 0 12px;font-size:14.5px;color:var(--text-muted);line-height:1.5}
+.demo .ghost{display:inline-block;border:2px solid var(--navy);border-radius:10px;padding:10px 16px;font:800 14.5px 'Public Sans',sans-serif;background:#fff;color:var(--navy);cursor:pointer;text-decoration:none}
+.demo .lnk{font-weight:800;font-size:14.5px;border-bottom:2px solid var(--yellow);color:var(--navy);text-decoration:none}
+.demo .why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.demo .why div{text-align:center;padding:4px 10px}.demo .why b{display:block;font-size:15.5px;margin-bottom:3px}.demo .why span{font-size:13.5px;color:var(--text-muted);line-height:1.45}
+.demo .why i{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--yellow);align-items:center;justify-content:center;font-style:normal;font-weight:800;margin-bottom:8px}
+.demo .gate,.demo .limit{background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(30,58,95,.10);padding:24px;margin:16px auto 0;max-width:640px;display:grid;gap:14px}
 .demo .gate h2,.demo .limit h2{margin:0;font-size:20px}
 .demo .gate p,.demo .limit p{margin:0;color:var(--text-body)}
 .demo .check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px}
 .demo .check input{width:22px;height:22px;flex:none;margin-top:2px}
-.demo [hidden]{display:none!important}
-@media(max-width:560px){.demo h1{font-size:27px}.demo .row{grid-template-columns:1fr}.demo form{padding:18px}.demo .result .amt{font-size:38px}}
+.demo .gate .fine{margin:0}.demo .gate .fine a,.foot a{color:inherit}
+.foot{max-width:640px;margin:0 auto;padding:0 20px 40px;text-align:center;font-size:13px;color:var(--text-muted)}
+.demo .tsw{display:flex;justify-content:center;margin-top:14px}
+@media(max-width:640px){main{padding:28px 16px 48px}.demo h1{font-size:28px}.demo .row{grid-template-columns:1fr}.demo form{padding:18px}.demo .amt{font-size:36px}.demo .rc-rh{padding:14px 18px}.demo .rc-rb{padding:20px 18px}.demo .sharebar{padding:12px 18px}.demo .sharemail,.demo .sharest{padding-left:18px;padding-right:18px}.demo .rc-pin{grid-template-columns:1fr;padding:22px}.demo .rc-two{grid-template-columns:1fr}.demo .why{grid-template-columns:1fr;gap:10px}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/header.css">
 </head>
@@ -97,9 +140,11 @@ main{padding:36px 20px 64px}
 <main>
 <!-- FA-DEMO START -->
 <section class="demo" id="try" aria-labelledby="demo-title">
+  <div class="intro">
   <p class="eyebrow">Try it now</p>
-  <h1 id="demo-title">Check a trip against your budget.</h1>
+  <h1 id="demo-title">Check your trip against your budget.</h1>
   <p class="sub">Pick a trip, set your budget, and we'll show the lowest fare we find for it today. No sign-up.</p>
+  </div>
 
   <p class="msg info" id="demo-off" hidden>Free checks are paused for a moment. You can still pin a trip free, and we'll check it for you.</p>
 
@@ -110,18 +155,16 @@ main{padding:36px 20px 64px}
     </div>
     <div class="row">
       <div><label for="d-dep">Depart</label><input id="d-dep" type="date" required></div>
-      <div><label for="d-ret">Return <span class="hint">(optional, blank for one-way)</span></label><input id="d-ret" type="date"></div>
+      <div><label for="d-ret">Return <span class="hint">(optional)</span></label><input id="d-ret" type="date"></div>
     </div>
-    <div>
-      <label for="d-budget">Your total budget <span class="hint">(1 adult)</span></label>
-      <div class="money"><input id="d-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 1300" required><select id="d-cur" aria-label="Currency"><option>CAD</option></select></div>
+    <div class="row">
+      <div class="tv" id="d-tv"><span class="lab">Travellers</span><button type="button" class="tv-btn" aria-haspopup="dialog" aria-expanded="false"><span class="tv-sum">1 adult</span><svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="tv-pop" hidden role="dialog" aria-label="Travellers"><div class="tv-row"><b>Adults</b><div class="tv-step"><button type="button" data-k="am" aria-label="Fewer adults">&minus;</button><i class="tv-a">1</i><button type="button" data-k="ap" aria-label="More adults">+</button></div></div><div class="tv-row"><b>Children <em>0&ndash;17</em></b><div class="tv-step"><button type="button" data-k="cm" aria-label="Fewer children">&minus;</button><i class="tv-c">0</i><button type="button" data-k="cp" aria-label="More children">+</button></div></div><div class="tv-ages"></div><button type="button" class="tv-done" data-k="done">Done</button></div></div>
+      <div><label for="d-budget">Total budget <span class="hint">(everyone)</span></label>
+      <div class="money"><input id="d-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 1300" required><select id="d-cur" aria-label="Currency"><option>CAD</option></select></div></div>
     </div>
-    <div id="ts" aria-label="Security check"></div>
     <button class="btn block" id="d-go" type="submit">Check this trip</button>
     <p class="left" id="d-left">Your first check is free. No sign-up.</p>
   </form>
-
-  <p class="fine trust">Fares come from our airline data partner and can differ from other sites, so we link to Google Flights so you can compare. We don't hold fares or seats.</p>
 
   <p class="msg" id="demo-msg" role="alert" hidden></p>
   <div class="loading" id="demo-loading" role="status" hidden><i></i>Checking fares for your trip… this can take up to 10 seconds.</div>
@@ -143,12 +186,69 @@ main{padding:36px 20px 64px}
     <a class="btn block" id="l-signup" href="https://app.flyatlast.com/login?signup=true">Create a free account</a>
   </div>
 
+  <div class="why" id="demo-why" hidden><div><i>&#10003;</i><b>Real, bookable fares</b><span>Live checks, not guesses. Every deal links to Google Flights.</span></div><div><i>&#10003;</i><b>Alerts only when it fits</b><span>No spam. We email you when a fare comes in under your budget.</span></div><div><i>&#10003;</i><b>Free to start</b><span>3 trips tracked free. No subscription, no card.</span></div></div>
+
+  <div class="tsw"><div id="ts" aria-label="Security check"></div></div>
+  <p class="fine trust">Fares come from our airline data partner and can differ from other sites, so we link to Google Flights so you can compare. We don't hold fares or seats.</p>
+
 </section>
 <!-- FA-DEMO END -->
 </main>
 <footer class="foot">© FlyAtlast · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></footer>
 <script>
 /* FA-DEMO SCRIPT */
+/* Travellers control: adults + children (with ages). Shared by the home form and the check page. */
+function faTravellers(root, onChange) {
+  var btn = root.querySelector('.tv-btn'), sum = root.querySelector('.tv-sum'), pop = root.querySelector('.tv-pop');
+  var aEl = root.querySelector('.tv-a'), cEl = root.querySelector('.tv-c'), agesEl = root.querySelector('.tv-ages');
+  var st = { adults: 1, ages: [] }, MAX = 9, MAXKIDS = 8;
+  function q(k) { return root.querySelector('[data-k="' + k + '"]'); }
+  function label() {
+    var n = st.adults, c = st.ages.length, t = n + ' adult' + (n === 1 ? '' : 's');
+    if (c) t += ', ' + c + ' child' + (c === 1 ? '' : 'ren');
+    return t;
+  }
+  function render() {
+    aEl.textContent = st.adults; cEl.textContent = st.ages.length; sum.textContent = label();
+    var tot = st.adults + st.ages.length;
+    q('am').disabled = st.adults <= 1; q('ap').disabled = tot >= MAX;
+    q('cm').disabled = st.ages.length <= 0; q('cp').disabled = tot >= MAX || st.ages.length >= MAXKIDS;
+    agesEl.textContent = '';
+    st.ages.forEach(function (v, i) {
+      var w = document.createElement('div'); w.className = 'tv-age';
+      var s = document.createElement('span'); s.textContent = 'Child ' + (i + 1) + ' age';
+      var sel = document.createElement('select'); sel.setAttribute('aria-label', 'Age of child ' + (i + 1));
+      var o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'Choose'; sel.appendChild(o0);
+      for (var a = 0; a <= 17; a++) { var o = document.createElement('option'); o.value = String(a); o.textContent = a === 0 ? 'Under 1' : String(a); sel.appendChild(o); }
+      sel.value = v === null ? '' : String(v);
+      sel.addEventListener('change', function () { st.ages[i] = sel.value === '' ? null : +sel.value; sel.classList.remove('bad'); sum.textContent = label(); if (onChange) onChange(); });
+      w.appendChild(s); w.appendChild(sel); agesEl.appendChild(w);
+    });
+  }
+  function open() { pop.hidden = false; btn.setAttribute('aria-expanded', 'true'); }
+  function close() { pop.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function () { if (pop.hidden) open(); else close(); });
+  pop.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('[data-k]') : null; if (!b || b.disabled) return;
+    var k = b.getAttribute('data-k'), tot = st.adults + st.ages.length;
+    if (k === 'am' && st.adults > 1) st.adults--;
+    else if (k === 'ap' && tot < MAX) st.adults++;
+    else if (k === 'cm' && st.ages.length) st.ages.pop();
+    else if (k === 'cp' && tot < MAX && st.ages.length < MAXKIDS) st.ages.push(null);
+    else if (k === 'done') { close(); return; }
+    render(); if (onChange) onChange();
+  });
+  document.addEventListener('mousedown', function (e) { if (!pop.hidden && !root.contains(e.target)) close(); });
+  root.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) { close(); btn.focus(); } });
+  render();
+  return {
+    get: function () { return { adults: st.adults, ages: st.ages.slice(), complete: st.ages.every(function (a) { return a !== null; }) }; },
+    set: function (a, ages) { st.adults = Math.max(1, Math.min(MAX, a || 1)); st.ages = (ages || []).slice(0, MAXKIDS).map(function (x) { return x === null || x === '' ? null : +x; }); render(); },
+    open: open, close: close,
+    flagIncomplete: function () { open(); Array.prototype.forEach.call(agesEl.querySelectorAll('select'), function (s) { if (s.value === '') s.classList.add('bad'); }); }
+  };
+}
+
 (function () {
   'use strict';
   var API = 'https://atlast-backend-production.up.railway.app';   // backend address
@@ -171,6 +271,7 @@ main{padding:36px 20px 64px}
   try { bid = localStorage.getItem('fa_demo_id'); if (!bid) { bid = rand(); localStorage.setItem('fa_demo_id', bid); } } catch (e) { bid = rand(); }
 
   var form = $('demo-form'), msg = $('demo-msg'), loading = $('demo-loading'), resultBox = $('demo-result'), gate = $('demo-gate'), limit = $('demo-limit'), go = $('d-go');
+  var demoEl = $('try'), tv = faTravellers($('d-tv'), function () {});
   var pending = null, started = false;
 
   function show(el, on) { el.hidden = !on; }
@@ -179,7 +280,7 @@ main{padding:36px 20px 64px}
   function setBusy(b) { go.disabled = b; show(loading, b); if (b) { clearAll(); } }
   function money(n, c, code) { try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: c, currencyDisplay: code ? 'code' : 'symbol' }).format(n).replace(/\u00a0/g, ' '); } catch (e) { return c + ' ' + Number(n).toFixed(2); } }
   function b64u(s) { return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
-  function tripLink(t) { return APP + '/login?signup=true&demo=1&trip=' + b64u(JSON.stringify({ o: t.origin, d: t.destination, dep: t.depart_date, ret: t.return_date || '', b: t.budget, c: t.currency })); }
+  function tripLink(t) { return APP + '/login?signup=true&demo=1&trip=' + b64u(JSON.stringify({ o: t.origin, d: t.destination, dep: t.depart_date, ret: t.return_date || '', b: t.budget, c: t.currency, a: t.adults || 1, ch: t.child_ages || [] })); }
 
   function api(path, opts) {
     var ctl = ('AbortController' in window) ? new AbortController() : null;
@@ -299,6 +400,8 @@ main{padding:36px 20px 64px}
     var iso = /^\d{4}-\d{2}-\d{2}$/, td = new Date(), tod = td.getFullYear() + '-' + String(td.getMonth() + 1).padStart(2, '0') + '-' + String(td.getDate()).padStart(2, '0');
     var qd = q.get('dep') || '', qr = q.get('ret') || '';
     if (iso.test(qd) && qd >= tod) { $('d-dep').value = qd; if (iso.test(qr) && qr >= qd) $('d-ret').value = qr; }
+    var pa = parseInt(q.get('ad'), 10), pch = (q.get('ch') || '').split(',').filter(function (x) { return /^\d{1,2}$/.test(x) && +x <= 17; }).map(Number).slice(0, 8);
+    if (pa >= 1 && pa <= 9) tv.set(pa + pch.length > 9 ? 1 : pa, pa + pch.length > 9 ? [] : pch);
     var pc = (q.get('cur') || '').toUpperCase();
     if (/^[A-Z]{3}$/.test(pc)) { prefCur = pc; wantCur = pc; curTouched = true; if (!setCur(pc)) { var po = document.createElement('option'); po.value = po.textContent = pc; $('d-cur').appendChild(po); $('d-cur').value = pc; } }
     function place(id, text) {
@@ -355,7 +458,7 @@ main{padding:36px 20px 64px}
     var b1 = el('button', 'sharebtn', navigator.share ? 'Share link' : 'Copy link'); b1.type = 'button';
     var b2 = el('button', 'sharebtn', 'Email me this'); b2.type = 'button';
     var b3 = el('button', 'sharebtn', 'Save as PDF'); b3.type = 'button';
-    bar.appendChild(b1); bar.appendChild(b2); bar.appendChild(b3);
+    bar.appendChild(el('span', 'sharelab', 'Keep this result')); bar.appendChild(b1); bar.appendChild(b2); bar.appendChild(b3);
     var mail = el('div', 'sharemail'); mail.hidden = true;
     var inp = el('input'); inp.type = 'email'; inp.placeholder = 'you@example.com'; inp.setAttribute('aria-label', 'Your email address'); inp.autocomplete = 'email';
     var send = el('button', 'btn', 'Send'); send.type = 'button';
@@ -395,34 +498,97 @@ main{padding:36px 20px 64px}
     return wrap;
   }
 
+  function moneyW(n, c) { try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: c, currencyDisplay: 'code', maximumFractionDigits: n % 1 === 0 ? 0 : 2 }).format(n).replace(/\u00a0/g, ' '); } catch (e) { return c + ' ' + n; } }
+  function fmtD(iso) { try { return new Date(iso + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' }); } catch (e) { return iso; } }
+  function partyText(t) { var a = t.adults || 1, c = (t.child_ages || []).length; return a + ' adult' + (a === 1 ? '' : 's') + (c ? ', ' + c + ' child' + (c === 1 ? '' : 'ren') : ''); }
+  function newCheck() {
+    demoEl.classList.remove('viewing'); show(resultBox, false); show($('demo-why'), false); show(gate, false); say('');
+    ['d-from', 'd-to', 'd-dep', 'd-ret', 'd-budget'].forEach(function (id) { $(id).value = ''; });
+    tv.set(1, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); $('d-from').focus();
+  }
   function renderResult(j, trip) {
     var r = j.result, rem = j.remaining || {};
     resultBox.textContent = '';
-    var top = el('div', 'top');
-    top.appendChild(el('p', 'lbl', 'Lowest fare we found today'));
-    var amt = el('p', 'amt', money(r.amount, r.currency)); amt.appendChild(el('span', 'cur', ' ' + r.currency)); top.appendChild(amt);
-    if (r.comparable && r.delta != null) {
-      var under = r.under_budget;
-      top.appendChild(el('span', 'delta ' + (under ? 'under' : 'over'), money(Math.abs(r.delta), r.currency) + (under ? ' under' : ' over') + ' your budget'));
+    var comparable = !!(r.comparable && r.delta != null), under = comparable && r.under_budget;
+    var gap = comparable ? Math.abs(r.delta) : 0, bud = trip.budget || r.budget || 0;
+
+    var head = el('div', 'rc-head');
+    head.appendChild(el('p', 'eyebrow', 'Your free check'));
+    var h = el('h1');
+    if (!comparable) h.appendChild(document.createTextNode('Here\'s your lowest fare.'));
+    else if (under) { h.appendChild(document.createTextNode('Good news. ')); h.appendChild(el('span', 'gr', 'It fits your budget.')); }
+    else if (bud && gap <= 0.15 * bud) { h.appendChild(document.createTextNode('A little ')); h.appendChild(el('span', 'am', 'over budget.')); }
+    else { h.appendChild(document.createTextNode('Over budget ')); h.appendChild(el('span', 'am', 'today.')); }
+    head.appendChild(h);
+    head.appendChild(el('p', 'sub', 'Here\'s the lowest fare we found for your trip today.'));
+    resultBox.appendChild(head);
+
+    var card = el('div', 'rc-card');
+    var rh = el('div', 'rc-rh');
+    var route = el('b'); route.appendChild(document.createTextNode(trip.origin_name || trip.origin)); route.appendChild(el('i', null, trip.origin));
+    route.appendChild(el('em', null, '→')); route.appendChild(document.createTextNode(trip.destination_name || trip.destination)); route.appendChild(el('i', null, trip.destination));
+    rh.appendChild(route);
+    var dates = fmtD(trip.depart_date) + (trip.return_date ? ' – ' + fmtD(trip.return_date) : ' · one way');
+    rh.appendChild(el('span', null, dates + ' · ' + partyText(trip) + ' · Budget ' + moneyW(bud, r.currency)));
+    card.appendChild(rh);
+
+    var rb = el('div', 'rc-rb');
+    rb.appendChild(el('p', 'lbl', 'Lowest fare we found today'));
+    var amt = el('p', 'amt', money(r.amount, r.currency)); amt.appendChild(el('span', 'cur', ' ' + r.currency)); rb.appendChild(amt);
+    if (comparable) {
+      rb.appendChild(el('span', 'delta ' + (under ? 'under' : 'over'), moneyW(gap, r.currency) + (under ? ' under' : ' over') + ' your budget'));
+      var mx = Math.max(r.amount, bud) || 1, bar = el('div', 'bar');
+      if (under) { var f1 = el('i', 'un'); f1.style.width = (r.amount / mx * 100) + '%'; bar.appendChild(f1); }
+      else { var f2 = el('i'); f2.style.width = (bud / mx * 100) + '%'; var f3 = el('i', 'ov'); f3.style.left = (bud / mx * 100) + '%'; f3.style.width = ((r.amount - bud) / mx * 100) + '%'; bar.appendChild(f2); bar.appendChild(f3); }
+      var mk = el('u'); mk.style.left = 'calc(' + (bud / mx * 100) + '% - 1px)'; bar.appendChild(mk);
+      rb.appendChild(bar);
+      var bl = el('div', 'bl'); bl.appendChild(el('span', null, 'Your budget ' + moneyW(bud, r.currency))); bl.appendChild(el('span', null, 'Fare ' + money(r.amount, r.currency))); rb.appendChild(bl);
     } else {
-      top.appendChild(el('p', 'fine', 'Shown in ' + r.currency + '. We can\'t compare it with your budget right now.'));
+      rb.appendChild(el('p', 'fine', 'Shown in ' + r.currency + '. We can\'t compare it with your budget right now.'));
     }
     var parts = [r.airline, r.stops, r.fare_brand].filter(Boolean);
-    if (parts.length) top.appendChild(el('p', 'meta', parts.join(' · ')));
-    if (r.converted_from) top.appendChild(el('p', 'fine', 'Shown in ' + r.currency + ' at today\'s exchange rate. The final price is confirmed when you book.'));
+    if (parts.length) rb.appendChild(el('p', 'meta', parts.join(' · ')));
     var when = ''; try { when = new Date(r.checked_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }).replace(/\.$/, ''); } catch (e) {}
-    top.appendChild(el('p', 'fine', 'One live check, not a booking. Fares change.' + (when ? ' Checked ' + when + '.' : '')));
-    var gl = el('a', 'textlink', 'Double-check on Google Flights'); gl.href = r.compare_url; gl.target = '_blank'; gl.rel = 'noopener'; top.appendChild(gl);
-    resultBox.appendChild(top);
-    if (r.share_token) resultBox.appendChild(shareBar(r.share_token));
-    var pitch = el('div', 'pitch');
-    pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip for you. Free for 3 trips, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll email you when a fare fits. Free for 3 trips, no card.' : 'Fares move. Pin this trip and we\'ll email you when one fits your budget, with the full itinerary in the app. Free for 3 trips, no card.'));
-    var pin = el('a', 'btn block', 'Pin this trip'); pin.href = tripLink(trip); pin.addEventListener('click', function () { ev('Demo Pin Click'); });
-    pitch.appendChild(pin);
-    if (rem.free_left > 0) { var again = el('button', 'btn alt block', 'Check another trip'); again.type = 'button'; again.addEventListener('click', function () { show(resultBox, false); $('d-from').focus(); }); pitch.appendChild(again); }
-    else if (rem.email_unlock_available) { var more = el('button', 'btn alt block', 'Check another trip'); more.type = 'button'; more.addEventListener('click', function () { show(gate, true); $('g-email').focus(); }); pitch.appendChild(more); }
-    resultBox.appendChild(pitch); show(resultBox, true); updateLeft(rem);
-    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    rb.appendChild(el('p', 'fine', (r.converted_from ? 'Shown in ' + r.currency + ' at today\'s exchange rate. The final price is confirmed when you book. ' : '') + 'One live check, not a booking. Fares change.' + (when ? ' Checked ' + when + '.' : '')));
+    var gl = el('a', 'textlink', 'Double-check on Google Flights ↗'); gl.href = r.compare_url; gl.target = '_blank'; gl.rel = 'noopener'; rb.appendChild(gl);
+    card.appendChild(rb);
+    if (r.share_token) card.appendChild(shareBar(r.share_token));
+    resultBox.appendChild(card);
+
+    var sec = el('div', 'sec'); sec.appendChild(el('p', 'eyebrow', 'What\'s next')); resultBox.appendChild(sec);
+    var pin = el('div', 'rc-pin'), pl = el('div');
+    var h2 = el('h2'); h2.appendChild(document.createTextNode(under ? 'Lock it in. ' : comparable ? 'Not at your price yet? ' : 'Want us to keep watching? ')); h2.appendChild(el('span', null, 'Pin it.')); pl.appendChild(h2);
+    var ul = el('ul');
+    ul.appendChild(el('li', null, 'We keep checking real fares until you fly'));
+    ul.appendChild(el('li', null, 'We email you the moment one fits ' + moneyW(bud, r.currency)));
+    ul.appendChild(el('li', null, 'Free for 3 trips, 25 checks each. No card.'));
+    pl.appendChild(ul); pin.appendChild(pl);
+    var pr = el('div'), pinBtn = el('a', 'btn', 'Pin this trip free'); pinBtn.href = tripLink(trip); pinBtn.addEventListener('click', function () { ev('Demo Pin Click'); });
+    pr.appendChild(pinBtn); pr.appendChild(el('p', 'fn', 'Takes 30 seconds. Your trip is filled in.')); pin.appendChild(pr);
+    resultBox.appendChild(pin);
+
+    var two = el('div', 'rc-two'), c1 = el('div', 'rc-mini');
+    c1.appendChild(el('h3', null, 'Check another trip'));
+    if (rem.free_left > 0) {
+      c1.appendChild(el('p', null, rem.free_left === 1 ? 'You have 1 free check left.' : 'You have ' + rem.free_left + ' free checks left.'));
+      var again = el('button', 'ghost', 'Check another trip'); again.type = 'button'; again.addEventListener('click', newCheck); c1.appendChild(again);
+    } else if (rem.email_unlock_available) {
+      c1.appendChild(el('p', null, 'You\'ve used your free check. Add your email for 2 more.'));
+      var more = el('button', 'ghost', 'Get 2 more checks'); more.type = 'button'; more.addEventListener('click', function () { show(gate, true); gate.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('g-email').focus(); }); c1.appendChild(more);
+    } else {
+      c1.appendChild(el('p', null, 'That was your last free check. A free account keeps checking your trips for you.'));
+      var acct = el('a', 'ghost', 'Create a free account'); acct.href = tripLink(trip); c1.appendChild(acct);
+    }
+    var c2 = el('div', 'rc-mini');
+    c2.appendChild(el('h3', null, 'Booking soon? Watch the price.'));
+    c2.appendChild(el('p', null, 'We check every 2 hours for 48 hours or 5 days, and you pay only if the price held. Your first one is free.'));
+    var pw = el('a', 'lnk', 'See how it works →'); pw.href = '/#watch'; c2.appendChild(pw);
+    two.appendChild(c1); two.appendChild(c2); resultBox.appendChild(two);
+
+    demoEl.classList.add('viewing'); show($('demo-why'), true);
+    show(resultBox, true); updateLeft(rem);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function limitView(title, text, trip) {
@@ -441,12 +607,14 @@ main{padding:36px 20px 64px}
     if (!dep) return { err: 'Choose a departure date.' };
     if (ret && ret < dep) return { err: 'The return date can\'t be before the departure date.' };
     if (!(b > 0)) return { err: 'Enter your total budget.' };
-    return { trip: { origin: o, destination: d, origin_name: nameOf($('d-from').value), destination_name: nameOf($('d-to').value), depart_date: dep, return_date: ret, budget: b, currency: $('d-cur').value || 'CAD' } };
+    var tr = tv.get();
+    if (!tr.complete) { tv.flagIncomplete(); return { err: 'Choose each child\'s age.' }; }
+    return { trip: { adults: tr.adults, child_ages: tr.ages, origin: o, destination: d, origin_name: nameOf($('d-from').value), destination_name: nameOf($('d-to').value), depart_date: dep, return_date: ret, budget: b, currency: $('d-cur').value || 'CAD' } };
   }
   function run(trip) {
     if (SITEKEY && !tsToken) { say('Please complete the security check, then try again.'); initTs(); return; }
     pending = trip; setBusy(true);
-    var body = { origin: trip.origin, destination: trip.destination, depart_date: trip.depart_date, return_date: trip.return_date, adults: 1, origin_name: trip.origin_name || null, destination_name: trip.destination_name || null, budget: trip.budget, currency: trip.currency, browser_id: bid, turnstile_token: tsToken };
+    var body = { origin: trip.origin, destination: trip.destination, depart_date: trip.depart_date, return_date: trip.return_date, adults: trip.adults || 1, child_ages: trip.child_ages || [], origin_name: trip.origin_name || null, destination_name: trip.destination_name || null, budget: trip.budget, currency: trip.currency, browser_id: bid, turnstile_token: tsToken };
     post('/demo/check', body).then(function (r) {
       setBusy(false); tsReset();
       var j = r.j || {}, d = j.detail || {}, code = d.code;

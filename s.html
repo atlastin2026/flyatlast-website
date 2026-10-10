@@ -136,7 +136,7 @@ footer.foot a{color:inherit}
     root.appendChild(el('h1', null, orig + ' to ' + dest));
     var dr = ymd(sn.departure_date), rr = ymd(sn.return_date);
     var np = +sn.adults || 1;
-    root.appendChild(el('p', 'dates', (rr ? dr + ' to ' + rr : dr) + ' \u00b7 ' + (rr ? 'Round trip' : 'One way') + ' \u00b7 ' + np + ' adult' + (np === 1 ? '' : 's')));
+    root.appendChild(el('p', 'dates', (rr ? dr + ' to ' + rr : dr) + ' \u00b7 ' + (rr ? 'Round trip' : 'One way') + ' \u00b7 ' + np + ' adult' + (np === 1 ? '' : 's') + ((sn.child_ages || []).length ? ', ' + sn.child_ages.length + ' child' + (sn.child_ages.length === 1 ? '' : 'ren') : '')));
 
     var card = el('div', 'card');
     var top = el('div', 'top');
