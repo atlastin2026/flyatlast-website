@@ -467,6 +467,22 @@ main{padding:36px 20px 64px}
     run(f.trip);
   });
 
+  /* ---------- arriving from the home form: run the check straight away when the airports were picked from the list ---------- */
+  (function autoRun() {
+    var q; try { q = new URLSearchParams(location.search); } catch (e) { return; }
+    if (!q.get('from')) return;
+    var f = readForm();
+    if (q.get('go') !== '1' || f.err) { say('Check the details, then press Check this trip.', true); return; }
+    say('Running your check\u2026', true); initTs();
+    var tries = 0;
+    (function wait() {
+      if (form.hidden) { say(''); return; }
+      if (!SITEKEY || tsToken) { var g = readForm(); if (g.err) { say(g.err); return; } run(g.trip); return; }
+      if (++tries > 40) { say('Press Check this trip to run your check.', true); return; }
+      setTimeout(wait, 300);
+    })();
+  })();
+
   /* ---------- email unlock ---------- */
   $('g-go').addEventListener('click', function () {
     var email = $('g-email').value.trim();

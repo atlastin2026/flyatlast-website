@@ -655,13 +655,14 @@ section[id]{scroll-margin-top:72px}
    <div class="wrap hx-in">
     <h1 class="hx-h1">Pin. Track. <span>Fly.</span></h1>
     <p class="hx-sub">Tell us your budget. We'll tell you when a real flight fits it.</p>
-    <p class="hx-cue" id="hx-cue" aria-live="polite"><b>Your turn</b><span>Try checking your trip. Free, no sign-up.</span></p>
+    <p class="hx-cue" id="hx-cue" aria-live="polite"><b>Try your trip</b><span>Check it against your budget. Free, no sign-up.</span></p>
     <form class="hx-form plausible-event-name=Hero+form" action="try.html" method="get" aria-label="Check a trip against your budget">
       <label class="hx-fld hx-ac"><span>From</span><input name="from" id="hx-from" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-from" autocomplete="off" placeholder="City or airport" required maxlength="60"><ul class="hx-list" id="hx-dl-from" role="listbox" hidden></ul></label>
       <label class="hx-fld hx-ac"><span>To</span><input name="to" id="hx-to" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-to" autocomplete="off" placeholder="City or airport" required maxlength="60"><ul class="hx-list" id="hx-dl-to" role="listbox" hidden></ul></label>
       <label class="hx-fld"><span>Depart</span><input name="dep" id="hx-dep" type="date" required></label>
       <label class="hx-fld"><span>Return <em>(optional)</em></span><input name="ret" id="hx-ret" type="date"></label>
       <label class="hx-fld hx-bud"><span>Budget &middot; 1 adult</span><div class="hx-money"><input name="budget" id="hx-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 1300" required><select name="cur" id="hx-cur" aria-label="Currency"><option>CAD</option><option>USD</option><option>EUR</option><option>GBP</option><option>AUD</option></select></div></label>
+      <input type="hidden" name="go" value="1" id="hx-gof" disabled>
       <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
     </form>
     
@@ -918,7 +919,11 @@ function wire(inputId,listId,isFrom){
 }
 wire('hx-from','hx-dl-from',true);wire('hx-to','hx-dl-to',false);
 /* only send the currency when the visitor chose it or it came from the picked airport; otherwise the check page works it out from the From city */
-form.addEventListener('submit',function(){if(!touched&&!derived)sel.disabled=true;});
+form.addEventListener('submit',function(){
+  if(!touched&&!derived)sel.disabled=true;
+  var ok=/\([A-Za-z]{3}\)\s*$/,gf=$('hx-gof');
+  if(gf)gf.disabled=!(ok.test($('hx-from').value.trim())&&ok.test($('hx-to').value.trim()));
+});
 (function(){
   var d=$('hx-dep'),r=$('hx-ret');if(!d||!r)return;
   var t=new Date(),iso=function(x){return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');};
@@ -926,7 +931,7 @@ form.addEventListener('submit',function(){if(!touched&&!derived)sel.disabled=tru
   [d,r].forEach(function(e){e.min=iso(t);e.max=iso(max);});
   d.addEventListener('change',function(){if(d.value){r.min=d.value;if(r.value&&r.value<d.value)r.value='';}});
 })();
-window.addEventListener('pageshow',function(){sel.disabled=false;});
+window.addEventListener('pageshow',function(){sel.disabled=false;var gf=$('hx-gof');if(gf)gf.disabled=true;});
 })();
 </script>
 <script>
@@ -953,7 +958,7 @@ function cue(ex){
   form.classList.toggle('demoing',ex);
   if(!cueEl)return;
   cueEl.classList.toggle('ex',ex);
-  cueEl.innerHTML=ex?'<b>Example</b><span>Watch how a check works. Then try yours.</span>':'<b>Your turn</b><span>Try checking your trip. Free, no sign-up.</span>';
+  cueEl.innerHTML=ex?'<b>Example</b><span>Watch how a check works. Then try yours.</span>':'<b>Try your trip</b><span>Check it against your budget. Free, no sign-up.</span>';
 }
 function run(){
   var g=++gen;timers.forEach(clearTimeout);timers=[];clear();tri.classList.add('demo');cue(true);
