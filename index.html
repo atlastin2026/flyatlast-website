@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FlyAtlast: You set the budget, we track the flights.</title>
 <meta name="description" content="Set your budget and dates. We check real, bookable fares, more often as your trip gets closer, and alert you with the exact flight. Free for 3 trips. Not ready to book? Price Watch checks every 2 hours, and you don't pay if the price ends US$5+ higher or US$20+ lower.">
@@ -16,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FlyAtlast: You set the budget, we track the flights.">
   <meta name="twitter:image" content="https://flyatlast.com/assets/og-image.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://flyatlast.com/#org", "name": "FlyAtlast", "url": "https://flyatlast.com/", "logo": "https://flyatlast.com/assets/logo192.png", "email": "contactus@flyatlast.com"}, {"@type": "WebSite", "@id": "https://flyatlast.com/#site", "url": "https://flyatlast.com/", "name": "FlyAtlast", "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "WebApplication", "name": "FlyAtlast", "url": "https://flyatlast.com/", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "description": "Set a budget for a trip. FlyAtlast checks real, bookable fares and alerts you with the exact flight when one comes in under it.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free for 3 trips"}, "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does FlyAtlast work?", "acceptedAnswer": {"@type": "Answer", "text": "Pin a route, dates and budget. We keep checking until you fly. Under budget? You get the flight and a link to book."}}, {"@type": "Question", "name": "What’s free?", "acceptedAnswer": {"@type": "Answer", "text": "Your first 3 trips: 25 checks each, no card. Need more? 3 extra trips for US$3."}}, {"@type": "Question", "name": "What’s Price Watch?", "acceptedAnswer": {"@type": "Answer", "text": "Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free."}}, {"@type": "Question", "name": "Paid more anyway?", "acceptedAnswer": {"@type": "Answer", "text": "We refund the Price Watch fee. Just send your booking confirmation within 48 hours."}}, {"@type": "Question", "name": "Do you hold seats?", "acceptedAnswer": {"@type": "Answer", "text": "No. We don’t hold seats or fares. We check real fares and tell you when one fits."}}, {"@type": "Question", "name": "Why do prices differ?", "acceptedAnswer": {"@type": "Answer", "text": "Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights."}}]}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://flyatlast.com/#org", "name": "FlyAtlast", "url": "https://flyatlast.com/", "logo": "https://flyatlast.com/assets/logo192.png", "email": "contactus@flyatlast.com"}, {"@type": "WebSite", "@id": "https://flyatlast.com/#site", "url": "https://flyatlast.com/", "name": "FlyAtlast", "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "WebApplication", "name": "FlyAtlast", "url": "https://flyatlast.com/", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "description": "Set a budget for a trip. FlyAtlast checks real, bookable fares and alerts you with the exact flight when one comes in under it.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free for 3 trips"}, "publisher": {"@id": "https://flyatlast.com/#org"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does FlyAtlast work?", "acceptedAnswer": {"@type": "Answer", "text": "Pin a route, dates and budget. We keep checking until you fly. Under budget? You get the flight and a link to it."}}, {"@type": "Question", "name": "What’s free?", "acceptedAnswer": {"@type": "Answer", "text": "Your first 3 trips: 25 checks each, no card. Need more? 3 extra trips for US$3."}}, {"@type": "Question", "name": "What’s Price Watch?", "acceptedAnswer": {"@type": "Answer", "text": "Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free."}}, {"@type": "Question", "name": "Paid more anyway?", "acceptedAnswer": {"@type": "Answer", "text": "We refund the Price Watch fee. Just send your booking confirmation within 48 hours."}}, {"@type": "Question", "name": "Do you hold seats?", "acceptedAnswer": {"@type": "Answer", "text": "No. We don’t hold seats or fares. We check real fares and tell you when one fits."}}, {"@type": "Question", "name": "Why do prices differ?", "acceptedAnswer": {"@type": "Answer", "text": "Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights."}}]}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -195,129 +196,6 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="assets/logo192.png">
-<!-- FA-ANIM CSS START -->
-<style id="fa-anim-css">
-/* FlyAtlast hero animation, Option B. Master loop 20s. Scene windows (seconds):
-   S1 0-5 night: fare came and went | S2 5-8.8 pin the trip | S3 8.8-12.8 alert: you slept in
-   S4 12.8-17 Price Watch | S5 17-20 tagline
-   Keyframe percentages are seconds / 20. Base (no animation) state = final state. */
-.fa-anim{--fa-t:20s;max-width:720px;margin:0 auto 28px;font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--navy,#1E3A5F)}
-.fa-anim *{box-sizing:border-box}
-.fa-anim .fa-stage,.fa-anim .fa-scene{box-sizing:content-box}
-.fa-stage{position:relative;aspect-ratio:16/9;border:2px solid var(--navy,#1E3A5F);background:var(--white,#fff);overflow:hidden}
-.fa-scene{position:absolute;inset:0;background:var(--white,#fff)}
-.fa-scene svg{display:block;width:100%;height:100%}
-.fa-anim svg *{transform-box:fill-box;transform-origin:50% 50%}
-.fa-tx{font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
-.fa-mo{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.fa-w500{font-weight:500}.fa-w600{font-weight:600}.fa-w700{font-weight:700}.fa-w800{font-weight:800}
-.fa-c-none{fill:none}
-.fa-h{opacity:0}.fa-dim{opacity:.4}
-.fa-anim svg .fa-ol{transform-origin:0 50%}
-.fa-wipe{transform:translateX(760px)}
-.fa-dr{stroke-dasharray:1 1;stroke-dashoffset:0}
-
-.fa-c-navy{fill:var(--navy,#1E3A5F)}.fa-k-navy{stroke:var(--navy,#1E3A5F)}
-.fa-c-navy2{fill:var(--navy-2,#243F63)}.fa-k-navy2{stroke:var(--navy-2,#243F63)}
-.fa-c-nline{fill:var(--navy-line,#5E7A96)}.fa-k-nline{stroke:var(--navy-line,#5E7A96)}
-.fa-c-white{fill:var(--white,#FFFFFF)}.fa-k-white{stroke:var(--white,#FFFFFF)}
-.fa-c-yellow{fill:var(--yellow,#F4C11C)}.fa-k-yellow{stroke:var(--yellow,#F4C11C)}
-.fa-c-gbg{fill:#D4EDDC}.fa-k-gbg{stroke:#D4EDDC}
-.fa-c-gtx{fill:#2C6640}.fa-k-gtx{stroke:#2C6640}
-.fa-c-abg{fill:#FDF4DE}.fa-k-abg{stroke:#FDF4DE}
-.fa-c-atx{fill:#7A5B10}.fa-k-atx{stroke:#7A5B10}
-.fa-c-red{fill:#B94A2E}.fa-k-red{stroke:#B94A2E}
-.fa-c-muted{fill:var(--text-muted,#5A6B78)}.fa-k-muted{stroke:var(--text-muted,#5A6B78)}
-.fa-c-border{fill:var(--border,#DDE3E7)}.fa-k-border{stroke:var(--border,#DDE3E7)}
-.fa-c-bg{fill:var(--bg,#EEF1F3)}.fa-k-bg{stroke:var(--bg,#EEF1F3)}
-.fa-c-dark{fill:#1a1a1a}.fa-k-dark{stroke:#1a1a1a}
-.fa-c-pale{fill:#C3CFDA}.fa-k-pale{stroke:#C3CFDA}
-.fa-c-body{fill:var(--text-body,#3d4a56)}.fa-k-body{stroke:var(--text-body,#3d4a56)}
-.fa-c-lgreen{fill:#8FE0AE}.fa-k-lgreen{stroke:#8FE0AE}
-.fa-c-lred{fill:#FF9F80}.fa-k-lred{stroke:#FF9F80}
-
-.fa-a{animation-duration:var(--fa-t);animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both}
-.fa-bar{display:flex;align-items:center;gap:12px;margin:12px 0 10px}
-.fa-prog{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
-.fa-seg{display:block;height:10px;border:2px solid var(--navy,#1E3A5F);background:var(--border,#DDE3E7);overflow:hidden}
-.fa-fill{display:block;width:100%;height:100%;background:var(--navy,#1E3A5F);transform-origin:0 50%}
-.fa-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:0 14px;border:2px solid var(--navy,#1E3A5F);background:var(--white,#fff);color:var(--navy,#1E3A5F);font:700 14px/1 "Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;cursor:pointer}
-.fa-toggle svg{width:16px;height:16px;fill:currentColor}
-.fa-toggle:focus-visible{outline:3px solid var(--navy,#1E3A5F);outline-offset:2px}
-.fa-caps{list-style:none;margin:0;padding:0;display:grid;text-align:center}
-.fa-caps li{grid-area:1/1;display:block}
-.fa-ch{display:block;font-size:20px;font-weight:800;line-height:1.25;color:var(--navy,#1E3A5F);margin-bottom:4px}
-.fa-cs{display:block;font-size:15px;font-weight:500;line-height:1.45;color:var(--text-body,#3d4a56)}
-.fa-note{margin:10px 0 0;font-size:12px;line-height:1.4;color:var(--text-muted,#5A6B78);text-align:right}
-.fa-anim.fa-is-paused *{animation-play-state:paused!important}
-@media (max-width:600px){.fa-ch{font-size:17px}.fa-cs{font-size:14px}}
-@media (max-width:768px){.fa-stage{margin-left:-24px;margin-right:-24px;border-left-width:0;border-right-width:0}}
-@media (prefers-reduced-motion:reduce){
-.fa-anim *{animation:none!important}
-.fa-stage{aspect-ratio:auto;border:0;overflow:visible;background:none;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
-.fa-scene{position:relative;inset:auto;aspect-ratio:16/9;border:2px solid var(--navy,#1E3A5F);overflow:hidden}
-.fa-bar{display:none}
-.fa-caps{display:block;margin-top:16px}
-.fa-caps li{margin-bottom:14px}
-}
-
-@keyframes fa-k1{0%,1%{opacity:0}2.5%,100%{opacity:1}}
-@keyframes fa-k2{0%{opacity:0;transform:scale(.92)}2%{opacity:0;transform:scale(.92);animation-timing-function:cubic-bezier(.2,.7,.2,1)}4%,100%{opacity:1;transform:none}}
-@keyframes fa-k3{0%{opacity:0;transform:translateY(12px)}6.5%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}8.25%,100%{opacity:1;transform:none}}
-@keyframes fa-k4{0%,11.5%{opacity:1}13%,100%{opacity:0}}
-@keyframes fa-k5{0%{opacity:0;transform:translateY(12px)}14%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}15.75%,100%{opacity:1;transform:none}}
-@keyframes fa-k6{0%,16.5%{opacity:0}18.5%,100%{opacity:1}}
-@keyframes fa-k7{0%,13%{opacity:0}14.5%,100%{opacity:1}}
-@keyframes fa-k8{0%,0.01%{opacity:0}1.5%,22.5%{opacity:1}25%,100%{opacity:0}}
-@keyframes fa-k9{0%{clip-path:inset(0 100% 0 0)}27.5%{clip-path:inset(0 100% 0 0);animation-timing-function:steps(16,end)}31%,100%{clip-path:inset(0 0 0 0)}}
-@keyframes fa-k10{0%,31%{opacity:0}32.5%,100%{opacity:1}}
-@keyframes fa-k11{0%{clip-path:inset(0 100% 0 0)}32%{clip-path:inset(0 100% 0 0);animation-timing-function:steps(8,end)}35%,100%{clip-path:inset(0 0 0 0)}}
-@keyframes fa-k12{0%{transform:scaleX(0)}35%{transform:scaleX(0);animation-timing-function:cubic-bezier(.2,.7,.2,1)}37.5%,100%{transform:none}}
-@keyframes fa-k13{0%,33%{opacity:0;transform:scale(1)}34%,37.5%{opacity:1;transform:scale(1)}38%{opacity:1;transform:scale(.96)}38.6%{opacity:1;transform:scale(1)}39%,100%{opacity:0;transform:scale(1)}}
-@keyframes fa-k14{0%,39%{opacity:0}40.25%,100%{opacity:1}}
-@keyframes fa-k15{0%,25%{opacity:0}27.5%,42.25%{opacity:1}44%,100%{opacity:0}}
-@keyframes fa-k16{0%{opacity:0;transform:translateY(50px)}45%{opacity:0;transform:translateY(50px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}47.5%,100%{opacity:1;transform:none}}
-@keyframes fa-k17{0%{opacity:0;transform:translateY(-24px)}49%{opacity:0;transform:translateY(-24px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}51%,100%{opacity:1;transform:none}}
-@keyframes fa-k18{0%{opacity:0;transform:translateY(12px)}53%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}54.75%,100%{opacity:1;transform:none}}
-@keyframes fa-k19{0%{opacity:0;transform:translateY(12px)}55%{opacity:0;transform:translateY(12px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}56.75%,100%{opacity:1;transform:none}}
-@keyframes fa-k20{0%{transform:scaleX(0)}56.5%{transform:scaleX(0);animation-timing-function:cubic-bezier(.2,.7,.2,1)}59%,100%{transform:none}}
-@keyframes fa-k21{0%,59%{opacity:0}61%,100%{opacity:1}}
-@keyframes fa-k22{0%,44%{opacity:0}46%,62%{opacity:1}64%,100%{opacity:0}}
-@keyframes fa-k23{0%,77%{opacity:1}77.75%{opacity:.6}78.5%{opacity:1}79.25%,100%{opacity:.8}}
-@keyframes fa-k24{0%,67%,67.01%{stroke-dashoffset:1}67.944%{stroke-dashoffset:0.89}68.889%{stroke-dashoffset:0.78}69.833%{stroke-dashoffset:0.668}70.778%{stroke-dashoffset:0.558}71.722%{stroke-dashoffset:0.446}72.667%{stroke-dashoffset:0.336}73.611%{stroke-dashoffset:0.223}74.556%{stroke-dashoffset:0.113}75.5%,100%{stroke-dashoffset:0}}
-@keyframes fa-k25{0%,67%{opacity:0;transform:scale(.3)}67.5%,100%{opacity:1;transform:none}}
-@keyframes fa-k26{0%,67.944%{opacity:0;transform:scale(.3)}68.444%,100%{opacity:1;transform:none}}
-@keyframes fa-k27{0%,68.889%{opacity:0;transform:scale(.3)}69.389%,100%{opacity:1;transform:none}}
-@keyframes fa-k28{0%,69.833%{opacity:0;transform:scale(.3)}70.333%,100%{opacity:1;transform:none}}
-@keyframes fa-k29{0%,70.778%{opacity:0;transform:scale(.3)}71.278%,100%{opacity:1;transform:none}}
-@keyframes fa-k30{0%,71.722%{opacity:0;transform:scale(.3)}72.222%,100%{opacity:1;transform:none}}
-@keyframes fa-k31{0%,72.667%{opacity:0;transform:scale(.3)}73.167%,100%{opacity:1;transform:none}}
-@keyframes fa-k32{0%,73.611%{opacity:0;transform:scale(.3)}74.111%,100%{opacity:1;transform:none}}
-@keyframes fa-k33{0%,74.556%{opacity:0;transform:scale(.3)}75.056%,100%{opacity:1;transform:none}}
-@keyframes fa-k34{0%{opacity:0;transform:scale(1)}75.5%{opacity:0;transform:scale(.3)}76%,77%{opacity:1;transform:scale(1)}78%{opacity:1;transform:scale(1.6)}79%,100%{opacity:1;transform:scale(1)}}
-@keyframes fa-k35{0%,71.722%{opacity:0;transform:scale(.6)}72.722%,100%{opacity:1;transform:none}}
-@keyframes fa-k36{0%,64%{opacity:0}65.5%,100%{opacity:1}}
-@keyframes fa-k37{0%,65.5%{opacity:0}67%,100%{opacity:1}}
-@keyframes fa-k38{0%{opacity:0;transform:translateY(16px)}77%{opacity:0;transform:translateY(16px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}78.5%,100%{opacity:1;transform:none}}
-@keyframes fa-k39{0%,79.5%{opacity:0}81%,100%{opacity:1}}
-@keyframes fa-k40{0%,64%{opacity:0}66%,83%{opacity:1}85%,100%{opacity:0}}
-@keyframes fa-k41{0%{opacity:0;transform:translateY(14px)}87%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}89%,100%{opacity:1;transform:none}}
-@keyframes fa-k42{0%{transform:scaleX(0)}89.5%{transform:scaleX(0);animation-timing-function:cubic-bezier(.2,.7,.2,1)}92%,100%{transform:none}}
-@keyframes fa-k43{0%,91.5%{opacity:0}93.5%,100%{opacity:1}}
-@keyframes fa-k44{0%,85%{opacity:0}87%,98%{opacity:1}100%{opacity:0}}
-@keyframes fa-k45{0%,0.01%{opacity:0}1.25%,23.75%{opacity:1}25%,100%{opacity:0}}
-@keyframes fa-k46{0%,0.01%{transform:scaleX(0)}25%,100%{transform:scaleX(1)}}
-@keyframes fa-k47{0%,25%{opacity:0}26.25%,42.75%{opacity:1}44%,100%{opacity:0}}
-@keyframes fa-k48{0%,25%{transform:scaleX(0)}44%,100%{transform:scaleX(1)}}
-@keyframes fa-k49{0%,44%{opacity:0}45.25%,62.75%{opacity:1}64%,100%{opacity:0}}
-@keyframes fa-k50{0%,44%{transform:scaleX(0)}64%,100%{transform:scaleX(1)}}
-@keyframes fa-k51{0%,64%{opacity:0}65.25%,83.75%{opacity:1}85%,100%{opacity:0}}
-@keyframes fa-k52{0%,64%{transform:scaleX(0)}85%,100%{transform:scaleX(1)}}
-@keyframes fa-k53{0%,85%{opacity:0}86.25%,98.75%{opacity:1}100%{opacity:0}}
-@keyframes fa-k54{0%,85%{transform:scaleX(0)}100%{transform:scaleX(1)}}
-.fa-k1{animation-name:fa-k1}.fa-k2{animation-name:fa-k2}.fa-k3{animation-name:fa-k3}.fa-k4{animation-name:fa-k4}.fa-k5{animation-name:fa-k5}.fa-k6{animation-name:fa-k6}.fa-k7{animation-name:fa-k7}.fa-k8{animation-name:fa-k8}.fa-k9{animation-name:fa-k9}.fa-k10{animation-name:fa-k10}.fa-k11{animation-name:fa-k11}.fa-k12{animation-name:fa-k12}.fa-k13{animation-name:fa-k13}.fa-k14{animation-name:fa-k14}.fa-k15{animation-name:fa-k15}.fa-k16{animation-name:fa-k16}.fa-k17{animation-name:fa-k17}.fa-k18{animation-name:fa-k18}.fa-k19{animation-name:fa-k19}.fa-k20{animation-name:fa-k20}.fa-k21{animation-name:fa-k21}.fa-k22{animation-name:fa-k22}.fa-k23{animation-name:fa-k23}.fa-k24{animation-name:fa-k24}.fa-k25{animation-name:fa-k25}.fa-k26{animation-name:fa-k26}.fa-k27{animation-name:fa-k27}.fa-k28{animation-name:fa-k28}.fa-k29{animation-name:fa-k29}.fa-k30{animation-name:fa-k30}.fa-k31{animation-name:fa-k31}.fa-k32{animation-name:fa-k32}.fa-k33{animation-name:fa-k33}.fa-k34{animation-name:fa-k34}.fa-k35{animation-name:fa-k35}.fa-k36{animation-name:fa-k36}.fa-k37{animation-name:fa-k37}.fa-k38{animation-name:fa-k38}.fa-k39{animation-name:fa-k39}.fa-k40{animation-name:fa-k40}.fa-k41{animation-name:fa-k41}.fa-k42{animation-name:fa-k42}.fa-k43{animation-name:fa-k43}.fa-k44{animation-name:fa-k44}.fa-k45{animation-name:fa-k45}.fa-k46{animation-name:fa-k46}.fa-k47{animation-name:fa-k47}.fa-k48{animation-name:fa-k48}.fa-k49{animation-name:fa-k49}.fa-k50{animation-name:fa-k50}.fa-k51{animation-name:fa-k51}.fa-k52{animation-name:fa-k52}.fa-k53{animation-name:fa-k53}.fa-k54{animation-name:fa-k54}
-</style>
-<!-- FA-ANIM CSS END -->
 <!-- FW-ANIM CSS START -->
 <style id="fw-anim-css">
 /* FlyAtlast Price Watch explainer. Loop 18s = three 6s outcomes: above 0-6, inside 6-12, below 12-18.
@@ -626,19 +504,8 @@ section[id]{scroll-margin-top:72px}
       <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
     </form>
     <p class="hx-micro">Free check, no sign-up. Then pin it and we keep checking. First 3 trips free, 25 checks each, no card. <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free">Or pin a trip now &rarr;</a></p>
-    <div class="hx-tri" id="how"><div class="hx-pn hx-p1 hxa a1"><span class="hx-vb">Pin</span><span class="hx-d">Your route, dates and the budget that makes it a yes.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Pinned</em></div><div class="hx-row hx-sm"><span>Round trip</span><span>Nov 14&ndash;21 &middot; 1 adult</span></div><div class="hx-row"><span>Your budget</span><b>C$1,300</b></div></div></div><div class="hx-pn hx-p2 hxa a2"><span class="hx-vb">Track</span><span class="hx-d">We check real fares, closer together as departure nears.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Tracking</em></div><div class="hx-chk" aria-hidden="true"><i class="t" style="--s:0.40s"></i><i class="t" style="--s:0.85s"></i><i class="t" style="--s:1.30s"></i><i class="t" style="--s:1.75s"></i><i class="t" style="--s:2.20s"></i><i class="t" style="--s:2.65s"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div><div class="hx-row hx-sm"><span>Checks done</span><span>6 of 25</span></div><div class="hx-row"><span>Lowest so far</span><b>C$1,342</b></div></div></div><div class="hx-pn hx-p3 hxa a3"><span class="hx-vb">Fly</span><span class="hx-d">The exact flight lands in your inbox, with a link to book.</span><div class="hx-mini"><div class="hx-mh"><b>Deal found</b><em class="hx-chip g">C$113 under budget</em></div><div class="hx-row hx-sm"><span>Toronto &rarr; London</span><span>Nov 14&ndash;21</span></div><div class="hx-price">C$1,187</div><div class="hx-bk">Book on Google Flights</div></div></div></div>
+    <div class="hx-tri" id="how"><div class="hx-pn hx-p1 hxa a1"><span class="hx-vb">Pin</span><span class="hx-d">Your route, dates and the budget that makes it a yes.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Pinned</em></div><div class="hx-row hx-sm"><span>Round trip</span><span>Nov 14&ndash;21 &middot; 1 adult</span></div><div class="hx-row"><span>Your budget</span><b>C$1,300</b></div></div></div><div class="hx-pn hx-p2 hxa a2"><span class="hx-vb">Track</span><span class="hx-d">We check real fares, closer together as departure nears.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Tracking</em></div><div class="hx-chk" aria-hidden="true"><i class="t" style="--s:0.40s"></i><i class="t" style="--s:0.85s"></i><i class="t" style="--s:1.30s"></i><i class="t" style="--s:1.75s"></i><i class="t" style="--s:2.20s"></i><i class="t" style="--s:2.65s"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div><div class="hx-row hx-sm"><span>Checks done</span><span>6 of 25</span></div><div class="hx-row"><span>Lowest so far</span><b>C$1,342</b></div></div></div><div class="hx-pn hx-p3 hxa a3"><span class="hx-vb">Fly</span><span class="hx-d">The exact flight lands in your inbox, with a link to the flight.</span><div class="hx-mini"><div class="hx-mh"><b>Deal found</b><em class="hx-chip g">C$113 under budget</em></div><div class="hx-row hx-sm"><span>Toronto &rarr; London</span><span>Nov 14&ndash;21</span></div><div class="hx-price">C$1,187</div><div class="hx-bk">See this flight</div></div></div></div>
    </div>
-  </section>
-
-  <!-- STORY: existing animation -->
-  <section class="section" id="story">
-    <div class="wrap hx-center">
-      <p class="eyebrow">See it in action</p>
-      <h2 style="margin-bottom:26px">The fare you wanted came and went.</h2>
-      <!-- FA-ANIM HTML START -->
-    <section class="fa-anim" aria-label="How FlyAtlast works: an animated example"><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="fa-i-plane" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></symbol><symbol id="fa-i-refresh" viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></symbol><symbol id="fa-i-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></symbol><symbol id="fa-i-bell" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></symbol><symbol id="fa-i-clock" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></symbol><symbol id="fa-i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol></defs></svg><div class="fa-stage" aria-hidden="true"><div class="fa-scene fa-a fa-k8" data-s="1"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="0" y="0" width="720" height="405" class="fa-c-navy"/><circle cx="560" cy="74" r="3" class="fa-c-pale" opacity=".7"/><circle cx="612" cy="122" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="498" cy="44" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="668" cy="96" r="2" class="fa-c-pale" opacity=".7"/><circle cx="100" cy="112" r="2.5" class="fa-c-pale" opacity=".7"/><circle cx="44" cy="196" r="2" class="fa-c-pale" opacity=".7"/><circle cx="250" cy="40" r="2" class="fa-c-pale" opacity=".7"/><use href="#fa-i-moon" x="636" y="22" width="46" height="46" class="fa-c-yellow"/><g class="fa-h fa-a fa-k4"><text x="40" y="56" font-size="26" text-anchor="start" class="fa-c-pale fa-mo fa-w700">Tue 2:14 am</text><g class="fa-a fa-k1"><text x="360" y="142" font-size="28" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">The fare you wanted</text></g><g class="fa-a fa-k2"><text x="360" y="238" font-size="88" text-anchor="middle" class="fa-c-lgreen fa-mo fa-w800">CA$1,187</text></g><g class="fa-a fa-k3"><text x="360" y="306" font-size="36" text-anchor="middle" class="fa-c-white fa-tx fa-w800">You were asleep.</text></g></g><g class="fa-a fa-k7"><text x="40" y="56" font-size="26" text-anchor="start" class="fa-c-pale fa-mo fa-w700">Thu 7:30 am</text><text x="360" y="142" font-size="28" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Now</text><text x="360" y="238" font-size="88" text-anchor="middle" class="fa-c-lred fa-mo fa-w800">CA$1,384</text><path d="M596 228 L648 228 L622 182 Z" class="fa-c-lred"/><g class="fa-a fa-k5"><text x="360" y="306" font-size="36" text-anchor="middle" class="fa-c-white fa-tx fa-w800">Gone.</text></g><g class="fa-a fa-k6"><text x="360" y="366" font-size="24" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">You checked 19 times. Not at 2:14 am.</text></g></g></svg></div><div class="fa-scene fa-a fa-k15" data-s="2"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="110" y="24" width="500" height="360" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="140" y="74" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">Your trip</text><text x="140" y="124" font-size="36" text-anchor="start" class="fa-c-navy fa-mo fa-w700 fa-clip fa-a fa-k9">Toronto → London</text><g class="fa-a fa-k10"><text x="140" y="190" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">Your budget</text></g><text x="140" y="262" font-size="72" text-anchor="start" class="fa-c-navy fa-mo fa-w800 fa-clip fa-a fa-k11">CA$1,300</text><rect x="140" y="276" width="346" height="8" class="fa-c-yellow fa-ol fa-a fa-k12"/><g class="fa-h fa-a fa-k13"><rect x="140" y="306" width="420" height="58" stroke-width="2" class="fa-c-yellow fa-k-navy"/><text x="350" y="344" font-size="28" text-anchor="middle" class="fa-c-dark fa-tx fa-w800">Pin trip</text></g><g class="fa-a fa-k14"><circle cx="158" cy="335" r="10" class="fa-c-gtx"/><text x="182" y="346" font-size="34" text-anchor="start" class="fa-c-gtx fa-tx fa-w800">Watching</text></g></svg></div><div class="fa-scene fa-a fa-k22" data-s="3"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><g class="fa-a fa-k16"><rect x="40" y="20" width="300" height="365" class="fa-c-navy" rx="30"/><text x="190" y="104" font-size="46" text-anchor="middle" class="fa-c-white fa-tx fa-w800">8:04 am</text><text x="190" y="136" font-size="22" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Tuesday</text><rect x="150" y="366" width="80" height="6" class="fa-c-pale" rx="3" opacity=".7"/></g><g class="fa-a fa-k17"><rect x="56" y="168" width="268" height="152" class="fa-c-white" rx="14"/><text x="74" y="200" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w700">FlyAtlast</text><text x="74" y="234" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w800">London is a deal</text><text x="74" y="274" font-size="32" text-anchor="start" class="fa-c-navy fa-mo fa-w800">CA$1,187</text><text x="74" y="304" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">CA$113 under budget</text></g><g class="fa-a fa-k18"><text x="372" y="160" font-size="34" text-anchor="start" class="fa-c-navy fa-tx fa-w800">You slept in.</text></g><g class="fa-a fa-k19"><text x="372" y="208" font-size="34" text-anchor="start" class="fa-c-navy fa-tx fa-w800">We kept checking.</text></g><rect x="372" y="220" width="292" height="7" class="fa-c-yellow fa-ol fa-a fa-k20"/><g class="fa-a fa-k21"><text x="372" y="266" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">The exact flight,</text><text x="372" y="294" font-size="22" text-anchor="start" class="fa-c-muted fa-tx fa-w600">with a link to book.</text></g></svg></div><div class="fa-scene fa-a fa-k40" data-s="4"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><g class="fa-a fa-k23"><rect x="50" y="104" width="620" height="55.4" class="fa-c-gbg"/></g><rect x="50" y="159.4" width="620" height="121.1" class="fa-c-abg"/><rect x="50" y="280.5" width="620" height="41.5" class="fa-c-gbg"/><line x1="50" x2="670" y1="159.4" y2="159.4" stroke-width="2.5" stroke-dasharray="8 6" class="fa-k-gtx"/><line x1="50" x2="670" y1="280.5" y2="280.5" stroke-width="2.5" stroke-dasharray="8 6" class="fa-k-gtx"/><text x="112" y="147.4" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">Pay nothing above 1,194</text><text x="112" y="308" font-size="22" text-anchor="start" class="fa-c-gtx fa-tx fa-w700">Pay nothing below 1,159</text><text x="112" y="260.5" font-size="22" text-anchor="start" class="fa-c-atx fa-tx fa-w700">Fee applies in here</text><line x1="100" x2="100" y1="104" y2="322" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fa-k-navy"/><text x="112" y="227.6" font-size="22" text-anchor="start" class="fa-c-navy fa-mo fa-w700">Day 0: 1,187</text><path d="M100 183.6 L160 176.7 L220 166.3 L280 180.1 L340 169.7 L400 155.9 L460 162.8 L520 145.5 L580 152.4 L640 135.1" pathLength="1" fill="none" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" class="fa-k-navy fa-dr fa-a fa-k24"/><g class="fa-a fa-k25"><circle cx="100" cy="183.6" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k26"><circle cx="160" cy="176.7" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k27"><circle cx="220" cy="166.3" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k28"><circle cx="280" cy="180.1" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k29"><circle cx="340" cy="169.7" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k30"><circle cx="400" cy="155.9" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k31"><circle cx="460" cy="162.8" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k32"><circle cx="520" cy="145.5" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k33"><circle cx="580" cy="152.4" r="5" class="fa-c-navy"/></g><g class="fa-a fa-k34"><circle cx="640" cy="135.1" r="8" class="fa-c-red"/></g><g class="fa-a fa-k35"><use href="#fa-i-bell" x="408" y="101.4" width="26" height="26" class="fa-c-navy"/><text x="438" y="123.4" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w700">Alert sent</text></g><g class="fa-a fa-k36"><rect x="50" y="16" width="244" height="36" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="172" y="41" font-size="22" text-anchor="middle" class="fa-c-navy fa-tx fa-w700">48 hours · US$5.99</text><rect x="304" y="16" width="220" height="36" stroke-width="2" class="fa-c-white fa-k-navy"/><text x="414" y="41" font-size="22" text-anchor="middle" class="fa-c-navy fa-tx fa-w700">5 days · US$9.99</text></g><g class="fa-a fa-k37"><use href="#fa-i-clock" x="50" y="58" width="30" height="30" class="fa-c-navy"/><text x="86" y="82" font-size="22" text-anchor="start" class="fa-c-navy fa-tx fa-w700">Every 2 hours</text></g><g class="fa-a fa-k38"><rect x="111" y="334" width="498" height="34" stroke-width="2" class="fa-c-gbg fa-k-gtx"/><text x="360" y="358" font-size="22" text-anchor="middle" class="fa-c-gtx fa-tx fa-w700">Ended above the line: you pay nothing</text></g><g class="fa-a fa-k39"><text x="360" y="393" font-size="22" text-anchor="middle" class="fa-c-muted fa-tx fa-w600">We don't hold the fare or seats.</text></g></svg></div><div class="fa-scene fa-a fa-k44" data-s="5"><svg viewBox="0 0 720 405" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="0" y="0" width="720" height="405" class="fa-c-navy"/><g class="fa-a fa-k41"><text x="360" y="168" font-size="44" text-anchor="middle" class="fa-c-white fa-tx fa-w800">You set the budget,</text><text x="360" y="222" font-size="44" text-anchor="middle" class="fa-c-white fa-tx fa-w800">we track the flights.</text></g><rect x="300" y="250" width="120" height="6" class="fa-c-yellow fa-ol fa-a fa-k42"/><g class="fa-a fa-k43"><text x="360" y="304" font-size="26" text-anchor="middle" class="fa-c-pale fa-tx fa-w600">Free for 3 trips and one free Price Watch.</text></g></svg></div></div><div class="fa-bar"><div class="fa-prog"><span class="fa-seg"><span class="fa-fill fa-a fa-k46"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k48"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k50"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k52"></span></span><span class="fa-seg"><span class="fa-fill fa-a fa-k54"></span></span></div></div><ol class="fa-caps" role="list"><li class="fa-a fa-k45"><span class="fa-ch">The price you wanted came and went.</span><span class="fa-cs">It came in under your budget at 2:14 am. You were asleep.</span></li><li class="fa-a fa-k47"><span class="fa-ch">Pin the trip. Set your budget.</span><span class="fa-cs">Where, when, and the budget that makes it a yes.</span></li><li class="fa-a fa-k49"><span class="fa-ch">You slept in. We kept checking.</span><span class="fa-cs">When a real fare comes in under your budget, we confirm it and send you the exact flight, with a link to book.</span></li><li class="fa-a fa-k51"><span class="fa-ch">Not ready to book? Watch it.</span><span class="fa-cs">Price Watch checks every 2 hours. If it ends US$5+ higher or US$20+ lower, you pay nothing.</span></li><li class="fa-a fa-k53"><span class="fa-ch">You set the budget, we track the flights.</span><span class="fa-cs">Free for 3 trips and one free Price Watch. No card needed.</span></li></ol><p class="fa-note">Example route and prices, for illustration.</p></section>
-    <!-- FA-ANIM HTML END -->
-    </div>
   </section>
 
   <!-- PRICE WATCH -->
@@ -705,7 +572,7 @@ section[id]{scroll-margin-top:72px}
     </div>
   </section>
 
-  <section class="section faq2" id="faq"><div class="wrap"><div class="bigh"><p class="eyebrow">FAQ</p><h2>Quick <span>answers.</span></h2></div><div class="fcards"><div class="fc "><i>1</i><h3>How does FlyAtlast work?</h3><p>Pin a route, dates and budget. We keep checking until you fly. Under budget? You get the flight and a link to book.</p></div><div class="fc y"><i>2</i><h3>What&rsquo;s free?</h3><p>Your first 3 trips: 25 checks each, no card. Need more? 3 extra trips for US$3.</p></div><div class="fc "><i>3</i><h3>What&rsquo;s Price Watch?</h3><p>Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free.</p></div><div class="fc "><i>4</i><h3>Paid more anyway?</h3><p>We refund the Price Watch fee. Just send your booking confirmation within 48 hours.</p></div><div class="fc "><i>5</i><h3>Do you hold seats?</h3><p>No. We don&rsquo;t hold seats or fares. We check real fares and tell you when one fits.</p></div><div class="fc "><i>6</i><h3>Why do prices differ?</h3><p>Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights.</p></div></div><p class="fmore">More questions? <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></section>
+  <section class="section faq2" id="faq"><div class="wrap"><div class="bigh"><p class="eyebrow">FAQ</p><h2>Quick <span>answers.</span></h2></div><div class="fcards"><div class="fc "><i>1</i><h3>How does FlyAtlast work?</h3><p>Pin a route, dates and budget. We keep checking until you fly. Under budget? You get the flight and a link to it.</p></div><div class="fc y"><i>2</i><h3>What&rsquo;s free?</h3><p>Your first 3 trips: 25 checks each, no card. Need more? 3 extra trips for US$3.</p></div><div class="fc "><i>3</i><h3>What&rsquo;s Price Watch?</h3><p>Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free.</p></div><div class="fc "><i>4</i><h3>Paid more anyway?</h3><p>We refund the Price Watch fee. Just send your booking confirmation within 48 hours.</p></div><div class="fc "><i>5</i><h3>Do you hold seats?</h3><p>No. We don&rsquo;t hold seats or fares. We check real fares and tell you when one fits.</p></div><div class="fc "><i>6</i><h3>Why do prices differ?</h3><p>Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights.</p></div></div><p class="fmore">More questions? <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></section>
 
   <!-- CLOSING -->
   <section class="endband" id="pin">
@@ -738,32 +605,6 @@ section[id]{scroll-margin-top:72px}
     });
   });
 </script>
-<!-- FA-ANIM JS START -->
-<script id="fa-anim-js">
-(function () {
-  var root = document.querySelector('.fa-anim');
-  if (!root) return;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (reduce && reduce.matches) return;
-  var user = false, started = false, stage = root.querySelector('.fa-stage');
-  function setPaused(p) { root.classList.toggle('fa-is-paused', p); }
-  function restart() {
-    if (!root.getAnimations) return;
-    root.getAnimations({ subtree: true }).forEach(function (a) { a.currentTime = 0; });
-  }
-  if (stage) { stage.style.cursor = 'pointer'; stage.addEventListener('click', function () { user = !user; setPaused(user); }); }
-  if (!('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      var visible = e.intersectionRatio >= 0.35;
-      if (visible && !started) { started = true; restart(); }
-      if (user) return;
-      setPaused(!visible);
-    });
-  }, { threshold: [0, 0.35, 1] }).observe(root);
-})();
-</script>
-<!-- FA-ANIM JS END -->
 <!-- FW-ANIM JS START -->
 <script id="fw-anim-js">
 (function () {
