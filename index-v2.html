@@ -567,6 +567,11 @@ footer a{text-decoration:none}
 @media (max-width:860px){.endband .btn{display:block;width:100%;text-align:center}}
 section[id]{scroll-margin-top:72px}
 
+.pw-head .eyebrow{font-size:14px}
+.pw-head h2{font-size:clamp(40px,7vw,76px);line-height:1;font-weight:800;letter-spacing:-.04em;max-width:none}
+.pw-head h2 span{color:#B88A00}
+.pw-lead{font-size:clamp(18px,2.4vw,22px);margin-top:18px}
+
 </style>
 </head>
 <body>
@@ -584,7 +589,7 @@ section[id]{scroll-margin-top:72px}
       
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="#blog">Blog</a>
+      <a href="blog/">Blog</a>
       <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free btn btn-primary">Pin a trip free</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
@@ -610,7 +615,7 @@ section[id]{scroll-margin-top:72px}
       <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
     </form>
     <p class="hx-micro">Free check, no sign-up. Then pin it and we keep checking. First 3 trips free, 25 checks each, no card. <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free">Or pin a trip now &rarr;</a></p>
-    <div class="hx-tri" id="how"><div class="hx-pn hx-p1 hxa a1"><span class="hx-vb">Pin</span><span class="hx-d">Your route, dates and the budget that makes it a yes.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Pinned</em></div><div class="hx-row hx-sm"><span>Round trip</span><span>Nov 14&ndash;21 &middot; 1 adult</span></div><div class="hx-row"><span>Your budget</span><b>C$1,300</b></div></div></div><div class="hx-pn hx-p2 hxa a2"><span class="hx-vb">Track</span><span class="hx-d">We check real fares, closer together as departure nears.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Tracking</em></div><div class="hx-chk" aria-hidden="true"><i class="t" style="--s:0.40s"></i><i class="t" style="--s:0.85s"></i><i class="t" style="--s:1.30s"></i><i class="t" style="--s:1.75s"></i><i class="t" style="--s:2.20s"></i><i class="t" style="--s:2.65s"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div><div class="hx-row hx-sm"><span>Checks done</span><span>6 of 25</span></div><div class="hx-row"><span>Lowest so far</span><b>C$1,342</b></div><span class="hx-ex">Example, invented numbers</span></div></div><div class="hx-pn hx-p3 hxa a3"><span class="hx-vb">Fly</span><span class="hx-d">The exact flight lands in your inbox, with a link to book.</span><div class="hx-mini"><div class="hx-mh"><b>Deal found</b><em class="hx-chip g">C$113 under budget</em></div><div class="hx-row hx-sm"><span>Toronto &rarr; London</span><span>Nov 14&ndash;21</span></div><div class="hx-price">C$1,187</div><div class="hx-bk">Book on Google Flights</div><span class="hx-ex">Example, invented numbers</span></div></div></div>
+    <div class="hx-tri" id="how"><div class="hx-pn hx-p1 hxa a1"><span class="hx-vb">Pin</span><span class="hx-d">Your route, dates and the budget that makes it a yes.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Pinned</em></div><div class="hx-row hx-sm"><span>Round trip</span><span>Nov 14&ndash;21 &middot; 1 adult</span></div><div class="hx-row"><span>Your budget</span><b>C$1,300</b></div></div></div><div class="hx-pn hx-p2 hxa a2"><span class="hx-vb">Track</span><span class="hx-d">We check real fares, closer together as departure nears.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Tracking</em></div><div class="hx-chk" aria-hidden="true"><i class="t" style="--s:0.40s"></i><i class="t" style="--s:0.85s"></i><i class="t" style="--s:1.30s"></i><i class="t" style="--s:1.75s"></i><i class="t" style="--s:2.20s"></i><i class="t" style="--s:2.65s"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div><div class="hx-row hx-sm"><span>Checks done</span><span>6 of 25</span></div><div class="hx-row"><span>Lowest so far</span><b>C$1,342</b></div></div></div><div class="hx-pn hx-p3 hxa a3"><span class="hx-vb">Fly</span><span class="hx-d">The exact flight lands in your inbox, with a link to book.</span><div class="hx-mini"><div class="hx-mh"><b>Deal found</b><em class="hx-chip g">C$113 under budget</em></div><div class="hx-row hx-sm"><span>Toronto &rarr; London</span><span>Nov 14&ndash;21</span></div><div class="hx-price">C$1,187</div><div class="hx-bk">Book on Google Flights</div></div></div></div>
    </div>
   </section>
 
@@ -628,7 +633,7 @@ section[id]{scroll-margin-top:72px}
   <!-- PRICE WATCH -->
   <section class="section pw2" id="watch">
     <div class="wrap">
-      <div class="pw-head"><p class="eyebrow">Price Watch &middot; optional</p><h2>Not ready to book? Watch the price.</h2><p class="pw-lead">You only pay if it held.</p></div>
+      <div class="pw-head"><p class="eyebrow">Price Watch</p><h2>Not ready to book?<br>Watch the <span>price.</span></h2><p class="pw-lead">You only pay if it held.</p></div>
       <div class="pw-x">
         <div class="pw-chart">
         <!-- FW-ANIM HTML START -->
@@ -690,8 +695,6 @@ section[id]{scroll-margin-top:72px}
   </section>
 
   <section class="section faq2" id="faq"><div class="wrap"><p class="eyebrow">FAQ</p><h2>Quick answers.</h2><div class="fcards"><div class="fc "><i>1</i><h3>How does FlyAtlast work?</h3><p>Pin a route, dates and budget. We keep checking until you fly. Under budget? You get the flight and a link to book.</p></div><div class="fc y"><i>2</i><h3>What&rsquo;s free?</h3><p>Your first 3 trips: 25 checks each, no card. Need more? 3 extra trips for US$3.</p></div><div class="fc "><i>3</i><h3>What&rsquo;s Price Watch?</h3><p>Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free.</p></div><div class="fc "><i>4</i><h3>Paid more anyway?</h3><p>We refund the Price Watch fee. Just send your booking confirmation within 48 hours.</p></div><div class="fc "><i>5</i><h3>Do you hold seats?</h3><p>No. We don&rsquo;t hold seats or fares. We check real fares and tell you when one fits.</p></div><div class="fc "><i>6</i><h3>Why do prices differ?</h3><p>Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights.</p></div></div><p class="fmore">More questions? <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></section>
-
-  <section class="section" id="blog" style="padding:44px 0"><div class="wrap"><div class="blogline"><div><b>Guides to flight prices</b><span>Plain-language answers on how fares change and how to track them.</span></div><a class="btn btn-primary" href="blog/">Read the blog &rarr;</a></div></div></section>
 
   <!-- CLOSING -->
   <section class="endband" id="pin">

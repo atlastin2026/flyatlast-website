@@ -1,0 +1,19 @@
+/* FlyAtlast shared site header (white, sticky, logo on every page) */
+.fa-hd{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #E3EAF1;font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.4}
+.fa-hd *{box-sizing:border-box}
+.fa-hd-in{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
+.fa-hd-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#1E3A5F}
+.fa-hd-brand span{font-size:22px;font-weight:800;color:#1E3A5F}
+.fa-hd-links{display:flex;align-items:center;gap:26px}
+.fa-hd-links a{color:#1E3A5F;font-size:14px;font-weight:600;text-decoration:none;font-family:inherit}
+.fa-hd-links a:hover{text-decoration:underline}
+.fa-hd-links a.fa-hd-cta{background:#1E3A5F;color:#fff;border:2px solid #1E3A5F;border-radius:10px;padding:10px 18px;font-weight:800;white-space:nowrap}
+.fa-hd-links a.fa-hd-cta:hover{text-decoration:none;background:#243F63}
+.fa-hd-t{display:none;background:none;border:0;cursor:pointer;padding:8px}
+@media (max-width:860px){
+ .fa-hd-t{display:block}
+ .fa-hd-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid #E3EAF1;border-bottom:1px solid #E3EAF1;flex-direction:column;align-items:stretch;gap:2px;padding:8px 24px 20px}
+ .fa-hd-links.fa-open{display:flex}
+ .fa-hd-links a{padding:13px 0;border-bottom:1px solid #E3EAF1}
+ .fa-hd-links a.fa-hd-cta{margin-top:10px;text-align:center;border-bottom:2px solid #1E3A5F}
+}
