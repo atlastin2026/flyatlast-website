@@ -297,7 +297,7 @@ function faTravellers(root, onChange) {
   function initTs() {
     if (!SITEKEY || tsLoading) return; tsLoading = true;
     var s = document.createElement('script'); s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async = true;
-    s.onload = function () { tsId = window.turnstile.render('#ts', { sitekey: SITEKEY, callback: function (t) { tsToken = t; }, 'expired-callback': function () { tsToken = null; } }); };
+    s.onload = function () { tsId = window.turnstile.render('#ts', { sitekey: SITEKEY, appearance: 'interaction-only', callback: function (t) { tsToken = t; }, 'expired-callback': function () { tsToken = null; } }); };
     document.head.appendChild(s);
   }
   function tsReset() { tsToken = null; if (tsId !== null && window.turnstile) window.turnstile.reset(tsId); }
@@ -498,7 +498,7 @@ function faTravellers(root, onChange) {
     return wrap;
   }
 
-  function moneyW(n, c) { try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: c, currencyDisplay: 'code', maximumFractionDigits: n % 1 === 0 ? 0 : 2 }).format(n).replace(/\u00a0/g, ' '); } catch (e) { return c + ' ' + n; } }
+  function moneyW(n, c) { try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: c, maximumFractionDigits: n % 1 === 0 ? 0 : 2 }).format(n).replace(/\u00a0/g, ' '); } catch (e) { return c + ' ' + n; } }
   function fmtD(iso) { try { return new Date(iso + 'T00:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' }); } catch (e) { return iso; } }
   function partyText(t) { var a = t.adults || 1, c = (t.child_ages || []).length; return a + ' adult' + (a === 1 ? '' : 's') + (c ? ', ' + c + ' child' + (c === 1 ? '' : 'ren') : ''); }
   function newCheck() {
@@ -543,7 +543,7 @@ function faTravellers(root, onChange) {
       else { var f2 = el('i'); f2.style.width = (bud / mx * 100) + '%'; var f3 = el('i', 'ov'); f3.style.left = (bud / mx * 100) + '%'; f3.style.width = ((r.amount - bud) / mx * 100) + '%'; bar.appendChild(f2); bar.appendChild(f3); }
       var mk = el('u'); mk.style.left = 'calc(' + (bud / mx * 100) + '% - 1px)'; bar.appendChild(mk);
       rb.appendChild(bar);
-      var bl = el('div', 'bl'); bl.appendChild(el('span', null, 'Your budget ' + moneyW(bud, r.currency))); bl.appendChild(el('span', null, 'Fare ' + money(r.amount, r.currency))); rb.appendChild(bl);
+      var bl = el('div', 'bl'); bl.appendChild(el('span', null, 'Your budget ' + moneyW(bud, r.currency))); bl.appendChild(el('span', null, 'Fare ' + moneyW(r.amount, r.currency))); rb.appendChild(bl);
     } else {
       rb.appendChild(el('p', 'fine', 'Shown in ' + r.currency + '. We can\'t compare it with your budget right now.'));
     }
