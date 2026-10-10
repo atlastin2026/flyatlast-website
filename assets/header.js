@@ -8,8 +8,8 @@
   if (!home) {
     links.forEach(function (a) {
       var ap = a.pathname || '';
-      if (a.classList.contains('btn') || a.classList.contains('fa-hd-cta') || a.hash) return;
-      if ((ap === '/why.html' && /\/why\.html$/.test(p)) || (ap === '/blog/' && p.indexOf('/blog/') === 0)) { a.classList.add('active'); a.setAttribute('aria-current', 'page'); }
+      if (a.classList.contains('btn') || a.classList.contains('fa-hd-cta') || (a.hash && !/\/price-watch\.html$/.test(p))) return;
+      if ((ap === '/why.html' && /\/why\.html$/.test(p)) || (ap === '/blog/' && p.indexOf('/blog/') === 0) || (/\/price-watch\.html$/.test(p) && a.getAttribute('href') === '/#watch')) { a.classList.add('active'); a.setAttribute('aria-current', 'page'); }
     });
     return;
   }
