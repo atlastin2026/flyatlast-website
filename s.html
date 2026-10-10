@@ -177,7 +177,7 @@ footer.foot a{color:inherit}
 
     var cta = el('div', 'cta');
     cta.appendChild(el('h2', null, 'Want us to keep checking this trip?'));
-    cta.appendChild(el('p', null, 'Pin it with your own budget and we\'ll email you the exact flight when a fare fits. Free for 3 trips, no card.'));
+    cta.appendChild(el('p', null, 'Pin it with your own budget and we\'ll email you when a fare fits, with the full itinerary in the app. Free for 3 trips, no card.'));
     var pin = el('a', 'btn', 'Pin this trip free'); pin.href = pinLink(sn); pin.addEventListener('click', function () { ev('Share Pin Click'); });
     cta.appendChild(pin);
     var own = el('a', 'textlink', 'Or check a trip of your own'); own.href = '/try.html'; own.style.marginTop = '0'; cta.appendChild(own);

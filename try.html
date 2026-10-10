@@ -411,7 +411,7 @@ main{padding:36px 20px 64px}
     resultBox.appendChild(top);
     if (r.share_token) resultBox.appendChild(shareBar(r.share_token));
     var pitch = el('div', 'pitch');
-    pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip for you. Free for 3 trips, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll email you when a fare fits. Free for 3 trips, no card.' : 'Fares move. Pin this trip and we\'ll email you the exact flight when one fits your budget. Free for 3 trips, no card.'));
+    pitch.appendChild(el('p', null, allUsed(rem) ? 'That was your last free check. Create a free account and we\'ll keep checking this trip for you. Free for 3 trips, no card.' : r.comparable && !r.under_budget ? 'Over budget? Pin it and we\'ll email you when a fare fits. Free for 3 trips, no card.' : 'Fares move. Pin this trip and we\'ll email you when one fits your budget, with the full itinerary in the app. Free for 3 trips, no card.'));
     var pin = el('a', 'btn block', 'Pin this trip'); pin.href = tripLink(trip); pin.addEventListener('click', function () { ev('Demo Pin Click'); });
     pitch.appendChild(pin);
     if (rem.free_left > 0) { var again = el('button', 'btn alt block', 'Check another trip'); again.type = 'button'; again.addEventListener('click', function () { show(resultBox, false); $('d-from').focus(); }); pitch.appendChild(again); }
