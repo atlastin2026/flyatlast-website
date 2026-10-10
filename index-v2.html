@@ -462,6 +462,11 @@ section[id]{scroll-margin-top:72px}
 
 .pw-more{display:inline-block;margin:6px 0 12px;font-weight:800;font-size:15px;color:var(--navy);background:#fff;border:2px solid var(--navy);border-radius:10px;padding:12px 18px;text-decoration:none}.pw-more:hover{background:var(--yellow,#F4C11C)}
 
+.pw-x{align-items:stretch}
+.pw-chart{display:flex;flex-direction:column;justify-content:center}
+.pw-r{background:#fff;border:2px solid var(--navy);border-radius:18px;padding:16px;gap:16px}
+.pw-foot{text-align:center;margin-top:22px}.pw-foot .pw-more{margin:0 0 12px}.pw-foot .pw-fnt{max-width:720px;margin:0 auto}
+
 /* HERO-DEMO v6: static by default, JS adds .demo to .hx-tri on desktop with motion allowed */
 .hxa,.a1 .hx-mini,.a3 .hx-mini{animation:none!important;opacity:1!important;transform:none!important}
 .hx-chk i.t{animation:none!important;background:#1E3A5F;box-shadow:inset 0 0 0 2px #1E3A5F}
@@ -476,34 +481,13 @@ section[id]{scroll-margin-top:72px}
 @media (max-width:860px){#how{scroll-margin-top:360px}}
 
 </style>
+<link rel="stylesheet" href="assets/header.css">
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-wrap">
-    <a href="#" class="nav-brand" aria-label="FlyAtlast home">
-      <svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="nav-name">FlyAtlast</span>
-      <span class="nav-tagline">You set the budget, we track the flights.</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="#how">How it works</a>
-            <a href="#watch">Price Watch</a>
-      
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="why.html">Why FlyAtlast</a>
-      <a href="blog/">Blog</a>
-      <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free btn btn-primary">Pin a trip free</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
-      onclick="var p=document.getElementById('navLinks'); var open=p.classList.toggle('nav-open'); this.setAttribute('aria-expanded', open);">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A5F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-    </button>
-  </div>
-</nav>
+<!-- FA-HEADER START -->
+<div class="fa-hd" role="navigation" aria-label="Main"><div class="fa-hd-in"><a class="fa-hd-brand" href="/" aria-label="FlyAtlast home"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><div class="fa-hd-links" id="faHdLinks"><a href="/#how">How it works</a><a href="/#watch">Price Watch</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a><a href="/why.html">Why FlyAtlast</a><a href="/blog/">Blog</a><a class="fa-hd-cta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a></div><button class="fa-hd-t" type="button" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('faHdLinks');var o=p.classList.toggle('fa-open');this.setAttribute('aria-expanded',o)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A5F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div>
+<!-- FA-HEADER END -->
 
 <main>
 
@@ -543,10 +527,9 @@ section[id]{scroll-margin-top:72px}
             <li><b>Paid more anyway?</b><span>We refund the fee. Send your booking within 48 hours.</span></li>
           </ul>
           <div class="pw-prc"><div><span>48 hours</span><b>US$5.99</b></div><div><span>5 days</span><b>US$9.99</b></div></div>
-          <a class="pw-more" href="price-watch.html">See how it works, step by step &rarr;</a>
-          <p class="pw-fnt">Paid watches: we place a temporary hold of the fee on your card and release it if you owe nothing. Your first Price Watch needs no card. We don&rsquo;t hold seats or the fare. Cancel free within 12 hours (48 hours) or 24 hours (5 days).</p>
         </div>
       </div>
+      <div class="pw-foot"><a class="pw-more" href="price-watch.html">See a Price Watch, step by step &rarr;</a><p class="pw-fnt">Paid watches: we place a temporary hold of the fee on your card and release it if you owe nothing. Your first Price Watch needs no card. We don&rsquo;t hold seats or the fare. Cancel free within 12 hours (48 hours) or 24 hours (5 days).</p></div>
     </div>
   </section>
 
@@ -588,7 +571,7 @@ section[id]{scroll-margin-top:72px}
     </div>
   </section>
 
-  <section class="section faq2" id="faq"><div class="wrap"><div class="bigh"><p class="eyebrow">FAQ</p><h2>Quick <span>answers.</span></h2></div><div class="fcards"><div class="fc "><i>1</i><h3>How does FlyAtlast work?</h3><p>Pin a route, dates and budget. We keep checking until you fly. Under budget? You get the flight and a link to it.</p></div><div class="fc y"><i>2</i><h3>What&rsquo;s free?</h3><p>Your first 3 trips: 25 checks each, no card. Need more? 3 extra trips for US$3.</p></div><div class="fc "><i>3</i><h3>What&rsquo;s Price Watch?</h3><p>Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free.</p></div><div class="fc "><i>4</i><h3>Paid more anyway?</h3><p>We refund the Price Watch fee. Just send your booking confirmation within 48 hours.</p></div><div class="fc "><i>5</i><h3>Do you hold seats?</h3><p>No. We don&rsquo;t hold seats or fares. We check real fares and tell you when one fits.</p></div><div class="fc "><i>6</i><h3>Why do prices differ?</h3><p>Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights.</p></div></div><p class="fmore">New to Price Watch? <a href="price-watch.html">See how it works</a> &middot; More questions? <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></section>
+  <section class="section faq2" id="faq"><div class="wrap"><div class="bigh"><p class="eyebrow">FAQ</p><h2>Quick <span>answers.</span></h2></div><div class="fcards"><div class="fc "><i>1</i><h3>How does FlyAtlast work?</h3><p>Pin a route, dates and budget. We keep checking until you fly. Under budget? You get the flight and a link to it.</p></div><div class="fc y"><i>2</i><h3>What&rsquo;s free?</h3><p>Your first 3 trips: 25 checks each, no card. Need more? 3 extra trips for US$3.</p></div><div class="fc "><i>3</i><h3>What&rsquo;s Price Watch?</h3><p>Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free.</p></div><div class="fc "><i>4</i><h3>Paid more anyway?</h3><p>We refund the Price Watch fee. Just send your booking confirmation within 48 hours.</p></div><div class="fc "><i>5</i><h3>Do you hold seats?</h3><p>No. We don&rsquo;t hold seats or fares. We check real fares and tell you when one fits.</p></div><div class="fc "><i>6</i><h3>Why do prices differ?</h3><p>Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights.</p></div></div><p class="fmore">New to Price Watch? <a href="price-watch.html">See a Price Watch, step by step</a> &middot; More questions? <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></section>
 
   <!-- CLOSING -->
   <section class="endband" id="pin">
