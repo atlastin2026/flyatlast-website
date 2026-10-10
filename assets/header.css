@@ -17,3 +17,6 @@
  .fa-hd-links a{padding:13px 0;border-bottom:1px solid #E3EAF1}
  .fa-hd-links a.fa-hd-cta{margin-top:10px;text-align:center;border-bottom:2px solid #1E3A5F}
 }
+
+.fa-hd-links a.active,.fa-hd-links a[aria-current="page"]{font-weight:800;box-shadow:inset 0 -3px 0 #F4C11C}
+@media (max-width:860px){.fa-hd-links a.active,.fa-hd-links a[aria-current="page"]{box-shadow:none;border-left:4px solid #F4C11C;padding-left:10px}}
