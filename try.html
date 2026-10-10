@@ -92,7 +92,7 @@ main{padding:36px 20px 64px}
 </head>
 <body>
 <!-- FA-HEADER START -->
-<div class="fa-hd" role="navigation" aria-label="Main"><div class="fa-hd-in"><a class="fa-hd-brand" href="/" aria-label="FlyAtlast home"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><div class="fa-hd-links" id="faHdLinks"><a href="/#how">How it works</a><a href="/#watch">Price Watch</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a><a href="/why.html">Why FlyAtlast</a><a href="/blog/">Blog</a><a class="fa-hd-cta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a></div><button class="fa-hd-t" type="button" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('faHdLinks');var o=p.classList.toggle('fa-open');this.setAttribute('aria-expanded',o)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A5F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div>
+<div class="fa-hd" role="navigation" aria-label="Main"><div class="fa-hd-in"><a class="fa-hd-brand" href="/" aria-label="FlyAtlast home"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><div class="fa-hd-links" id="faHdLinks"><a href="/#how">How it works</a><a href="/#pricing">Pricing</a><a href="/#watch">Price Watch</a><a href="/#faq">FAQ</a><a href="/why.html">Why FlyAtlast</a><a href="/blog/">Blog</a><a class="fa-hd-cta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a></div><button class="fa-hd-t" type="button" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('faHdLinks');var o=p.classList.toggle('fa-open');this.setAttribute('aria-expanded',o)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A5F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div>
 <!-- FA-HEADER END -->
 <main>
 <!-- FA-DEMO START -->
@@ -158,7 +158,7 @@ main{padding:36px 20px 64px}
   var ev = function (n) { try { if (window.plausible) window.plausible(n); } catch (e) {} };
 
   var R2C = { CA:'CAD',US:'USD',GB:'GBP',AU:'AUD',NZ:'NZD',PK:'PKR',IN:'INR',DE:'EUR',FR:'EUR',ES:'EUR',IT:'EUR',NL:'EUR',IE:'EUR',PT:'EUR',AT:'EUR',BE:'EUR',FI:'EUR',JP:'JPY',CN:'CNY',CH:'CHF',SE:'SEK',NO:'NOK',DK:'DKK',MX:'MXN',BR:'BRL',AE:'AED',SA:'SAR',SG:'SGD',HK:'HKD',ZA:'ZAR',PH:'PHP',ID:'IDR',MY:'MYR',TH:'THB',KR:'KRW',NG:'NGN',BD:'BDT',VN:'VND',EG:'EGP',KE:'KES',QA:'QAR',RU:'RUB',TR:'TRY',PL:'PLN',IL:'ILS',CO:'COP',AR:'ARS',CL:'CLP',PE:'PEN',UA:'UAH',CZ:'CZK',HU:'HUF',RO:'RON',MA:'MAD',KW:'KWD',BH:'BHD',OM:'OMR',JO:'JOD',LK:'LKR',NP:'NPR',TW:'TWD',IS:'ISK',LU:'EUR',GR:'EUR',SK:'EUR',SI:'EUR',LV:'EUR',LT:'EUR',EE:'EUR',HR:'EUR',MT:'EUR',CY:'EUR',BG:'EUR',MC:'EUR',AD:'EUR',SM:'EUR',ME:'EUR',RS:'RSD',GE:'GEL',KZ:'KZT',AM:'AMD',AZ:'AZN',DZ:'DZD',TN:'TND',GH:'GHS',TZ:'TZS',UG:'UGX',ET:'ETB',CR:'CRC',DO:'DOP',JM:'JMD',UY:'UYU',BO:'BOB',PY:'PYG',KH:'KHR',MM:'MMK',MV:'MVR',MN:'MNT',UZ:'UZS',IQ:'IQD',LB:'LBP',MU:'MUR' };
-  var curTouched = false, wantCur = 'CAD';
+  var curTouched = false, wantCur = 'CAD', prefCur = null;
   try { var reg = ((navigator.language || '').split('-')[1] || '').toUpperCase(); wantCur = R2C[reg] || 'CAD'; } catch (e) {}
   function setCur(c) { var sel = $('d-cur'); for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === c) { sel.value = c; return true; } } return false; }
   function applyCur(c) { wantCur = c; if (!curTouched) setCur(c); }
@@ -280,10 +280,10 @@ main{padding:36px 20px 64px}
     function fill(codes) {
       var rest = codes.filter(function (c) { return top.indexOf(c) < 0; }).sort();
       var keep = sel.value; sel.textContent = ''; top.concat(rest).forEach(function (c) { var o = document.createElement('option'); o.textContent = c; o.value = c; sel.appendChild(o); });
-      if (!setCur(curTouched ? keep : wantCur)) sel.value = 'CAD';
+      if (!setCur(prefCur || (curTouched ? keep : wantCur))) sel.value = 'CAD';
     }
     fill([]);
-    $('d-cur').addEventListener('change', function () { curTouched = true; });
+    $('d-cur').addEventListener('change', function () { curTouched = true; prefCur = null; });
     api('/geo/supported-currencies').then(function (r) {
       var j = r.j, a = Array.isArray(j) ? j : (j && (j.currencies || j.codes || j.supported)) || [];
       var codes = a.map(function (x) { return typeof x === 'string' ? x : (x && (x.code || x.currency)); }).filter(function (c) { return /^[A-Z]{3}$/.test(c || ''); });
@@ -296,10 +296,12 @@ main{padding:36px 20px 64px}
     var q; try { q = new URLSearchParams(location.search); } catch (e) { return; }
     var b = parseFloat(q.get('budget'));
     if (b > 0 && b < 1e7) $('d-budget').value = String(b);
+    var pc = (q.get('cur') || '').toUpperCase();
+    if (/^[A-Z]{3}$/.test(pc)) { prefCur = pc; wantCur = pc; curTouched = true; if (!setCur(pc)) { var po = document.createElement('option'); po.value = po.textContent = pc; $('d-cur').appendChild(po); $('d-cur').value = pc; } }
     function place(id, text) {
       text = (text || '').trim().slice(0, 60); if (!text) return;
       var code = codeOf(text);
-      if (code) { $(id).value = text.toUpperCase(); return; }
+      if (code) { $(id).value = /\(([A-Za-z]{3})\)\s*$/.test(text) ? text.replace(/\(([A-Za-z]{3})\)\s*$/, function (m0, c0) { return '(' + c0.toUpperCase() + ')'; }) : text.toUpperCase(); return; }
       $(id).value = text;
       api('/demo/places?query=' + encodeURIComponent(ALIAS[text.toLowerCase()] || text)).then(function (r) {
         var arr = Array.isArray(r.j) ? r.j : (r.j && (r.j.suggestions || r.j.results)) || [];

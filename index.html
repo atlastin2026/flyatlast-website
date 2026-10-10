@@ -190,6 +190,41 @@
   @media (prefers-reduced-motion: reduce) {
     * { scroll-behavior: auto !important; }
   }
+/* walkthrough (embedded from price-watch.html) */
+.pwx{margin-top:44px;font-family:'Public Sans','Helvetica Neue',Arial,sans-serif;color:#1E3A5F;background:transparent;--nv:#1E3A5F;--yl:#F4C11C;--mu:#4A5F78}
+.pwx *{box-sizing:border-box}
+.pwx .k{font:700 14px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin:0}
+.pwx .wrap{max-width:1120px;margin:0 auto;padding:30px 24px 24px}
+.pwx .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.pwx .tab{position:relative;overflow:hidden;text-align:left;font:800 16px 'Public Sans',system-ui,sans-serif;color:var(--nv);background:#fff;border:2px solid var(--nv);border-radius:14px;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:center}
+.pwx .tab b{width:30px;height:30px;border-radius:50%;background:#EAF1F8;border:2px solid var(--nv);display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.pwx .tab small{display:block;font-weight:600;font-size:12px;color:var(--mu)}
+.pwx .tab i{position:absolute;left:0;bottom:0;height:5px;width:0;background:var(--yl)}
+.pwx .tab[aria-selected=true]{background:var(--nv);color:#fff}.pwx .tab[aria-selected=true] small{color:#C9D6E6}.pwx .tab[aria-selected=true] b{background:var(--yl);color:var(--nv)}
+.pwx .tab.run i{animation:pwfill 12s linear forwards}
+@keyframes pwfill{from{width:0}to{width:100%}}
+.pwx .tab:focus-visible,.pwx .shot:focus-visible{outline:3px solid var(--yl);outline-offset:2px}
+.pwx .pn{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center;background:#fff;border:2px solid var(--nv);border-radius:22px;padding:34px 40px;box-shadow:0 14px 34px rgba(30,58,95,.12);margin-bottom:16px}
+.pwx.js .pn[hidden]{display:none}
+.pwx h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.035em;line-height:1.1;margin:0 0 12px}
+.pwx .pn p{font-size:16.5px;color:var(--mu);margin:0 0 10px;line-height:1.55}
+.pwx .view{max-height:520px;overflow:hidden;position:relative;border-radius:14px}
+.pwx .view:after{content:'';position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(rgba(255,255,255,0),#fff);pointer-events:none}
+.pwx .view.nofade:after{display:none}
+.pwx .col{display:flex;flex-direction:column;gap:12px}
+.pwx .shot{display:block;width:100%;height:auto;border:2px solid var(--nv);border-radius:12px;cursor:zoom-in;background:#fff}
+.pwx .tap{font-size:12px;color:var(--mu);margin:8px 0 0!important;text-align:center}
+.pwx .modal{background:#fff;border:2px solid var(--nv);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.pwx .modal .mk{font:800 11px 'Public Sans',system-ui,sans-serif;letter-spacing:.1em;color:#7A5A00;text-transform:uppercase}
+.pwx .modal h3{margin:0;font-size:18px;line-height:1.25}.pwx .modal p{margin:0!important;font-size:13px!important}
+.pwx .drop{border:2px dashed var(--nv);border-radius:10px;background:#EEF1F3;padding:12px;display:flex;gap:12px;font-size:14px;color:var(--nv)}.pwx .drop u{text-decoration:none;border:1px solid var(--nv);border-radius:6px;padding:4px 10px;background:#fff}
+.pwx .sub2{background:var(--nv);color:#fff;text-align:center;font-weight:800;border-radius:10px;padding:12px}
+#pwlb{position:fixed;inset:0;background:rgba(20,33,58,.88);display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:24px;z-index:100;cursor:zoom-out}
+#pwlb.on{display:flex}#pwlb img{max-width:min(900px,100%);height:auto;border-radius:10px;background:#fff}
+@media(max-width:820px){.pwx .pn{grid-template-columns:1fr;gap:22px;padding:24px 20px}.pwx .tabs{gap:8px}.pwx .tab{padding:10px;font-size:13px}.pwx .tab small{display:none}.pwx .tab b{width:24px;height:24px;font-size:12px}.pwx .view{max-height:460px}}
+@media (prefers-reduced-motion:reduce){.pwx .tab.run i{animation:none}}
+.pwx .wrap{padding:0}.pwx .pwx-k{text-align:center;margin:0 0 16px}
+
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -324,6 +359,16 @@ body{font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-se
 .hx-fld input::placeholder{color:#8795A3;font-weight:600}
 .hx-fld:focus-within{outline:3px solid var(--navy);outline-offset:1px}
 .hx-go{min-height:56px;padding:0 26px;font-size:17px;cursor:pointer;border-radius:10px}
+.hx-ticks{display:flex;gap:10px 26px;justify-content:center;flex-wrap:wrap;margin:16px auto 0;font-size:15px;font-weight:700;color:var(--navy)}
+.hx-ticks i{font-style:normal;color:#17663A;margin-right:7px;font-weight:800}
+.hx-ac{position:relative}
+.hx-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;margin:0;padding:6px;list-style:none;background:#fff;border:2px solid var(--navy);border-radius:12px;box-shadow:0 12px 28px rgba(30,58,95,.2);max-height:300px;overflow:auto;min-width:300px}
+.hx-list li{display:flex;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;font:600 14px 'Sora',sans-serif;color:var(--navy)}
+.hx-list li.on,.hx-list li:hover{background:#EAF1F8}.hx-list li .ct{color:var(--text-muted);font-weight:500}.hx-list li .cd{font-family:'JetBrains Mono',monospace;font-weight:800}
+.hx-list li.none{cursor:default;color:var(--text-muted);font-weight:500}.hx-list li.none:hover{background:none}
+.hx-money{display:flex;align-items:center;gap:6px}
+.hx-money input{flex:1;min-width:0}
+.hx-money select{border:0;background:#fff;border-radius:8px;font:800 13px 'JetBrains Mono',monospace;color:var(--navy);padding:4px 6px;cursor:pointer;outline:none}
 .hx-micro{margin:14px auto 0;font-size:14px;color:var(--text-muted);max-width:64ch;line-height:1.55}
 .hx-micro a{color:var(--navy);font-weight:700;border-bottom:2px solid var(--yellow);text-decoration:none;white-space:nowrap}
 .hx-tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:2px solid var(--navy);border-radius:20px;overflow:hidden;margin-top:40px;text-align:left}
@@ -391,6 +436,8 @@ body{font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-se
  .hx-chk i.t{animation:none!important;background:#1E3A5F;box-shadow:none}
  .hx-form{grid-template-columns:1fr 1fr;padding:8px;gap:8px}
  .hx-fld:nth-child(3){grid-column:1}.hx-go{grid-column:2;min-height:0;padding:12px 8px;font-size:15px}
+ .hx-fld:nth-child(1),.hx-fld:nth-child(2){grid-column:1 / -1}
+ .hx-list{min-width:0}
  .hx-hero{padding:32px 0 36px}
 }
 /* Price Watch: light, short, animated chart */
@@ -523,7 +570,7 @@ section[id]{scroll-margin-top:72px}
 .zpr .zloyal .zfoot b{color:#1E3A5F}
 .zpr .zmore{margin-top:46px;padding-top:30px;border-top:2px dashed #C3CFDA}
 .zpr .zmore>.zk{display:block;text-align:center;margin-bottom:18px}
-.zpr .zmore .zg2c{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.zpr .zmore .zg2c{display:grid;grid-template-columns:minmax(0,640px);justify-content:center;gap:18px;align-items:stretch}
 .zpr .zcard{border:2px solid #1E3A5F;border-radius:18px;padding:26px 28px;background:#fff}
 .zpr .zcard h4{font-size:26px;font-weight:800;letter-spacing:-.03em;margin:4px 0 8px}
 .zpr .zcard p{font-size:15.5px;color:#4A5F78}
@@ -590,7 +637,7 @@ section[id]{scroll-margin-top:72px}
 <body>
 
 <!-- FA-HEADER START -->
-<div class="fa-hd" role="navigation" aria-label="Main"><div class="fa-hd-in"><a class="fa-hd-brand" href="/" aria-label="FlyAtlast home"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><div class="fa-hd-links" id="faHdLinks"><a href="/#how">How it works</a><a href="/#watch">Price Watch</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a><a href="/why.html">Why FlyAtlast</a><a href="/blog/">Blog</a><a class="fa-hd-cta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a></div><button class="fa-hd-t" type="button" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('faHdLinks');var o=p.classList.toggle('fa-open');this.setAttribute('aria-expanded',o)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A5F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div>
+<div class="fa-hd" role="navigation" aria-label="Main"><div class="fa-hd-in"><a class="fa-hd-brand" href="/" aria-label="FlyAtlast home"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><div class="fa-hd-links" id="faHdLinks"><a href="/#how">How it works</a><a href="/#pricing">Pricing</a><a href="/#watch">Price Watch</a><a href="/#faq">FAQ</a><a href="/why.html">Why FlyAtlast</a><a href="/blog/">Blog</a><a class="fa-hd-cta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a></div><button class="fa-hd-t" type="button" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('faHdLinks');var o=p.classList.toggle('fa-open');this.setAttribute('aria-expanded',o)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A5F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div>
 <!-- FA-HEADER END -->
 
 <main>
@@ -601,14 +648,42 @@ section[id]{scroll-margin-top:72px}
     <h1 class="hx-h1">Pin. Track. <span>Fly.</span></h1>
     <p class="hx-sub">Tell us your budget. We'll tell you when a real flight fits it.</p>
     <form class="hx-form plausible-event-name=Hero+form" action="try.html" method="get" aria-label="Check a trip against your budget">
-      <label class="hx-fld"><span>From</span><input name="from" type="text" autocomplete="off" placeholder="Toronto" required maxlength="60"></label>
-      <label class="hx-fld"><span>To</span><input name="to" type="text" autocomplete="off" placeholder="London" required maxlength="60"></label>
-      <label class="hx-fld"><span>Budget</span><input name="budget" type="number" inputmode="decimal" min="1" step="any" placeholder="1300" required></label>
+      <label class="hx-fld hx-ac"><span>From</span><input name="from" id="hx-from" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-from" autocomplete="off" placeholder="Toronto" required maxlength="60"><ul class="hx-list" id="hx-dl-from" role="listbox" hidden></ul></label>
+      <label class="hx-fld hx-ac"><span>To</span><input name="to" id="hx-to" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-to" autocomplete="off" placeholder="London" required maxlength="60"><ul class="hx-list" id="hx-dl-to" role="listbox" hidden></ul></label>
+      <label class="hx-fld"><span>Budget</span><div class="hx-money"><input name="budget" id="hx-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="1300" required><select name="cur" id="hx-cur" aria-label="Currency"><option>CAD</option><option>USD</option><option>EUR</option><option>GBP</option><option>AUD</option></select></div></label>
       <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
     </form>
-    <p class="hx-micro">Free check, no sign-up. Then pin it and we keep checking. 3 free trips, 25 checks each, no card. <a href="https://app.flyatlast.com/login?signup=true" class="plausible-event-name=Pin+a+trip+free">Or pin a trip now &rarr;</a></p>
+    <p class="hx-ticks"><span><i aria-hidden="true">&#10003;</i>Free check, no sign-up</span><span><i aria-hidden="true">&#10003;</i>3 free trips to track</span></p>
     <div class="hx-tri" id="how"><div class="hx-pn hx-p1 hxa a1"><span class="hx-vb">Pin</span><span class="hx-d">Your route, dates and the budget that makes it a yes.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Pinned</em></div><div class="hx-row hx-sm"><span>Round trip</span><span>Nov 14&ndash;21 &middot; 1 adult</span></div><div class="hx-row"><span>Your budget</span><b>C$1,300</b></div></div></div><div class="hx-pn hx-p2 hxa a2"><span class="hx-vb">Track</span><span class="hx-d">We check real fares, closer together as departure nears.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Tracking</em></div><div class="hx-chk" aria-hidden="true"><i class="t" style="--s:0.40s"></i><i class="t" style="--s:0.85s"></i><i class="t" style="--s:1.30s"></i><i class="t" style="--s:1.75s"></i><i class="t" style="--s:2.20s"></i><i class="t" style="--s:2.65s"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div><div class="hx-row hx-sm"><span>Checks done</span><span>6 of 25</span></div><div class="hx-row"><span>Lowest so far</span><b>C$1,342</b></div></div></div><div class="hx-pn hx-p3 hxa a3"><span class="hx-vb">Fly</span><span class="hx-d">A deal alert lands in your inbox. Open the app for the full itinerary.</span><div class="hx-mini"><div class="hx-mh"><b>Deal found</b><em class="hx-chip g">C$113 under budget</em></div><div class="hx-row hx-sm"><span>Toronto &rarr; London</span><span>Nov 14&ndash;21</span></div><div class="hx-price">C$1,187</div><div class="hx-bk">See the itinerary</div></div></div></div>
    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <div class="pricing-head">
+        <p class="eyebrow">Pricing</p>
+        <h2>Tracking is <span>free.</span></h2>
+        <p class="pz-sub">No subscription. No card to start.</p>
+      </div>
+<div class="zpr">
+<div class="zfree"><div><p class="zk">Every account</p><h3>Free</h3><p class="zbig">3 free trips, 25 checks each.</p>
+<ul><li>Deal alerts when a fare fits your budget</li><li>One free 24-hour Price Watch</li><li>No subscription, no card</li></ul>
+<a class="zbtn znv zcta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a></div>
+<div><div class="ztrips"><div class="ztrip"><span class="zpin"></span><div><b>Toronto &rarr; London</b><span class="zd">Nov 14&ndash;21 &middot; Budget C$1,300</span></div><em>25 checks</em></div>
+<div class="ztrip"><span class="zpin"></span><div><b>Singapore &rarr; Sydney</b><span class="zd">Mar 3&ndash;17 &middot; Budget S$700</span></div><em>25 checks</em></div>
+<div class="ztrip"><span class="zpin"></span><div><b>Paris &rarr; Luxembourg</b><span class="zd">Jun 6&ndash;9 &middot; Budget &euro;180</span></div><em>25 checks</em></div></div>
+</div></div>
+<div class="zloyal"><div class="ztop"><h3>Keep going. <span>Earn more free trips.</span></h3><p>The more you use FlyAtlast, the more trips you can track.</p></div>
+<div class="zg2"><div class="zearn1"><svg viewBox="0 0 250 150" class="zref"><circle cx="46" cy="36" r="13" fill="#EAF1F8" stroke="#1E3A5F" stroke-width="3"/><path d="M20,84 C20,62 32,56 46,56 C60,56 72,62 72,84 Z" fill="#EAF1F8" stroke="#1E3A5F" stroke-width="3" stroke-linejoin="round"/><circle cx="204" cy="36" r="13" fill="#FFF4CC" stroke="#1E3A5F" stroke-width="3"/><path d="M178,84 C178,62 190,56 204,56 C218,56 230,62 230,84 Z" fill="#FFF4CC" stroke="#1E3A5F" stroke-width="3" stroke-linejoin="round"/><path d="M82,44 C108,22 142,22 168,44" fill="none" stroke="#B88A00" stroke-width="3" stroke-dasharray="5 5"/><path d="M168,44 l-9,-1 l5,-8 z" fill="#B88A00"/><text x="125" y="68" text-anchor="middle" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">Join</text><text x="46" y="104" text-anchor="middle" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">You</text><text x="204" y="104" text-anchor="middle" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">Your friend</text><g transform="translate(46,128) scale(1.1)"><path d="M0,-11 C7,-11 11,-6 11,-1 C11,6 0,15 0,15 C0,15 -11,6 -11,-1 C-11,-6 -7,-11 0,-11Z" fill="#F4C11C" stroke="#1E3A5F" stroke-width="2.2"/><path d="M-4.5,-1 L-1.2,2.8 L5,-4.2" fill="none" stroke="#1E3A5F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g><text x="66" y="133" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">+1</text><g transform="translate(204,128) scale(1.1)"><path d="M0,-11 C7,-11 11,-6 11,-1 C11,6 0,15 0,15 C0,15 -11,6 -11,-1 C-11,-6 -7,-11 0,-11Z" fill="#F4C11C" stroke="#1E3A5F" stroke-width="2.2"/><path d="M-4.5,-1 L-1.2,2.8 L5,-4.2" fill="none" stroke="#1E3A5F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g><text x="224" y="133" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">+1</text></svg><div><h4>Refer a friend</h4><p>When they join, you each get an extra trip. Every referral counts, so it keeps going.</p></div></div>
+<div class="zearn1"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="none" stroke="#C3CFDA" stroke-width="3" stroke-dasharray="4 5"/><circle cx="60.0" cy="20.0" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="91.3" cy="35.1" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="99.0" cy="68.9" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="77.4" cy="96.0" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="42.6" cy="96.0" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="21.0" cy="68.9" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="28.7" cy="35.1" r="7" fill="#F4C11C" stroke="#1E3A5F" stroke-width="2"/><text x="60" y="68" text-anchor="middle" font-size="24" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">+1</text></svg><div><h4>Keep a 7-day streak</h4><p>Check in 7 days in a row and earn an extra trip. Then start the next 7.</p></div></div></div>
+<div class="zfoot"><span><b>Earned trips stay yours.</b></span><span>Miss a day and the streak starts over.</span></div></div>
+<div class="zmore"><p class="zk">Need more trips?</p><div class="zg2c">
+<div class="zcard"><p class="zk">Need more trips?</p><h4>US$3 for 3 more</h4><p>One-time purchase, 25 checks per trip. They&rsquo;re yours to keep, and you can buy again whenever you need.</p><div class="zstk"><div class="zg"><div class="zps"><i class="zpn zy"></i><i class="zpn zy"></i><i class="zpn zy"></i></div><small>First 3 free</small></div><div class="zg"><div class="zps"><i class="zpn ze"></i><i class="zpn ze"></i></div><small>Earned: referrals, 7-day streaks</small></div><div class="zg"><div class="zps"><i class="zpn zd"></i><i class="zpn zd"></i><i class="zpn zd"></i></div><small>3 more for US$3</small></div></div><div class="zbuy"><b>3 more trips</b><span>One-time, US$3</span><a class="zbtn" href="https://app.flyatlast.com/login?signup=true">Buy 3 more</a></div></div>
+</div>
+<p class="zfine">Prices are in US dollars. Your emails show the amounts in your own currency, such as CAD. See our <a href="terms.html" style="text-decoration:underline">terms</a>.</p></div>
+</div>
+    </div>
   </section>
 
   <!-- PRICE WATCH -->
@@ -633,41 +708,29 @@ section[id]{scroll-margin-top:72px}
           <div class="pw-prc"><div><span>48 hours</span><b>US$5.99</b></div><div><span>5 days</span><b>US$9.99</b></div></div>
         </div>
       </div>
-      <div class="pw-foot"><a class="pw-more" href="price-watch.html">See a Price Watch, step by step &rarr;</a><p class="pw-fnt">Paid watches: we place a temporary hold of the fee on your card and release it if you owe nothing. Your first Price Watch needs no card. We don&rsquo;t hold seats or the fare. Cancel free within 12 hours (48 hours) or 24 hours (5 days).</p></div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section" id="pricing">
-    <div class="wrap">
-      <div class="pricing-head">
-        <p class="eyebrow">Pricing</p>
-        <h2>Tracking is <span>free.</span></h2>
-        <p class="pz-sub">No subscription. No card to start.</p>
-      </div>
-<div class="zpr">
-<div class="zfree"><div><p class="zk">Every account</p><h3>Free</h3><p class="zbig">3 free trips, 25 checks each.</p>
-<ul><li>Deal alerts when a fare fits your budget</li><li>One free 24-hour Price Watch</li><li>No subscription, no card</li></ul>
-<a class="zbtn znv zcta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a></div>
-<div><div class="ztrips"><div class="ztrip"><span class="zpin"></span><div><b>Toronto &rarr; London</b><span class="zd">Nov 14&ndash;21 &middot; Budget C$1,300</span></div><em>25 checks</em></div>
-<div class="ztrip"><span class="zpin"></span><div><b>Singapore &rarr; Sydney</b><span class="zd">Mar 3&ndash;17 &middot; Budget S$700</span></div><em>25 checks</em></div>
-<div class="ztrip"><span class="zpin"></span><div><b>Paris &rarr; Luxembourg</b><span class="zd">Jun 6&ndash;9 &middot; Budget &euro;180</span></div><em>25 checks</em></div></div>
-</div></div>
-<div class="zloyal"><div class="ztop"><h3>Keep going. <span>Earn more free trips.</span></h3><p>The more you use FlyAtlast, the more trips you can track.</p></div>
-<div class="zg2"><div class="zearn1"><svg viewBox="0 0 250 150" class="zref"><circle cx="46" cy="36" r="13" fill="#EAF1F8" stroke="#1E3A5F" stroke-width="3"/><path d="M20,84 C20,62 32,56 46,56 C60,56 72,62 72,84 Z" fill="#EAF1F8" stroke="#1E3A5F" stroke-width="3" stroke-linejoin="round"/><circle cx="204" cy="36" r="13" fill="#FFF4CC" stroke="#1E3A5F" stroke-width="3"/><path d="M178,84 C178,62 190,56 204,56 C218,56 230,62 230,84 Z" fill="#FFF4CC" stroke="#1E3A5F" stroke-width="3" stroke-linejoin="round"/><path d="M82,44 C108,22 142,22 168,44" fill="none" stroke="#B88A00" stroke-width="3" stroke-dasharray="5 5"/><path d="M168,44 l-9,-1 l5,-8 z" fill="#B88A00"/><text x="125" y="68" text-anchor="middle" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">Join</text><text x="46" y="104" text-anchor="middle" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">You</text><text x="204" y="104" text-anchor="middle" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">Your friend</text><g transform="translate(46,128) scale(1.1)"><path d="M0,-11 C7,-11 11,-6 11,-1 C11,6 0,15 0,15 C0,15 -11,6 -11,-1 C-11,-6 -7,-11 0,-11Z" fill="#F4C11C" stroke="#1E3A5F" stroke-width="2.2"/><path d="M-4.5,-1 L-1.2,2.8 L5,-4.2" fill="none" stroke="#1E3A5F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g><text x="66" y="133" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">+1</text><g transform="translate(204,128) scale(1.1)"><path d="M0,-11 C7,-11 11,-6 11,-1 C11,6 0,15 0,15 C0,15 -11,6 -11,-1 C-11,-6 -7,-11 0,-11Z" fill="#F4C11C" stroke="#1E3A5F" stroke-width="2.2"/><path d="M-4.5,-1 L-1.2,2.8 L5,-4.2" fill="none" stroke="#1E3A5F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g><text x="224" y="133" font-size="15" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">+1</text></svg><div><h4>Refer a friend</h4><p>When they join, you each get an extra trip. Every referral counts, so it keeps going.</p></div></div>
-<div class="zearn1"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="none" stroke="#C3CFDA" stroke-width="3" stroke-dasharray="4 5"/><circle cx="60.0" cy="20.0" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="91.3" cy="35.1" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="99.0" cy="68.9" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="77.4" cy="96.0" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="42.6" cy="96.0" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="21.0" cy="68.9" r="7" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="2"/><circle cx="28.7" cy="35.1" r="7" fill="#F4C11C" stroke="#1E3A5F" stroke-width="2"/><text x="60" y="68" text-anchor="middle" font-size="24" font-weight="800" fill="#1E3A5F" font-family="Public Sans,system-ui,sans-serif">+1</text></svg><div><h4>Keep a 7-day streak</h4><p>Check in 7 days in a row and earn an extra trip. Then start the next 7.</p></div></div></div>
-<div class="zfoot"><span><b>Earned trips stay yours.</b></span><span>Miss a day and the streak starts over.</span></div></div>
-<div class="zmore"><p class="zk">Need more, or not ready to book? Two optional extras</p><div class="zg2c">
-<div class="zcard"><p class="zk">Need more trips?</p><h4>US$3 for 3 more</h4><p>One-time purchase, 25 checks per trip. They&rsquo;re yours to keep, and you can buy again whenever you need.</p><div class="zstk"><div class="zg"><div class="zps"><i class="zpn zy"></i><i class="zpn zy"></i><i class="zpn zy"></i></div><small>First 3 free</small></div><div class="zg"><div class="zps"><i class="zpn ze"></i><i class="zpn ze"></i></div><small>Earned: referrals, 7-day streaks</small></div><div class="zg"><div class="zps"><i class="zpn zd"></i><i class="zpn zd"></i><i class="zpn zd"></i></div><small>3 more for US$3</small></div></div><div class="zbuy"><b>3 more trips</b><span>One-time, US$3</span><a class="zbtn" href="https://app.flyatlast.com/login?signup=true">Buy 3 more</a></div></div>
-<div class="zcard znv"><p class="zk">Found a good price?</p><h4>Price Watch</h4><p>Checks every 2 hours. You pay nothing if the price ends US$5+ higher or US$20+ lower.</p>
-<div class="zfp"><i>Free</i><div><b>Your first Price Watch is free</b><span>One per account &middot; 24 hours &middot; no card</span></div></div>
-<div class="zchips"><div class="zchip"><small>48 hours</small>US$5.99</div><div class="zchip"><small>5 days</small>US$9.99</div></div></div></div>
-<p class="zfine">Prices are in US dollars. Your emails show the amounts in your own currency, such as CAD. See our <a href="terms.html" style="text-decoration:underline">terms</a>.</p></div>
+<div class="pwx" id="pwx"><div class="wrap"><p class="k pwx-k">See a Price Watch in three steps</p><div class="tabs" role="tablist" aria-label="Price Watch steps">
+<button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true"><b>1</b><span>The email<small>Day 0 and your rules</small></span><i></i></button>
+<button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><b>2</b><span>The result<small>What you pay, shown</small></span><i></i></button>
+<button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><b>3</b><span>Paid more?<small>Submit proof</small></span><i></i></button>
 </div>
+
+<section class="pn" id="p1" role="tabpanel" aria-labelledby="t1"><div><h2>It starts with <span>one email.</span></h2><p>The moment your watch starts, we email you the Day 0 price and exactly what you&rsquo;d pay at every possible result. Before anything happens, you know the rules.</p><p>Nothing is charged today. For a paid watch, we place a temporary hold of the fee on your card and release it if you owe nothing.</p></div>
+<div><div class="view"><img class="shot" tabindex="0" src="/assets/pw/pw-email-1-start.webp" width="802" height="1014" alt="Price Watch started email: Day 0 price 1,307.01 CAD, a table of what you pay at each result, and a note that we don&rsquo;t hold seats or the fare" data-full></div><p class="tap">Tap to enlarge</p></div></section>
+
+<section class="pn" id="p2" role="tabpanel" aria-labelledby="t2" hidden><div><h2>We keep you posted. <span>Then show the result.</span></h2><p>We check every 2 hours. If the price moves in or out of the fee range, you get an alert. About 12 hours before the end, a reminder lands.</p><p>When the watch ends, you get the result: the price at the end, and whether you pay. This one ended inside the fee range, so the fee was charged. We show it as it happened.</p></div>
+<div><div class="view"><div class="col"><img class="shot" tabindex="0" src="/assets/pw/pw-email-4-result.webp" width="802" height="628" alt="Price Watch result email: you paid the 8.54 CAD fee, with the price at the end of the watch" data-full><img class="shot" tabindex="0" src="/assets/pw/pw-app-result.webp" width="1615" height="275" alt="Price Watch page: Day 0 price 1,307.01 CAD against 1,308.54 CAD at resolution" data-full></div></div><p class="tap">Tap to enlarge</p></div></section>
+
+<section class="pn" id="p3" role="tabpanel" aria-labelledby="t3" hidden><div><h2>Paid more anyway? <span>Get your fee back.</span></h2><p>If what you actually paid was higher than the Day 0 price, upload your booking confirmation: a screenshot or PDF showing your route, travel dates and total price.</p><p>You have 48 hours from the end of the watch. The app shows how many hours are left.</p><p><b>Submit proof, get your fee back.</b></p></div>
+<div><div class="col"><img class="shot" tabindex="0" src="/assets/pw/pw-app-card.webp" width="912" height="347" alt="Deal card with a yellow strip: Paid more than 1,307.01 CAD? Submit proof, get your fee back. 15 hours left to submit" data-full>
+<div class="modal" aria-hidden="true"><span class="mk">Paid more than we tracked?</span><h3>Our tracked price held, but if what you actually paid was higher, tell us.</h3><p>Upload your booking confirmation and we&rsquo;ll refund your Price Watch fee.</p><div class="drop"><u>Choose file</u> No file chosen</div><div class="sub2">Submit for review</div></div></div></div></section>
+
+</div></div>
+<div id="pwlb" role="dialog" aria-modal="true" aria-label="Enlarged image"><img alt=""></div>
+      <div class="pw-foot"><p class="pw-fnt">Paid watches: we place a temporary hold of the fee on your card and release it if you owe nothing. Your first Price Watch needs no card. We don&rsquo;t hold seats or the fare. Cancel free within 12 hours (48 hours) or 24 hours (5 days).</p></div>
     </div>
   </section>
 
-  <section class="section faq2" id="faq"><div class="wrap"><div class="bigh"><p class="eyebrow">FAQ</p><h2>Quick <span>answers.</span></h2></div><div class="fcards"><div class="fc "><i>1</i><h3>How does FlyAtlast work?</h3><p>Pin a route, dates and budget. We keep checking until you fly. Under budget? You get an alert, and the full itinerary in the app.</p></div><div class="fc y"><i>2</i><h3>What&rsquo;s free?</h3><p>Track up to 3 trips at once, 25 checks each. Remove a trip or let it expire to free its slot.</p></div><div class="fc "><i>3</i><h3>What&rsquo;s Price Watch?</h3><p>Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free.</p></div><div class="fc "><i>4</i><h3>Paid more anyway?</h3><p>We refund the Price Watch fee. Just send your booking confirmation within 48 hours.</p></div><div class="fc "><i>5</i><h3>Do you hold seats?</h3><p>No. We don&rsquo;t hold seats or fares. We check real fares and tell you when one fits.</p></div><div class="fc "><i>6</i><h3>Why do prices differ?</h3><p>Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights.</p></div></div><p class="fmore">New to Price Watch? <a href="price-watch.html">See a Price Watch, step by step</a> &middot; More questions? <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></section>
+  <section class="section faq2" id="faq"><div class="wrap"><div class="bigh"><p class="eyebrow">FAQ</p><h2>Quick <span>answers.</span></h2></div><div class="fcards"><div class="fc "><i>1</i><h3>How does FlyAtlast work?</h3><p>Pin a route, dates and budget. We keep checking until you fly. Under budget? You get an alert, and the full itinerary in the app.</p></div><div class="fc y"><i>2</i><h3>What&rsquo;s free?</h3><p>Track up to 3 trips at once, 25 checks each. Remove a trip or let it expire to free its slot.</p></div><div class="fc "><i>3</i><h3>What&rsquo;s Price Watch?</h3><p>Optional. Checks a trip every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). Your first one is free.</p></div><div class="fc "><i>4</i><h3>Paid more anyway?</h3><p>We refund the Price Watch fee. Just send your booking confirmation within 48 hours.</p></div><div class="fc "><i>5</i><h3>Do you hold seats?</h3><p>No. We don&rsquo;t hold seats or fares. We check real fares and tell you when one fits.</p></div><div class="fc "><i>6</i><h3>Why do prices differ?</h3><p>Our fares come from an airline data partner, so they can differ from other sites. Every deal links to Google Flights.</p></div></div><p class="fmore">More questions? <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></section>
 
   <!-- CLOSING -->
   <section class="endband" id="pin">
@@ -733,6 +796,121 @@ section[id]{scroll-margin-top:72px}
 </script>
 <!-- FW-ANIM JS END -->
 <script src="assets/header.js" defer></script>
+<script>
+(function(){
+var root=document.getElementById('pwx'),tabs=[].slice.call(root.querySelectorAll('.tab')),panels=[].slice.call(root.querySelectorAll('.pn')),cur=0,auto=true,seen=false;
+var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+root.classList.add('js');
+function show(i,run){cur=i;tabs.forEach(function(t,k){var on=k===i;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;t.classList.remove('run');});panels.forEach(function(p,k){p.hidden=k!==i;});
+ if(run){void tabs[i].offsetWidth;tabs[i].classList.add('run');}}
+function stop(){if(!auto)return;auto=false;tabs.forEach(function(t){t.classList.remove('run');});}
+function next(){if(!auto)return;show((cur+1)%tabs.length,true);}
+tabs.forEach(function(t,k){
+ t.addEventListener('click',function(){stop();show(k,false);});
+ t.addEventListener('animationend',function(){if(auto&&k===cur)next();});
+ t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;e.preventDefault();stop();var n=(cur+d+tabs.length)%tabs.length;show(n,false);tabs[n].focus();});
+});
+['focusin','keydown'].forEach(function(ev){root.addEventListener(ev,stop);});
+root.addEventListener('mouseenter',function(){if(auto)tabs[cur].style.animationPlayState='paused';});
+root.addEventListener('mouseleave',function(){if(auto)tabs[cur].style.animationPlayState='running';});
+if(rm||!('IntersectionObserver' in window)){auto=false;}else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen&&auto){seen=true;show(0,true);}});},{threshold:.4});io.observe(root.querySelector('.tabs'));}
+var lb=document.getElementById('pwlb'),lbi=lb.querySelector('img');
+root.addEventListener('click',function(e){var im=e.target.closest&&e.target.closest('.shot');if(!im)return;lbi.src=im.src;lbi.alt=im.alt;lb.classList.add('on');});
+root.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('shot')){e.preventDefault();e.target.click();}});
+lb.addEventListener('click',function(){lb.classList.remove('on');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on');});
+})();
+</script>
+<script id="hx-ac-js">
+(function(){
+var API='https://atlast-backend-production.up.railway.app';
+var form=document.querySelector('.hx-form'); if(!form)return;
+var $=function(id){return document.getElementById(id);};
+var sel=$('hx-cur'),touched=false,derived=false;
+var R2C={ CA:'CAD',US:'USD',GB:'GBP',AU:'AUD',NZ:'NZD',PK:'PKR',IN:'INR',DE:'EUR',FR:'EUR',ES:'EUR',IT:'EUR',NL:'EUR',IE:'EUR',PT:'EUR',AT:'EUR',BE:'EUR',FI:'EUR',JP:'JPY',CN:'CNY',CH:'CHF',SE:'SEK',NO:'NOK',DK:'DKK',MX:'MXN',BR:'BRL',AE:'AED',SA:'SAR',SG:'SGD',HK:'HKD',ZA:'ZAR',PH:'PHP',ID:'IDR',MY:'MYR',TH:'THB',KR:'KRW',NG:'NGN',BD:'BDT',VN:'VND',EG:'EGP',KE:'KES',QA:'QAR',RU:'RUB',TR:'TRY',PL:'PLN',IL:'ILS',CO:'COP',AR:'ARS',CL:'CLP',PE:'PEN',UA:'UAH',CZ:'CZK',HU:'HUF',RO:'RON',MA:'MAD',KW:'KWD',BH:'BHD',OM:'OMR',JO:'JOD',LK:'LKR',NP:'NPR',TW:'TWD',IS:'ISK',LU:'EUR',GR:'EUR',SK:'EUR',SI:'EUR',LV:'EUR',LT:'EUR',EE:'EUR',HR:'EUR',MT:'EUR',CY:'EUR',BG:'EUR',MC:'EUR',AD:'EUR',SM:'EUR',ME:'EUR',RS:'RSD',GE:'GEL',KZ:'KZT',AM:'AMD',AZ:'AZN',DZ:'DZD',TN:'TND',GH:'GHS',TZ:'TZS',UG:'UGX',ET:'ETB',CR:'CRC',DO:'DOP',JM:'JMD',UY:'UYU',BO:'BOB',PY:'PYG',KH:'KHR',MM:'MMK',MV:'MVR',MN:'MNT',UZ:'UZS',IQ:'IQD',LB:'LBP',MU:'MUR' };
+var top=['CAD','USD','EUR','GBP','AUD'];
+function setCur(c){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===c){sel.value=c;return true;}}return false;}
+try{var reg=((navigator.language||'').split('-')[1]||'').toUpperCase();var lc=R2C[reg];if(lc){if(!setCur(lc)){var o=document.createElement('option');o.textContent=o.value=lc;sel.appendChild(o);sel.value=lc;}}}catch(e){}
+sel.addEventListener('change',function(){touched=true;});
+function applyCur(c){if(touched)return;if(!setCur(c)){var o=document.createElement('option');o.textContent=o.value=c;sel.appendChild(o);sel.value=c;}derived=true;}
+var loaded=false;
+function loadCurs(){
+  if(loaded)return;loaded=true;
+  fetch(API+'/geo/supported-currencies').then(function(r){return r.json();}).then(function(j){
+    var a=Array.isArray(j)?j:(j&&(j.currencies||j.codes||j.supported))||[];
+    var codes=a.map(function(x){return typeof x==='string'?x:(x&&(x.code||x.currency));}).filter(function(c){return /^[A-Z]{3}$/.test(c||'');});
+    if(codes.length<=5)return;
+    var keep=sel.value,rest=codes.filter(function(c){return top.indexOf(c)<0;}).sort();
+    sel.textContent='';top.concat(rest).forEach(function(c){var o=document.createElement('option');o.textContent=o.value=c;sel.appendChild(o);});
+    if(!setCur(keep))setCur('CAD');
+  }).catch(function(){});
+}
+form.addEventListener('focusin',loadCurs);
+var ALIAS={bali:'Denpasar',saigon:'Ho Chi Minh',bombay:'Mumbai',calcutta:'Kolkata',madras:'Chennai',peking:'Beijing','phuket island':'Phuket','koh samui':'Samui',maldives:'Male',santorini:'Thira',tahiti:'Papeete','new york city':'New York',nyc:'New York','washington dc':'Washington'};
+var regionNames=null;try{regionNames=new Intl.DisplayNames(['en'],{type:'region'});}catch(e){}
+function countryName(c){if(!c)return '';c=String(c).toUpperCase();try{return (regionNames&&regionNames.of(c))||c;}catch(e){return c;}}
+function shortName(p,code){
+  var n=(p.name||p.city_name||code).replace(/\b(International|Intl\.?|Airport|Airfield)\b/gi,'').replace(/\s{2,}/g,' ').trim();
+  if(p.city_name&&n.toLowerCase().indexOf(String(p.city_name).toLowerCase())<0)n=p.city_name+' '+n;
+  return n||code;
+}
+function wire(inputId,listId,isFrom){
+  var inp=$(inputId),list=$(listId),t=null,seq=0,active=-1,items=[];
+  if(!inp||!list)return;
+  function close(){list.hidden=true;active=-1;inp.setAttribute('aria-expanded','false');}
+  function mark(){Array.prototype.forEach.call(list.children,function(li,i){li.classList.toggle('on',i===active);});}
+  function pick(p){
+    var code=p.iata_code||p.code;
+    inp.value=shortName(p,code)+' ('+code+')';
+    if(isFrom&&p.iata_country_code){var cc=R2C[String(p.iata_country_code).toUpperCase()];if(cc)applyCur(cc);}
+    close();
+  }
+  function render(arr){
+    list.textContent='';items=arr;active=-1;
+    if(!arr.length){
+      var none=document.createElement('li');none.className='none';none.setAttribute('aria-disabled','true');
+      none.textContent='No airport found. Try the nearest big city or the 3-letter code.';
+      list.appendChild(none);list.hidden=false;return;
+    }
+    arr.forEach(function(p){
+      var li=document.createElement('li');li.setAttribute('role','option');
+      var left=document.createElement('span'),nm=document.createElement('span');nm.className='nm';nm.textContent=p.name||p.city_name||p.iata_code;left.appendChild(nm);
+      var cn=countryName(p.iata_country_code),cty=(p.city_name&&p.city_name!==p.name&&p.city_name!==cn)?p.city_name:'',place=[cty,cn].filter(Boolean).join(', ');
+      if(place){var ct=document.createElement('span');ct.className='ct';ct.textContent=' — '+place;left.appendChild(ct);}
+      var cd=document.createElement('span');cd.className='cd';cd.textContent=p.iata_code;
+      li.appendChild(left);li.appendChild(cd);
+      li.addEventListener('mousedown',function(e){e.preventDefault();pick(p);});
+      list.appendChild(li);
+    });
+    list.hidden=false;inp.setAttribute('aria-expanded','true');
+  }
+  inp.addEventListener('input',function(){
+    clearTimeout(t);var q=inp.value.trim(),my=++seq;
+    if(q.length<2||/\([A-Za-z]{3}\)\s*$/.test(q)){close();return;}
+    t=setTimeout(function(){
+      var qq=ALIAS[q.toLowerCase()]||q;
+      fetch(API+'/demo/places?query='+encodeURIComponent(qq)).then(function(r){return r.json();}).then(function(j){
+        if(my!==seq)return;
+        var arr=Array.isArray(j)?j:(j&&(j.suggestions||j.results))||[];
+        render(arr.filter(function(p){return p.iata_code||p.code;}).slice(0,8));
+      }).catch(function(){});
+    },250);
+  });
+  inp.addEventListener('keydown',function(e){
+    if(list.hidden)return;
+    if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,items.length-1);mark();}
+    else if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);mark();}
+    else if(e.key==='Enter'&&active>=0){e.preventDefault();pick(items[active]);}
+    else if(e.key==='Escape'){close();}
+  });
+  inp.addEventListener('blur',close);
+}
+wire('hx-from','hx-dl-from',true);wire('hx-to','hx-dl-to',false);
+/* only send the currency when the visitor chose it or it came from the picked airport; otherwise the check page works it out from the From city */
+form.addEventListener('submit',function(){if(!touched&&!derived)sel.disabled=true;});
+window.addEventListener('pageshow',function(){sel.disabled=false;});
+})();
+</script>
 <script>
 (function(){
 var tri=document.getElementById('how'),form=document.querySelector('.hx-form');

@@ -13,7 +13,7 @@
     });
     return;
   }
-  var ids = ['how', 'watch', 'pricing', 'faq'], byId = {};
+  var ids = ['how', 'pricing', 'watch', 'faq'], byId = {};
   links.forEach(function (a) { var h = a.getAttribute('href') || ''; var i = h.indexOf('#'); if (i > -1) byId[h.slice(i + 1)] = a; });
   var tick = false;
   function spy() {
