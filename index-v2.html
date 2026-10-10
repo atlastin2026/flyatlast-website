@@ -460,6 +460,16 @@ section[id]{scroll-margin-top:72px}
 .nav-links a.active{font-weight:800;box-shadow:inset 0 -3px 0 var(--yellow)}
 @media (max-width:860px){.nav-links a.active{box-shadow:none;border-left:4px solid var(--yellow);padding-left:10px}}
 
+/* HERO-DEMO v6: static by default, JS adds .demo to .hx-tri on desktop with motion allowed */
+.hxa,.a1 .hx-mini,.a3 .hx-mini{animation:none!important;opacity:1!important;transform:none!important}
+.hx-chk i.t{animation:none!important;background:#1E3A5F;box-shadow:inset 0 0 0 2px #1E3A5F}
+.hx-tri.demo .hx-pn{opacity:.28!important;transition:opacity .5s}
+.hx-tri.demo.on1 .hx-p1,.hx-tri.demo.on2 .hx-p2,.hx-tri.demo.on3 .hx-p3{opacity:1!important}
+.hx-tri.demo .hx-chk i.t{background:#fff;box-shadow:inset 0 0 0 2px #1E3A5F;transition:background .2s}
+.hx-tri.demo.on2 .hx-chk i.t{background:#1E3A5F;transition-delay:var(--s)}
+.hx-go.press{transform:scale(.94);filter:brightness(.92)}
+.hx-go{transition:transform .15s,filter .15s}
+
 </style>
 </head>
 <body>
@@ -638,5 +648,33 @@ section[id]{scroll-margin-top:72px}
 </script>
 <!-- FW-ANIM JS END -->
 <script src="assets/header.js" defer></script>
+<script>
+(function(){
+var tri=document.getElementById('how'),form=document.querySelector('.hx-form');
+if(!tri||!form)return;
+var mq=window.matchMedia('(min-width:861px)'),rm=window.matchMedia('(prefers-reduced-motion:reduce)');
+if(!mq.matches||rm.matches)return;
+var f=form.elements,go=form.querySelector('.hx-go'),gen=0,timers=[],stopped=false;
+var script=[['from','Toronto',600,110],['to','London',1900,110],['budget','1300',3100,130]];
+function at(ms,fn,g){timers.push(setTimeout(function(){if(g===gen&&!stopped)fn();},ms));}
+function clear(){['from','to','budget'].forEach(function(n){f[n].value='';});go.classList.remove('press');tri.classList.remove('on1','on2','on3');}
+function run(){
+  var g=++gen;timers.forEach(clearTimeout);timers=[];clear();tri.classList.add('demo');
+  script.forEach(function(r){for(var i=1;i<=r[1].length;i++)(function(i){at(r[2]+i*r[3],function(){f[r[0]].value=r[1].slice(0,i);},g);})(i);});
+  at(4200,function(){go.classList.add('press');},g);
+  at(4450,function(){go.classList.remove('press');},g);
+  at(4700,function(){tri.classList.add('on1');},g);
+  at(6400,function(){tri.classList.add('on2');},g);
+  at(9000,function(){tri.classList.add('on3');},g);
+  at(13000,function(){clear();},g);
+  at(14000,run,g);
+}
+function stop(){if(stopped)return;stopped=true;timers.forEach(clearTimeout);clear();tri.classList.remove('demo');}
+['focusin','pointerdown','keydown','touchstart'].forEach(function(e){form.addEventListener(e,stop,{once:false});});
+mq.addEventListener&&mq.addEventListener('change',function(){if(!mq.matches)stop();});
+document.addEventListener('visibilitychange',function(){if(document.hidden)return;});
+setTimeout(run,500);
+})();
+</script>
 </body>
 </html>
