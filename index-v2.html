@@ -739,7 +739,7 @@ section[id]{scroll-margin-top:72px}
 var tri=document.getElementById('how'),form=document.querySelector('.hx-form');
 if(!tri||!form)return;
 var mq=window.matchMedia('(min-width:861px)'),rm=window.matchMedia('(prefers-reduced-motion:reduce)');
-if(!mq.matches||rm.matches)return;
+if(rm.matches)return;
 var f=form.elements,go=form.querySelector('.hx-go'),gen=0,timers=[],stopped=false;
 var script=[['from','Toronto',600,110],['to','London',1900,110],['budget','1300',3100,130]];
 function at(ms,fn,g){timers.push(setTimeout(function(){if(g===gen&&!stopped)fn();},ms));}
@@ -756,8 +756,7 @@ function run(){
   at(14000,run,g);
 }
 function stop(){if(stopped)return;stopped=true;timers.forEach(clearTimeout);clear();tri.classList.remove('demo');}
-['focusin','pointerdown','keydown','touchstart'].forEach(function(e){form.addEventListener(e,stop,{once:false});});
-mq.addEventListener&&mq.addEventListener('change',function(){if(!mq.matches)stop();});
+['focusin','keydown'].forEach(function(e){form.addEventListener(e,stop,{once:false});});
 document.addEventListener('visibilitychange',function(){if(document.hidden)return;});
 setTimeout(run,500);
 })();

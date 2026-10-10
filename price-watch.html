@@ -89,7 +89,7 @@ tabs.forEach(function(t,k){
  t.addEventListener('animationend',function(){if(auto&&k===cur)next();});
  t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;e.preventDefault();stop();var n=(cur+d+tabs.length)%tabs.length;show(n,false);tabs[n].focus();});
 });
-['pointerdown','focusin','keydown'].forEach(function(ev){root.addEventListener(ev,stop);});
+['focusin','keydown'].forEach(function(ev){root.addEventListener(ev,stop);});
 root.addEventListener('mouseenter',function(){if(auto)tabs[cur].style.animationPlayState='paused';});
 root.addEventListener('mouseleave',function(){if(auto)tabs[cur].style.animationPlayState='running';});
 if(rm||!('IntersectionObserver' in window)){auto=false;}else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen&&auto){seen=true;show(0,true);}});},{threshold:.4});io.observe(root.querySelector('.tabs'));}
