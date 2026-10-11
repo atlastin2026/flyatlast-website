@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    { "source": "/index-v2.html", "destination": "/", "permanent": true },
+    { "source": "/blog/how-price-watch-works.html", "destination": "/price-watch.html", "permanent": true },
+    { "source": "/blog/how-flyatlast-checks-prices.html", "destination": "/price-watch.html", "permanent": true },
+    { "source": "/blog/track-flight-prices-automatically.html", "destination": "/price-watch.html", "permanent": true },
+    { "source": "/blog/set-a-flight-price-alert-under-budget.html", "destination": "/price-watch.html", "permanent": true },
+    { "source": "/blog/how-to-avoid-overpaying-for-flights.html", "destination": "/blog/why-flight-prices-change.html", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000" }
+      ]
+    }
+  ]
+}
