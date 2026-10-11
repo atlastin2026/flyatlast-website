@@ -558,6 +558,45 @@ section[id]{scroll-margin-top:72px}
 .hx-go{transition:transform .15s,filter .15s}
 /* land on the headline + form, not mid-hero, when "How it works" is clicked */
 #how{scroll-margin-top:470px}
+
+/* ===== HERO v7: bigger form, example result, equal compact cards ===== */
+.hx-form{max-width:960px;border-radius:22px;padding:14px;gap:12px;box-shadow:0 18px 44px rgba(30,58,95,.16)}
+.hx-fld{padding:12px 18px;min-height:76px;border-radius:14px}
+.hx-fld>span{font-size:11.5px;font-weight:800;letter-spacing:.07em}.hx-list span{text-transform:none;letter-spacing:0;font-size:14px;font-weight:inherit;color:inherit}.hx-list .ct{color:#5A6B78}
+.hx-fld input{font-size:21px}.hx-fld input[type=date]{font-size:18px;min-height:32px}
+.hx-money select{font-size:14px}
+.hx-go{min-height:76px;font-size:19px;padding:0 12px;border-radius:14px}
+.hx-tvf .tv-btn{font-size:19px;min-height:32px}
+.hx-res{max-width:960px;margin:0 auto;background:#fff;border:2px solid var(--navy);border-radius:22px;box-shadow:0 18px 44px rgba(30,58,95,.16);overflow:hidden;text-align:left}
+.hx-res[hidden]{display:none}
+.hx-rh{background:#EAF1F8;border-bottom:3px solid #F4C11C;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.hx-rh b{font-size:18px}.hx-rh span{font-size:14px;color:#4A5F78;font-weight:600}
+.hx-rb{padding:22px 26px 10px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
+.hx-rb h2{margin:0 0 6px;font-size:32px;letter-spacing:-.03em;line-height:1.1}.hx-rb h2 i{font-style:normal;color:#17663A}
+.hx-amt{font:800 44px 'JetBrains Mono',monospace;letter-spacing:-.02em}
+.hx-pill{display:inline-block;background:#D4EDDC;color:#17663A;font-weight:800;border-radius:99px;padding:6px 13px;font-size:14px}
+.hx-bar{position:relative;height:12px;border-radius:99px;background:#E3EAF2;margin:16px 0 6px}.hx-bar i{position:absolute;left:0;top:0;bottom:0;width:76%;background:#17663A;border-radius:99px}.hx-bar u{position:absolute;top:-6px;bottom:-6px;right:0;width:3px;background:#F4C11C;box-shadow:0 0 0 2px #fff}
+.hx-bl{display:flex;justify-content:space-between;font-size:12.5px;color:#4A5F78;font-weight:600}
+.hx-rn{font-size:12.5px;color:#4A5F78;text-align:center;margin:8px 0 14px}
+.hx-tri{border:0;border-radius:0;overflow:visible;gap:14px;margin:26px auto 0;max-width:960px}
+.hx-pn{border:2px solid var(--navy);border-radius:18px;padding:18px 20px;min-height:0;gap:0;justify-content:flex-start}
+.hx-p2{background:#F3F7FB}.hx-p3{background:#FBEBB8;color:#14213A}
+.hx-vb{margin:0 0 4px;font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.hx-d{margin:0 0 12px;font-size:14.5px;line-height:1.4;opacity:1}.hx-p1 .hx-d{color:#DCE6F1}.hx-p2 .hx-d{color:#4A5F78}.hx-p3 .hx-d{color:#5d4a10}
+.hx-ds{display:none}
+.hx-chip2{align-self:flex-start;margin-top:auto;font-weight:800;font-size:12.5px;border-radius:99px;padding:5px 11px;background:#EAF1F8;color:var(--navy)}
+.hx-p1 .hx-chip2,.hx-p3 .hx-chip2{background:#fff;color:var(--navy)}
+.hx-tri.demo .hx-pn{opacity:.4!important}
+@media (max-width:860px){
+ .hx-form{padding:10px;gap:10px;border-radius:18px}
+ .hx-fld{min-height:64px;padding:10px 14px}.hx-fld input{font-size:18px}.hx-fld input[type=date]{font-size:16px}
+ .hx-go{min-height:60px;font-size:19px;grid-column:1 / -1}.hx-bud{grid-column:1 / -1}
+ .hx-tri{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .hx-pn{padding:12px 11px;border-radius:14px}.hx-vb{font-size:19px}
+ .hx-d{font-size:11.5px;margin-bottom:8px}.hx-d{font-size:0}.hx-ds{display:block;font-size:11.5px;line-height:1.35}
+ .hx-chip2{font-size:10.5px;padding:4px 8px}.hx-chip2 .l{display:none}
+ .hx-rb{grid-template-columns:1fr;padding:16px 16px 6px;gap:14px}.hx-rb h2{font-size:25px}.hx-amt{font-size:34px}.hx-rh{padding:12px 16px}
+}
 @media (max-width:860px){#how{scroll-margin-top:360px}}
 
 </style>
@@ -676,7 +715,7 @@ section[id]{scroll-margin-top:72px}
    <div class="wrap hx-in">
     <h1 class="hx-h1">Pin. Track. <span>Fly.</span></h1>
     <p class="hx-sub">Tell us your budget. We'll tell you when a real flight fits it.</p>
-    <p class="hx-cue" id="hx-cue" aria-live="polite"><b>Try your trip</b><span>Check it against your budget. Free, no sign-up.</span></p>
+    <p class="hx-cue" id="hx-cue" aria-live="polite"><b>Try your trip</b><span>Check it against your budget. Free, no sign‑up.</span></p>
     <form class="hx-form plausible-event-name=Hero+form" action="try.html" method="get" aria-label="Check a trip against your budget">
       <label class="hx-fld hx-ac"><span>From</span><input name="from" id="hx-from" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-from" autocomplete="off" placeholder="City or airport" required maxlength="60"><ul class="hx-list" id="hx-dl-from" role="listbox" hidden></ul></label>
       <label class="hx-fld hx-ac"><span>To</span><input name="to" id="hx-to" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-to" autocomplete="off" placeholder="City or airport" required maxlength="60"><ul class="hx-list" id="hx-dl-to" role="listbox" hidden></ul></label>
@@ -684,12 +723,13 @@ section[id]{scroll-margin-top:72px}
       <label class="hx-fld"><span>Return <em>(optional)</em></span><input name="ret" id="hx-ret" type="date"></label>
       <div class="hx-fld hx-tvf tv" id="hx-tv"><span>Travellers</span><button type="button" class="tv-btn" aria-haspopup="dialog" aria-expanded="false"><strong class="tv-sum">1 adult</strong><svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="tv-pop" hidden role="dialog" aria-label="Travellers"><div class="tv-row"><b>Adults</b><div class="tv-step"><button type="button" data-k="am" aria-label="Fewer adults">&minus;</button><i class="tv-a">1</i><button type="button" data-k="ap" aria-label="More adults">+</button></div></div><div class="tv-row"><b>Children <em>0&ndash;17</em></b><div class="tv-step"><button type="button" data-k="cm" aria-label="Fewer children">&minus;</button><i class="tv-c">0</i><button type="button" data-k="cp" aria-label="More children">+</button></div></div><div class="tv-ages"></div><button type="button" class="tv-done" data-k="done">Done</button></div></div>
       <input type="hidden" name="ad" id="hx-ad" value="1"><input type="hidden" name="ch" id="hx-ch" disabled>
-      <label class="hx-fld hx-bud"><span>Total budget</span><div class="hx-money"><input name="budget" id="hx-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 1300" required><select name="cur" id="hx-cur" aria-label="Currency"><option>CAD</option><option>USD</option><option>EUR</option><option>GBP</option><option>AUD</option></select></div></label>
+      <label class="hx-fld hx-bud"><span>Total budget</span><div class="hx-money"><input name="budget" id="hx-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 2500" required><select name="cur" id="hx-cur" aria-label="Currency"><option>CAD</option><option>USD</option><option>EUR</option><option>GBP</option><option>AUD</option></select></div></label>
       <input type="hidden" name="go" value="1" id="hx-gof" disabled>
       <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
     </form>
     
-    <div class="hx-tri" id="how"><div class="hx-pn hx-p1 hxa a1"><span class="hx-vb">Pin</span><span class="hx-d">Your route, dates and the budget that makes it a yes.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Pinned</em></div><div class="hx-row hx-sm"><span>Round trip</span><span>Nov 14&ndash;21 &middot; 2 adults, 1 child</span></div><div class="hx-row"><span>Your budget</span><b>C$2,500</b></div></div></div><div class="hx-pn hx-p2 hxa a2"><span class="hx-vb">Track</span><span class="hx-d">We check real fares, closer together as departure nears.</span><div class="hx-mini"><div class="hx-mh"><b>Toronto &rarr; London</b><em class="hx-chip">Tracking</em></div><div class="hx-chk" aria-hidden="true"><i class="t" style="--s:0.40s"></i><i class="t" style="--s:0.85s"></i><i class="t" style="--s:1.30s"></i><i class="t" style="--s:1.75s"></i><i class="t" style="--s:2.20s"></i><i class="t" style="--s:2.65s"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></div><div class="hx-row hx-sm"><span>Checks done</span><span>6 of 25</span></div><div class="hx-row"><span>Lowest so far</span><b>C$2,184</b></div></div></div><div class="hx-pn hx-p3 hxa a3"><span class="hx-vb">Fly</span><span class="hx-d">A deal alert lands in your inbox. Open the app for the full itinerary.</span><div class="hx-mini"><div class="hx-mh"><b>Deal found</b><em class="hx-chip g">C$613 under budget</em></div><div class="hx-row hx-sm"><span>Toronto &rarr; London</span><span>Nov 14&ndash;21</span></div><div class="hx-price">C$1,887</div><div class="hx-bk">See the itinerary</div></div></div></div>
+    <div class="hx-res" id="hx-res" hidden aria-hidden="true"><div class="hx-rh"><b>Toronto &rarr; London</b><span>Nov 14&ndash;21 &middot; 2 adults, 1 child &middot; Budget C$2,500</span></div><div class="hx-rb"><div><h2>Good news. <i>It fits your budget.</i></h2><div class="hx-amt">C$1,887</div></div><div><span class="hx-pill">C$613 under your budget</span><div class="hx-bar"><i></i><u></u></div><div class="hx-bl"><span>Fare C$1,887</span><span>Budget C$2,500</span></div></div></div><p class="hx-rn">Example result. Real checks show the lowest fare found today.</p></div>
+    <div class="hx-tri" id="how"><div class="hx-pn hx-p1"><h3 class="hx-vb">Pin</h3><p class="hx-d">Your route, dates and the budget that makes it a yes.<span class="hx-ds">Your route, dates and budget.</span></p><span class="hx-chip2"><span class="l">Toronto &rarr; London &middot; </span>C$2,500</span></div><div class="hx-pn hx-p2"><h3 class="hx-vb">Track</h3><p class="hx-d">We check real fares, closer together as departure nears.<span class="hx-ds">We check real fares.</span></p><span class="hx-chip2">6 of 25<span class="l"> checks done</span></span></div><div class="hx-pn hx-p3"><h3 class="hx-vb">Fly</h3><p class="hx-d">A deal alert lands in your inbox. Open the app for the full itinerary.<span class="hx-ds">An alert lands in your inbox.</span></p><span class="hx-chip2">Under budget<span class="l">: email sent</span></span></div></div>
    </div>
   </section>
 
@@ -1032,43 +1072,49 @@ function mock(list,rows,on){
 }
 function dIso(n){var x=new Date(Date.now()+n*86400000);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');}
 function hideLists(){[lf,lt].forEach(function(l){if(l){l.hidden=true;l.textContent='';}});}
-function clear(){['from','to','dep','ret','budget'].forEach(function(n){f[n].value='';});go.classList.remove('press');tri.classList.remove('on1','on2','on3');hideLists();if(sel){sel.classList.remove('hl');sel.value=origCur;}if(window.__hxTv){window.__hxTv.set(1,[]);window.__hxTv.close();}}
+function clearFields(){['from','to','dep','ret','budget'].forEach(function(n){f[n].value='';});go.classList.remove('press');hideLists();if(sel){sel.classList.remove('hl');sel.value=origCur;}if(window.__hxTv){window.__hxTv.set(1,[]);window.__hxTv.close();}}
+function clear(){clearFields();tri.classList.remove('on1','on2','on3');showForm();}
+var resEl=document.getElementById('hx-res');
+function showRes(){if(!resEl)return;resEl.style.minHeight=window.innerWidth>860?form.offsetHeight+'px':'';form.style.display='none';resEl.hidden=false;}
+function showForm(){if(resEl){resEl.hidden=true;}form.style.display='';}
 var cueEl=document.getElementById('hx-cue');
-function cue(ex){
+function cue(ex,res){
   form.classList.toggle('demoing',ex);
   if(!cueEl)return;
   cueEl.classList.toggle('ex',ex);
-  cueEl.innerHTML=ex?'<b>Example</b><span>Watch how a check works. Then try yours.</span>':'<b>Try your trip</b><span>Check it against your budget. Free, no sign-up.</span>';
+  cueEl.innerHTML=res?'<b>Example result</b><span>This is what you will see for your own trip</span>':ex?'<b>Example</b><span>Watch how a check works. Then try yours.</span>':'<b>Try your trip</b><span>Check it against your budget. Free, no sign‑up.</span>';
 }
 function run(){
   var g=++gen;timers.forEach(clearTimeout);timers=[];clear();tri.classList.add('demo');cue(true);
-  typeIn(g,'from','Tor',600,140);
-  at(1250,function(){mock(lf,[['Toronto Pearson','Toronto, Canada','YYZ'],['Billy Bishop Toronto City','Toronto, Canada','YTZ']],-1);},g);
-  at(1750,function(){mock(lf,[['Toronto Pearson','Toronto, Canada','YYZ'],['Billy Bishop Toronto City','Toronto, Canada','YTZ']],0);},g);
-  at(2300,function(){f.from.value='Toronto (YYZ)';hideLists();},g);
-  typeIn(g,'to','Lon',2900,140);
-  at(3550,function(){mock(lt,[['Heathrow','London, United Kingdom','LHR'],['Gatwick','London, United Kingdom','LGW']],-1);},g);
-  at(4050,function(){mock(lt,[['Heathrow','London, United Kingdom','LHR'],['Gatwick','London, United Kingdom','LGW']],0);},g);
-  at(4600,function(){f.to.value='London (LHR)';hideLists();},g);
-  at(5100,function(){f.dep.value=dIso(30);},g);
-  at(5700,function(){f.ret.value=dIso(37);},g);
-  at(6300,function(){var T=window.__hxTv;if(T)T.open();},g);
-  at(6900,function(){var T=window.__hxTv;if(T)T.set(2,[]);},g);
-  at(7500,function(){var T=window.__hxTv;if(T)T.set(2,[null]);},g);
-  at(8100,function(){var T=window.__hxTv;if(T)T.set(2,[9]);},g);
-  at(8900,function(){var T=window.__hxTv;if(T)T.close();},g);
-  at(9400,function(){if(sel){sel.classList.add('hl');}},g);
-  at(10000,function(){if(sel){sel.value='CAD';}},g);
-  at(10800,function(){if(sel){sel.classList.remove('hl');}},g);
-  typeIn(g,'budget','2500',10900,150);
-  at(11900,function(){go.classList.add('press');},g);
-  at(12150,function(){go.classList.remove('press');},g);
-  at(12400,function(){tri.classList.add('on1');},g);
-  at(14100,function(){tri.classList.add('on2');},g);
-  at(16700,function(){tri.classList.add('on3');},g);
-  at(20700,function(){clear();cue(false);form.classList.add('nudge');},g);
+  typeIn(g,'from','Tor',500,130);
+  at(1200,function(){mock(lf,[['Toronto Pearson','Toronto, Canada','YYZ'],['Billy Bishop Toronto City','Toronto, Canada','YTZ']],-1);},g);
+  at(1650,function(){mock(lf,[['Toronto Pearson','Toronto, Canada','YYZ'],['Billy Bishop Toronto City','Toronto, Canada','YTZ']],0);},g);
+  at(2150,function(){f.from.value='Toronto (YYZ)';hideLists();},g);
+  typeIn(g,'to','Lon',2700,130);
+  at(3400,function(){mock(lt,[['Heathrow','London, United Kingdom','LHR'],['Gatwick','London, United Kingdom','LGW']],-1);},g);
+  at(3850,function(){mock(lt,[['Heathrow','London, United Kingdom','LHR'],['Gatwick','London, United Kingdom','LGW']],0);},g);
+  at(4350,function(){f.to.value='London (LHR)';hideLists();},g);
+  at(4800,function(){f.dep.value=dIso(30);},g);
+  at(5400,function(){f.ret.value=dIso(37);},g);
+  at(6000,function(){var T=window.__hxTv;if(T)T.open();},g);
+  at(6600,function(){var T=window.__hxTv;if(T)T.set(2,[]);},g);
+  at(7200,function(){var T=window.__hxTv;if(T)T.set(2,[null]);},g);
+  at(7800,function(){var T=window.__hxTv;if(T)T.set(2,[9]);},g);
+  at(8500,function(){var T=window.__hxTv;if(T)T.close();},g);
+  at(9000,function(){if(sel){sel.classList.add('hl');}},g);
+  at(9600,function(){if(sel){sel.value='CAD';}},g);
+  at(10300,function(){if(sel){sel.classList.remove('hl');}},g);
+  typeIn(g,'budget','2500',10400,130);
+  at(11500,function(){go.classList.add('press');},g);
+  at(11750,function(){go.classList.remove('press');},g);
+  at(11900,function(){hideLists();showRes();cue(true,true);},g);
+  at(12000,function(){tri.classList.add('on1');},g);
+  at(13500,function(){tri.classList.add('on2');},g);
+  at(15000,function(){tri.classList.add('on3');},g);
+  at(16100,function(){clearFields();showForm();cue(false);form.classList.add('nudge');},g);
+  at(19000,function(){tri.classList.remove('demo','on1','on2','on3');},g);
 }
-function stop(){if(stopped)return;stopped=true;timers.forEach(clearTimeout);clear();tri.classList.remove('demo');cue(false);form.classList.remove('nudge');}
+function stop(){if(stopped)return;stopped=true;timers.forEach(clearTimeout);clear();showForm();tri.classList.remove('demo');cue(false);form.classList.remove('nudge');}
 ['focusin','keydown'].forEach(function(e){form.addEventListener(e,stop,{once:false});});
 document.addEventListener('visibilitychange',function(){if(document.hidden)return;});
 setTimeout(run,500);
