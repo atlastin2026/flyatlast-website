@@ -230,90 +230,28 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="assets/logo192.png">
-<!-- FW-ANIM CSS START -->
-<style id="fw-anim-css">
-/* FlyAtlast Price Watch explainer. Loop 18s = three 6s outcomes: above 0-6, inside 6-12, below 12-18.
-   Keyframe percentages are seconds / 18. Base (no animation) state = final state. */
-.fw-w{--fw-t:18s;font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;color:#1E3A5F}
-.fw-w *{box-sizing:border-box}
-.fw-stg{position:relative;aspect-ratio:4/3;background:#fff}
-.fw-cyc{position:absolute;inset:0}
-.fw-cyc svg{display:block;width:100%;height:100%;overflow:visible}
-.fw-w svg *{transform-box:fill-box;transform-origin:50% 50%}
-.fw-tx{font-family:"Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif}
-.fw-mo{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.fw-w500{font-weight:500}.fw-w600{font-weight:600}.fw-w700{font-weight:700}.fw-w800{font-weight:800}
-.fw-c-none{fill:none}
-.fw-dr{stroke-dasharray:1 1;stroke-dashoffset:0}
-.fw-c-navy{fill:var(--navy,#1E3A5F)}.fw-k-navy{stroke:var(--navy,#1E3A5F)}.fw-c-navy2{fill:var(--navy-2,#243F63)}.fw-k-navy2{stroke:var(--navy-2,#243F63)}.fw-c-nline{fill:var(--navy-line,#5E7A96)}.fw-k-nline{stroke:var(--navy-line,#5E7A96)}.fw-c-white{fill:var(--white,#FFFFFF)}.fw-k-white{stroke:var(--white,#FFFFFF)}.fw-c-yellow{fill:var(--yellow,#F4C11C)}.fw-k-yellow{stroke:var(--yellow,#F4C11C)}.fw-c-gbg{fill:#D4EDDC}.fw-k-gbg{stroke:#D4EDDC}.fw-c-gtx{fill:#2C6640}.fw-k-gtx{stroke:#2C6640}.fw-c-abg{fill:#FDF4DE}.fw-k-abg{stroke:#FDF4DE}.fw-c-atx{fill:#7A5B10}.fw-k-atx{stroke:#7A5B10}.fw-c-red{fill:#B94A2E}.fw-k-red{stroke:#B94A2E}.fw-c-muted{fill:var(--text-muted,#5A6B78)}.fw-k-muted{stroke:var(--text-muted,#5A6B78)}.fw-c-border{fill:var(--border,#DDE3E7)}.fw-k-border{stroke:var(--border,#DDE3E7)}.fw-c-bg{fill:var(--bg,#EEF1F3)}.fw-k-bg{stroke:var(--bg,#EEF1F3)}.fw-c-dark{fill:#1a1a1a}.fw-k-dark{stroke:#1a1a1a}.fw-c-pale{fill:#C3CFDA}.fw-k-pale{stroke:#C3CFDA}.fw-c-body{fill:var(--text-body,#3d4a56)}.fw-k-body{stroke:var(--text-body,#3d4a56)}
-.fw-a{animation-duration:var(--fw-t);animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both}
-.fw-ctl{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px}
-.fw-tab+.fw-tab{margin-left:-2px}
-.fw-tab:focus-visible{position:relative;z-index:1}
-.fw-tab,.fw-tg{min-height:44px;border:2px solid #1E3A5F;background:#fff;color:#1E3A5F;font:700 14px/1 "Public Sans","Helvetica Neue",Helvetica,Arial,sans-serif;cursor:pointer;padding:0 6px}
-.fw-tg{display:inline-flex;align-items:center;justify-content:center;padding:0}
-.fw-tg svg{width:16px;height:16px;fill:currentColor}
-.fw-tab:focus-visible,.fw-tg:focus-visible{outline:3px solid #1E3A5F;outline-offset:2px}
-.fw-w.fw-is-paused *{animation-play-state:paused!important}
-@media (prefers-reduced-motion:reduce){
-.fw-w *{animation:none!important}
-.fw-stg{aspect-ratio:auto;display:grid;gap:12px}
-.fw-cyc{position:relative;inset:auto;aspect-ratio:4/3;border:2px solid var(--border,#DDE3E7)}
-.fw-ctl{display:none}
-}
-@keyframes fw-k1{0%,20%{opacity:1}20.833%{opacity:.6}21.667%{opacity:1}22.5%,100%{opacity:.85}}
-@keyframes fw-k2{0%,2.778%,2.789%{stroke-dashoffset:1}4.568%{stroke-dashoffset:0.891}6.358%{stroke-dashoffset:0.781}8.148%{stroke-dashoffset:0.669}9.938%{stroke-dashoffset:0.559}11.728%{stroke-dashoffset:0.447}13.519%{stroke-dashoffset:0.338}15.309%{stroke-dashoffset:0.223}17.099%{stroke-dashoffset:0.115}18.889%,100%{stroke-dashoffset:0}}
-@keyframes fw-k3{0%,2.778%{opacity:0;transform:scale(.3)}3.333%,100%{opacity:1;transform:none}}
-@keyframes fw-k4{0%,4.568%{opacity:0;transform:scale(.3)}5.123%,100%{opacity:1;transform:none}}
-@keyframes fw-k5{0%,6.358%{opacity:0;transform:scale(.3)}6.914%,100%{opacity:1;transform:none}}
-@keyframes fw-k6{0%,8.148%{opacity:0;transform:scale(.3)}8.704%,100%{opacity:1;transform:none}}
-@keyframes fw-k7{0%,9.938%{opacity:0;transform:scale(.3)}10.494%,100%{opacity:1;transform:none}}
-@keyframes fw-k8{0%,11.728%{opacity:0;transform:scale(.3)}12.284%,100%{opacity:1;transform:none}}
-@keyframes fw-k9{0%,13.519%{opacity:0;transform:scale(.3)}14.074%,100%{opacity:1;transform:none}}
-@keyframes fw-k10{0%,15.309%{opacity:0;transform:scale(.3)}15.864%,100%{opacity:1;transform:none}}
-@keyframes fw-k11{0%,17.099%{opacity:0;transform:scale(.3)}17.654%,100%{opacity:1;transform:none}}
-@keyframes fw-k12{0%{opacity:0;transform:scale(1)}18.889%{opacity:0;transform:scale(.3)}19.444%,20%{opacity:1;transform:scale(1)}21.111%{opacity:1;transform:scale(1.7)}22.222%,100%{opacity:1;transform:scale(1)}}
-@keyframes fw-k13{0%{opacity:0;transform:translateY(14px)}21.667%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}23.333%,100%{opacity:1;transform:none}}
-@keyframes fw-k14{0%,0.011%{opacity:0}1.667%,31.667%{opacity:1}33.333%,100%{opacity:0}}
-@keyframes fw-k15{0%,53.333%{opacity:1}54.167%{opacity:.6}55%{opacity:1}55.833%,100%{opacity:.85}}
-@keyframes fw-k16{0%,36.111%,36.122%{stroke-dashoffset:1}37.901%{stroke-dashoffset:0.894}39.691%{stroke-dashoffset:0.785}41.481%{stroke-dashoffset:0.671}43.272%{stroke-dashoffset:0.563}45.062%{stroke-dashoffset:0.452}46.852%{stroke-dashoffset:0.344}48.642%{stroke-dashoffset:0.235}50.432%{stroke-dashoffset:0.121}52.222%,100%{stroke-dashoffset:0}}
-@keyframes fw-k17{0%,36.111%{opacity:0;transform:scale(.3)}36.667%,100%{opacity:1;transform:none}}
-@keyframes fw-k18{0%,37.901%{opacity:0;transform:scale(.3)}38.457%,100%{opacity:1;transform:none}}
-@keyframes fw-k19{0%,39.691%{opacity:0;transform:scale(.3)}40.247%,100%{opacity:1;transform:none}}
-@keyframes fw-k20{0%,41.481%{opacity:0;transform:scale(.3)}42.037%,100%{opacity:1;transform:none}}
-@keyframes fw-k21{0%,43.272%{opacity:0;transform:scale(.3)}43.827%,100%{opacity:1;transform:none}}
-@keyframes fw-k22{0%,45.062%{opacity:0;transform:scale(.3)}45.617%,100%{opacity:1;transform:none}}
-@keyframes fw-k23{0%,46.852%{opacity:0;transform:scale(.3)}47.407%,100%{opacity:1;transform:none}}
-@keyframes fw-k24{0%,48.642%{opacity:0;transform:scale(.3)}49.198%,100%{opacity:1;transform:none}}
-@keyframes fw-k25{0%,50.432%{opacity:0;transform:scale(.3)}50.988%,100%{opacity:1;transform:none}}
-@keyframes fw-k26{0%{opacity:0;transform:scale(1)}52.222%{opacity:0;transform:scale(.3)}52.778%,53.333%{opacity:1;transform:scale(1)}54.444%{opacity:1;transform:scale(1.7)}55.556%,100%{opacity:1;transform:scale(1)}}
-@keyframes fw-k27{0%{opacity:0;transform:translateY(14px)}55%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}56.667%,100%{opacity:1;transform:none}}
-@keyframes fw-k28{0%,33.333%{opacity:0}35%,65%{opacity:1}66.667%,100%{opacity:0}}
-@keyframes fw-k29{0%,86.667%{opacity:1}87.5%{opacity:.6}88.333%{opacity:1}89.167%,100%{opacity:.85}}
-@keyframes fw-k30{0%,69.444%,69.456%{stroke-dashoffset:1}71.235%{stroke-dashoffset:0.89}73.025%{stroke-dashoffset:0.786}74.815%{stroke-dashoffset:0.665}76.605%{stroke-dashoffset:0.555}78.395%{stroke-dashoffset:0.451}80.185%{stroke-dashoffset:0.334}81.975%{stroke-dashoffset:0.226}83.765%{stroke-dashoffset:0.113}85.556%,100%{stroke-dashoffset:0}}
-@keyframes fw-k31{0%,69.444%{opacity:0;transform:scale(.3)}70%,100%{opacity:1;transform:none}}
-@keyframes fw-k32{0%,71.235%{opacity:0;transform:scale(.3)}71.79%,100%{opacity:1;transform:none}}
-@keyframes fw-k33{0%,73.025%{opacity:0;transform:scale(.3)}73.58%,100%{opacity:1;transform:none}}
-@keyframes fw-k34{0%,74.815%{opacity:0;transform:scale(.3)}75.37%,100%{opacity:1;transform:none}}
-@keyframes fw-k35{0%,76.605%{opacity:0;transform:scale(.3)}77.16%,100%{opacity:1;transform:none}}
-@keyframes fw-k36{0%,78.395%{opacity:0;transform:scale(.3)}78.951%,100%{opacity:1;transform:none}}
-@keyframes fw-k37{0%,80.185%{opacity:0;transform:scale(.3)}80.741%,100%{opacity:1;transform:none}}
-@keyframes fw-k38{0%,81.975%{opacity:0;transform:scale(.3)}82.531%,100%{opacity:1;transform:none}}
-@keyframes fw-k39{0%,83.765%{opacity:0;transform:scale(.3)}84.321%,100%{opacity:1;transform:none}}
-@keyframes fw-k40{0%{opacity:0;transform:scale(1)}85.556%{opacity:0;transform:scale(.3)}86.111%,86.667%{opacity:1;transform:scale(1)}87.778%{opacity:1;transform:scale(1.7)}88.889%,100%{opacity:1;transform:scale(1)}}
-@keyframes fw-k41{0%{opacity:0;transform:translateY(14px)}88.333%{opacity:0;transform:translateY(14px);animation-timing-function:cubic-bezier(.2,.7,.2,1)}90%,100%{opacity:1;transform:none}}
-@keyframes fw-k42{0%,66.667%{opacity:0}68.333%,98.333%{opacity:1}100%{opacity:0}}
-@keyframes fw-k43{0%,0.011%{background-color:#fff;color:#1E3A5F}0.022%,33.333%{background-color:#1E3A5F;color:#F4C11C}33.344%,100%{background-color:#fff;color:#1E3A5F}}
-@keyframes fw-k44{0%,33.333%{background-color:#fff;color:#1E3A5F}33.344%,66.667%{background-color:#1E3A5F;color:#F4C11C}66.678%,100%{background-color:#fff;color:#1E3A5F}}
-@keyframes fw-k45{0%,66.667%{background-color:#fff;color:#1E3A5F}66.678%,100%{background-color:#1E3A5F;color:#F4C11C}}
-.fw-k1{animation-name:fw-k1}.fw-k2{animation-name:fw-k2}.fw-k3{animation-name:fw-k3}.fw-k4{animation-name:fw-k4}.fw-k5{animation-name:fw-k5}.fw-k6{animation-name:fw-k6}.fw-k7{animation-name:fw-k7}.fw-k8{animation-name:fw-k8}.fw-k9{animation-name:fw-k9}.fw-k10{animation-name:fw-k10}.fw-k11{animation-name:fw-k11}.fw-k12{animation-name:fw-k12}.fw-k13{animation-name:fw-k13}.fw-k14{animation-name:fw-k14}.fw-k15{animation-name:fw-k15}.fw-k16{animation-name:fw-k16}.fw-k17{animation-name:fw-k17}.fw-k18{animation-name:fw-k18}.fw-k19{animation-name:fw-k19}.fw-k20{animation-name:fw-k20}.fw-k21{animation-name:fw-k21}.fw-k22{animation-name:fw-k22}.fw-k23{animation-name:fw-k23}.fw-k24{animation-name:fw-k24}.fw-k25{animation-name:fw-k25}.fw-k26{animation-name:fw-k26}.fw-k27{animation-name:fw-k27}.fw-k28{animation-name:fw-k28}.fw-k29{animation-name:fw-k29}.fw-k30{animation-name:fw-k30}.fw-k31{animation-name:fw-k31}.fw-k32{animation-name:fw-k32}.fw-k33{animation-name:fw-k33}.fw-k34{animation-name:fw-k34}.fw-k35{animation-name:fw-k35}.fw-k36{animation-name:fw-k36}.fw-k37{animation-name:fw-k37}.fw-k38{animation-name:fw-k38}.fw-k39{animation-name:fw-k39}.fw-k40{animation-name:fw-k40}.fw-k41{animation-name:fw-k41}.fw-k42{animation-name:fw-k42}.fw-k43{animation-name:fw-k43}.fw-k44{animation-name:fw-k44}.fw-k45{animation-name:fw-k45}
-
-/* round 2 chart */
-.fw-w svg .fw-cl1,.fw-w svg .fw-cl2,.fw-w svg .fw-cl3{transform-box:view-box;transform-origin:0 0}
-@keyframes fw-cl1{0%,2.778%{transform:scaleX(0)}18.889%,100%{transform:scaleX(1)}}@keyframes fw-cl2{0%,36.111%{transform:scaleX(0)}52.222%,100%{transform:scaleX(1)}}@keyframes fw-cl3{0%,69.444%{transform:scaleX(0)}85.556%,100%{transform:scaleX(1)}}
-.fw-cl1{animation-name:fw-cl1}.fw-cl2{animation-name:fw-cl2}.fw-cl3{animation-name:fw-cl3}
+<style id="fapw-css">
+.fapw{font-family:'Sora',system-ui,sans-serif;color:#1E3A5F}
+.fapw-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.fapw-chip{font-size:12.5px;font-weight:800;padding:6px 12px;border-radius:99px;background:#1E3A5F;color:#F4C11C;white-space:nowrap}
+.fapw-chip.y{background:#F4C11C;color:#1E3A5F}
+.fapw-note{font-size:13px;font-weight:600;color:#4A5F78;min-height:20px}
+.fapw-cw{background:#fff;border:1px solid #DDE3E7;border-radius:14px;padding:10px 8px 4px;margin:10px 0}
+.fapw-svg{display:block;overflow:visible}
+.fapw-l{stroke-dasharray:1;stroke-dashoffset:0}.fapw-dot{opacity:1}
+.fapw-go .fapw-l{stroke-dasharray:1;stroke-dashoffset:1;animation:fapwd 3.2s ease-out forwards}
+.fapw-go .fapw-dot{opacity:0;animation:fapwf .4s 3.1s forwards}
+.fapw-chips.fapw-go,.fapw-note.fapw-go{animation:fapwf .5s 3.1s both}
+@keyframes fapwd{to{stroke-dashoffset:0}}@keyframes fapwf{to{opacity:1}}
+.fapw-chips.fapw-go{opacity:0}
+.fapw-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;color:#4A5F78;font-weight:600;margin:6px 2px 0}
+.fapw-leg span{display:flex;align-items:center;gap:6px}.fapw-leg i{display:inline-block}
+.fapw-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.fapw-tabs button{min-height:44px;border:2px solid #1E3A5F;border-radius:10px;background:#fff;color:#1E3A5F;font:800 14px 'Public Sans',system-ui,sans-serif;cursor:pointer}
+.fapw-tabs button[aria-pressed=true]{background:#1E3A5F;color:#F4C11C}
+.fapw-tabs button:focus-visible{outline:3px solid #F4C11C;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.fapw-go .fapw-l,.fapw-go .fapw-dot,.fapw-chips.fapw-go{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
 </style>
-<!-- FW-ANIM CSS END -->
 <!-- SITE-UPDATE CSS START -->
 <style id="site-update-css">
 main img{max-width:100%;height:auto}
@@ -488,8 +426,6 @@ body{font-family:'Sora','Public Sans',system-ui,-apple-system,'Segoe UI',sans-se
 .pw-prc{display:flex;gap:12px}.pw-prc div{flex:1;background:#fff;border:2px solid var(--navy);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column}
 .pw-prc span{font-size:12px;color:var(--text-muted)}.pw-prc b{font-size:24px}
 .pw-fnt{font-size:12px;color:var(--text-muted);line-height:1.5;margin:0}
-.pw2 .fw-w,.pw2 .fw-tx,.pw2 .fw-mo{font-family:'Sora',system-ui,sans-serif}
-.pw2 .fw-tx,.pw2 .fw-mo{font-variant-numeric:tabular-nums}
 .pw2 .fw-cyc text{font-size:12.5px}@media(max-width:600px){.pw2 .fw-cyc text{font-size:14px}}
 .pw2 .fw-c-gbg{fill:#DDF1E6}.pw2 .fw-k-gbg{stroke:#DDF1E6}
 .pw2 .fw-c-abg{fill:#FCEFC0}.pw2 .fw-k-abg{stroke:#FCEFC0}
@@ -543,7 +479,7 @@ section[id]{scroll-margin-top:72px}
 .pw-more{display:inline-block;margin:6px 0 12px;font-weight:800;font-size:15px;color:var(--navy);background:#fff;border:2px solid var(--navy);border-radius:10px;padding:12px 18px;text-decoration:none}.pw-more:hover{background:var(--yellow,#F4C11C)}
 
 .pw-x{align-items:stretch}
-.pw-chart{display:flex;flex-direction:column;justify-content:center}
+.pw-chart{display:flex;flex-direction:column;justify-content:center;border-left:6px solid #F4C11C}
 .pw-r{background:#fff;border:2px solid var(--navy);border-radius:18px;padding:16px;gap:16px}
 .pw-foot{text-align:center;margin-top:22px}.pw-foot .pw-more{margin:0 0 12px}.pw-foot .pw-fnt{max-width:720px;margin:0 auto}
 
@@ -767,9 +703,7 @@ section[id]{scroll-margin-top:72px}
       <div class="pw-head"><p class="eyebrow">Price Watch</p><h2>Not ready to book?<br>Watch the <span>price.</span></h2><p class="pw-lead">You only pay if it held.</p></div>
       <div class="pw-x">
         <div class="pw-chart">
-        <!-- FW-ANIM HTML START -->
-        <div class="fw-w" data-fw-w><div class="fw-stg" role="img" aria-label="Animated example of a 48-hour Price Watch. Three outcomes: the price ends above the top line, inside the range, or below the bottom line. You pay nothing above or below, and the fee applies only inside the range."><div class="fw-cyc fw-a fw-k14" data-o="above"><svg viewBox="0 0 400 300" focusable="false"><defs><clipPath id="fwc3"><rect class="fw-a fw-cl3" x="0" y="0" width="400" height="300"/></clipPath></defs><defs><clipPath id="fwc2"><rect class="fw-a fw-cl2" x="0" y="0" width="400" height="300"/></clipPath></defs><defs><clipPath id="fwc1"><rect class="fw-a fw-cl1" x="0" y="0" width="400" height="300"/></clipPath></defs><g class="fw-a fw-k1"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/></g><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="102" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-tx fw-w800">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path clip-path="url(#fwc1)" d="M40 131.7 L77.3 122.7 L114.7 110.7 L152 118.9 L189.3 107.0 L226.7 92.2 L264 94.6 L301.3 77.0 L338.7 79.3 L376 61.7" fill="none" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy" style="stroke-width:3.5"/><g class="fw-a fw-k3"><circle cx="40" cy="131.7" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k5"><circle cx="114.7" cy="110.7" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k7"><circle cx="189.3" cy="107.0" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k9"><circle cx="264" cy="94.6" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k12"><circle cx="376" cy="61.7" r="7" class="fw-c-red" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:3"/></g><g class="fw-a fw-k13"><rect x="55" y="250" width="290" height="46" stroke-width="2" rx="10" style="fill:#1E3A5F;stroke:#1E3A5F"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-tx fw-w700" style="fill:#DCE6F1">Ended above the line:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-tx fw-w800" style="fill:#F4C11C">you pay nothing</text></g></svg></div><div class="fw-cyc fw-a fw-k28" data-o="inside"><svg viewBox="0 0 400 300" focusable="false"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/><g class="fw-a fw-k15"><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/></g><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="102" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-tx fw-w800">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path clip-path="url(#fwc2)" d="M40 131.7 L77.3 123.1 L114.7 134.6 L152 117.4 L189.3 128.9 L226.7 114.6 L264 126.0 L301.3 137.4 L338.7 120.3 L376 143.1" fill="none" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy" style="stroke-width:3.5"/><g class="fw-a fw-k17"><circle cx="40" cy="131.7" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k19"><circle cx="114.7" cy="134.6" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k21"><circle cx="189.3" cy="128.9" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k23"><circle cx="264" cy="126.0" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k26"><circle cx="376" cy="143.1" r="7" class="fw-c-red" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:3"/></g><g class="fw-a fw-k27"><rect x="55" y="250" width="290" height="46" stroke-width="2" rx="10" style="fill:#F4C11C;stroke:#1E3A5F"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-tx fw-w700" style="fill:#1E3A5F">Ended inside the range:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-tx fw-w800" style="fill:#1E3A5F">the fee applies</text></g></svg></div><div class="fw-cyc fw-a fw-k42" data-o="below"><svg viewBox="0 0 400 300" focusable="false"><rect x="0" y="36" width="400" height="45.7" class="fw-c-gbg"/><rect x="0" y="81.7" width="400" height="100" class="fw-c-abg"/><g class="fw-a fw-k29"><rect x="0" y="181.7" width="400" height="54.3" class="fw-c-gbg"/></g><line x1="0" x2="400" y1="81.7" y2="81.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><line x1="0" x2="400" y1="181.7" y2="181.7" stroke-width="2.5" stroke-dasharray="7 5" class="fw-k-gtx"/><text x="50" y="69.7" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing above 1,194</text><text x="50" y="222" font-size="20" text-anchor="start" class="fw-c-gtx fw-tx fw-w700">Pay nothing below 1,159</text><text x="50" y="102" font-size="20" text-anchor="start" class="fw-c-atx fw-tx fw-w700">Fee applies in here</text><line x1="40" x2="40" y1="36" y2="236" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round" class="fw-k-navy"/><text x="46" y="24" font-size="20" text-anchor="start" class="fw-c-navy fw-tx fw-w800">Day 0: 1,187</text><text x="392" y="24" font-size="20" text-anchor="end" class="fw-c-muted fw-tx fw-w600">Every 2 hours</text><path clip-path="url(#fwc3)" d="M40 131.7 L77.3 142.7 L114.7 133.6 L152 153.1 L189.3 164.1 L226.7 155.0 L264 171.7 L301.3 179.8 L338.7 193.6 L376 207.4" fill="none" stroke-linejoin="round" stroke-linecap="round" class="fw-k-navy" style="stroke-width:3.5"/><g class="fw-a fw-k31"><circle cx="40" cy="131.7" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k33"><circle cx="114.7" cy="133.6" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k35"><circle cx="189.3" cy="164.1" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k37"><circle cx="264" cy="171.7" r="5" class="fw-c-navy" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:2"/></g><g class="fw-a fw-k40"><circle cx="376" cy="207.4" r="7" class="fw-c-red" style="fill:#F4C11C;stroke:#1E3A5F;stroke-width:3"/></g><g class="fw-a fw-k41"><rect x="55" y="250" width="290" height="46" stroke-width="2" rx="10" style="fill:#1E3A5F;stroke:#1E3A5F"/><text x="200" y="270" font-size="20" text-anchor="middle" class="fw-tx fw-w700" style="fill:#DCE6F1">Ended below the line:</text><text x="200" y="291" font-size="20" text-anchor="middle" class="fw-tx fw-w800" style="fill:#F4C11C">you pay nothing</text></g></svg></div></div><div class="fw-ctl"><button type="button" class="fw-tab fw-a fw-k43" data-i="0" aria-label="Show the example where the price ends above the top line">Above</button><button type="button" class="fw-tab fw-a fw-k44" data-i="1" aria-label="Show the example where the price ends inside the range">Inside</button><button type="button" class="fw-tab fw-a fw-k45" data-i="2" aria-label="Show the example where the price ends below the bottom line">Below</button></div></div>
-        <!-- FW-ANIM HTML END -->
+        <div class="fapw" id="fapw"><div id="fapw-info" aria-live="polite"></div><div class="fapw-cw"><div id="fapw-chart"></div></div><div class="fapw-leg"><span><i style="width:18px;border-top:2px dashed #9FB3C8"></i>before your watch</span><span><i style="width:18px;height:3px;background:#1E3A5F"></i>during your watch</span><span><i style="width:18px;border-top:2px solid #1E3A5F"></i>no-fee lines</span><span><i style="width:14px;height:10px;background:#F4C11C;border:1px solid #1E3A5F"></i>fee zone</span><span><i style="width:14px;height:10px;background:#EAF1F8;border:1px solid #D3DFEC"></i>you don&rsquo;t pay</span></div><div class="fapw-tabs" role="group" aria-label="Show an outcome"><button type="button" data-s="above" aria-pressed="true">Above</button><button type="button" data-s="inside" aria-pressed="false">Inside</button><button type="button" data-s="below" aria-pressed="false">Below</button></div></div>
         <p class="pw-cap">Example 48-hour watch. Only the final check counts. Prices are illustrative.</p>
         </div>
         <div class="pw-r">
@@ -838,38 +772,26 @@ section[id]{scroll-margin-top:72px}
     });
   });
 </script>
-<!-- FW-ANIM JS START -->
-<script id="fw-anim-js">
-(function () {
-  var root = document.querySelector('[data-fw-w]');
-  if (!root) return;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (reduce && reduce.matches) return;
-  var user = false, started = false, stg = root.querySelector('.fw-stg');
-  function setPaused(p) { root.classList.toggle('fw-is-paused', p); }
-  function seek(ms) {
-    if (!root.getAnimations) return;
-    root.getAnimations({ subtree: true }).forEach(function (a) { a.currentTime = ms; });
+<script src="assets/pwchart.js"></script>
+<script id="fapw-js">
+(function(){
+  var root=document.getElementById('fapw');if(!root||!window.FAPWChart)return;
+  var order=['above','inside','below'],cur=0,timer=null,user=false,seen=false;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var info=document.getElementById('fapw-info'),ch=document.getElementById('fapw-chart'),tabs=root.querySelectorAll('.fapw-tabs button');
+  function show(i,anim){
+    cur=i;var st=order[i];
+    info.innerHTML=FAPWChart.info(st,anim&&!reduce);
+    FAPWChart.chart(ch,st,anim&&!reduce);
+    Array.prototype.forEach.call(tabs,function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-s')===st));});
   }
-  if (stg) { stg.style.cursor = 'pointer'; stg.addEventListener('click', function () { user = !user; setPaused(user); }); }
-  Array.prototype.forEach.call(root.querySelectorAll('.fw-tab'), function (b) {
-    b.addEventListener('click', function () {
-      seek(Number(b.getAttribute('data-i')) * 6000 + 60);
-      user = false; setPaused(false);
-    });
-  });
-  if (!('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      var vis = e.intersectionRatio >= 0.35;
-      if (vis && !started) { started = true; seek(0); }
-      if (user) return;
-      setPaused(!vis);
-    });
-  }, { threshold: [0, 0.35, 1] }).observe(root);
+  function next(){if(user||reduce)return;show((cur+1)%3,true);timer=setTimeout(next,7500);}
+  show(0,false);
+  Array.prototype.forEach.call(tabs,function(b){b.addEventListener('click',function(){user=true;clearTimeout(timer);show(order.indexOf(b.getAttribute('data-s')),true);});});
+  if(reduce||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.4&&!seen&&!user){seen=true;show(0,true);timer=setTimeout(next,7500);}});},{threshold:[0,.4]}).observe(root);
 })();
 </script>
-<!-- FW-ANIM JS END -->
 <script src="assets/header.js" defer></script>
 <script>
 (function(){
