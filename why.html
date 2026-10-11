@@ -75,6 +75,29 @@ body{margin:0;font-family:'Public Sans',system-ui,sans-serif;color:#1E3A5F;-webk
 .wy .lnk{display:block;text-align:center;margin-top:8px;font-weight:800;font-size:14px;color:#1E3A5F;text-decoration:underline!important}
 .wy .st{padding:10px 12px!important}
 .wy .pd{animation:pdt 3s ease-in-out infinite;animation-delay:calc(var(--i)*.08s)}
+
+.wy .svf{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);max-width:1080px;margin:0 auto;padding:24px 40px 40px}
+.wy .sva{display:flex;align-items:center;justify-content:center;color:#B88A00;font-size:26px;font-weight:800}
+.wy .svc{border:2px solid #1E3A5F;border-radius:20px;background:#fff;padding:22px;display:flex;flex-direction:column;gap:6px;min-width:0;text-align:left}
+.wy .svc.nv{background:#1E3A5F;color:#fff}
+.wy .svn{width:30px;height:30px;border-radius:50%;background:#1E3A5F;color:#F4C11C;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:6px}
+.wy .nv .svn{background:#F4C11C;color:#1E3A5F}
+.wy .svk{font:800 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#44566B;margin:0}.wy .nv .svk{color:#F4C11C}
+.wy .svc h3{margin:0;font-size:23px;letter-spacing:-.03em;line-height:1.15}
+.wy .svt{margin:0;color:#44566B;font-size:15px}.wy .nv .svt{color:#DCE6F1}
+.wy .svb{margin-top:auto;padding-top:12px}
+.wy .svb{border:0}.wy .svb span,.wy .svb b{display:inline}
+.wy .svb{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border:2px solid #C3CFDA;border-radius:12px;background:#EAF1F8;padding:10px 14px;margin-top:auto}
+.wy .svb span{font:800 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#44566B}
+.wy .svb b{font:800 22px 'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.wy .svr{margin-top:auto;padding-top:12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.wy .svnum{font:800 64px/1 'JetBrains Mono',monospace;letter-spacing:-.04em;font-variant-numeric:tabular-nums;min-width:.9ch}
+.wy .svu{font-weight:800;font-size:18px}
+.wy .sve{flex-basis:100%;font-size:12.5px;color:#44566B;font-weight:600}
+.wy .svs{margin-top:auto;border-radius:16px;background:#F4C11C;color:#1E3A5F;padding:14px 16px}.wy .svs .svk{color:#5d4a10}
+.wy .svnum2{font:800 46px/1.05 'JetBrains Mono',monospace;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.wy .svs .sve{color:#5d4a10}
+@media(max-width:860px){.wy .svf{grid-template-columns:1fr;padding:16px 20px 30px}.wy .sva{transform:rotate(90deg);height:28px}}
 .wy .dont.two{grid-template-columns:1fr 1fr}
 .wy .dont.two span{display:block;font-size:15px;line-height:1.5}
 .wy .pwc{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
@@ -172,8 +195,17 @@ body{margin:0;font-family:'Public Sans',system-ui,sans-serif;color:#1E3A5F;-webk
 <div class="pwc"><div><small>Start</small><b>Fri 7 Nov</b><span class="pr">C$1,307</span></div><div><small>Duration</small><b>48 hours</b><span>A check every 2 hours</span></div><div><small>Finish</small><b>Sun 9 Nov</b><span class="pr">C$1,324</span></div><div class="dec"><small>Decision</small><b>You pay nothing</b><span>Price ended US$5+ higher</span></div></div>
 <p class="fine">Ends US$5+ higher or US$20+ lower? You pay nothing.</p><a class="lnk" href="price-watch.html">See how Price Watch works &rarr;</a></div></div>
 
-<div class="gets"><p class="k">What you get</p><h2>Two things <span>you get back.</span></h2></div>
-<div class="dont two"><div><b>We save you money</b><span class="big">$$$</span><span>Low fares sell quickly.</span><em>Hortaçsu et al., Quarterly Journal of Economics, 2023</em></div><div class="ok"><b>We save you time</b><span class="big">38 websites</span><span>The average traveler visits them before booking. We check for you.</span><em>Expedia Media Solutions, 2015</em></div></div>
+<div class="gets"><p class="k">How it saves you</p><h2>Save <span>money and time.</span></h2></div>
+<div class="svf" id="svf">
+<div class="svc"><div class="svn">1</div><p class="svk">You set one number</p><h3>Your budget</h3><p class="svt">Route, dates, travellers and the most you want to pay.</p><div class="svb"><span>Total budget</span><b>C$2,500</b></div></div>
+<div class="sva" aria-hidden="true">&rarr;</div>
+<div class="svc"><div class="svn">2</div><p class="svk">We search for you</p><h3>The heavy lifting</h3><p class="svt">We check real fares again and again, so you do not.</p><div class="svr"><span class="svnum" id="sv-h">7</span><span class="svu">hours saved</span><span class="sve">Example: time spent comparing sites by hand</span></div></div>
+<div class="sva" aria-hidden="true">&rarr;</div>
+<div class="svc nv"><div class="svn">3</div><p class="svk">You get the deal</p><h3>Bookable and in budget</h3><p class="svt">One email when a fare fits. Book it on the partner site.</p><div class="svs"><p class="svk">Savings</p><div class="svnum2" id="sv-s">C$613</div><div class="sve">Example: budget minus the fare we found</div></div></div>
+</div>
 <div class="cta"><a class="btn plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip free</a><p style="margin:14px 0 0">3 free trips, 25 checks each. No card.</p></div>
 </div><div class="wrap2"><h2 style="font-size:22px;margin:0 0 10px">Keep reading</h2><ul style="padding-left:20px;line-height:1.9"><li><a href="blog/how-price-watch-works.html">How Price Watch works, and when it&rsquo;s worth it</a></li><li><a href="blog/how-flyatlast-checks-prices.html">How FlyAtlast checks prices</a></li></ul></div><footer>© FlyAtlast · contactus@flyatlast.com · <a href="/">Home</a> · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a></footer><script src="/assets/header.js" defer></script>
+<script>(function(){var h=document.getElementById('sv-h'),m=document.getElementById('sv-s'),box=document.getElementById('svf');if(!h||!m||!box)return;var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(rm||!('IntersectionObserver' in window))return;var t=[],raf=0;function f(n){return 'C$'+n.toLocaleString('en-CA');}
+function run(){t.forEach(clearTimeout);t=[];cancelAnimationFrame(raf);h.textContent='0';m.textContent=f(0);for(var i=1;i<=7;i++)(function(i){t.push(setTimeout(function(){h.textContent=String(i);},400+i*420));})(i);var st=null;function step(ts){if(st===null)st=ts+700;var p=Math.max(0,Math.min(1,(ts-st)/3200)),e=1-Math.pow(1-p,3);m.textContent=f(Math.round(613*e));if(p<1)raf=requestAnimationFrame(step);}raf=requestAnimationFrame(step);}
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)run();});},{threshold:.5}).observe(box);})();</script>
 <script src="assets/pwchart.js"></script><script>(function(){var i=document.getElementById('fapw-info'),c=document.getElementById('fapw-chart');if(!i||!c||!window.FAPWChart)return;var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;function go(a){i.innerHTML=FAPWChart.info('above',a);FAPWChart.chart(c,'above',a);}go(false);if(rm||!('IntersectionObserver' in window))return;var done=false;new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;go(true);}});},{threshold:.5}).observe(c);})();</script></body></html>
