@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tell us what you think | FlyAtlast</title>
-<meta name="description" content="Five quick questions about your FlyAtlast test. About 2 minutes.">
+<meta name="description" content="Found a bug, have an idea, or got a question? Tell FlyAtlast what you think.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -12,51 +12,48 @@
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <script defer data-domain="flyatlast.com" src="https://plausible.io/js/script.tagged-events.js"></script>
 <style>
-:root{--navy:#1E3A5F;--yellow:#F4C11C;--bg:#EEF1F3;--white:#fff;--text-body:#3d4a56;--text-muted:#5A6B78;--border:#DDE3E7;--green:#2C6640;--green-bg:#D4EDDC;--amber:#7A5B10;--amber-bg:#FDF4DE;--red:#B94A2E}
+:root{--navy:#1E3A5F;--yellow:#F4C11C;--lb:#EAF1F8;--bg:#EEF1F3;--white:#fff;--text-body:#3d4a56;--text-muted:#4A5F78;--border:#C3CFDA;--green:#17663A;--green-bg:#D4EDDC;--red:#B3261E}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--navy);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
-header.top{background:var(--navy);padding:16px 24px;display:flex;align-items:center}
-header.top a{color:#fff;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-size:20px}
-main{padding:36px 20px 64px}
-.wrap{max-width:640px;margin:0 auto}
-.eyebrow{font:700 12px/1.3 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:0 0 8px}
-h1{font-size:32px;line-height:1.15;font-weight:800;margin:0 0 10px}
-.sub{font-size:17px;color:var(--text-body);margin:0 0 22px}
+main{padding:40px 20px 56px}
 [hidden]{display:none!important}
-form{background:var(--white);border:2px solid var(--navy);padding:22px;display:grid;gap:26px}
-fieldset{border:0;margin:0;padding:0;min-width:0}
-legend{font-weight:800;font-size:17px;padding:0;margin:0 0 4px;line-height:1.3}
-.num{display:inline-block;background:var(--yellow);color:var(--navy);font:700 13px/22px 'JetBrains Mono',monospace;width:24px;height:24px;text-align:center;margin-right:8px;vertical-align:1px}
-.help{font-size:14px;color:var(--text-muted);margin:0 0 10px}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{position:relative}
-.pill input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
-.pill span{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border:2px solid var(--navy);background:#fff;color:var(--navy);font:700 15px 'Public Sans',sans-serif}
-.pill input:checked + span{background:var(--navy);color:#fff}
-.pill input:focus-visible + span{outline:3px solid var(--navy);outline-offset:2px}
-label.lbl{display:block;font-weight:700;font-size:14px;margin:12px 0 6px}
-.hint{font-weight:500;color:var(--text-muted)}
-textarea,input[type=email],select{width:100%;padding:10px 12px;border:2px solid var(--navy);border-radius:0;background:#fff;color:var(--navy);font:500 16px 'Public Sans',sans-serif}
-select,input[type=email]{height:48px;padding:0 12px}
-textarea{min-height:84px;resize:vertical}
-::placeholder{color:#8795A3;font-style:italic;opacity:1}
-textarea:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
-.row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:2px solid var(--navy);background:var(--yellow);color:#1a1a1a;font:800 16px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none;width:100%}
-.btn[disabled]{opacity:.6;cursor:wait}
-.btn.alt{background:#fff;color:var(--navy)}
-.msg{padding:12px 14px;border:2px solid var(--red);background:#FBEDE8;color:#7a2a15;font-weight:600;font-size:15px}
-.fine{font-size:13px;color:var(--text-muted);margin:0}
-.fine a{color:var(--navy)}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.thanks{background:var(--white);border:2px solid var(--navy);padding:26px 22px}
-.thanks h2{font-size:26px;margin:0 0 8px}
-.thanks p{font-size:17px;color:var(--text-body);margin:0 0 18px}
-.thanks .btns{display:grid;gap:10px}
-footer.foot{max-width:640px;margin:26px auto 0;text-align:center;font-size:13px;color:var(--text-muted)}
-footer.foot a{color:var(--text-muted)}
-@media(max-width:560px){h1{font-size:26px}.row{grid-template-columns:1fr}form{padding:18px}}
-.eyebrow{text-transform:none!important;letter-spacing:0!important;font-family:"Public Sans",system-ui,sans-serif!important;font-size:13px!important}
+.fbk{max-width:640px;margin:0 auto}
+.fbk h1{font-size:36px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 8px}
+.fbk .sub{font-size:17px;color:var(--text-muted);margin:0 0 22px}
+.fbk form,.fbk .thanks{background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(30,58,95,.10);padding:24px;display:grid;gap:20px}
+.fbk fieldset{border:0;margin:0;padding:0;min-width:0}
+.fbk legend,.fbk .lab{display:block;font-weight:700;font-size:14px;margin:0 0 8px;padding:0}
+.fbk .hint{font-weight:500;color:var(--text-muted)}
+.fbk .chips,.fbk .faces{display:flex;flex-wrap:wrap;gap:8px}
+.fbk .opt{position:relative}
+.fbk .opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.fbk .chip{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:2px solid var(--border);border-radius:10px;background:#fff;color:var(--navy);font:700 15px 'Public Sans',sans-serif}
+.fbk .opt input:checked + .chip{background:var(--navy);border-color:var(--navy);color:#fff}
+.fbk .face{display:flex;align-items:center;justify-content:center;width:58px;height:48px;border:2px solid var(--border);border-radius:10px;font-size:23px;background:#fff}
+.fbk .opt input:checked + .face{background:var(--yellow);border-color:var(--navy)}
+.fbk .opt input:focus-visible + .chip,.fbk .opt input:focus-visible + .face{outline:3px solid var(--navy);outline-offset:2px}
+.fbk select,.fbk input[type=email],.fbk textarea{width:100%;padding:0 12px;border:2px solid var(--border);border-radius:10px;background:#fff;color:var(--navy);font:500 16px 'Public Sans',sans-serif}
+.fbk select,.fbk input[type=email]{height:48px}
+.fbk textarea{min-height:120px;padding:12px;resize:vertical}
+.fbk ::placeholder{color:#5B6B7E;opacity:1}
+.fbk select:focus,.fbk input:focus,.fbk textarea:focus{border-color:var(--navy);outline:none}
+.fbk select:focus-visible,.fbk input:focus-visible,.fbk textarea:focus-visible,.fbk button:focus-visible,.fbk a:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.fbk .help{font-size:13.5px;color:var(--text-muted);margin:6px 0 0}
+.fbk .help a{color:var(--navy);font-weight:700}
+.fbk .auto{background:var(--lb);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--text-muted);margin:0}
+.fbk .btn{display:flex;width:100%;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border:2px solid var(--navy);border-radius:12px;background:var(--yellow);color:#14213A;font:800 17px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none}
+.fbk .btn[disabled]{opacity:.6;cursor:wait}
+.fbk .btn.alt{background:#fff;color:var(--navy)}
+.fbk .msg{border:2px solid var(--red);border-radius:12px;background:#fff;color:var(--red);padding:12px 14px;font-weight:600;margin:0}
+.fbk .fine{font-size:14px;color:var(--text-muted);margin:0;text-align:center}
+.fbk .fine a{color:var(--navy)}
+.fbk .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.fbk .thanks{text-align:center;padding:36px 24px;display:block}
+.fbk .ck{width:64px;height:64px;border-radius:50%;background:var(--green-bg);color:var(--green);font-size:32px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.fbk .thanks h2{font-size:30px;letter-spacing:-.02em;margin:0 0 8px}
+.fbk .thanks p{color:var(--text-muted);font-size:17px;margin:0 0 22px}
+.fbk .thanks .btns{display:grid;gap:10px}
+@media(max-width:560px){.fbk h1{font-size:28px}.fbk form,.fbk .thanks{padding:18px}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/header.css">
 </head>
@@ -65,107 +62,78 @@ footer.foot a{color:var(--text-muted)}
 <div class="fa-hd" role="navigation" aria-label="Main"><div class="fa-hd-in"><a class="fa-hd-brand" href="/" aria-label="FlyAtlast home"><svg width="22" height="30" viewBox="0 0 24 32" aria-hidden="true" style="flex:none"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><div class="fa-hd-links" id="faHdLinks"><a href="/about.html">About</a><a href="/#how">How it works</a><a href="/#pricing">Pricing</a><a href="/#watch">Price Watch</a><a class="fa-hd-cta plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin a trip</a></div><button class="fa-hd-t" type="button" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('faHdLinks');var o=p.classList.toggle('fa-open');this.setAttribute('aria-expanded',o)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A5F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div>
 <!-- FA-HEADER END -->
 <main>
-<div class="wrap">
+<section class="fbk">
   <div id="fb-intro">
-    
     <h1>Tell us what you think.</h1>
-    <p class="sub">Five quick questions, about 2 minutes. Answer what you can and skip the rest. This is an early version, so honest answers help most.</p>
+    <p class="sub">Found a bug, have an idea, or got a question? Write to us here.</p>
   </div>
 
   <form id="fb-form" novalidate>
     <fieldset>
-      <legend><span class="num">1</span>What did you use?</legend>
-      <div class="pills" role="radiogroup" aria-label="Device" id="g-device">
-        <label class="pill"><input type="radio" name="device" value="phone"><span>Phone</span></label>
-        <label class="pill"><input type="radio" name="device" value="laptop"><span>Laptop or desktop</span></label>
-        <label class="pill"><input type="radio" name="device" value="tablet"><span>Tablet</span></label>
-        <label class="pill"><input type="radio" name="device" value="other"><span>Other</span></label>
+      <legend>What is it about?</legend>
+      <div class="chips" role="radiogroup" aria-label="What is it about?">
+        <label class="opt"><input type="radio" name="topic" value="bug"><span class="chip">Something isn&rsquo;t working</span></label>
+        <label class="opt"><input type="radio" name="topic" value="idea"><span class="chip">An idea</span></label>
+        <label class="opt"><input type="radio" name="topic" value="question"><span class="chip">A question</span></label>
+        <label class="opt"><input type="radio" name="topic" value="price_watch"><span class="chip">Price Watch</span></label>
+        <label class="opt"><input type="radio" name="topic" value="other"><span class="chip">Something else</span></label>
       </div>
-      <label class="lbl" for="f-browser">Browser</label>
-      <select id="f-browser" name="browser">
+    </fieldset>
+
+    <div>
+      <label class="lab" for="f-area">Where did it happen? <span class="hint">(optional)</span></label>
+      <select id="f-area" name="area">
         <option value="">Choose one</option>
-        <option value="chrome">Chrome</option>
-        <option value="safari">Safari</option>
-        <option value="edge">Edge</option>
-        <option value="firefox">Firefox</option>
-        <option value="samsung">Samsung Internet</option>
-        <option value="other">Other</option>
+        <option value="website">The website</option>
+        <option value="app">The app</option>
+        <option value="emails">Emails</option>
+        <option value="not_sure">Not sure</option>
       </select>
-    </fieldset>
+    </div>
+
+    <div>
+      <label class="lab" for="f-message">Tell us more</label>
+      <textarea id="f-message" name="message" maxlength="1500" placeholder="What did you do, and what did you expect to happen?"></textarea>
+      <p class="help">Have a screenshot? Email it to <a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a>.</p>
+    </div>
 
     <fieldset>
-      <legend><span class="num">2</span>Was it clear what FlyAtlast does?</legend>
-      <div class="pills" role="radiogroup" aria-label="Clarity">
-        <label class="pill"><input type="radio" name="clarity" value="very_clear"><span>Very clear</span></label>
-        <label class="pill"><input type="radio" name="clarity" value="mostly"><span>Mostly</span></label>
-        <label class="pill"><input type="radio" name="clarity" value="not_really"><span>Not really</span></label>
+      <legend>How is FlyAtlast working for you so far? <span class="hint">(optional)</span></legend>
+      <div class="faces" role="radiogroup" aria-label="How is FlyAtlast working for you so far?">
+        <label class="opt"><input type="radio" name="mood" value="poor" aria-label="Not great"><span class="face" aria-hidden="true">&#128543;</span></label>
+        <label class="opt"><input type="radio" name="mood" value="okay" aria-label="Okay"><span class="face" aria-hidden="true">&#128528;</span></label>
+        <label class="opt"><input type="radio" name="mood" value="good" aria-label="Good"><span class="face" aria-hidden="true">&#128578;</span></label>
+        <label class="opt"><input type="radio" name="mood" value="great" aria-label="Great"><span class="face" aria-hidden="true">&#128516;</span></label>
       </div>
-      <label class="lbl" for="f-clarity-note">What did you think it was? <span class="hint">(optional)</span></label>
-      <textarea id="f-clarity-note" name="clarity_note" maxlength="1500" placeholder="In your own words"></textarea>
     </fieldset>
 
-    <fieldset>
-      <legend><span class="num">3</span>Did the result look right?</legend>
-      <div class="pills" role="radiogroup" aria-label="Result">
-        <label class="pill"><input type="radio" name="result_looks" value="looks_right"><span>Looks right</span></label>
-        <label class="pill"><input type="radio" name="result_looks" value="seemed_off"><span>Seemed off</span></label>
-        <label class="pill"><input type="radio" name="result_looks" value="couldnt_tell"><span>Couldn&rsquo;t tell</span></label>
-        <label class="pill"><input type="radio" name="result_looks" value="did_not_get_one"><span>I didn&rsquo;t get a result</span></label>
-      </div>
-      <label class="lbl" for="f-result-note">If it seemed off, what did you compare it with? <span class="hint">(optional)</span></label>
-      <textarea id="f-result-note" name="result_note" maxlength="1500" placeholder="For example, another site and the price it showed"></textarea>
-    </fieldset>
+    <div>
+      <label class="lab" for="f-email">Want a reply? <span class="hint">(optional)</span></label>
+      <input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="Your email">
+      <p class="help">Only used to reply to this message. Leave it blank to stay anonymous.</p>
+    </div>
 
-    <fieldset>
-      <legend><span class="num">4</span>Did anything confuse you, feel slow, or break?</legend>
-      <p class="help">A screenshot emailed to contactus@flyatlast.com helps if something looked odd.</p>
-      <textarea id="f-problems" name="problems" maxlength="1500" aria-label="What confused you, felt slow or broke" placeholder="Where did you get stuck?"></textarea>
-    </fieldset>
-
-    <fieldset>
-      <legend><span class="num">5</span>Would you use this for a real trip?</legend>
-      <div class="pills" role="radiogroup" aria-label="Would you use it">
-        <label class="pill"><input type="radio" name="would_use" value="yes"><span>Yes</span></label>
-        <label class="pill"><input type="radio" name="would_use" value="maybe"><span>Maybe</span></label>
-        <label class="pill"><input type="radio" name="would_use" value="no"><span>No</span></label>
-      </div>
-      <label class="lbl" for="f-would-note">What would make you say yes? <span class="hint">(optional)</span></label>
-      <textarea id="f-would-note" name="would_use_note" maxlength="1500" placeholder="Anything you would add or change"></textarea>
-    </fieldset>
-
-    <fieldset>
-      <legend><span class="num">6</span>How is this different from what you use today?</legend>
-      <p class="help">For example Google Flights, Skyscanner or price alerts. Better, worse or the same, any answer helps.</p>
-      <textarea id="f-different" name="how_different" maxlength="1500" aria-label="How this differs from what you use today" placeholder="What do you use now, and how does this compare?"></textarea>
-    </fieldset>
-
-    <fieldset>
-      <legend>Can we email you one follow-up question? <span class="hint">(optional)</span></legend>
-      <label class="lbl" for="f-email" style="margin-top:6px">Your email</label>
-      <input id="f-email" name="follow_up_email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" maxlength="254">
-      <p class="fine" style="margin-top:6px">Only used for a follow-up about this feedback. Leave it blank to stay anonymous.</p>
-    </fieldset>
+    <p class="auto">We automatically include your device, browser and the page you came from, so you don&rsquo;t have to type them.</p>
 
     <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-    <div id="ts" role="group" aria-label="Security check"></div>
-    <div id="fb-msg" class="msg" role="alert" hidden></div>
-    <button class="btn" id="fb-go" type="submit">Send feedback</button>
-    <p class="fine">We save your answers to improve FlyAtlast. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+    <div id="ts"></div>
+    <p class="msg" id="fb-msg" role="alert" hidden></p>
+    <button type="submit" class="btn" id="fb-go">Send feedback</button>
+    <p class="fine">We save your message to improve FlyAtlast. See our <a href="/privacy.html">Privacy Policy</a>.</p>
   </form>
 
-  <div id="fb-thanks" class="thanks" hidden>
+  <div class="thanks" id="fb-thanks" hidden>
+    <div class="ck" aria-hidden="true">&#10003;</div>
     <h2>Thank you.</h2>
-    <p>That helps a lot. Every answer shapes what we fix next.</p>
+    <p>Your message has been sent.</p>
     <div class="btns">
-      <a class="btn" href="/try.html">Check another trip</a>
-      <a class="btn alt" href="/">Back to flyatlast.com</a>
+      <a class="btn" href="/">Back to FlyAtlast</a>
+      <button type="button" class="btn alt" id="fb-again">Send another</button>
     </div>
   </div>
-</div>
-<footer class="fa-ft"><div class="fa-ft-in"><div><a class="fa-ft-brand" href="/" aria-label="FlyAtlast home"><svg width="20" height="28" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><p class="fa-ft-l">&copy; 2026 FlyAtlast. FlyAtlast is a business name of 2658023 Ontario Inc., Canada.</p></div><div class="fa-ft-r"><nav aria-label="Footer"><a href="/about.html">About</a><a href="/blog/">Guides</a><a href="/feedback.html">Feedback</a><a href="/contact.html">Contact</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></nav><p><a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></div></footer>
+</section>
 </main>
-
-<script>
+<footer class="fa-ft"><div class="fa-ft-in"><div><a class="fa-ft-brand" href="/" aria-label="FlyAtlast home"><svg width="20" height="28" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.4 0 0 5.2 0 11.7C0 20.5 12 32 12 32S24 20.5 24 11.7C24 5.2 18.6 0 12 0Z" fill="#F4C11C"/><circle cx="12" cy="11.7" r="7.4" fill="#1E3A5F"/><path d="M8.4 11.9l2.7 2.7 4.7-5.6" fill="none" stroke="#F4C11C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FlyAtlast</span></a><p class="fa-ft-l">&copy; 2026 FlyAtlast. FlyAtlast is a business name of 2658023 Ontario Inc., Canada.</p></div><div class="fa-ft-r"><nav aria-label="Footer"><a href="/about.html">About</a><a href="/blog/">Guides</a><a href="/feedback.html">Feedback</a><a href="/contact.html">Contact</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></nav><p><a href="mailto:contactus@flyatlast.com">contactus@flyatlast.com</a></p></div></div></footer><script>
 (function () {
   'use strict';
   var API = 'https://atlast-backend-production.up.railway.app';
@@ -174,13 +142,9 @@ footer.foot a{color:var(--text-muted)}
   var ev = function (n) { try { if (window.plausible) window.plausible(n); } catch (e) {} };
   var form = $('fb-form'), msg = $('fb-msg'), go = $('fb-go');
 
-  /* Pre-select device and browser from what this browser says; the person can change either. */
-  (function guess() {
-    var ua = navigator.userAgent || '', dev = /iPad|Tablet/i.test(ua) ? 'tablet' : (/Mobi|iPhone|Android/i.test(ua) ? 'phone' : 'laptop');
-    var br = /SamsungBrowser/i.test(ua) ? 'samsung' : /Edg\//i.test(ua) ? 'edge' : /Firefox|FxiOS/i.test(ua) ? 'firefox' : /Chrome|CriOS/i.test(ua) ? 'chrome' : /Safari/i.test(ua) ? 'safari' : '';
-    var r = form.querySelector('input[name="device"][value="' + dev + '"]'); if (r) r.checked = true;
-    if (br) $('f-browser').value = br;
-  })();
+  /* Where did they come from? The app links here with ?src=app&page=<screen>. */
+  var src = 'website', page = '';
+  try { var q = new URLSearchParams(location.search); if (q.get('src') === 'app') { src = 'app'; $('f-area').value = 'app'; } page = (q.get('page') || '').slice(0, 80); } catch (e) {}
 
   function say(t) { msg.textContent = t; msg.hidden = !t; }
   function val(name) { var el = form.elements[name]; return el ? (el.value || '').trim() : ''; }
@@ -197,20 +161,24 @@ footer.foot a{color:var(--text-muted)}
   form.addEventListener('focusin', initTs);
   form.addEventListener('pointerdown', initTs);
 
+  $('fb-again').addEventListener('click', function () {
+    form.reset(); if (src === 'app') $('f-area').value = 'app';
+    go.disabled = false; go.textContent = 'Send feedback'; say('');
+    $('fb-thanks').hidden = true; $('fb-intro').hidden = false; form.hidden = false;
+    if (window.turnstile && tsId !== null) { tsToken = null; window.turnstile.reset(tsId); }
+    window.scrollTo(0, 0);
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault(); say('');
     var body = {
-      device: radio('device'), browser: val('browser'),
-      clarity: radio('clarity'), clarity_note: val('clarity_note'),
-      result_looks: radio('result_looks'), result_note: val('result_note'),
-      problems: val('problems'), how_different: val('how_different'),
-      would_use: radio('would_use'), would_use_note: val('would_use_note'),
-      follow_up_email: val('follow_up_email'), website: val('website'),
-      turnstile_token: tsToken
+      topic: radio('topic'), area: val('area'), message: val('message'), mood: radio('mood'),
+      email: val('email'), source: src, page: page, website: val('website'), turnstile_token: tsToken
     };
-    if (!(body.clarity || body.result_looks || body.would_use || body.problems || body.how_different || body.clarity_note || body.result_note || body.would_use_note)) { say('Answer at least one question, then send.'); return; }
+    if (!body.topic) { say('Choose what your message is about.'); return; }
+    if (body.message.length < 5) { say('Tell us a little more, then send.'); $('f-message').focus(); return; }
     if (SITEKEY && !tsToken) { say('Please complete the security check, then send again.'); initTs(); return; }
-    go.disabled = true; go.textContent = 'Sending…';
+    go.disabled = true; go.textContent = 'Sending\u2026';
     var ctl = ('AbortController' in window) ? new AbortController() : null, timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
     fetch(API + '/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: ctl ? ctl.signal : undefined })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
@@ -220,12 +188,12 @@ footer.foot a{color:var(--text-muted)}
         var d = (r.j && r.j.detail) || {};
         go.disabled = false; go.textContent = 'Send feedback';
         if (window.turnstile && tsId !== null) { tsToken = null; window.turnstile.reset(tsId); }
-        if (r.status === 429) say('That’s a lot of messages from one place. Please try again later, or email contactus@flyatlast.com.');
-        else say((typeof d === 'object' && d.message) || (typeof d === 'string' && d) || 'We couldn\'t send that. Please try again, or email contactus@flyatlast.com.');
+        if (r.status === 429) say('That\u2019s a lot of messages from one place. Please try again later, or email contactus@flyatlast.com.');
+        else say((typeof d === 'object' && d.message) || (typeof d === 'string' && d.replace(/^Value error, /, '')) || 'We couldn\u2019t send that. Please try again, or email contactus@flyatlast.com.');
       })
       .catch(function () {
         clearTimeout(timer); go.disabled = false; go.textContent = 'Send feedback';
-        say('We couldn\'t reach the server. Check your connection and try again, or email contactus@flyatlast.com.');
+        say('We couldn\u2019t reach the server. Check your connection and try again, or email contactus@flyatlast.com.');
       });
   });
 })();
