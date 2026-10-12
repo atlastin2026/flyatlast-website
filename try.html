@@ -111,6 +111,15 @@ main{padding:40px 20px 56px}
 .demo .bl{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--text-muted);font-weight:600}
 .demo .meta{margin:16px 0 0;font-weight:700;font-size:16px}
 .demo .textlink{display:inline-block;margin-top:12px;font-weight:800;font-size:15px;color:var(--navy);border-bottom:2px solid var(--yellow);text-decoration:none}
+.demo .rc-alt{margin-top:16px;background:#fff;border:2px solid var(--navy);border-radius:16px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:8px 20px;flex-wrap:wrap}
+.demo .rc-alt .k{font:800 11px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:0}
+.demo .rc-alt .t{font-size:18px;font-weight:800;margin:2px 0 0}
+.demo .rc-alt .s{font-size:14px;color:var(--text-muted);margin:2px 0 0;font-weight:600}
+.demo .rc-alt .r{text-align:right;flex:none;margin-left:auto}
+.demo .rc-alt .p{font:700 24px 'JetBrains Mono',monospace;margin:0;overflow-wrap:anywhere}.demo .rc-alt .p span{font:700 13px 'Public Sans',sans-serif;color:var(--text-muted)}
+.demo .rc-alt .d{display:inline-block;margin-top:6px;padding:4px 11px;border-radius:999px;font-weight:800;font-size:12.5px;background:#EAF1F8;color:var(--navy)}
+.demo .rc-alt .f{flex-basis:100%;margin:6px 0 0;font-size:13px;color:var(--text-muted)}
+.demo .rc-alt .f a{font-weight:800;color:var(--navy);border-bottom:2px solid var(--yellow);text-decoration:none}
 .demo .sharebar{display:flex;flex-wrap:wrap;gap:10px;padding:14px 26px;border-top:1px dashed var(--border);align-items:center}
 .demo .sharelab{font-size:13px;color:var(--text-muted);font-weight:700;margin-right:4px}
 .demo .sharebtn{border:2px solid var(--navy);border-radius:10px;background:#fff;padding:8px 14px;font:800 14px 'Public Sans',sans-serif;color:var(--navy);cursor:pointer;min-height:40px}
@@ -141,7 +150,7 @@ main{padding:40px 20px 56px}
 .demo .gate .fine{margin:0}.demo .gate .fine a,.foot a{color:inherit}
 .foot{max-width:640px;margin:0 auto;padding:0 20px 40px;text-align:center;font-size:13px;color:var(--text-muted)}
 .demo .tsw{display:flex;justify-content:center;margin-top:14px}
-@media(max-width:640px){main{padding:28px 16px 48px}.demo h1{font-size:28px}.demo .row{grid-template-columns:1fr}.demo form{padding:18px}.demo .amt{font-size:36px}.demo .rc-rh{padding:14px 18px}.demo .rc-rb{padding:20px 18px}.demo .sharebar{padding:12px 18px}.demo .sharemail,.demo .sharest{padding-left:18px;padding-right:18px}.demo .rc-pin{grid-template-columns:1fr;padding:22px}.demo .rc-two{grid-template-columns:1fr}.demo .why{grid-template-columns:1fr;gap:10px}}
+@media(max-width:640px){main{padding:28px 16px 48px}.demo .rc-alt .r{margin-left:0;text-align:left}.demo h1{font-size:28px}.demo .row{grid-template-columns:1fr}.demo form{padding:18px}.demo .amt{font-size:36px}.demo .rc-rh{padding:14px 18px}.demo .rc-rb{padding:20px 18px}.demo .sharebar{padding:12px 18px}.demo .sharemail,.demo .sharest{padding-left:18px;padding-right:18px}.demo .rc-pin{grid-template-columns:1fr;padding:22px}.demo .rc-two{grid-template-columns:1fr}.demo .why{grid-template-columns:1fr;gap:10px}}
 .demo form,.demo .rc-card,.demo .gate,.demo .limit{box-shadow:none!important;border:1px solid #D3DFEC}
 .demo .eyebrow,.demo .lbl{text-transform:none!important;letter-spacing:0!important;font-family:'Public Sans',system-ui,sans-serif!important;font-size:13px!important}
 .demo .delta{border-radius:6px!important}
@@ -577,6 +586,22 @@ function faTravellers(root, onChange) {
     card.appendChild(rb);
     if (r.share_token) card.appendChild(shareBar(r.share_token));
     resultBox.appendChild(card);
+
+    /* Another option: the cheapest nonstop, only when it exists and costs more than the lowest fare. */
+    var ns = r.nonstop;
+    if (ns && ns.amount > 0 && ns.currency === r.currency) {
+      var alt = el('div', 'rc-alt'), al = el('div');
+      al.appendChild(el('p', 'k', 'Another option'));
+      al.appendChild(el('p', 't', 'Nonstop is available'));
+      al.appendChild(el('p', 's', (ns.airline ? ns.airline + ' \u00b7 ' : '') + 'Nonstop' + (ns.under_budget === true ? ' \u00b7 also within your budget' : '')));
+      var ar = el('div', 'r'), ap = el('p', 'p', money(ns.amount, ns.currency)); ap.appendChild(el('span', null, ' ' + ns.currency)); ar.appendChild(ap);
+      ar.appendChild(el('span', 'd', moneyW(ns.more_than_lowest, ns.currency) + ' more than the lowest'));
+      alt.appendChild(al); alt.appendChild(ar);
+      var af = el('p', 'f'); af.appendChild(document.createTextNode('Pin the trip and choose which fare to track. '));
+      var al2 = el('a', null, 'Pin this trip \u2192'); al2.href = tripLink(trip); al2.addEventListener('click', function () { ev('Demo Pin Click'); }); af.appendChild(al2);
+      alt.appendChild(af);
+      resultBox.appendChild(alt);
+    }
 
     var sec = el('div', 'sec'); sec.appendChild(el('p', 'eyebrow', 'What\'s next')); resultBox.appendChild(sec);
     var pin = el('div', 'rc-pin'), pl = el('div');
