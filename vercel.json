@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/why.html", "destination": "/about.html", "permanent": true },
     { "source": "/index-v2.html", "destination": "/", "permanent": true },
     { "source": "/blog/how-price-watch-works.html", "destination": "/price-watch.html", "permanent": true },
     { "source": "/blog/how-flyatlast-checks-prices.html", "destination": "/price-watch.html", "permanent": true },
