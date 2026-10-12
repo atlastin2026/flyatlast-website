@@ -127,7 +127,7 @@ main{padding:40px 20px 56px}
     <h2>Thank you.</h2>
     <p>Your message has been sent.</p>
     <div class="btns">
-      <a class="btn" href="/">Back to FlyAtlast</a>
+      <a class="btn" id="fb-back" href="/">Back to FlyAtlast</a>
       <button type="button" class="btn alt" id="fb-again">Send another</button>
     </div>
   </div>
@@ -145,6 +145,7 @@ main{padding:40px 20px 56px}
   /* Where did they come from? The app links here with ?src=app&page=<screen>. */
   var src = 'website', page = '';
   try { var q = new URLSearchParams(location.search); if (q.get('src') === 'app') { src = 'app'; $('f-area').value = 'app'; } page = (q.get('page') || '').slice(0, 80); } catch (e) {}
+  if (src === 'app') { var bk = $('fb-back'); bk.href = 'https://app.flyatlast.com/dashboard'; bk.textContent = 'Back to the app'; }
 
   function say(t) { msg.textContent = t; msg.hidden = !t; }
   function val(name) { var el = form.elements[name]; return el ? (el.value || '').trim() : ''; }
