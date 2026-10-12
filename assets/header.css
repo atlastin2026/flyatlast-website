@@ -32,3 +32,4 @@ footer.fa-ft *{box-sizing:border-box}
 .fa-ft a{color:#fff;text-decoration:none}
 .fa-ft nav a:hover,.fa-ft p a:hover{text-decoration:underline}
 @media(max-width:640px){.fa-ft-r{text-align:left}.fa-ft-r nav{justify-content:flex-start}}
+footer.fa-ft .fa-tag{font-weight:700;color:#fff;font-size:14px;margin:6px 0 0}
