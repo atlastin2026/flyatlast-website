@@ -647,6 +647,7 @@ function faTravellers(root, onChange) {
       if (code === 'limit_ip') { limitView('Busy right now', d.message, trip); return; }
       if (code === 'cap_reached') { limitView('Today\'s checks are used up', d.message, trip); return; }
       if (code === 'demo_off') { show(form, false); show($('demo-off'), true); return; }
+      if (r.status === 422 && typeof j.detail === 'string' && j.detail) { say(j.detail.replace(/^Value error, /, '')); return; }
       if (r.status === 422 && Array.isArray(j.detail) && j.detail[0]) { say(String(j.detail[0].msg || 'Please check the form.').replace(/^Value error, /, '')); return; }
       say(d.message || 'Something went wrong. Please try again.');
     }).catch(function () { setBusy(false); tsReset(); say('We couldn\'t reach the server. Please try again, or pin the trip and we\'ll check it for you.'); });
