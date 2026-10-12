@@ -37,7 +37,7 @@
     function t(x,y,txt,bg){return '<text x="'+x+'" y="'+y+'" font-size="'+(narrow?11.5:12)+'" font-weight="700" fill="'+NAVY+'" stroke="'+bg+'" stroke-width="4" stroke-linejoin="round" paint-order="stroke">'+esc(txt)+'</text>';}
     s+=t(sx+8,pT+16,narrow?'Pay nothing above '+UP:'You don’t pay if the price ends above '+UP,LB);
     s+=t(sx+8,pB-9,narrow?'Pay nothing below '+LO:'You don’t pay if the price ends below '+LO,LB);
-    s+=t(sx+8,ly-7,'Day 0 '+D0,YEL);
+    s+=t(sx+8,ly-7,'Start '+D0,YEL);
     s+='<line x1="'+pL+'" y1="'+pB+'" x2="'+pR+'" y2="'+pB+'" stroke="#C9D3DB"/>';
     [['Fri 7 Nov',sx,'start'],['Sat 8',(sx+pR)/2,'middle'],['Sun 9 Nov',pR,'end']].forEach(function(a){s+='<text x="'+a[1]+'" y="'+(pB+19)+'" text-anchor="'+a[2]+'" font-size="12" font-weight="700" fill="'+MU+'">'+a[0]+'</text>';});
     return s+'</svg>';
