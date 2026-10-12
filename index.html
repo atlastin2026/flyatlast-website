@@ -751,7 +751,23 @@ section[id]{scroll-margin-top:72px}
 @media (max-width:860px){.hx-tri .hx-pn{grid-template-columns:44px 1fr}.hx-tri .hx-pn::before{font-size:26px}.hx-tri .hx-d{font-size:15px!important}}
 </style>
 <link rel="stylesheet" href="assets/header.css">
-<style>.pz2{grid-template-columns:1fr 1fr!important;align-items:stretch!important}.pz2-a,.pz2-b{display:flex;flex-direction:column;justify-content:space-between;gap:18px;padding:28px!important;min-height:210px}.pz2-b{background:#fff;border:2px solid #1E3A5F}.pz2-btn{align-self:flex-start;border:2px solid #1E3A5F!important}.pz2 p{margin:0!important;font-size:17px;line-height:1.55}.pz2 h3{margin-bottom:10px!important}@media (max-width:860px){.pz2{grid-template-columns:1fr!important}.pz2-a,.pz2-b{min-height:0}}</style><style>.pw-cn{margin:12px 0 0;font-size:14px;line-height:1.5;color:#334a66}</style><style>.hx-tri .hx-pn{grid-template-columns:44px 1fr!important}.hx-tri .hx-pn::before{width:30px;height:30px;border:2px solid #1E3A5F;border-radius:50%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-family:'Sora',system-ui,sans-serif;font-size:14px!important;font-weight:800;color:#1E3A5F!important;background:#fff;line-height:1;margin-top:2px}</style></head>
+<style>.pz2{grid-template-columns:1fr 1fr!important;align-items:stretch!important}.pz2-a,.pz2-b{display:flex;flex-direction:column;justify-content:space-between;gap:18px;padding:28px!important;min-height:210px}.pz2-b{background:#fff;border:2px solid #1E3A5F}.pz2-btn{align-self:flex-start;border:2px solid #1E3A5F!important}.pz2 p{margin:0!important;font-size:17px;line-height:1.55}.pz2 h3{margin-bottom:10px!important}@media (max-width:860px){.pz2{grid-template-columns:1fr!important}.pz2-a,.pz2-b{min-height:0}}</style><style>.pw-cn{margin:12px 0 0;font-size:14px;line-height:1.5;color:#334a66}</style><style>.hx-tri .hx-pn{grid-template-columns:44px 1fr!important}.hx-tri .hx-pn::before{width:30px;height:30px;border:2px solid #1E3A5F;border-radius:50%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-family:'Sora',system-ui,sans-serif;font-size:14px!important;font-weight:800;color:#1E3A5F!important;background:#fff;line-height:1;margin-top:2px}</style><style>
+.hx-hero{padding:44px 0 48px!important}
+.hx-in>.hx-h1{font-size:clamp(30px,4.2vw,44px)!important;line-height:1.1!important;letter-spacing:-.03em!important}
+.hx-sub{font-size:17px!important;max-width:48ch!important;margin:14px auto 30px!important}
+.demo-box{max-width:880px;margin:0 auto;background:#EAF1F8;border:2px solid #1E3A5F;border-radius:24px;padding:30px 18px 16px;position:relative;box-shadow:0 14px 34px rgba(30,58,95,.12)}
+.demo-tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#F4C11C;color:#1E3A5F;border:2px solid #1E3A5F;border-radius:999px;font:800 12px 'Public Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;white-space:nowrap}
+.demo-box .hx-cue{margin:0 0 14px!important;font-size:15px!important}
+.demo-box .hx-form{border:0!important;box-shadow:none!important;background:transparent!important;padding:0!important;border-radius:0!important}
+.demo-box .hx-fld{background:#fff!important;border:2px solid #C3CFDA!important;border-radius:10px!important;padding:7px 12px!important}
+.demo-box .hx-fld span{font-size:13px!important;text-transform:none!important;letter-spacing:0!important;color:#1E3A5F!important;font-weight:700!important}
+.demo-box .hx-fld input,.demo-box .hx-tvf .tv-btn{font:600 16px 'Public Sans',sans-serif!important}
+.demo-box .hx-fld input[type=date]{font-size:16px!important}
+.demo-box .hx-go{border-radius:12px!important;min-height:54px!important;font-size:17px!important}
+.demo-fine{margin:12px 0 0;font-size:13.5px;color:#4A5F78;text-align:center}
+@media(max-width:700px){.demo-box{padding:28px 12px 14px;border-radius:20px}.hx-hero{padding:34px 0 40px!important}.hx-in>.hx-h1{font-size:28px!important}.hx-sub{font-size:16px!important}}
+.demo-tag{transition:none}.demo-box .hx-res{margin-top:6px}
+</style></head>
 <body>
 
 <!-- FA-HEADER START -->
@@ -765,6 +781,7 @@ section[id]{scroll-margin-top:72px}
    <div class="wrap hx-in">
     <h1 class="hx-h1">Set your budget and we’ll watch the fares.</h1>
     <p class="hx-sub">Tell us where you want to go and what your budget is, and we’ll search for you and email you when a fare fits.</p>
+    <div class="demo-box" id="demo-box"><span class="demo-tag" id="demo-tag">Your turn</span>
     <p class="hx-cue" id="hx-cue" aria-live="polite"><span>Try it on your own trip. You don’t need to sign up.</span></p>
     <form class="hx-form plausible-event-name=Hero+form" action="try.html" method="get" aria-label="Check a trip against your budget">
       <label class="hx-fld hx-ac"><span>From</span><input name="from" id="hx-from" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hx-dl-from" autocomplete="off" placeholder="City or airport" required maxlength="60"><ul class="hx-list" id="hx-dl-from" role="listbox" hidden></ul></label>
@@ -776,9 +793,10 @@ section[id]{scroll-margin-top:72px}
       <label class="hx-fld hx-bud"><span>Total budget</span><div class="hx-money"><input name="budget" id="hx-budget" type="number" inputmode="decimal" min="1" step="any" placeholder="e.g. 2500" required><select name="cur" id="hx-cur" aria-label="Currency"><option>CAD</option><option>USD</option><option>EUR</option><option>GBP</option><option>AUD</option></select></div></label>
       <input type="hidden" name="go" value="1" id="hx-gof" disabled>
       <button type="submit" class="btn btn-primary hx-go">Check this trip</button>
-    </form>
+    </form><p class="demo-fine" id="demo-fine">One live check, not a booking. Fares change. No sign-up needed.</p>
     
     <div class="hx-res" id="hx-res" hidden aria-hidden="true"><h2 class="hx-h1">This example fits the budget.</h2><div class="hx-card"><div class="hx-rh"><b>Toronto<i>YYZ</i><em>&rarr;</em>London<i>LHR</i></b><span>Nov 14&ndash;21 &middot; 2 adults, 1 child &middot; Budget C$2,500</span></div><div class="hx-rb"><p class="hx-lbl">Lowest fare we found today</p><p class="hx-amt">C$1,887 <small>CAD</small></p><span class="hx-pill">C$613 under your budget</span><div class="fp" id="hx-fp" style="--w:75.5%"><div class="tk"></div><div class="fl"></div><div class="bm"></div><div class="pl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div></div><div class="fp-l"><span>Fare <b>C$1,887</b></span><span>Budget <b>C$2,500</b></span></div><p class="hx-rn">Example only. Your own check shows the fare, the airline and the time we checked it.</p></div></div></div>
+    </div>
     <h2 class="hx-how">How it works</h2><div class="hx-tri" id="how"><div class="hx-pn hx-p1"><div class="hx-vb" role="heading" aria-level="3">Enter your trip and budget</div><p class="hx-d">Add your route, your dates and the most you want to pay.<span class="hx-ds">Add your route, dates and budget.</span></p><span class="hx-chip2"><span class="l">Toronto &rarr; London &middot; </span>C$2,500</span></div><div class="hx-pn hx-p2"><div class="hx-vb" role="heading" aria-level="3">We check real fares</div><p class="hx-d">We check as often as we can, and more often as your departure gets closer.<span class="hx-ds">We check as your departure nears.</span></p><span class="hx-chip2">6 of 25<span class="l"> checks done</span></span></div><div class="hx-pn hx-p3"><div class="hx-vb" role="heading" aria-level="3">You get an email when a fare fits</div><p class="hx-d">The email links to the full itinerary in the app.<span class="hx-ds">The email links to the itinerary.</span></p><span class="hx-chip2">Under budget<span class="l">: email sent</span></span></div></div>
    </div>
   </section>
@@ -1081,6 +1099,9 @@ function cue(ex,res){
   form.classList.toggle('demoing',ex);
   if(!cueEl)return;
   cueEl.classList.toggle('ex',ex);
+  var tg=document.getElementById('demo-tag'),fn=document.getElementById('demo-fine');
+  if(tg)tg.textContent=res?'Example result':ex?'Watch a demo':'Your turn';
+  if(fn)fn.hidden=!!res;
   cueEl.innerHTML=res?'<span>Example result. This is what you’ll see for your own trip.</span>':ex?'<span>This is an example. Watch how a check works, then try yours.</span>':'<span>Try it on your own trip. You don’t need to sign up.</span>';
 }
 function run(){
