@@ -34,3 +34,4 @@ footer.fa-ft *{box-sizing:border-box}
 @media(max-width:640px){.fa-ft-r{text-align:left}.fa-ft-r nav{justify-content:flex-start}}
 footer.fa-ft .fa-tag{font-weight:700;color:#fff;font-size:14px;margin:6px 0 0}
 footer.fa-ft .fa-tag{margin:10px 0 4px}
+footer.fa-ft .fa-ft-l{max-width:330px;margin-top:10px;font-size:12.5px;line-height:1.55}
