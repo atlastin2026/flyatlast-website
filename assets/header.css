@@ -35,3 +35,5 @@ footer.fa-ft *{box-sizing:border-box}
 footer.fa-ft .fa-tag{font-weight:700;color:#fff;font-size:14px;margin:6px 0 0}
 footer.fa-ft .fa-tag{margin:10px 0 4px}
 footer.fa-ft .fa-ft-l{max-width:330px;margin-top:10px;font-size:12.5px;line-height:1.55}
+
+.fa-ft .fa-ig-row{margin:10px 0 0}.fa-ft .fa-ig{display:inline-flex;width:38px;height:38px;border:2px solid #CFDBE8;border-radius:50%;align-items:center;justify-content:center;color:#fff}.fa-ft .fa-ig:hover{border-color:#F4C11C;color:#F4C11C;text-decoration:none}.fa-ft .fa-ig:focus-visible{outline:3px solid #F4C11C;outline-offset:2px}
