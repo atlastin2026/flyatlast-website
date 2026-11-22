@@ -81,7 +81,15 @@ footer.foot a{color:inherit}
   h1{font-size:24px}.dates{margin-bottom:12px}
   .card .top{padding:14px 20px}.tl{padding:2px 20px 10px}
   .tl-dir{margin:10px 0 6px}.tl-seg{padding:2px 0 2px 12px}.tl-lay{margin:4px 0 4px 6px;padding:4px 10px}
-  .amt{font-size:36px}
+  .amt{font-size:34px}
+  .fa-hd{display:none!important}
+  h1{font-size:21px;margin-bottom:2px}.eyebrow{margin-bottom:4px}
+  .tl-key{margin:8px 0 0}
+  .tl-dir{margin:8px 0 4px;padding-bottom:3px}
+  .tl-seg{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 12px;padding:1px 0 1px 10px}
+  .tl-air{min-width:170px;font-size:13px}.tl-route{font-size:13px}
+  .tl-lay{margin:3px 0 3px 6px;padding:3px 10px;font-size:12px}
+  .printnote{margin:8px 0 0}
   .textlink{display:inline-block;margin-top:10px}
   .printnote{display:block;font-size:12px;color:var(--text-muted);margin:14px 0 0}
   .card{box-shadow:none}
@@ -174,7 +182,7 @@ footer.foot a{color:inherit}
     var card = el('div', 'card');
     var top = el('div', 'top');
     top.appendChild(el('p', 'lbl', 'Lowest fare we found'));
-    var amt = el('p', 'amt'), mt = money(sn.amount, sn.currency), di = mt.lastIndexOf('.');
+    var amt = el('p', 'amt'), mt = money(sn.amount, sn.currency).replace(new RegExp('^' + String(sn.currency || '') + '\\s*'), ''), di = mt.lastIndexOf('.');
     if (di > -1) { amt.appendChild(document.createTextNode(mt.slice(0, di))); amt.appendChild(el('span', 'dot', '.')); amt.appendChild(document.createTextNode(mt.slice(di + 1))); } else { amt.appendChild(document.createTextNode(mt)); }
     amt.appendChild(el('span', 'cur', ' ' + sn.currency)); top.appendChild(amt);
     var cs = carriers(sn);
