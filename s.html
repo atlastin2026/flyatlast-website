@@ -53,6 +53,20 @@ h1{font-size:30px;line-height:1.15;font-weight:800;margin:0 0 6px}
 .note{font-size:13px;color:var(--text-muted);text-align:center;margin:16px 0 0}
 .msg{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:0 4px 18px rgba(30,58,95,.10);padding:24px}
 .msg h1{font-size:24px}
+.tl{padding:6px 24px 16px;border-bottom:1px solid var(--border)}
+.tl-key{display:flex;flex-wrap:wrap;gap:6px 16px;margin:14px 0 2px;font-size:13px;color:var(--text-body)}
+.tl-key span{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.tl-key i{width:12px;height:12px;border-radius:3px;display:inline-block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tl-dir{margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.tl-dir h2{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:0 0 2px}
+.tl-dir p{margin:0;font-size:15px;font-weight:700;color:var(--navy)}
+.tl-seg{border-left:6px solid var(--navy);padding:4px 0 4px 14px;margin:0;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tl-air{font-weight:800;font-size:15px}
+.tl-air small{font-weight:600;color:var(--text-muted);font-size:13px;margin-left:6px}
+.tl-route{font-size:15px;color:var(--text-body)}
+.tl-route b{color:var(--navy)}
+.tl-lay{margin:6px 0 6px 6px;padding:6px 12px;border-radius:8px;background:#F1F4F6;color:var(--text-muted);font-size:13px;font-weight:600;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tl-lay.long{background:var(--amber-bg);color:var(--amber)}
 .printnote{display:none}
 footer.foot{max-width:640px;margin:0 auto;padding:0 20px 40px;text-align:center;font-size:13px;color:var(--text-muted)}
 footer.foot a{color:inherit}
@@ -62,7 +76,12 @@ footer.foot a{color:inherit}
   body{background:#fff}
   header.top{background:#fff;border-bottom:3px solid var(--navy)}
   header.top a{color:var(--navy)}
-  .actions,.cta,.note,footer.foot{display:none!important}
+  .actions,.cta,.note,footer.foot,footer.fa-ft{display:none!important}
+  main{padding:12px 0!important}
+  h1{font-size:24px}.dates{margin-bottom:12px}
+  .card .top{padding:14px 20px}.tl{padding:2px 20px 10px}
+  .tl-dir{margin:10px 0 6px}.tl-seg{padding:2px 0 2px 12px}.tl-lay{margin:4px 0 4px 6px;padding:4px 10px}
+  .amt{font-size:36px}
   .textlink{display:inline-block;margin-top:10px}
   .printnote{display:block;font-size:12px;color:var(--text-muted);margin:14px 0 0}
   .card{box-shadow:none}
@@ -99,6 +118,20 @@ footer.foot a{color:inherit}
   function ymd(s) { var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || ''); return m ? MON[+m[2] - 1] + ' ' + (+m[3]) + ', ' + m[1] : ''; }
   function hm(s) { var m = /T(\d{2}):(\d{2})/.exec(s || ''); if (!m) return ''; var h = +m[1]; return (h % 12 || 12) + ':' + m[2] + ' ' + (h < 12 ? 'a.m.' : 'p.m.'); }
   function stamp(s) { var d = ymd(s), t = hm(s); return d && t ? d.replace(/, \d{4}$/, '') + ', ' + t : d; }
+  var BRAND = [['qatar','#5C0632'],['air canada','#D22630'],['american','#0B6FBF'],['delta','#C01933'],['united','#1B4F9C'],['emirates','#C8102E'],['etihad','#9A7B2E'],['turkish','#C8102E'],['lufthansa','#0A1F5C'],['british airways','#075AAA'],['air france','#1B2A57'],['klm','#0077B6'],['ryanair','#073590'],['southwest','#304CB2'],['westjet','#00849E'],['porter','#12356B'],['air transat','#0072BC'],['pakistan','#00693E'],['saudia','#006C35'],['flydubai','#C7421C'],['singapore','#1A3A6B'],['cathay','#00574B'],['japan airlines','#B5121B'],['all nippon','#1D4E9E'],['virgin','#B3123B'],['alaska','#01426A'],['jetblue','#003876'],['aer lingus','#00704A'],['swiss','#B31217'],['iberia','#B3282D'],['tap','#1B7A3E'],['ita airways','#1E4B8F'],['finnair','#0B2E6B'],['sas','#1D2B6B'],['norwegian','#C8102E'],['air india','#B3282D'],['indigo','#2A3E91'],['egyptair','#1E4B8F'],['royal air maroc','#B3282D'],['ethiopian','#00693E']];
+  var FALLBACK = ['#1E3A5F','#5B3F8C','#8A4B1F','#1F6F6F','#8C2F4F','#4F6D1F','#2F4F8C','#7A5A12'];
+  function airlineColor(name) {
+    var n = String(name || '').toLowerCase();
+    if (!n) return FALLBACK[0];
+    for (var i = 0; i < BRAND.length; i++) if (n.indexOf(BRAND[i][0]) > -1) return BRAND[i][1];
+    var h = 0; for (var j = 0; j < n.length; j++) h = (h * 31 + n.charCodeAt(j)) >>> 0;
+    return FALLBACK[h % FALLBACK.length];
+  }
+  function pt(s) { var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(s || ''); return m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]) : null; }
+  function dur(ms) { var m = Math.round(ms / 60000), h = Math.floor(m / 60), r = m % 60; return (h ? h + ' h' : '') + (h && r ? ' ' : '') + (r ? r + ' min' : '') || '0 min'; }
+  function uniq(a) { var o = []; a.forEach(function (x) { if (x && o.indexOf(x) < 0) o.push(x); }); return o; }
+  function carriers(sn) { var a = []; (sn.legs || []).forEach(function (l) { (l.segments || []).forEach(function (g) { a.push(g.airline); }); }); return uniq(a); }
+  function stopsWord(n) { return n <= 0 ? 'Nonstop' : n + (n === 1 ? ' stop' : ' stops'); }
   function checkedAt(s) {
     try { var d = new Date(s); if (isNaN(d)) return ''; return d.toLocaleString('en', { dateStyle: 'medium', timeStyle: 'short' }).replace(/ /g, ' ').replace(/ AM$/, ' a.m.').replace(/ PM$/, ' p.m.'); } catch (e) { return ''; }
   }
@@ -144,7 +177,8 @@ footer.foot a{color:inherit}
     var amt = el('p', 'amt'), mt = money(sn.amount, sn.currency), di = mt.lastIndexOf('.');
     if (di > -1) { amt.appendChild(document.createTextNode(mt.slice(0, di))); amt.appendChild(el('span', 'dot', '.')); amt.appendChild(document.createTextNode(mt.slice(di + 1))); } else { amt.appendChild(document.createTextNode(mt)); }
     amt.appendChild(el('span', 'cur', ' ' + sn.currency)); top.appendChild(amt);
-    var parts = [sn.airline, sn.stops, sn.fare_brand].filter(Boolean);
+    var cs = carriers(sn);
+    var parts = [cs.length ? cs.join(' + ') : sn.airline, sn.stops, sn.fare_brand].filter(Boolean);
     if (parts.length) top.appendChild(el('p', 'meta', parts.join(' · ')));
     if (sn.converted_from) top.appendChild(el('p', 'fine', 'Shown in ' + sn.currency + ' at the exchange rate on the day. The final price is confirmed when you book.'));
     var when = checkedAt(sn.checked_at);
@@ -153,18 +187,46 @@ footer.foot a{color:inherit}
     card.appendChild(top);
 
     if (sn.legs && sn.legs.length) {
-      var legs = el('div', 'legs');
+      var tl = el('div', 'tl');
+      var names = carriers(sn);
+      if (names.length) {
+        var key = el('div', 'tl-key');
+        names.forEach(function (n) { var k = el('span'); var sw = el('i'); sw.style.background = airlineColor(n); k.appendChild(sw); k.appendChild(document.createTextNode(n)); key.appendChild(k); });
+        tl.appendChild(key);
+      }
       sn.legs.forEach(function (leg) {
-        var l = el('div', 'leg'); l.appendChild(el('h2', null, leg.label + (leg.fare_brand ? ' · ' + leg.fare_brand : '')));
-        (leg.segments || []).forEach(function (s) {
-          var p = el('p', 'seg');
-          p.appendChild(el('b', null, [s.airline, s.flight_number].filter(Boolean).join(' ')));
-          p.appendChild(document.createTextNode(': ' + (s.departure_airport || '') + ' ' + stamp(s.departure_time) + ' → ' + (s.arrival_airport || '') + ' ' + stamp(s.arrival_time)));
-          l.appendChild(p);
+        var segs = leg.segments || [];
+        var dir = el('div', 'tl-dir');
+        dir.appendChild(el('h2', null, leg.label || 'Flight'));
+        var first = segs[0] || {};
+        var line = [ymd(first.departure_time), stopsWord(segs.length - 1), leg.fare_brand].filter(Boolean).join(' \u00b7 ');
+        if (line) dir.appendChild(el('p', null, line));
+        tl.appendChild(dir);
+        segs.forEach(function (g, i) {
+          if (i > 0) {
+            var prev = segs[i - 1], a1 = pt(prev.arrival_time), d1 = pt(g.departure_time);
+            if (a1 != null && d1 != null && d1 >= a1) {
+              var ms = d1 - a1, long = ms >= 8 * 3600000;
+              var nextDay = (prev.arrival_time || '').slice(0, 10) !== (g.departure_time || '').slice(0, 10);
+              var txt = (long ? (nextDay ? 'Overnight layover' : 'Long layover') : 'Layover') + ' \u00b7 ' + dur(ms) + (g.departure_airport ? ' in ' + g.departure_airport : '');
+              tl.appendChild(el('div', 'tl-lay' + (long ? ' long' : ''), txt));
+            }
+          }
+          var sg = el('div', 'tl-seg'); sg.style.borderLeftColor = airlineColor(g.airline);
+          var air = el('div', 'tl-air'); air.style.color = airlineColor(g.airline);
+          air.appendChild(document.createTextNode(g.airline || 'Flight'));
+          if (g.flight_number) air.appendChild(el('small', null, g.flight_number));
+          sg.appendChild(air);
+          var rt = el('div', 'tl-route');
+          rt.appendChild(el('b', null, g.departure_airport || ''));
+          rt.appendChild(document.createTextNode(' ' + stamp(g.departure_time) + '  \u2192  '));
+          rt.appendChild(el('b', null, g.arrival_airport || ''));
+          rt.appendChild(document.createTextNode(' ' + stamp(g.arrival_time)));
+          sg.appendChild(rt);
+          tl.appendChild(sg);
         });
-        legs.appendChild(l);
       });
-      card.appendChild(legs);
+      card.appendChild(tl);
     }
 
     var actions = el('div', 'actions');
