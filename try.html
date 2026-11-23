@@ -608,7 +608,7 @@ function faTravellers(root, onChange) {
     var h2 = el('h2'); h2.appendChild(document.createTextNode(under ? 'Lock it in. ' : comparable ? 'Not at your price yet? ' : 'Want us to keep watching? ')); h2.appendChild(el('span', null, 'Pin it.')); pl.appendChild(h2);
     var ul = el('ul');
     ul.appendChild(el('li', null, 'We keep checking real fares until you fly'));
-    ul.appendChild(el('li', null, 'We email you the moment one fits ' + moneyW(bud, r.currency)));
+    ul.appendChild(el('li', null, 'We email you when one fits ' + moneyW(bud, r.currency)));
     ul.appendChild(el('li', null, '3 trips, 25 checks each. No card.'));
     pl.appendChild(ul); pin.appendChild(pl);
     var pr = el('div'), pinBtn = el('a', 'btn', 'Pin this trip'); pinBtn.href = tripLink(trip); pinBtn.addEventListener('click', function () { ev('Demo Pin Click'); });
@@ -629,7 +629,7 @@ function faTravellers(root, onChange) {
     }
     var c2 = el('div', 'rc-mini');
     c2.appendChild(el('h3', null, 'Booking soon? Watch the price.'));
-    c2.appendChild(el('p', null, 'We check every 2 hours for 48 hours or 5 days, and you pay only if the price held. Your first one is included.'));
+    c2.appendChild(el('p', null, 'We check every 2 hours for 48 hours or 5 days, and you pay nothing if the price moves enough. Your first one is included.'));
     var pw = el('a', 'lnk', 'See how it works →'); pw.href = '/#watch'; c2.appendChild(pw);
     two.appendChild(c1); two.appendChild(c2); resultBox.appendChild(two);
 
