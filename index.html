@@ -779,18 +779,22 @@ section[id]{scroll-margin-top:72px}
 .hw-ic{width:40px;height:40px;border-radius:10px;background:#1E3A5F;display:flex;align-items:center;justify-content:center}
 .hw-note{margin:20px 0 0;font-size:15px;font-weight:600;color:#4A5F78}
 #pricing{background:#fff;border-top:2px solid var(--border);border-bottom:2px solid var(--border)}
-.pc2{display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:stretch}
-.pc2-a,.pc2-b{background:#EEF1F3;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px}
-.pc2 h3{margin:0;font-size:20px;color:#1E3A5F}
-.pc2 p{margin:0;font-size:16px;line-height:1.55;color:var(--text-body)}
-.pc2 .pz2-btn{align-self:flex-start;margin-top:6px}
-.pc2-o{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.pc2-o div{background:#fff;border-radius:10px;padding:12px}
-.pc2-o span{display:block;font-size:13px;font-weight:600;color:#4A5F78}
-.pc2-o b{color:#1E3A5F}
-.pc2 .pc2-s{font-size:14px;color:#4A5F78}
-.pc2-l{font-weight:700;font-size:16px;color:#1E3A5F;min-height:44px;display:inline-flex;align-items:center}
-@media(max-width:860px){.hw-grid,.pc2,.pc2-o{grid-template-columns:1fr}}
+.pb-strip{background:#EEF1F3;border-radius:18px;padding:28px 12px;display:flex;flex-wrap:wrap;gap:24px 0}
+.pb-col{flex:1 1 240px;padding:8px 28px;display:flex;flex-direction:column;gap:6px}
+.pb-col+.pb-col{border-left:1px solid #CBD5DD}
+.pb-k{font-size:13px;font-weight:700;letter-spacing:.08em;color:#4A5F78}
+.pb-big{font-family:'JetBrains Mono',monospace;font-size:48px;font-weight:700;color:#1E3A5F;line-height:1.05;letter-spacing:-.03em}
+.pb-s{font-size:17px;line-height:1.45;color:var(--text-body)}
+.pb-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:20px}
+.pb-row p{margin:0;font-size:18px;color:#1E3A5F;font-weight:600;max-width:640px}
+.pb-det{margin-top:8px}
+.pb-det summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;font-weight:700;color:#1E3A5F;font-size:16px;text-decoration:underline}
+.pb-det summary::-webkit-details-marker{display:none}
+.pb-dd{font-size:15px;line-height:1.55;padding:6px 0 4px;max-width:720px;color:var(--text-body)}
+.pb-dd p{margin:0 0 8px}
+.pb-dd a{font-weight:700;color:#1E3A5F}
+.pricing-head h2,.bigh h2{font-size:clamp(30px,4vw,40px);letter-spacing:-.02em;line-height:1.1}
+@media(max-width:860px){.hw-grid{grid-template-columns:1fr}.pb-col+.pb-col{border-left:0}}
 </style>
 </head>
 <body>
@@ -805,7 +809,7 @@ section[id]{scroll-margin-top:72px}
   <section class="hx-hero">
    <div class="wrap hx-in">
     <h1 class="hx-h1">Tell us your budget. We’ll watch the fares.</h1>
-    <p class="hx-sub">Pin a trip with the most you want to pay, and we can check a few days either side. We email you when a fare fits, and you book with the seller you choose.</p>
+    <p class="hx-sub">Pin a trip and a budget. We email you when a fare fits.</p>
     <div class="demo-box" id="demo-box"><span class="demo-tag" id="demo-tag">Your turn</span>
     <p class="hx-cue" id="hx-cue" aria-live="polite"><span>Try it on your own trip. You don’t need to sign up.</span></p>
     <form class="hx-form plausible-event-name=Hero+form" action="try.html" method="get" aria-label="Check a trip against your budget">
@@ -831,9 +835,9 @@ section[id]{scroll-margin-top:72px}
       <h2>More than a price alert</h2>
       <p class="hw-lead">Alerts tell you a price moved. FlyAtlast starts from what you want to pay.</p>
       <div class="hw-grid">
-        <div class="hw-card"><span class="hw-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4C11C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1 1-1.7 2.5-1.7s2.5.7 2.5 1.7-1 1.5-2.5 1.8-2.5.7-2.5 1.8 1 1.7 2.5 1.7 2.5-.7 2.5-1.7"/></svg></span><h3>Budget first</h3><p>You set the number. We only email you when a fare is at or under it, in your own currency.</p></div>
-        <div class="hw-card"><span class="hw-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4C11C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>Flexible dates</h3><p>Not sure of the exact day? We also check up to 3 days either side of your dates.</p></div>
-        <div class="hw-card"><span class="hw-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4C11C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h12M12 3l4 4-4 4M20 17H8M12 13l-4 4 4 4"/></svg></span><h3>Compare, then book anywhere</h3><p>See priced sellers and go to the one you choose. We don’t sell tickets or hold seats.</p></div>
+        <div class="hw-card"><span class="hw-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4C11C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5c0-1 1-1.7 2.5-1.7s2.5.7 2.5 1.7-1 1.5-2.5 1.8-2.5.7-2.5 1.8 1 1.7 2.5 1.7 2.5-.7 2.5-1.7"/></svg></span><h3>Budget first</h3><p>You set the number. We email you only when a fare is at or under it.</p></div>
+        <div class="hw-card"><span class="hw-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4C11C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>Flexible dates</h3><p>We also check up to 3 days either side of your dates.</p></div>
+        <div class="hw-card"><span class="hw-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4C11C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h12M12 3l4 4-4 4M20 17H8M12 13l-4 4 4 4"/></svg></span><h3>Compare, then book anywhere</h3><p>See prices from airlines and travel sites, then book with the one you choose.</p></div>
       </div>
       <p class="hw-note">Real checks, never price forecasts.</p>
     </div>
@@ -842,7 +846,7 @@ section[id]{scroll-margin-top:72px}
   <!-- HOW IT WORKS -->
   <section class="section hx-how-sec">
     <div class="wrap">
-    <h2 class="hx-how">How it works</h2><div class="hx-tri" id="how"><div class="hx-pn hx-p1"><div class="hx-vb" role="heading" aria-level="3">Enter your trip and budget</div><p class="hx-d">Add your route, your dates and the most you want to pay.<span class="hx-ds">Add your route, dates and budget.</span></p><span class="hx-chip2"><span class="l">Toronto &rarr; London &middot; </span>C$2,500</span></div><div class="hx-pn hx-p2"><div class="hx-vb" role="heading" aria-level="3">We check real fares</div><p class="hx-d">We check more often as your departure gets closer.<span class="hx-ds">We check as your departure nears.</span></p><span class="hx-chip2">6 of 25<span class="l"> checks done</span></span></div><div class="hx-pn hx-p3"><div class="hx-vb" role="heading" aria-level="3">You get an email when a fare fits</div><p class="hx-d">We email you when a fare fits and holds on a second check. Pick a seller and book with them.<span class="hx-ds">We email you, then you pick a seller.</span></p><span class="hx-chip2">Under budget<span class="l">: email sent</span></span></div></div>
+    <h2 class="hx-how">How it works</h2><div class="hx-tri" id="how"><div class="hx-pn hx-p1"><div class="hx-vb" role="heading" aria-level="3">Enter your trip and budget</div><p class="hx-d">Add your route, your dates and the most you want to pay.<span class="hx-ds">Add your route, dates and budget.</span></p><span class="hx-chip2"><span class="l">Toronto &rarr; London &middot; </span>C$2,500</span></div><div class="hx-pn hx-p2"><div class="hx-vb" role="heading" aria-level="3">We check real fares</div><p class="hx-d">We check more often as your departure gets closer.<span class="hx-ds">We check as your departure nears.</span></p><span class="hx-chip2">6 of 25<span class="l"> checks done</span></span></div><div class="hx-pn hx-p3"><div class="hx-vb" role="heading" aria-level="3">You get an email when a fare fits</div><p class="hx-d">We email you when a fare fits on two checks in a row.<span class="hx-ds">We email you, then you pick a seller.</span></p><span class="hx-chip2">Under budget<span class="l">: email sent</span></span></div></div>
    </div>
   </section>
 
@@ -853,13 +857,17 @@ section[id]{scroll-margin-top:72px}
         <h2>What it costs</h2>
         <p class="pz-sub">There’s no subscription, and you don’t need a card to start.</p>
       </div>
-<div class="pc2">
-<div class="pc2-a"><h3>Track your trips</h3><p><b>Free: 3 trips, 25 checks each.</b> No card needed. Need more? Refer a friend or check in 7 days in a row to earn a trip, or buy 3 more for US$3.</p><a class="pz2-btn plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin your first trip</a></div>
-<div class="pc2-b" id="watch"><h3>Found a fare but need time to decide? Price Watch</h3><p>We re-check every 2 hours for 48 hours (US$5.99) or 5 days (US$9.99). It’s a fee for decision time, not a price lock. Your first 24-hour watch is free, one per account.</p>
-<div class="pc2-o"><div><span>Price ends US$5 or more up</span><b>You pay nothing</b></div><div><span>Anywhere in between</span><b>You pay the fee</b></div><div><span>Price ends US$20 or more down</span><b>You pay nothing</b></div></div>
-<p class="pc2-s">Available once your trip’s fare is at or under your budget and departure is at least 24 hours away. If you pay the fee and then book for more than the starting price, send us your booking within 48 hours after the watch ends and we refund it.</p>
-<a class="pc2-l plausible-event-name=Try+Price+Watch+free" href="/price-watch.html">See how Price Watch works &rarr;</a></div>
+<div class="pb-strip">
+<div class="pb-col"><span class="pb-k">TRACK TRIPS</span><div class="pb-big">Free</div><div class="pb-s">3 trips, 25 checks each</div></div>
+<div class="pb-col"><span class="pb-k">MORE TRIPS</span><div class="pb-big">US$3</div><div class="pb-s">for 3 more, or earn them by referring a friend</div></div>
+<div class="pb-col" id="watch"><span class="pb-k">PRICE WATCH</span><div class="pb-big">US$5.99</div><div class="pb-s">for 48 hours, or US$9.99 for 5 days</div></div>
 </div>
+<div class="pb-row"><p>Price Watch is for when you need time to decide. Pay nothing if the price moves enough.</p><a class="pz2-btn plausible-event-name=Pin+a+trip+free" href="https://app.flyatlast.com/login?signup=true">Pin your first trip</a></div>
+<details class="pb-det"><summary>How the Price Watch fee works</summary><div class="pb-dd">
+<p>Checks every 2 hours. Price ends US$5 or more up, or US$20 or more down: you pay nothing. Anywhere in between: you pay the fee.</p>
+<p>Paid and then booked for more than the starting price? Send us your booking within 48 hours of the end and we refund it.</p>
+<p>Available once your fare is at or under your budget and departure is 24 hours or more away. Your first 24-hour watch is free.</p>
+<a class="plausible-event-name=Try+Price+Watch+free" href="/price-watch.html">See how Price Watch works &rarr;</a></div></details>
 <p class="zfine">Prices are in US dollars. Your emails show the amounts in your own currency, such as CAD. See our <a href="terms.html" style="text-decoration:underline">terms</a>.</p>
 </div>
     </div>
